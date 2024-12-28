@@ -1,19 +1,41 @@
 syntax = "proto3";
 
-package de.thws.fiw.backendsystems.templates.grpc;
-
-option java_package = "de.thws.fiw.gymmanagement.proto";
+option java_package = "de.thws.fiw.gymmanagement.application";
 option java_multiple_files = true;
-option java_outer_classname = "Greeter";
 
-message Request {
+
+
+
+service GymService {
+    rpc GetMember(GetMemberRequest) returns (GetMemberResponse);
+    rpc CreateMember(CreateMemberRequest) returns (CreateMemberResponse);
+    rpc GetAllMembers(Empty) returns (GetAllMembersResponse);
+}
+
+message GetAllMembersResponse {
+    repeated GetMemberResponse members = 1;
+}
+
+message Empty {}
+
+
+message GetMemberRequest {
+    int64 memberId = 1;
+}
+
+message GetMemberResponse {
+    int64 memberId = 1;
+    string name = 2;
+    string membershipType = 3;
+}
+
+message CreateMemberRequest {
     string name = 1;
+    string membershipType = 2;
 }
 
-message Reply {
-    string greeting = 1;
+message CreateMemberResponse {
+    int64 memberId = 1;
 }
 
-service GreeterService {
-    rpc getGreeting (Request) returns (Reply);
-}
+
