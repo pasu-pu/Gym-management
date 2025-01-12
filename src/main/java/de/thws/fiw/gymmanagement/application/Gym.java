@@ -26,6 +26,26 @@ public final class Gym {
         (com.google.protobuf.ExtensionRegistryLite) registry);
   }
   static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_UpdateMemberRequest_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_UpdateMemberRequest_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_UpdateMemberResponse_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_UpdateMemberResponse_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_DeleteMemberRequest_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_DeleteMemberRequest_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_DeleteMemberResponse_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_DeleteMemberResponse_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
     internal_static_GetAllMembersResponse_descriptor;
   static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
@@ -64,57 +84,89 @@ public final class Gym {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\tgym.proto\"<\n\025GetAllMembersResponse\022#\n\007" +
-      "members\030\001 \003(\0132\022.GetMemberResponse\"\007\n\005Emp" +
-      "ty\"$\n\020GetMemberRequest\022\020\n\010memberId\030\001 \001(\003" +
-      "\"K\n\021GetMemberResponse\022\020\n\010memberId\030\001 \001(\003\022" +
-      "\014\n\004name\030\002 \001(\t\022\026\n\016membershipType\030\003 \001(\t\";\n" +
-      "\023CreateMemberRequest\022\014\n\004name\030\001 \001(\t\022\026\n\016me" +
-      "mbershipType\030\002 \001(\t\"(\n\024CreateMemberRespon" +
-      "se\022\020\n\010memberId\030\001 \001(\0032\256\001\n\nGymService\0222\n\tG" +
-      "etMember\022\021.GetMemberRequest\032\022.GetMemberR" +
-      "esponse\022;\n\014CreateMember\022\024.CreateMemberRe" +
-      "quest\032\025.CreateMemberResponse\022/\n\rGetAllMe" +
-      "mbers\022\006.Empty\032\026.GetAllMembersResponseB)\n" +
-      "%de.thws.fiw.gymmanagement.applicationP\001" +
-      "b\006proto3"
+      "\n\tgym.proto\"M\n\023UpdateMemberRequest\022\020\n\010me" +
+      "mberId\030\001 \001(\003\022\014\n\004name\030\002 \001(\t\022\026\n\016membership" +
+      "Type\030\003 \001(\t\"\'\n\024UpdateMemberResponse\022\017\n\007su" +
+      "ccess\030\001 \001(\010\"\'\n\023DeleteMemberRequest\022\020\n\010me" +
+      "mberId\030\001 \001(\003\"\'\n\024DeleteMemberResponse\022\017\n\007" +
+      "success\030\001 \001(\010\"<\n\025GetAllMembersResponse\022#" +
+      "\n\007members\030\001 \003(\0132\022.GetMemberResponse\"\007\n\005E" +
+      "mpty\"$\n\020GetMemberRequest\022\020\n\010memberId\030\001 \001" +
+      "(\003\"K\n\021GetMemberResponse\022\020\n\010memberId\030\001 \001(" +
+      "\003\022\014\n\004name\030\002 \001(\t\022\026\n\016membershipType\030\003 \001(\t\"" +
+      ";\n\023CreateMemberRequest\022\014\n\004name\030\001 \001(\t\022\026\n\016" +
+      "membershipType\030\002 \001(\t\"(\n\024CreateMemberResp" +
+      "onse\022\020\n\010memberId\030\001 \001(\0032\250\002\n\nGymService\0222\n" +
+      "\tGetMember\022\021.GetMemberRequest\032\022.GetMembe" +
+      "rResponse\022;\n\014CreateMember\022\024.CreateMember" +
+      "Request\032\025.CreateMemberResponse\022/\n\rGetAll" +
+      "Members\022\006.Empty\032\026.GetAllMembersResponse\022" +
+      ";\n\014UpdateMember\022\024.UpdateMemberRequest\032\025." +
+      "UpdateMemberResponse\022;\n\014DeleteMember\022\024.D" +
+      "eleteMemberRequest\032\025.DeleteMemberRespons" +
+      "eB)\n%de.thws.fiw.gymmanagement.applicati" +
+      "onP\001b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
         });
-    internal_static_GetAllMembersResponse_descriptor =
+    internal_static_UpdateMemberRequest_descriptor =
       getDescriptor().getMessageTypes().get(0);
+    internal_static_UpdateMemberRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_UpdateMemberRequest_descriptor,
+        new java.lang.String[] { "MemberId", "Name", "MembershipType", });
+    internal_static_UpdateMemberResponse_descriptor =
+      getDescriptor().getMessageTypes().get(1);
+    internal_static_UpdateMemberResponse_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_UpdateMemberResponse_descriptor,
+        new java.lang.String[] { "Success", });
+    internal_static_DeleteMemberRequest_descriptor =
+      getDescriptor().getMessageTypes().get(2);
+    internal_static_DeleteMemberRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_DeleteMemberRequest_descriptor,
+        new java.lang.String[] { "MemberId", });
+    internal_static_DeleteMemberResponse_descriptor =
+      getDescriptor().getMessageTypes().get(3);
+    internal_static_DeleteMemberResponse_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_DeleteMemberResponse_descriptor,
+        new java.lang.String[] { "Success", });
+    internal_static_GetAllMembersResponse_descriptor =
+      getDescriptor().getMessageTypes().get(4);
     internal_static_GetAllMembersResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_GetAllMembersResponse_descriptor,
         new java.lang.String[] { "Members", });
     internal_static_Empty_descriptor =
-      getDescriptor().getMessageTypes().get(1);
+      getDescriptor().getMessageTypes().get(5);
     internal_static_Empty_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_Empty_descriptor,
         new java.lang.String[] { });
     internal_static_GetMemberRequest_descriptor =
-      getDescriptor().getMessageTypes().get(2);
+      getDescriptor().getMessageTypes().get(6);
     internal_static_GetMemberRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_GetMemberRequest_descriptor,
         new java.lang.String[] { "MemberId", });
     internal_static_GetMemberResponse_descriptor =
-      getDescriptor().getMessageTypes().get(3);
+      getDescriptor().getMessageTypes().get(7);
     internal_static_GetMemberResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_GetMemberResponse_descriptor,
         new java.lang.String[] { "MemberId", "Name", "MembershipType", });
     internal_static_CreateMemberRequest_descriptor =
-      getDescriptor().getMessageTypes().get(4);
+      getDescriptor().getMessageTypes().get(8);
     internal_static_CreateMemberRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_CreateMemberRequest_descriptor,
         new java.lang.String[] { "Name", "MembershipType", });
     internal_static_CreateMemberResponse_descriptor =
-      getDescriptor().getMessageTypes().get(5);
+      getDescriptor().getMessageTypes().get(9);
     internal_static_CreateMemberResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_CreateMemberResponse_descriptor,

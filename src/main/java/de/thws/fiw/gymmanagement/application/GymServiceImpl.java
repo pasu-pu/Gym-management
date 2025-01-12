@@ -1,14 +1,17 @@
 package de.thws.fiw.gymmanagement.application;
 
-import de.thws.fiw.gymmanagement.infrastructure.MemberRepository;
 import de.thws.fiw.gymmanagement.domain.Member;
+import de.thws.fiw.gymmanagement.infrastructure.MemberRepositoryInterface;
 import io.grpc.stub.StreamObserver;
 
 import java.util.List;
 
 public class GymServiceImpl extends GymServiceGrpc.GymServiceImplBase {
-    private final MemberRepository repository = new MemberRepository();
+    private final MemberRepositoryInterface repository;
 
+    public GymServiceImpl(MemberRepositoryInterface repository) {
+        this.repository = repository;
+    }
     @Override
     public void createMember(CreateMemberRequest request, StreamObserver<CreateMemberResponse> responseObserver) {
         Member member = new Member();
@@ -56,5 +59,36 @@ public class GymServiceImpl extends GymServiceGrpc.GymServiceImplBase {
         responseObserver.onNext(responseBuilder.build());
         responseObserver.onCompleted();
     }
+    @Override
+    public void updateMember(UpdateMemberRequest request, StreamObserver<UpdateMemberResponse> responseObserver) {
+        Member member = repository.update(request.getMemberId(), request.getName(), request.getMembershipType());
+        boolean success = member != null;
+
+        UpdateMemberResponse response = UpdateMemberResponse.newBuilder()
+                .setSuccess(success)
+                .build();
+
+        responseObserver.onNext(response);
+        responseObserver.onCompleted();
+    }
+
+    @Override
+    public void deleteMember(DeleteMemberRequest request, StreamObserver<DeleteMemberResponse> responseObserver) {
+        boolean success = repository.findById(request.getMemberId())
+                .map(member -> {
+                    repository.deleteById(member.getId());
+                    return true;
+                })
+                .orElse(false);
+
+        DeleteMemberResponse response = DeleteMemberResponse.newBuilder()
+                .setSuccess(success)
+                .build();
+
+        responseObserver.onNext(response);
+        responseObserver.onCompleted();
+    }
+
+
 
 }

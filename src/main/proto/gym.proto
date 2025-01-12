@@ -10,6 +10,26 @@ service GymService {
     rpc GetMember(GetMemberRequest) returns (GetMemberResponse);
     rpc CreateMember(CreateMemberRequest) returns (CreateMemberResponse);
     rpc GetAllMembers(Empty) returns (GetAllMembersResponse);
+    rpc UpdateMember(UpdateMemberRequest) returns (UpdateMemberResponse);
+    rpc DeleteMember(DeleteMemberRequest) returns (DeleteMemberResponse);
+}
+
+message UpdateMemberRequest {
+    int64 memberId = 1;
+    string name = 2;
+    string membershipType = 3;
+}
+
+message UpdateMemberResponse {
+    bool success = 1;
+}
+
+message DeleteMemberRequest {
+    int64 memberId = 1;
+}
+
+message DeleteMemberResponse {
+    bool success = 1;
 }
 
 message GetAllMembersResponse {

@@ -40,6 +40,32 @@ public class GymClient {
             System.out.println("- ID: " + member.getMemberId() + ", Name: " + member.getName());
         }
 
+        UpdateMemberRequest updateRequest = UpdateMemberRequest.newBuilder()
+                .setMemberId(1)
+                .setName("John Updated")
+                .setMembershipType("Standard")
+                .build();
+
+        UpdateMemberResponse updateResponse = stub.updateMember(updateRequest);
+        System.out.println("Update erfolgreich: " + updateResponse.getSuccess());
+
+        DeleteMemberRequest deleteRequest = DeleteMemberRequest.newBuilder()
+                .setMemberId(1)
+                .build();
+
+        DeleteMemberResponse deleteResponse = stub.deleteMember(deleteRequest);
+        System.out.println("Löschen erfolgreich: " + deleteResponse.getSuccess());
+
+
+        // Anfrage: GetAllMembers nach dem Löschen
+        allMembersResponse = stub.getAllMembers(emptyRequest);
+
+        System.out.println("Alle Mitglieder:");
+        for (GetMemberResponse member : allMembersResponse.getMembersList()) {
+            System.out.println("- ID: " + member.getMemberId() + ", Name: " + member.getName());
+        }
+
+
         // Verbindung schließen
         channel.shutdown();
     }
