@@ -170,6 +170,347 @@ public final class GymServiceGrpc {
     return getDeleteMemberMethod;
   }
 
+  private static volatile io.grpc.MethodDescriptor<de.thws.fiw.gymmanagement.application.CreateTrainerRequest,
+      de.thws.fiw.gymmanagement.application.CreateTrainerResponse> getCreateTrainerMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "CreateTrainer",
+      requestType = de.thws.fiw.gymmanagement.application.CreateTrainerRequest.class,
+      responseType = de.thws.fiw.gymmanagement.application.CreateTrainerResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<de.thws.fiw.gymmanagement.application.CreateTrainerRequest,
+      de.thws.fiw.gymmanagement.application.CreateTrainerResponse> getCreateTrainerMethod() {
+    io.grpc.MethodDescriptor<de.thws.fiw.gymmanagement.application.CreateTrainerRequest, de.thws.fiw.gymmanagement.application.CreateTrainerResponse> getCreateTrainerMethod;
+    if ((getCreateTrainerMethod = GymServiceGrpc.getCreateTrainerMethod) == null) {
+      synchronized (GymServiceGrpc.class) {
+        if ((getCreateTrainerMethod = GymServiceGrpc.getCreateTrainerMethod) == null) {
+          GymServiceGrpc.getCreateTrainerMethod = getCreateTrainerMethod =
+              io.grpc.MethodDescriptor.<de.thws.fiw.gymmanagement.application.CreateTrainerRequest, de.thws.fiw.gymmanagement.application.CreateTrainerResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "CreateTrainer"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  de.thws.fiw.gymmanagement.application.CreateTrainerRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  de.thws.fiw.gymmanagement.application.CreateTrainerResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new GymServiceMethodDescriptorSupplier("CreateTrainer"))
+              .build();
+        }
+      }
+    }
+    return getCreateTrainerMethod;
+  }
+
+  private static volatile io.grpc.MethodDescriptor<de.thws.fiw.gymmanagement.application.GetTrainerRequest,
+      de.thws.fiw.gymmanagement.application.GetTrainerResponse> getGetTrainerMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "GetTrainer",
+      requestType = de.thws.fiw.gymmanagement.application.GetTrainerRequest.class,
+      responseType = de.thws.fiw.gymmanagement.application.GetTrainerResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<de.thws.fiw.gymmanagement.application.GetTrainerRequest,
+      de.thws.fiw.gymmanagement.application.GetTrainerResponse> getGetTrainerMethod() {
+    io.grpc.MethodDescriptor<de.thws.fiw.gymmanagement.application.GetTrainerRequest, de.thws.fiw.gymmanagement.application.GetTrainerResponse> getGetTrainerMethod;
+    if ((getGetTrainerMethod = GymServiceGrpc.getGetTrainerMethod) == null) {
+      synchronized (GymServiceGrpc.class) {
+        if ((getGetTrainerMethod = GymServiceGrpc.getGetTrainerMethod) == null) {
+          GymServiceGrpc.getGetTrainerMethod = getGetTrainerMethod =
+              io.grpc.MethodDescriptor.<de.thws.fiw.gymmanagement.application.GetTrainerRequest, de.thws.fiw.gymmanagement.application.GetTrainerResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "GetTrainer"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  de.thws.fiw.gymmanagement.application.GetTrainerRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  de.thws.fiw.gymmanagement.application.GetTrainerResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new GymServiceMethodDescriptorSupplier("GetTrainer"))
+              .build();
+        }
+      }
+    }
+    return getGetTrainerMethod;
+  }
+
+  private static volatile io.grpc.MethodDescriptor<de.thws.fiw.gymmanagement.application.Empty,
+      de.thws.fiw.gymmanagement.application.GetAllTrainersResponse> getGetAllTrainersMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "GetAllTrainers",
+      requestType = de.thws.fiw.gymmanagement.application.Empty.class,
+      responseType = de.thws.fiw.gymmanagement.application.GetAllTrainersResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<de.thws.fiw.gymmanagement.application.Empty,
+      de.thws.fiw.gymmanagement.application.GetAllTrainersResponse> getGetAllTrainersMethod() {
+    io.grpc.MethodDescriptor<de.thws.fiw.gymmanagement.application.Empty, de.thws.fiw.gymmanagement.application.GetAllTrainersResponse> getGetAllTrainersMethod;
+    if ((getGetAllTrainersMethod = GymServiceGrpc.getGetAllTrainersMethod) == null) {
+      synchronized (GymServiceGrpc.class) {
+        if ((getGetAllTrainersMethod = GymServiceGrpc.getGetAllTrainersMethod) == null) {
+          GymServiceGrpc.getGetAllTrainersMethod = getGetAllTrainersMethod =
+              io.grpc.MethodDescriptor.<de.thws.fiw.gymmanagement.application.Empty, de.thws.fiw.gymmanagement.application.GetAllTrainersResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "GetAllTrainers"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  de.thws.fiw.gymmanagement.application.Empty.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  de.thws.fiw.gymmanagement.application.GetAllTrainersResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new GymServiceMethodDescriptorSupplier("GetAllTrainers"))
+              .build();
+        }
+      }
+    }
+    return getGetAllTrainersMethod;
+  }
+
+  private static volatile io.grpc.MethodDescriptor<de.thws.fiw.gymmanagement.application.UpdateTrainerRequest,
+      de.thws.fiw.gymmanagement.application.UpdateTrainerResponse> getUpdateTrainerMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "UpdateTrainer",
+      requestType = de.thws.fiw.gymmanagement.application.UpdateTrainerRequest.class,
+      responseType = de.thws.fiw.gymmanagement.application.UpdateTrainerResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<de.thws.fiw.gymmanagement.application.UpdateTrainerRequest,
+      de.thws.fiw.gymmanagement.application.UpdateTrainerResponse> getUpdateTrainerMethod() {
+    io.grpc.MethodDescriptor<de.thws.fiw.gymmanagement.application.UpdateTrainerRequest, de.thws.fiw.gymmanagement.application.UpdateTrainerResponse> getUpdateTrainerMethod;
+    if ((getUpdateTrainerMethod = GymServiceGrpc.getUpdateTrainerMethod) == null) {
+      synchronized (GymServiceGrpc.class) {
+        if ((getUpdateTrainerMethod = GymServiceGrpc.getUpdateTrainerMethod) == null) {
+          GymServiceGrpc.getUpdateTrainerMethod = getUpdateTrainerMethod =
+              io.grpc.MethodDescriptor.<de.thws.fiw.gymmanagement.application.UpdateTrainerRequest, de.thws.fiw.gymmanagement.application.UpdateTrainerResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "UpdateTrainer"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  de.thws.fiw.gymmanagement.application.UpdateTrainerRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  de.thws.fiw.gymmanagement.application.UpdateTrainerResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new GymServiceMethodDescriptorSupplier("UpdateTrainer"))
+              .build();
+        }
+      }
+    }
+    return getUpdateTrainerMethod;
+  }
+
+  private static volatile io.grpc.MethodDescriptor<de.thws.fiw.gymmanagement.application.DeleteTrainerRequest,
+      de.thws.fiw.gymmanagement.application.DeleteTrainerResponse> getDeleteTrainerMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "DeleteTrainer",
+      requestType = de.thws.fiw.gymmanagement.application.DeleteTrainerRequest.class,
+      responseType = de.thws.fiw.gymmanagement.application.DeleteTrainerResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<de.thws.fiw.gymmanagement.application.DeleteTrainerRequest,
+      de.thws.fiw.gymmanagement.application.DeleteTrainerResponse> getDeleteTrainerMethod() {
+    io.grpc.MethodDescriptor<de.thws.fiw.gymmanagement.application.DeleteTrainerRequest, de.thws.fiw.gymmanagement.application.DeleteTrainerResponse> getDeleteTrainerMethod;
+    if ((getDeleteTrainerMethod = GymServiceGrpc.getDeleteTrainerMethod) == null) {
+      synchronized (GymServiceGrpc.class) {
+        if ((getDeleteTrainerMethod = GymServiceGrpc.getDeleteTrainerMethod) == null) {
+          GymServiceGrpc.getDeleteTrainerMethod = getDeleteTrainerMethod =
+              io.grpc.MethodDescriptor.<de.thws.fiw.gymmanagement.application.DeleteTrainerRequest, de.thws.fiw.gymmanagement.application.DeleteTrainerResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "DeleteTrainer"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  de.thws.fiw.gymmanagement.application.DeleteTrainerRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  de.thws.fiw.gymmanagement.application.DeleteTrainerResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new GymServiceMethodDescriptorSupplier("DeleteTrainer"))
+              .build();
+        }
+      }
+    }
+    return getDeleteTrainerMethod;
+  }
+
+  private static volatile io.grpc.MethodDescriptor<de.thws.fiw.gymmanagement.application.CreateCourseRequest,
+      de.thws.fiw.gymmanagement.application.CreateCourseResponse> getCreateCourseMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "CreateCourse",
+      requestType = de.thws.fiw.gymmanagement.application.CreateCourseRequest.class,
+      responseType = de.thws.fiw.gymmanagement.application.CreateCourseResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<de.thws.fiw.gymmanagement.application.CreateCourseRequest,
+      de.thws.fiw.gymmanagement.application.CreateCourseResponse> getCreateCourseMethod() {
+    io.grpc.MethodDescriptor<de.thws.fiw.gymmanagement.application.CreateCourseRequest, de.thws.fiw.gymmanagement.application.CreateCourseResponse> getCreateCourseMethod;
+    if ((getCreateCourseMethod = GymServiceGrpc.getCreateCourseMethod) == null) {
+      synchronized (GymServiceGrpc.class) {
+        if ((getCreateCourseMethod = GymServiceGrpc.getCreateCourseMethod) == null) {
+          GymServiceGrpc.getCreateCourseMethod = getCreateCourseMethod =
+              io.grpc.MethodDescriptor.<de.thws.fiw.gymmanagement.application.CreateCourseRequest, de.thws.fiw.gymmanagement.application.CreateCourseResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "CreateCourse"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  de.thws.fiw.gymmanagement.application.CreateCourseRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  de.thws.fiw.gymmanagement.application.CreateCourseResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new GymServiceMethodDescriptorSupplier("CreateCourse"))
+              .build();
+        }
+      }
+    }
+    return getCreateCourseMethod;
+  }
+
+  private static volatile io.grpc.MethodDescriptor<de.thws.fiw.gymmanagement.application.GetCourseRequest,
+      de.thws.fiw.gymmanagement.application.GetCourseResponse> getGetCourseMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "GetCourse",
+      requestType = de.thws.fiw.gymmanagement.application.GetCourseRequest.class,
+      responseType = de.thws.fiw.gymmanagement.application.GetCourseResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<de.thws.fiw.gymmanagement.application.GetCourseRequest,
+      de.thws.fiw.gymmanagement.application.GetCourseResponse> getGetCourseMethod() {
+    io.grpc.MethodDescriptor<de.thws.fiw.gymmanagement.application.GetCourseRequest, de.thws.fiw.gymmanagement.application.GetCourseResponse> getGetCourseMethod;
+    if ((getGetCourseMethod = GymServiceGrpc.getGetCourseMethod) == null) {
+      synchronized (GymServiceGrpc.class) {
+        if ((getGetCourseMethod = GymServiceGrpc.getGetCourseMethod) == null) {
+          GymServiceGrpc.getGetCourseMethod = getGetCourseMethod =
+              io.grpc.MethodDescriptor.<de.thws.fiw.gymmanagement.application.GetCourseRequest, de.thws.fiw.gymmanagement.application.GetCourseResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "GetCourse"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  de.thws.fiw.gymmanagement.application.GetCourseRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  de.thws.fiw.gymmanagement.application.GetCourseResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new GymServiceMethodDescriptorSupplier("GetCourse"))
+              .build();
+        }
+      }
+    }
+    return getGetCourseMethod;
+  }
+
+  private static volatile io.grpc.MethodDescriptor<de.thws.fiw.gymmanagement.application.Empty,
+      de.thws.fiw.gymmanagement.application.GetAllCoursesResponse> getGetAllCoursesMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "GetAllCourses",
+      requestType = de.thws.fiw.gymmanagement.application.Empty.class,
+      responseType = de.thws.fiw.gymmanagement.application.GetAllCoursesResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<de.thws.fiw.gymmanagement.application.Empty,
+      de.thws.fiw.gymmanagement.application.GetAllCoursesResponse> getGetAllCoursesMethod() {
+    io.grpc.MethodDescriptor<de.thws.fiw.gymmanagement.application.Empty, de.thws.fiw.gymmanagement.application.GetAllCoursesResponse> getGetAllCoursesMethod;
+    if ((getGetAllCoursesMethod = GymServiceGrpc.getGetAllCoursesMethod) == null) {
+      synchronized (GymServiceGrpc.class) {
+        if ((getGetAllCoursesMethod = GymServiceGrpc.getGetAllCoursesMethod) == null) {
+          GymServiceGrpc.getGetAllCoursesMethod = getGetAllCoursesMethod =
+              io.grpc.MethodDescriptor.<de.thws.fiw.gymmanagement.application.Empty, de.thws.fiw.gymmanagement.application.GetAllCoursesResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "GetAllCourses"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  de.thws.fiw.gymmanagement.application.Empty.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  de.thws.fiw.gymmanagement.application.GetAllCoursesResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new GymServiceMethodDescriptorSupplier("GetAllCourses"))
+              .build();
+        }
+      }
+    }
+    return getGetAllCoursesMethod;
+  }
+
+  private static volatile io.grpc.MethodDescriptor<de.thws.fiw.gymmanagement.application.UpdateCourseRequest,
+      de.thws.fiw.gymmanagement.application.UpdateCourseResponse> getUpdateCourseMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "UpdateCourse",
+      requestType = de.thws.fiw.gymmanagement.application.UpdateCourseRequest.class,
+      responseType = de.thws.fiw.gymmanagement.application.UpdateCourseResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<de.thws.fiw.gymmanagement.application.UpdateCourseRequest,
+      de.thws.fiw.gymmanagement.application.UpdateCourseResponse> getUpdateCourseMethod() {
+    io.grpc.MethodDescriptor<de.thws.fiw.gymmanagement.application.UpdateCourseRequest, de.thws.fiw.gymmanagement.application.UpdateCourseResponse> getUpdateCourseMethod;
+    if ((getUpdateCourseMethod = GymServiceGrpc.getUpdateCourseMethod) == null) {
+      synchronized (GymServiceGrpc.class) {
+        if ((getUpdateCourseMethod = GymServiceGrpc.getUpdateCourseMethod) == null) {
+          GymServiceGrpc.getUpdateCourseMethod = getUpdateCourseMethod =
+              io.grpc.MethodDescriptor.<de.thws.fiw.gymmanagement.application.UpdateCourseRequest, de.thws.fiw.gymmanagement.application.UpdateCourseResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "UpdateCourse"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  de.thws.fiw.gymmanagement.application.UpdateCourseRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  de.thws.fiw.gymmanagement.application.UpdateCourseResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new GymServiceMethodDescriptorSupplier("UpdateCourse"))
+              .build();
+        }
+      }
+    }
+    return getUpdateCourseMethod;
+  }
+
+  private static volatile io.grpc.MethodDescriptor<de.thws.fiw.gymmanagement.application.DeleteCourseRequest,
+      de.thws.fiw.gymmanagement.application.DeleteCourseResponse> getDeleteCourseMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "DeleteCourse",
+      requestType = de.thws.fiw.gymmanagement.application.DeleteCourseRequest.class,
+      responseType = de.thws.fiw.gymmanagement.application.DeleteCourseResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<de.thws.fiw.gymmanagement.application.DeleteCourseRequest,
+      de.thws.fiw.gymmanagement.application.DeleteCourseResponse> getDeleteCourseMethod() {
+    io.grpc.MethodDescriptor<de.thws.fiw.gymmanagement.application.DeleteCourseRequest, de.thws.fiw.gymmanagement.application.DeleteCourseResponse> getDeleteCourseMethod;
+    if ((getDeleteCourseMethod = GymServiceGrpc.getDeleteCourseMethod) == null) {
+      synchronized (GymServiceGrpc.class) {
+        if ((getDeleteCourseMethod = GymServiceGrpc.getDeleteCourseMethod) == null) {
+          GymServiceGrpc.getDeleteCourseMethod = getDeleteCourseMethod =
+              io.grpc.MethodDescriptor.<de.thws.fiw.gymmanagement.application.DeleteCourseRequest, de.thws.fiw.gymmanagement.application.DeleteCourseResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "DeleteCourse"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  de.thws.fiw.gymmanagement.application.DeleteCourseRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  de.thws.fiw.gymmanagement.application.DeleteCourseResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new GymServiceMethodDescriptorSupplier("DeleteCourse"))
+              .build();
+        }
+      }
+    }
+    return getDeleteCourseMethod;
+  }
+
+  private static volatile io.grpc.MethodDescriptor<de.thws.fiw.gymmanagement.application.GetCoursesByTrainerRequest,
+      de.thws.fiw.gymmanagement.application.GetCoursesByTrainerResponse> getGetCoursesByTrainerMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "GetCoursesByTrainer",
+      requestType = de.thws.fiw.gymmanagement.application.GetCoursesByTrainerRequest.class,
+      responseType = de.thws.fiw.gymmanagement.application.GetCoursesByTrainerResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<de.thws.fiw.gymmanagement.application.GetCoursesByTrainerRequest,
+      de.thws.fiw.gymmanagement.application.GetCoursesByTrainerResponse> getGetCoursesByTrainerMethod() {
+    io.grpc.MethodDescriptor<de.thws.fiw.gymmanagement.application.GetCoursesByTrainerRequest, de.thws.fiw.gymmanagement.application.GetCoursesByTrainerResponse> getGetCoursesByTrainerMethod;
+    if ((getGetCoursesByTrainerMethod = GymServiceGrpc.getGetCoursesByTrainerMethod) == null) {
+      synchronized (GymServiceGrpc.class) {
+        if ((getGetCoursesByTrainerMethod = GymServiceGrpc.getGetCoursesByTrainerMethod) == null) {
+          GymServiceGrpc.getGetCoursesByTrainerMethod = getGetCoursesByTrainerMethod =
+              io.grpc.MethodDescriptor.<de.thws.fiw.gymmanagement.application.GetCoursesByTrainerRequest, de.thws.fiw.gymmanagement.application.GetCoursesByTrainerResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "GetCoursesByTrainer"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  de.thws.fiw.gymmanagement.application.GetCoursesByTrainerRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  de.thws.fiw.gymmanagement.application.GetCoursesByTrainerResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new GymServiceMethodDescriptorSupplier("GetCoursesByTrainer"))
+              .build();
+        }
+      }
+    }
+    return getGetCoursesByTrainerMethod;
+  }
+
   /**
    * Creates a new async stub that supports all call types for the service
    */
@@ -252,6 +593,83 @@ public final class GymServiceGrpc {
         io.grpc.stub.StreamObserver<de.thws.fiw.gymmanagement.application.DeleteMemberResponse> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getDeleteMemberMethod(), responseObserver);
     }
+
+    /**
+     */
+    default void createTrainer(de.thws.fiw.gymmanagement.application.CreateTrainerRequest request,
+        io.grpc.stub.StreamObserver<de.thws.fiw.gymmanagement.application.CreateTrainerResponse> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getCreateTrainerMethod(), responseObserver);
+    }
+
+    /**
+     */
+    default void getTrainer(de.thws.fiw.gymmanagement.application.GetTrainerRequest request,
+        io.grpc.stub.StreamObserver<de.thws.fiw.gymmanagement.application.GetTrainerResponse> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getGetTrainerMethod(), responseObserver);
+    }
+
+    /**
+     */
+    default void getAllTrainers(de.thws.fiw.gymmanagement.application.Empty request,
+        io.grpc.stub.StreamObserver<de.thws.fiw.gymmanagement.application.GetAllTrainersResponse> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getGetAllTrainersMethod(), responseObserver);
+    }
+
+    /**
+     */
+    default void updateTrainer(de.thws.fiw.gymmanagement.application.UpdateTrainerRequest request,
+        io.grpc.stub.StreamObserver<de.thws.fiw.gymmanagement.application.UpdateTrainerResponse> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getUpdateTrainerMethod(), responseObserver);
+    }
+
+    /**
+     */
+    default void deleteTrainer(de.thws.fiw.gymmanagement.application.DeleteTrainerRequest request,
+        io.grpc.stub.StreamObserver<de.thws.fiw.gymmanagement.application.DeleteTrainerResponse> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getDeleteTrainerMethod(), responseObserver);
+    }
+
+    /**
+     */
+    default void createCourse(de.thws.fiw.gymmanagement.application.CreateCourseRequest request,
+        io.grpc.stub.StreamObserver<de.thws.fiw.gymmanagement.application.CreateCourseResponse> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getCreateCourseMethod(), responseObserver);
+    }
+
+    /**
+     */
+    default void getCourse(de.thws.fiw.gymmanagement.application.GetCourseRequest request,
+        io.grpc.stub.StreamObserver<de.thws.fiw.gymmanagement.application.GetCourseResponse> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getGetCourseMethod(), responseObserver);
+    }
+
+    /**
+     */
+    default void getAllCourses(de.thws.fiw.gymmanagement.application.Empty request,
+        io.grpc.stub.StreamObserver<de.thws.fiw.gymmanagement.application.GetAllCoursesResponse> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getGetAllCoursesMethod(), responseObserver);
+    }
+
+    /**
+     */
+    default void updateCourse(de.thws.fiw.gymmanagement.application.UpdateCourseRequest request,
+        io.grpc.stub.StreamObserver<de.thws.fiw.gymmanagement.application.UpdateCourseResponse> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getUpdateCourseMethod(), responseObserver);
+    }
+
+    /**
+     */
+    default void deleteCourse(de.thws.fiw.gymmanagement.application.DeleteCourseRequest request,
+        io.grpc.stub.StreamObserver<de.thws.fiw.gymmanagement.application.DeleteCourseResponse> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getDeleteCourseMethod(), responseObserver);
+    }
+
+    /**
+     */
+    default void getCoursesByTrainer(de.thws.fiw.gymmanagement.application.GetCoursesByTrainerRequest request,
+        io.grpc.stub.StreamObserver<de.thws.fiw.gymmanagement.application.GetCoursesByTrainerResponse> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getGetCoursesByTrainerMethod(), responseObserver);
+    }
   }
 
   /**
@@ -320,6 +738,94 @@ public final class GymServiceGrpc {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getDeleteMemberMethod(), getCallOptions()), request, responseObserver);
     }
+
+    /**
+     */
+    public void createTrainer(de.thws.fiw.gymmanagement.application.CreateTrainerRequest request,
+        io.grpc.stub.StreamObserver<de.thws.fiw.gymmanagement.application.CreateTrainerResponse> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getCreateTrainerMethod(), getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     */
+    public void getTrainer(de.thws.fiw.gymmanagement.application.GetTrainerRequest request,
+        io.grpc.stub.StreamObserver<de.thws.fiw.gymmanagement.application.GetTrainerResponse> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getGetTrainerMethod(), getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     */
+    public void getAllTrainers(de.thws.fiw.gymmanagement.application.Empty request,
+        io.grpc.stub.StreamObserver<de.thws.fiw.gymmanagement.application.GetAllTrainersResponse> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getGetAllTrainersMethod(), getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     */
+    public void updateTrainer(de.thws.fiw.gymmanagement.application.UpdateTrainerRequest request,
+        io.grpc.stub.StreamObserver<de.thws.fiw.gymmanagement.application.UpdateTrainerResponse> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getUpdateTrainerMethod(), getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     */
+    public void deleteTrainer(de.thws.fiw.gymmanagement.application.DeleteTrainerRequest request,
+        io.grpc.stub.StreamObserver<de.thws.fiw.gymmanagement.application.DeleteTrainerResponse> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getDeleteTrainerMethod(), getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     */
+    public void createCourse(de.thws.fiw.gymmanagement.application.CreateCourseRequest request,
+        io.grpc.stub.StreamObserver<de.thws.fiw.gymmanagement.application.CreateCourseResponse> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getCreateCourseMethod(), getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     */
+    public void getCourse(de.thws.fiw.gymmanagement.application.GetCourseRequest request,
+        io.grpc.stub.StreamObserver<de.thws.fiw.gymmanagement.application.GetCourseResponse> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getGetCourseMethod(), getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     */
+    public void getAllCourses(de.thws.fiw.gymmanagement.application.Empty request,
+        io.grpc.stub.StreamObserver<de.thws.fiw.gymmanagement.application.GetAllCoursesResponse> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getGetAllCoursesMethod(), getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     */
+    public void updateCourse(de.thws.fiw.gymmanagement.application.UpdateCourseRequest request,
+        io.grpc.stub.StreamObserver<de.thws.fiw.gymmanagement.application.UpdateCourseResponse> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getUpdateCourseMethod(), getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     */
+    public void deleteCourse(de.thws.fiw.gymmanagement.application.DeleteCourseRequest request,
+        io.grpc.stub.StreamObserver<de.thws.fiw.gymmanagement.application.DeleteCourseResponse> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getDeleteCourseMethod(), getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     */
+    public void getCoursesByTrainer(de.thws.fiw.gymmanagement.application.GetCoursesByTrainerRequest request,
+        io.grpc.stub.StreamObserver<de.thws.fiw.gymmanagement.application.GetCoursesByTrainerResponse> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getGetCoursesByTrainerMethod(), getCallOptions()), request, responseObserver);
+    }
   }
 
   /**
@@ -371,6 +877,83 @@ public final class GymServiceGrpc {
     public de.thws.fiw.gymmanagement.application.DeleteMemberResponse deleteMember(de.thws.fiw.gymmanagement.application.DeleteMemberRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getDeleteMemberMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public de.thws.fiw.gymmanagement.application.CreateTrainerResponse createTrainer(de.thws.fiw.gymmanagement.application.CreateTrainerRequest request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getCreateTrainerMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public de.thws.fiw.gymmanagement.application.GetTrainerResponse getTrainer(de.thws.fiw.gymmanagement.application.GetTrainerRequest request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getGetTrainerMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public de.thws.fiw.gymmanagement.application.GetAllTrainersResponse getAllTrainers(de.thws.fiw.gymmanagement.application.Empty request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getGetAllTrainersMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public de.thws.fiw.gymmanagement.application.UpdateTrainerResponse updateTrainer(de.thws.fiw.gymmanagement.application.UpdateTrainerRequest request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getUpdateTrainerMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public de.thws.fiw.gymmanagement.application.DeleteTrainerResponse deleteTrainer(de.thws.fiw.gymmanagement.application.DeleteTrainerRequest request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getDeleteTrainerMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public de.thws.fiw.gymmanagement.application.CreateCourseResponse createCourse(de.thws.fiw.gymmanagement.application.CreateCourseRequest request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getCreateCourseMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public de.thws.fiw.gymmanagement.application.GetCourseResponse getCourse(de.thws.fiw.gymmanagement.application.GetCourseRequest request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getGetCourseMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public de.thws.fiw.gymmanagement.application.GetAllCoursesResponse getAllCourses(de.thws.fiw.gymmanagement.application.Empty request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getGetAllCoursesMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public de.thws.fiw.gymmanagement.application.UpdateCourseResponse updateCourse(de.thws.fiw.gymmanagement.application.UpdateCourseRequest request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getUpdateCourseMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public de.thws.fiw.gymmanagement.application.DeleteCourseResponse deleteCourse(de.thws.fiw.gymmanagement.application.DeleteCourseRequest request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getDeleteCourseMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public de.thws.fiw.gymmanagement.application.GetCoursesByTrainerResponse getCoursesByTrainer(de.thws.fiw.gymmanagement.application.GetCoursesByTrainerRequest request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getGetCoursesByTrainerMethod(), getCallOptions(), request);
     }
   }
 
@@ -429,6 +1012,94 @@ public final class GymServiceGrpc {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getDeleteMemberMethod(), getCallOptions()), request);
     }
+
+    /**
+     */
+    public com.google.common.util.concurrent.ListenableFuture<de.thws.fiw.gymmanagement.application.CreateTrainerResponse> createTrainer(
+        de.thws.fiw.gymmanagement.application.CreateTrainerRequest request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getCreateTrainerMethod(), getCallOptions()), request);
+    }
+
+    /**
+     */
+    public com.google.common.util.concurrent.ListenableFuture<de.thws.fiw.gymmanagement.application.GetTrainerResponse> getTrainer(
+        de.thws.fiw.gymmanagement.application.GetTrainerRequest request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getGetTrainerMethod(), getCallOptions()), request);
+    }
+
+    /**
+     */
+    public com.google.common.util.concurrent.ListenableFuture<de.thws.fiw.gymmanagement.application.GetAllTrainersResponse> getAllTrainers(
+        de.thws.fiw.gymmanagement.application.Empty request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getGetAllTrainersMethod(), getCallOptions()), request);
+    }
+
+    /**
+     */
+    public com.google.common.util.concurrent.ListenableFuture<de.thws.fiw.gymmanagement.application.UpdateTrainerResponse> updateTrainer(
+        de.thws.fiw.gymmanagement.application.UpdateTrainerRequest request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getUpdateTrainerMethod(), getCallOptions()), request);
+    }
+
+    /**
+     */
+    public com.google.common.util.concurrent.ListenableFuture<de.thws.fiw.gymmanagement.application.DeleteTrainerResponse> deleteTrainer(
+        de.thws.fiw.gymmanagement.application.DeleteTrainerRequest request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getDeleteTrainerMethod(), getCallOptions()), request);
+    }
+
+    /**
+     */
+    public com.google.common.util.concurrent.ListenableFuture<de.thws.fiw.gymmanagement.application.CreateCourseResponse> createCourse(
+        de.thws.fiw.gymmanagement.application.CreateCourseRequest request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getCreateCourseMethod(), getCallOptions()), request);
+    }
+
+    /**
+     */
+    public com.google.common.util.concurrent.ListenableFuture<de.thws.fiw.gymmanagement.application.GetCourseResponse> getCourse(
+        de.thws.fiw.gymmanagement.application.GetCourseRequest request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getGetCourseMethod(), getCallOptions()), request);
+    }
+
+    /**
+     */
+    public com.google.common.util.concurrent.ListenableFuture<de.thws.fiw.gymmanagement.application.GetAllCoursesResponse> getAllCourses(
+        de.thws.fiw.gymmanagement.application.Empty request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getGetAllCoursesMethod(), getCallOptions()), request);
+    }
+
+    /**
+     */
+    public com.google.common.util.concurrent.ListenableFuture<de.thws.fiw.gymmanagement.application.UpdateCourseResponse> updateCourse(
+        de.thws.fiw.gymmanagement.application.UpdateCourseRequest request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getUpdateCourseMethod(), getCallOptions()), request);
+    }
+
+    /**
+     */
+    public com.google.common.util.concurrent.ListenableFuture<de.thws.fiw.gymmanagement.application.DeleteCourseResponse> deleteCourse(
+        de.thws.fiw.gymmanagement.application.DeleteCourseRequest request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getDeleteCourseMethod(), getCallOptions()), request);
+    }
+
+    /**
+     */
+    public com.google.common.util.concurrent.ListenableFuture<de.thws.fiw.gymmanagement.application.GetCoursesByTrainerResponse> getCoursesByTrainer(
+        de.thws.fiw.gymmanagement.application.GetCoursesByTrainerRequest request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getGetCoursesByTrainerMethod(), getCallOptions()), request);
+    }
   }
 
   private static final int METHODID_GET_MEMBER = 0;
@@ -436,6 +1107,17 @@ public final class GymServiceGrpc {
   private static final int METHODID_GET_ALL_MEMBERS = 2;
   private static final int METHODID_UPDATE_MEMBER = 3;
   private static final int METHODID_DELETE_MEMBER = 4;
+  private static final int METHODID_CREATE_TRAINER = 5;
+  private static final int METHODID_GET_TRAINER = 6;
+  private static final int METHODID_GET_ALL_TRAINERS = 7;
+  private static final int METHODID_UPDATE_TRAINER = 8;
+  private static final int METHODID_DELETE_TRAINER = 9;
+  private static final int METHODID_CREATE_COURSE = 10;
+  private static final int METHODID_GET_COURSE = 11;
+  private static final int METHODID_GET_ALL_COURSES = 12;
+  private static final int METHODID_UPDATE_COURSE = 13;
+  private static final int METHODID_DELETE_COURSE = 14;
+  private static final int METHODID_GET_COURSES_BY_TRAINER = 15;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -473,6 +1155,50 @@ public final class GymServiceGrpc {
         case METHODID_DELETE_MEMBER:
           serviceImpl.deleteMember((de.thws.fiw.gymmanagement.application.DeleteMemberRequest) request,
               (io.grpc.stub.StreamObserver<de.thws.fiw.gymmanagement.application.DeleteMemberResponse>) responseObserver);
+          break;
+        case METHODID_CREATE_TRAINER:
+          serviceImpl.createTrainer((de.thws.fiw.gymmanagement.application.CreateTrainerRequest) request,
+              (io.grpc.stub.StreamObserver<de.thws.fiw.gymmanagement.application.CreateTrainerResponse>) responseObserver);
+          break;
+        case METHODID_GET_TRAINER:
+          serviceImpl.getTrainer((de.thws.fiw.gymmanagement.application.GetTrainerRequest) request,
+              (io.grpc.stub.StreamObserver<de.thws.fiw.gymmanagement.application.GetTrainerResponse>) responseObserver);
+          break;
+        case METHODID_GET_ALL_TRAINERS:
+          serviceImpl.getAllTrainers((de.thws.fiw.gymmanagement.application.Empty) request,
+              (io.grpc.stub.StreamObserver<de.thws.fiw.gymmanagement.application.GetAllTrainersResponse>) responseObserver);
+          break;
+        case METHODID_UPDATE_TRAINER:
+          serviceImpl.updateTrainer((de.thws.fiw.gymmanagement.application.UpdateTrainerRequest) request,
+              (io.grpc.stub.StreamObserver<de.thws.fiw.gymmanagement.application.UpdateTrainerResponse>) responseObserver);
+          break;
+        case METHODID_DELETE_TRAINER:
+          serviceImpl.deleteTrainer((de.thws.fiw.gymmanagement.application.DeleteTrainerRequest) request,
+              (io.grpc.stub.StreamObserver<de.thws.fiw.gymmanagement.application.DeleteTrainerResponse>) responseObserver);
+          break;
+        case METHODID_CREATE_COURSE:
+          serviceImpl.createCourse((de.thws.fiw.gymmanagement.application.CreateCourseRequest) request,
+              (io.grpc.stub.StreamObserver<de.thws.fiw.gymmanagement.application.CreateCourseResponse>) responseObserver);
+          break;
+        case METHODID_GET_COURSE:
+          serviceImpl.getCourse((de.thws.fiw.gymmanagement.application.GetCourseRequest) request,
+              (io.grpc.stub.StreamObserver<de.thws.fiw.gymmanagement.application.GetCourseResponse>) responseObserver);
+          break;
+        case METHODID_GET_ALL_COURSES:
+          serviceImpl.getAllCourses((de.thws.fiw.gymmanagement.application.Empty) request,
+              (io.grpc.stub.StreamObserver<de.thws.fiw.gymmanagement.application.GetAllCoursesResponse>) responseObserver);
+          break;
+        case METHODID_UPDATE_COURSE:
+          serviceImpl.updateCourse((de.thws.fiw.gymmanagement.application.UpdateCourseRequest) request,
+              (io.grpc.stub.StreamObserver<de.thws.fiw.gymmanagement.application.UpdateCourseResponse>) responseObserver);
+          break;
+        case METHODID_DELETE_COURSE:
+          serviceImpl.deleteCourse((de.thws.fiw.gymmanagement.application.DeleteCourseRequest) request,
+              (io.grpc.stub.StreamObserver<de.thws.fiw.gymmanagement.application.DeleteCourseResponse>) responseObserver);
+          break;
+        case METHODID_GET_COURSES_BY_TRAINER:
+          serviceImpl.getCoursesByTrainer((de.thws.fiw.gymmanagement.application.GetCoursesByTrainerRequest) request,
+              (io.grpc.stub.StreamObserver<de.thws.fiw.gymmanagement.application.GetCoursesByTrainerResponse>) responseObserver);
           break;
         default:
           throw new AssertionError();
@@ -527,6 +1253,83 @@ public final class GymServiceGrpc {
               de.thws.fiw.gymmanagement.application.DeleteMemberRequest,
               de.thws.fiw.gymmanagement.application.DeleteMemberResponse>(
                 service, METHODID_DELETE_MEMBER)))
+        .addMethod(
+          getCreateTrainerMethod(),
+          io.grpc.stub.ServerCalls.asyncUnaryCall(
+            new MethodHandlers<
+              de.thws.fiw.gymmanagement.application.CreateTrainerRequest,
+              de.thws.fiw.gymmanagement.application.CreateTrainerResponse>(
+                service, METHODID_CREATE_TRAINER)))
+        .addMethod(
+          getGetTrainerMethod(),
+          io.grpc.stub.ServerCalls.asyncUnaryCall(
+            new MethodHandlers<
+              de.thws.fiw.gymmanagement.application.GetTrainerRequest,
+              de.thws.fiw.gymmanagement.application.GetTrainerResponse>(
+                service, METHODID_GET_TRAINER)))
+        .addMethod(
+          getGetAllTrainersMethod(),
+          io.grpc.stub.ServerCalls.asyncUnaryCall(
+            new MethodHandlers<
+              de.thws.fiw.gymmanagement.application.Empty,
+              de.thws.fiw.gymmanagement.application.GetAllTrainersResponse>(
+                service, METHODID_GET_ALL_TRAINERS)))
+        .addMethod(
+          getUpdateTrainerMethod(),
+          io.grpc.stub.ServerCalls.asyncUnaryCall(
+            new MethodHandlers<
+              de.thws.fiw.gymmanagement.application.UpdateTrainerRequest,
+              de.thws.fiw.gymmanagement.application.UpdateTrainerResponse>(
+                service, METHODID_UPDATE_TRAINER)))
+        .addMethod(
+          getDeleteTrainerMethod(),
+          io.grpc.stub.ServerCalls.asyncUnaryCall(
+            new MethodHandlers<
+              de.thws.fiw.gymmanagement.application.DeleteTrainerRequest,
+              de.thws.fiw.gymmanagement.application.DeleteTrainerResponse>(
+                service, METHODID_DELETE_TRAINER)))
+        .addMethod(
+          getCreateCourseMethod(),
+          io.grpc.stub.ServerCalls.asyncUnaryCall(
+            new MethodHandlers<
+              de.thws.fiw.gymmanagement.application.CreateCourseRequest,
+              de.thws.fiw.gymmanagement.application.CreateCourseResponse>(
+                service, METHODID_CREATE_COURSE)))
+        .addMethod(
+          getGetCourseMethod(),
+          io.grpc.stub.ServerCalls.asyncUnaryCall(
+            new MethodHandlers<
+              de.thws.fiw.gymmanagement.application.GetCourseRequest,
+              de.thws.fiw.gymmanagement.application.GetCourseResponse>(
+                service, METHODID_GET_COURSE)))
+        .addMethod(
+          getGetAllCoursesMethod(),
+          io.grpc.stub.ServerCalls.asyncUnaryCall(
+            new MethodHandlers<
+              de.thws.fiw.gymmanagement.application.Empty,
+              de.thws.fiw.gymmanagement.application.GetAllCoursesResponse>(
+                service, METHODID_GET_ALL_COURSES)))
+        .addMethod(
+          getUpdateCourseMethod(),
+          io.grpc.stub.ServerCalls.asyncUnaryCall(
+            new MethodHandlers<
+              de.thws.fiw.gymmanagement.application.UpdateCourseRequest,
+              de.thws.fiw.gymmanagement.application.UpdateCourseResponse>(
+                service, METHODID_UPDATE_COURSE)))
+        .addMethod(
+          getDeleteCourseMethod(),
+          io.grpc.stub.ServerCalls.asyncUnaryCall(
+            new MethodHandlers<
+              de.thws.fiw.gymmanagement.application.DeleteCourseRequest,
+              de.thws.fiw.gymmanagement.application.DeleteCourseResponse>(
+                service, METHODID_DELETE_COURSE)))
+        .addMethod(
+          getGetCoursesByTrainerMethod(),
+          io.grpc.stub.ServerCalls.asyncUnaryCall(
+            new MethodHandlers<
+              de.thws.fiw.gymmanagement.application.GetCoursesByTrainerRequest,
+              de.thws.fiw.gymmanagement.application.GetCoursesByTrainerResponse>(
+                service, METHODID_GET_COURSES_BY_TRAINER)))
         .build();
   }
 
@@ -580,6 +1383,17 @@ public final class GymServiceGrpc {
               .addMethod(getGetAllMembersMethod())
               .addMethod(getUpdateMemberMethod())
               .addMethod(getDeleteMemberMethod())
+              .addMethod(getCreateTrainerMethod())
+              .addMethod(getGetTrainerMethod())
+              .addMethod(getGetAllTrainersMethod())
+              .addMethod(getUpdateTrainerMethod())
+              .addMethod(getDeleteTrainerMethod())
+              .addMethod(getCreateCourseMethod())
+              .addMethod(getGetCourseMethod())
+              .addMethod(getGetAllCoursesMethod())
+              .addMethod(getUpdateCourseMethod())
+              .addMethod(getDeleteCourseMethod())
+              .addMethod(getGetCoursesByTrainerMethod())
               .build();
         }
       }

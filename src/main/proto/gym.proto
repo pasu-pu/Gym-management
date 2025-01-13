@@ -12,6 +12,26 @@ service GymService {
     rpc GetAllMembers(Empty) returns (GetAllMembersResponse);
     rpc UpdateMember(UpdateMemberRequest) returns (UpdateMemberResponse);
     rpc DeleteMember(DeleteMemberRequest) returns (DeleteMemberResponse);
+    rpc CreateTrainer(CreateTrainerRequest) returns (CreateTrainerResponse);
+    rpc GetTrainer(GetTrainerRequest) returns (GetTrainerResponse);
+    rpc GetAllTrainers(Empty) returns (GetAllTrainersResponse);
+    rpc UpdateTrainer(UpdateTrainerRequest) returns (UpdateTrainerResponse);
+    rpc DeleteTrainer(DeleteTrainerRequest) returns (DeleteTrainerResponse);
+    rpc CreateCourse(CreateCourseRequest) returns (CreateCourseResponse);
+    rpc GetCourse(GetCourseRequest) returns (GetCourseResponse);
+    rpc GetAllCourses(Empty) returns (GetAllCoursesResponse);
+    rpc UpdateCourse(UpdateCourseRequest) returns (UpdateCourseResponse);
+    rpc DeleteCourse(DeleteCourseRequest) returns (DeleteCourseResponse);
+    rpc GetCoursesByTrainer(GetCoursesByTrainerRequest) returns (GetCoursesByTrainerResponse);
+
+}
+
+message GetCoursesByTrainerRequest {
+    int64 trainerId = 1;
+}
+
+message GetCoursesByTrainerResponse {
+    repeated GetCourseResponse courses = 1;
 }
 
 message UpdateMemberRequest {
@@ -57,5 +77,81 @@ message CreateMemberRequest {
 message CreateMemberResponse {
     int64 memberId = 1;
 }
+
+
+message CreateTrainerRequest {
+    string name = 1;
+    string expertise = 2;
+}
+message CreateTrainerResponse {
+    int64 trainerId = 1;
+}
+message GetTrainerRequest {
+    int64 trainerId = 1;
+}
+message GetTrainerResponse {
+    int64 trainerId = 1;
+    string name = 2;
+    string expertise = 3;
+}
+message GetAllTrainersResponse {
+    repeated GetTrainerResponse trainers = 1;
+}
+
+message UpdateTrainerRequest {
+    int64 trainerId = 1;
+    string name = 2;
+    string expertise = 3;
+}
+
+message UpdateTrainerResponse {
+    bool success = 1;
+}
+message DeleteTrainerRequest {
+    int64 trainerId = 1;
+}
+message DeleteTrainerResponse {
+    bool success = 1;
+}
+
+message CreateCourseRequest {
+    string name = 1;
+    int32 capacity = 2;
+    int64 trainerId = 3;
+}
+message CreateCourseResponse {
+    int64 courseId = 1;
+}
+message GetCourseRequest {
+    int64 courseId = 1;
+}
+message GetCourseResponse {
+    int64 courseId = 1;
+    string name = 2;
+    int32 capacity = 3;
+    int64 trainerId = 4;
+}
+message GetAllCoursesResponse {
+    repeated GetCourseResponse courses = 1;
+}
+
+message UpdateCourseRequest {
+    int64 courseId = 1;
+    string name = 2;
+    int32 capacity = 3;
+    int64 trainerId = 4;
+}
+
+message UpdateCourseResponse {
+    bool success = 1;
+}
+
+message DeleteCourseRequest {
+    int64 courseId = 1;
+}
+message DeleteCourseResponse {
+    bool success = 1;
+}
+
 
 
