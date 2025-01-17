@@ -1,5 +1,6 @@
 package de.thws.fiw.gymmanagement.application;
 
+import de.thws.fiw.gymmanagement.domain.Booking;
 import de.thws.fiw.gymmanagement.domain.Course;
 import de.thws.fiw.gymmanagement.domain.Member;
 import de.thws.fiw.gymmanagement.domain.Trainer;
@@ -12,6 +13,8 @@ public class GymServiceImpl extends GymServiceGrpc.GymServiceImplBase {
     private final MemberRepositoryInterface repository;
     private final TrainerRepositoryInterface trainerRepository = new TrainerRepository();
     private final CourseRepositoryInterface courseRepository = new CourseRepository(trainerRepository); // TrainerRepository übergeben
+    private final BookingRepositoryInterface bookingRepository = new BookingRepository();
+
 
     public GymServiceImpl(MemberRepositoryInterface repository) {
         this.repository = repository;
@@ -300,4 +303,48 @@ public class GymServiceImpl extends GymServiceGrpc.GymServiceImplBase {
         responseObserver.onNext(responseBuilder.build());
         responseObserver.onCompleted();
     }
+    @Override
+    public void createBooking(CreateBookingRequest request, StreamObserver<CreateBookingResponse> responseObserver) {
+        try {
+            // Überprüfen, ob Mitglied und Kurs existieren
+            repository.findById(request.getMemberId())
+                    .orElseThrow(() -> new RuntimeException("Member not found"));
+            courseRepository.findById(request.getCourseId())
+                    .orElseThrow(() -> new RuntimeException("Course not found"));
+
+            // Buchung erstellen
+            Booking booking = new Booking();
+            booking.setMemberId(request.getMemberId());
+            booking.setCourseId(request.getCourseId());
+            Booking savedBooking = bookingRepository.save(booking);
+
+            // Antwort erstellen
+            CreateBookingResponse response = CreateBookingResponse.newBuilder()
+                    .setBookingId(savedBooking.getId())
+                    .build();
+            responseObserver.onNext(response);
+            responseObserver.onCompleted();
+        } catch (RuntimeException e) {
+            responseObserver.onError(io.grpc.Status.UNKNOWN.withDescription(e.getMessage()).asRuntimeException());
+        }
+    }
+    @Override
+    public void getBookingsByMember(GetBookingsByMemberRequest request, StreamObserver<GetBookingsByMemberResponse> responseObserver) {
+        List<Booking> bookings = bookingRepository.findByMemberId(request.getMemberId());
+        GetBookingsByMemberResponse.Builder responseBuilder = GetBookingsByMemberResponse.newBuilder();
+
+        for (Booking booking : bookings) {
+            BookingResponse bookingResponse = BookingResponse.newBuilder()
+                    .setBookingId(booking.getId())
+                    .setMemberId(booking.getMemberId())
+                    .setCourseId(booking.getCourseId())
+                    .setBookingDate(booking.getBookingDate().toString())
+                    .build();
+            responseBuilder.addBookings(bookingResponse);
+        }
+
+        responseObserver.onNext(responseBuilder.build());
+        responseObserver.onCompleted();
+    }
+
 }

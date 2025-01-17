@@ -511,6 +511,130 @@ public final class GymServiceGrpc {
     return getGetCoursesByTrainerMethod;
   }
 
+  private static volatile io.grpc.MethodDescriptor<de.thws.fiw.gymmanagement.application.CreateBookingRequest,
+      de.thws.fiw.gymmanagement.application.CreateBookingResponse> getCreateBookingMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "CreateBooking",
+      requestType = de.thws.fiw.gymmanagement.application.CreateBookingRequest.class,
+      responseType = de.thws.fiw.gymmanagement.application.CreateBookingResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<de.thws.fiw.gymmanagement.application.CreateBookingRequest,
+      de.thws.fiw.gymmanagement.application.CreateBookingResponse> getCreateBookingMethod() {
+    io.grpc.MethodDescriptor<de.thws.fiw.gymmanagement.application.CreateBookingRequest, de.thws.fiw.gymmanagement.application.CreateBookingResponse> getCreateBookingMethod;
+    if ((getCreateBookingMethod = GymServiceGrpc.getCreateBookingMethod) == null) {
+      synchronized (GymServiceGrpc.class) {
+        if ((getCreateBookingMethod = GymServiceGrpc.getCreateBookingMethod) == null) {
+          GymServiceGrpc.getCreateBookingMethod = getCreateBookingMethod =
+              io.grpc.MethodDescriptor.<de.thws.fiw.gymmanagement.application.CreateBookingRequest, de.thws.fiw.gymmanagement.application.CreateBookingResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "CreateBooking"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  de.thws.fiw.gymmanagement.application.CreateBookingRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  de.thws.fiw.gymmanagement.application.CreateBookingResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new GymServiceMethodDescriptorSupplier("CreateBooking"))
+              .build();
+        }
+      }
+    }
+    return getCreateBookingMethod;
+  }
+
+  private static volatile io.grpc.MethodDescriptor<de.thws.fiw.gymmanagement.application.GetBookingsByMemberRequest,
+      de.thws.fiw.gymmanagement.application.GetBookingsByMemberResponse> getGetBookingsByMemberMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "GetBookingsByMember",
+      requestType = de.thws.fiw.gymmanagement.application.GetBookingsByMemberRequest.class,
+      responseType = de.thws.fiw.gymmanagement.application.GetBookingsByMemberResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<de.thws.fiw.gymmanagement.application.GetBookingsByMemberRequest,
+      de.thws.fiw.gymmanagement.application.GetBookingsByMemberResponse> getGetBookingsByMemberMethod() {
+    io.grpc.MethodDescriptor<de.thws.fiw.gymmanagement.application.GetBookingsByMemberRequest, de.thws.fiw.gymmanagement.application.GetBookingsByMemberResponse> getGetBookingsByMemberMethod;
+    if ((getGetBookingsByMemberMethod = GymServiceGrpc.getGetBookingsByMemberMethod) == null) {
+      synchronized (GymServiceGrpc.class) {
+        if ((getGetBookingsByMemberMethod = GymServiceGrpc.getGetBookingsByMemberMethod) == null) {
+          GymServiceGrpc.getGetBookingsByMemberMethod = getGetBookingsByMemberMethod =
+              io.grpc.MethodDescriptor.<de.thws.fiw.gymmanagement.application.GetBookingsByMemberRequest, de.thws.fiw.gymmanagement.application.GetBookingsByMemberResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "GetBookingsByMember"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  de.thws.fiw.gymmanagement.application.GetBookingsByMemberRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  de.thws.fiw.gymmanagement.application.GetBookingsByMemberResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new GymServiceMethodDescriptorSupplier("GetBookingsByMember"))
+              .build();
+        }
+      }
+    }
+    return getGetBookingsByMemberMethod;
+  }
+
+  private static volatile io.grpc.MethodDescriptor<de.thws.fiw.gymmanagement.application.GetBookingsByCourseRequest,
+      de.thws.fiw.gymmanagement.application.GetBookingsByCourseResponse> getGetBookingsByCourseMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "GetBookingsByCourse",
+      requestType = de.thws.fiw.gymmanagement.application.GetBookingsByCourseRequest.class,
+      responseType = de.thws.fiw.gymmanagement.application.GetBookingsByCourseResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<de.thws.fiw.gymmanagement.application.GetBookingsByCourseRequest,
+      de.thws.fiw.gymmanagement.application.GetBookingsByCourseResponse> getGetBookingsByCourseMethod() {
+    io.grpc.MethodDescriptor<de.thws.fiw.gymmanagement.application.GetBookingsByCourseRequest, de.thws.fiw.gymmanagement.application.GetBookingsByCourseResponse> getGetBookingsByCourseMethod;
+    if ((getGetBookingsByCourseMethod = GymServiceGrpc.getGetBookingsByCourseMethod) == null) {
+      synchronized (GymServiceGrpc.class) {
+        if ((getGetBookingsByCourseMethod = GymServiceGrpc.getGetBookingsByCourseMethod) == null) {
+          GymServiceGrpc.getGetBookingsByCourseMethod = getGetBookingsByCourseMethod =
+              io.grpc.MethodDescriptor.<de.thws.fiw.gymmanagement.application.GetBookingsByCourseRequest, de.thws.fiw.gymmanagement.application.GetBookingsByCourseResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "GetBookingsByCourse"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  de.thws.fiw.gymmanagement.application.GetBookingsByCourseRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  de.thws.fiw.gymmanagement.application.GetBookingsByCourseResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new GymServiceMethodDescriptorSupplier("GetBookingsByCourse"))
+              .build();
+        }
+      }
+    }
+    return getGetBookingsByCourseMethod;
+  }
+
+  private static volatile io.grpc.MethodDescriptor<de.thws.fiw.gymmanagement.application.DeleteBookingRequest,
+      de.thws.fiw.gymmanagement.application.DeleteBookingResponse> getDeleteBookingMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "DeleteBooking",
+      requestType = de.thws.fiw.gymmanagement.application.DeleteBookingRequest.class,
+      responseType = de.thws.fiw.gymmanagement.application.DeleteBookingResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<de.thws.fiw.gymmanagement.application.DeleteBookingRequest,
+      de.thws.fiw.gymmanagement.application.DeleteBookingResponse> getDeleteBookingMethod() {
+    io.grpc.MethodDescriptor<de.thws.fiw.gymmanagement.application.DeleteBookingRequest, de.thws.fiw.gymmanagement.application.DeleteBookingResponse> getDeleteBookingMethod;
+    if ((getDeleteBookingMethod = GymServiceGrpc.getDeleteBookingMethod) == null) {
+      synchronized (GymServiceGrpc.class) {
+        if ((getDeleteBookingMethod = GymServiceGrpc.getDeleteBookingMethod) == null) {
+          GymServiceGrpc.getDeleteBookingMethod = getDeleteBookingMethod =
+              io.grpc.MethodDescriptor.<de.thws.fiw.gymmanagement.application.DeleteBookingRequest, de.thws.fiw.gymmanagement.application.DeleteBookingResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "DeleteBooking"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  de.thws.fiw.gymmanagement.application.DeleteBookingRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  de.thws.fiw.gymmanagement.application.DeleteBookingResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new GymServiceMethodDescriptorSupplier("DeleteBooking"))
+              .build();
+        }
+      }
+    }
+    return getDeleteBookingMethod;
+  }
+
   /**
    * Creates a new async stub that supports all call types for the service
    */
@@ -670,6 +794,34 @@ public final class GymServiceGrpc {
         io.grpc.stub.StreamObserver<de.thws.fiw.gymmanagement.application.GetCoursesByTrainerResponse> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getGetCoursesByTrainerMethod(), responseObserver);
     }
+
+    /**
+     */
+    default void createBooking(de.thws.fiw.gymmanagement.application.CreateBookingRequest request,
+        io.grpc.stub.StreamObserver<de.thws.fiw.gymmanagement.application.CreateBookingResponse> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getCreateBookingMethod(), responseObserver);
+    }
+
+    /**
+     */
+    default void getBookingsByMember(de.thws.fiw.gymmanagement.application.GetBookingsByMemberRequest request,
+        io.grpc.stub.StreamObserver<de.thws.fiw.gymmanagement.application.GetBookingsByMemberResponse> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getGetBookingsByMemberMethod(), responseObserver);
+    }
+
+    /**
+     */
+    default void getBookingsByCourse(de.thws.fiw.gymmanagement.application.GetBookingsByCourseRequest request,
+        io.grpc.stub.StreamObserver<de.thws.fiw.gymmanagement.application.GetBookingsByCourseResponse> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getGetBookingsByCourseMethod(), responseObserver);
+    }
+
+    /**
+     */
+    default void deleteBooking(de.thws.fiw.gymmanagement.application.DeleteBookingRequest request,
+        io.grpc.stub.StreamObserver<de.thws.fiw.gymmanagement.application.DeleteBookingResponse> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getDeleteBookingMethod(), responseObserver);
+    }
   }
 
   /**
@@ -826,6 +978,38 @@ public final class GymServiceGrpc {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getGetCoursesByTrainerMethod(), getCallOptions()), request, responseObserver);
     }
+
+    /**
+     */
+    public void createBooking(de.thws.fiw.gymmanagement.application.CreateBookingRequest request,
+        io.grpc.stub.StreamObserver<de.thws.fiw.gymmanagement.application.CreateBookingResponse> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getCreateBookingMethod(), getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     */
+    public void getBookingsByMember(de.thws.fiw.gymmanagement.application.GetBookingsByMemberRequest request,
+        io.grpc.stub.StreamObserver<de.thws.fiw.gymmanagement.application.GetBookingsByMemberResponse> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getGetBookingsByMemberMethod(), getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     */
+    public void getBookingsByCourse(de.thws.fiw.gymmanagement.application.GetBookingsByCourseRequest request,
+        io.grpc.stub.StreamObserver<de.thws.fiw.gymmanagement.application.GetBookingsByCourseResponse> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getGetBookingsByCourseMethod(), getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     */
+    public void deleteBooking(de.thws.fiw.gymmanagement.application.DeleteBookingRequest request,
+        io.grpc.stub.StreamObserver<de.thws.fiw.gymmanagement.application.DeleteBookingResponse> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getDeleteBookingMethod(), getCallOptions()), request, responseObserver);
+    }
   }
 
   /**
@@ -954,6 +1138,34 @@ public final class GymServiceGrpc {
     public de.thws.fiw.gymmanagement.application.GetCoursesByTrainerResponse getCoursesByTrainer(de.thws.fiw.gymmanagement.application.GetCoursesByTrainerRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getGetCoursesByTrainerMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public de.thws.fiw.gymmanagement.application.CreateBookingResponse createBooking(de.thws.fiw.gymmanagement.application.CreateBookingRequest request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getCreateBookingMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public de.thws.fiw.gymmanagement.application.GetBookingsByMemberResponse getBookingsByMember(de.thws.fiw.gymmanagement.application.GetBookingsByMemberRequest request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getGetBookingsByMemberMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public de.thws.fiw.gymmanagement.application.GetBookingsByCourseResponse getBookingsByCourse(de.thws.fiw.gymmanagement.application.GetBookingsByCourseRequest request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getGetBookingsByCourseMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public de.thws.fiw.gymmanagement.application.DeleteBookingResponse deleteBooking(de.thws.fiw.gymmanagement.application.DeleteBookingRequest request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getDeleteBookingMethod(), getCallOptions(), request);
     }
   }
 
@@ -1100,6 +1312,38 @@ public final class GymServiceGrpc {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getGetCoursesByTrainerMethod(), getCallOptions()), request);
     }
+
+    /**
+     */
+    public com.google.common.util.concurrent.ListenableFuture<de.thws.fiw.gymmanagement.application.CreateBookingResponse> createBooking(
+        de.thws.fiw.gymmanagement.application.CreateBookingRequest request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getCreateBookingMethod(), getCallOptions()), request);
+    }
+
+    /**
+     */
+    public com.google.common.util.concurrent.ListenableFuture<de.thws.fiw.gymmanagement.application.GetBookingsByMemberResponse> getBookingsByMember(
+        de.thws.fiw.gymmanagement.application.GetBookingsByMemberRequest request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getGetBookingsByMemberMethod(), getCallOptions()), request);
+    }
+
+    /**
+     */
+    public com.google.common.util.concurrent.ListenableFuture<de.thws.fiw.gymmanagement.application.GetBookingsByCourseResponse> getBookingsByCourse(
+        de.thws.fiw.gymmanagement.application.GetBookingsByCourseRequest request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getGetBookingsByCourseMethod(), getCallOptions()), request);
+    }
+
+    /**
+     */
+    public com.google.common.util.concurrent.ListenableFuture<de.thws.fiw.gymmanagement.application.DeleteBookingResponse> deleteBooking(
+        de.thws.fiw.gymmanagement.application.DeleteBookingRequest request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getDeleteBookingMethod(), getCallOptions()), request);
+    }
   }
 
   private static final int METHODID_GET_MEMBER = 0;
@@ -1118,6 +1362,10 @@ public final class GymServiceGrpc {
   private static final int METHODID_UPDATE_COURSE = 13;
   private static final int METHODID_DELETE_COURSE = 14;
   private static final int METHODID_GET_COURSES_BY_TRAINER = 15;
+  private static final int METHODID_CREATE_BOOKING = 16;
+  private static final int METHODID_GET_BOOKINGS_BY_MEMBER = 17;
+  private static final int METHODID_GET_BOOKINGS_BY_COURSE = 18;
+  private static final int METHODID_DELETE_BOOKING = 19;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -1199,6 +1447,22 @@ public final class GymServiceGrpc {
         case METHODID_GET_COURSES_BY_TRAINER:
           serviceImpl.getCoursesByTrainer((de.thws.fiw.gymmanagement.application.GetCoursesByTrainerRequest) request,
               (io.grpc.stub.StreamObserver<de.thws.fiw.gymmanagement.application.GetCoursesByTrainerResponse>) responseObserver);
+          break;
+        case METHODID_CREATE_BOOKING:
+          serviceImpl.createBooking((de.thws.fiw.gymmanagement.application.CreateBookingRequest) request,
+              (io.grpc.stub.StreamObserver<de.thws.fiw.gymmanagement.application.CreateBookingResponse>) responseObserver);
+          break;
+        case METHODID_GET_BOOKINGS_BY_MEMBER:
+          serviceImpl.getBookingsByMember((de.thws.fiw.gymmanagement.application.GetBookingsByMemberRequest) request,
+              (io.grpc.stub.StreamObserver<de.thws.fiw.gymmanagement.application.GetBookingsByMemberResponse>) responseObserver);
+          break;
+        case METHODID_GET_BOOKINGS_BY_COURSE:
+          serviceImpl.getBookingsByCourse((de.thws.fiw.gymmanagement.application.GetBookingsByCourseRequest) request,
+              (io.grpc.stub.StreamObserver<de.thws.fiw.gymmanagement.application.GetBookingsByCourseResponse>) responseObserver);
+          break;
+        case METHODID_DELETE_BOOKING:
+          serviceImpl.deleteBooking((de.thws.fiw.gymmanagement.application.DeleteBookingRequest) request,
+              (io.grpc.stub.StreamObserver<de.thws.fiw.gymmanagement.application.DeleteBookingResponse>) responseObserver);
           break;
         default:
           throw new AssertionError();
@@ -1330,6 +1594,34 @@ public final class GymServiceGrpc {
               de.thws.fiw.gymmanagement.application.GetCoursesByTrainerRequest,
               de.thws.fiw.gymmanagement.application.GetCoursesByTrainerResponse>(
                 service, METHODID_GET_COURSES_BY_TRAINER)))
+        .addMethod(
+          getCreateBookingMethod(),
+          io.grpc.stub.ServerCalls.asyncUnaryCall(
+            new MethodHandlers<
+              de.thws.fiw.gymmanagement.application.CreateBookingRequest,
+              de.thws.fiw.gymmanagement.application.CreateBookingResponse>(
+                service, METHODID_CREATE_BOOKING)))
+        .addMethod(
+          getGetBookingsByMemberMethod(),
+          io.grpc.stub.ServerCalls.asyncUnaryCall(
+            new MethodHandlers<
+              de.thws.fiw.gymmanagement.application.GetBookingsByMemberRequest,
+              de.thws.fiw.gymmanagement.application.GetBookingsByMemberResponse>(
+                service, METHODID_GET_BOOKINGS_BY_MEMBER)))
+        .addMethod(
+          getGetBookingsByCourseMethod(),
+          io.grpc.stub.ServerCalls.asyncUnaryCall(
+            new MethodHandlers<
+              de.thws.fiw.gymmanagement.application.GetBookingsByCourseRequest,
+              de.thws.fiw.gymmanagement.application.GetBookingsByCourseResponse>(
+                service, METHODID_GET_BOOKINGS_BY_COURSE)))
+        .addMethod(
+          getDeleteBookingMethod(),
+          io.grpc.stub.ServerCalls.asyncUnaryCall(
+            new MethodHandlers<
+              de.thws.fiw.gymmanagement.application.DeleteBookingRequest,
+              de.thws.fiw.gymmanagement.application.DeleteBookingResponse>(
+                service, METHODID_DELETE_BOOKING)))
         .build();
   }
 
@@ -1394,6 +1686,10 @@ public final class GymServiceGrpc {
               .addMethod(getUpdateCourseMethod())
               .addMethod(getDeleteCourseMethod())
               .addMethod(getGetCoursesByTrainerMethod())
+              .addMethod(getCreateBookingMethod())
+              .addMethod(getGetBookingsByMemberMethod())
+              .addMethod(getGetBookingsByCourseMethod())
+              .addMethod(getDeleteBookingMethod())
               .build();
         }
       }
