@@ -1,15 +1,24 @@
 package de.thws.fiw.gymmanagement.infrastructure;
 
-import de.thws.fiw.gymmanagement.domain.Member;
-
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 import java.util.concurrent.atomic.AtomicLong;
-import java.util.function.Function;
+
+import org.hibernate.SessionFactory;
+
+import de.thws.fiw.gymmanagement.domain.Member;
 
 public class MemberRepository implements MemberRepositoryInterface {
     private final Map<Long, Member> members = new HashMap<>();
     private final AtomicLong idCounter = new AtomicLong(1);
+    private final SessionFactory database;
 
+    public MemberRepository() {
+        this.database = HibernateUtil.getSessionFactory();
+    }
     @Override
     public Member save(Member member) {
         if (member.getId() == null) {

@@ -1,16 +1,25 @@
 package de.thws.fiw.gymmanagement.infrastructure;
 
-import de.thws.fiw.gymmanagement.domain.Booking;
-
 import java.time.LocalDate;
-import java.util.*;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 import java.util.concurrent.atomic.AtomicLong;
-import java.util.function.Function;
 import java.util.stream.Collectors;
+
+import org.hibernate.SessionFactory;
+
+import de.thws.fiw.gymmanagement.domain.Booking;
 
 public class BookingRepository implements BookingRepositoryInterface {
     private final Map<Long, Booking> bookings = new HashMap<>();
     private final AtomicLong idCounter = new AtomicLong(1);
+    private final SessionFactory database;
+
+    public BookingRepository() {
+        this.database = HibernateUtil.getSessionFactory();
+    }
 
     @Override
     public Booking save(Booking booking) {
