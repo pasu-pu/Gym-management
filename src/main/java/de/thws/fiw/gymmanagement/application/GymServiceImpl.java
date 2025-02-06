@@ -17,9 +17,9 @@ import de.thws.fiw.gymmanagement.infrastructure.TrainerRepositoryInterface;
 import io.grpc.stub.StreamObserver;
 
 public class GymServiceImpl extends GymServiceGrpc.GymServiceImplBase {
-    private final MemberRepositoryInterface repository = new MemberRepository();
+    private final MemberRepositoryInterface memberRepository = new MemberRepository();
     private final TrainerRepositoryInterface trainerRepository = new TrainerRepository();
-    private final CourseRepositoryInterface courseRepository = new CourseRepository(trainerRepository); // TrainerRepository übergeben
+    private final CourseRepositoryInterface courseRepository = new CourseRepository();
     private final BookingRepositoryInterface bookingRepository = new BookingRepository();
 
 
@@ -33,7 +33,7 @@ public class GymServiceImpl extends GymServiceGrpc.GymServiceImplBase {
         member.setName(request.getName());
         member.setMembershipType(request.getMembershipType());
 
-        Member savedMember = repository.save(member);
+        Member savedMember = memberRepository.save(member);
 
         CreateMemberResponse response = CreateMemberResponse.newBuilder()
                 .setMemberId(savedMember.getId())
@@ -45,7 +45,7 @@ public class GymServiceImpl extends GymServiceGrpc.GymServiceImplBase {
 
     @Override
     public void getMember(GetMemberRequest request, StreamObserver<GetMemberResponse> responseObserver) {
-        Member member = repository.findById(request.getMemberId())
+        Member member = memberRepository.findById(request.getMemberId())
                 .orElseThrow(() -> new RuntimeException("Member not found"));
 
         GetMemberResponse response = GetMemberResponse.newBuilder()
@@ -59,7 +59,7 @@ public class GymServiceImpl extends GymServiceGrpc.GymServiceImplBase {
     }
     @Override
     public void getAllMembers(Empty request, StreamObserver<GetAllMembersResponse> responseObserver) {
-        List<Member> allMembers = repository.findAll();
+        List<Member> allMembers = memberRepository.findAll();
         GetAllMembersResponse.Builder responseBuilder = GetAllMembersResponse.newBuilder();
 
         for (Member member : allMembers) {
@@ -76,7 +76,7 @@ public class GymServiceImpl extends GymServiceGrpc.GymServiceImplBase {
     }
     @Override
     public void updateMember(UpdateMemberRequest request, StreamObserver<UpdateMemberResponse> responseObserver) {
-        Member member = repository.update(request.getMemberId(), request.getName(), request.getMembershipType());
+        Member member = memberRepository.update(request.getMemberId(), request.getName(), request.getMembershipType());
         boolean success = member != null;
 
         UpdateMemberResponse response = UpdateMemberResponse.newBuilder()
@@ -89,9 +89,9 @@ public class GymServiceImpl extends GymServiceGrpc.GymServiceImplBase {
 
     @Override
     public void deleteMember(DeleteMemberRequest request, StreamObserver<DeleteMemberResponse> responseObserver) {
-        boolean success = repository.findById(request.getMemberId())
+        boolean success = memberRepository.findById(request.getMemberId())
                 .map(member -> {
-                    repository.deleteById(member.getId());
+                    memberRepository.deleteById(member.getId());
                     return true;
                 })
                 .orElse(false);
@@ -193,27 +193,22 @@ public class GymServiceImpl extends GymServiceGrpc.GymServiceImplBase {
             Course course = new Course();
             course.setName(request.getName());
             course.setCapacity(request.getCapacity());
-            course.setTrainerId(request.getTrainerId());
 
             // Trainer finden
-            Trainer trainer = trainerRepository.findById(course.getTrainerId())
+            Trainer trainer = trainerRepository.findById(request.getTrainerId())
                     .orElseThrow(() -> new RuntimeException("Trainer not found"));
 
             // Kurs nur hinzufügen, wenn er noch nicht existiert
-            boolean courseExists = trainer.getCourses().stream()
-                    .anyMatch(existingCourse -> existingCourse.getName().equals(course.getName()) &&
-                            existingCourse.getCapacity() == course.getCapacity());
-            if (!courseExists) {
-                trainer.getCourses().add(course);
+            if (courseRepository.findByName(course.getName()).isEmpty()) {
+                course.setTrainer(trainer);
+                Course savedCourse = courseRepository.save(course);
+                CreateCourseResponse response = CreateCourseResponse.newBuilder()
+                        .setCourseId(savedCourse.getId())
+                        .build();
+                responseObserver.onNext(response);
+                responseObserver.onCompleted();
             }
-
-            Course savedCourse = courseRepository.save(course);
-
-            CreateCourseResponse response = CreateCourseResponse.newBuilder()
-                    .setCourseId(savedCourse.getId())
-                    .build();
-            responseObserver.onNext(response);
-            responseObserver.onCompleted();
+            else{throw new RuntimeException("Course already exists");}
 
         } catch (RuntimeException e) {
             responseObserver.onError(io.grpc.Status.UNKNOWN
@@ -233,7 +228,7 @@ public class GymServiceImpl extends GymServiceGrpc.GymServiceImplBase {
                 .setCourseId(course.getId())
                 .setName(course.getName())
                 .setCapacity(course.getCapacity())
-                .setTrainerId(course.getTrainerId())
+                .setTrainerId(course.getTrainer().getId())
                 .build();
 
         responseObserver.onNext(response);
@@ -250,7 +245,7 @@ public class GymServiceImpl extends GymServiceGrpc.GymServiceImplBase {
                     .setCourseId(course.getId())
                     .setName(course.getName())
                     .setCapacity(course.getCapacity())
-                    .setTrainerId(course.getTrainerId())
+                    .setTrainerId(course.getTrainer().getId())
                     .build();
             responseBuilder.addCourses(courseResponse);
         }
@@ -302,7 +297,7 @@ public class GymServiceImpl extends GymServiceGrpc.GymServiceImplBase {
                     .setCourseId(course.getId())
                     .setName(course.getName())
                     .setCapacity(course.getCapacity())
-                    .setTrainerId(course.getTrainerId())
+                    .setTrainerId(course.getTrainer().getId())
                     .build();
             responseBuilder.addCourses(courseResponse);
         }
@@ -314,16 +309,14 @@ public class GymServiceImpl extends GymServiceGrpc.GymServiceImplBase {
     public void createBooking(CreateBookingRequest request, StreamObserver<CreateBookingResponse> responseObserver) {
         try {
             // Überprüfen, ob Mitglied und Kurs existieren
-            repository.findById(request.getMemberId())
+            memberRepository.findById(request.getMemberId())
                     .orElseThrow(() -> new RuntimeException("Member not found"));
             courseRepository.findById(request.getCourseId())
                     .orElseThrow(() -> new RuntimeException("Course not found"));
 
             // Buchung erstellen
             Booking booking = new Booking();
-            booking.setMemberId(request.getMemberId());
-            booking.setCourseId(request.getCourseId());
-            Booking savedBooking = bookingRepository.save(booking);
+            Booking savedBooking = bookingRepository.save(booking, request.getMemberId(), request.getCourseId());
 
             // Antwort erstellen
             CreateBookingResponse response = CreateBookingResponse.newBuilder()
@@ -343,8 +336,8 @@ public class GymServiceImpl extends GymServiceGrpc.GymServiceImplBase {
         for (Booking booking : bookings) {
             BookingResponse bookingResponse = BookingResponse.newBuilder()
                     .setBookingId(booking.getId())
-                    .setMemberId(booking.getMemberId())
-                    .setCourseId(booking.getCourseId())
+                    .setMemberId(booking.getMember().getId())
+                    .setCourseId(booking.getCourse().getId())
                     .setBookingDate(booking.getBookingDate().toString())
                     .build();
             responseBuilder.addBookings(bookingResponse);

@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Optional;
 
 public interface BookingRepositoryInterface {
-    Booking save(Booking booking);
+    Booking save(Booking booking, Long memberId, Long courseId);
     Optional<Booking> findById(Long id);
     List<Booking> findByMemberId(Long memberId);
     List<Booking> findByCourseId(Long courseId);

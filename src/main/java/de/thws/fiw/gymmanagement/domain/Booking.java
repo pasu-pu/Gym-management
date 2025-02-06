@@ -32,24 +32,22 @@ public class Booking {
         return id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    //public void setId(Long id) { this.id = id; } nicht benötigt weil sich hibernate darum kuemmert
+
+    public Member getMember() {
+        return member;
     }
 
-    public Long getMemberId() {
-        return member.getId();
+    public void setMember(Member member) {
+        this.member = member;
     }
 
-    public void setMemberId(Long memberId) {
-        this.setMemberId(memberId);
+    public Course getCourse() {
+        return course;
     }
 
-    public Long getCourseId() {
-        return course.getId();
-    }
-
-    public void setCourseId(Long courseId) {
-        this.course.setId(courseId);
+    public void setCourse(Course course) {
+        this.course = course;
     }
 
     public LocalDate getBookingDate() {

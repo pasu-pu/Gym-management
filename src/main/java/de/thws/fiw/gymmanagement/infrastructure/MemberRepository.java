@@ -7,50 +7,78 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.concurrent.atomic.AtomicLong;
 
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 
 import de.thws.fiw.gymmanagement.domain.Member;
 
 public class MemberRepository implements MemberRepositoryInterface {
     private final Map<Long, Member> members = new HashMap<>();
     private final AtomicLong idCounter = new AtomicLong(1);
-    private final SessionFactory database;
+    private final SessionFactory sessionFactory;
 
     public MemberRepository() {
-        this.database = HibernateUtil.getSessionFactory();
+        this.sessionFactory = HibernateUtil.getSessionFactory();
     }
+
     @Override
     public Member save(Member member) {
-        if (member.getId() == null) {
-            member.setId(idCounter.getAndIncrement());
+        try (Session session = sessionFactory.openSession()) {
+            Transaction transaction = session.beginTransaction();
+
+            // Speichert oder aktualisiert das Member-Objekt
+            session.saveOrUpdate(member);
+
+            transaction.commit();
+            return member;
         }
-        members.put(member.getId(), member);
-        return member;
     }
 
     @Override
     public Optional<Member> findById(Long id) {
-        return Optional.ofNullable(members.get(id));
+        try (Session session = sessionFactory.openSession()) {
+            Member member = session.get(Member.class, id); // Holt das Member anhand der ID
+            return Optional.ofNullable(member);
+        }
     }
 
     @Override
     public List<Member> findAll() {
-        return new ArrayList<>(members.values());
+        try (Session session = sessionFactory.openSession()) {
+            String hql = "FROM Member"; // HQL-Abfrage
+            return session.createQuery(hql, Member.class).getResultList(); // Gibt alle Mitglieder zurück
+        }
     }
 
-    
     @Override
     public void deleteById(Long id) {
-        members.remove(id);
+        try (Session session = sessionFactory.openSession()) {
+            Transaction transaction = session.beginTransaction();
+
+            Member member = session.get(Member.class, id); // Holt das Member
+            if (member != null) {
+                session.delete(member); // Löscht das Member
+            }
+
+            transaction.commit();
+        }
     }
 
     @Override
     public Member update(Long id, String name, String membershipType) {
-        Member member = members.get(id);
-        if (member != null) {
-            member.setName(name);
-            member.setMembershipType(membershipType);
+        try (Session session = sessionFactory.openSession()) {
+            Transaction transaction = session.beginTransaction();
+
+            Member member = session.get(Member.class, id); // Holt das Member anhand der ID
+            if (member != null) {
+                member.setName(name); // Aktualisiert den Namen
+                member.setMembershipType(membershipType); // Aktualisiert den Membership-Typ
+                session.saveOrUpdate(member); // Speichert das Member nach der Aktualisierung
+            }
+
+            transaction.commit();
+            return member;
         }
-        return member;
     }
 }
