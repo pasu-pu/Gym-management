@@ -1,15 +1,30 @@
 package de.thws.fiw.gymmanagement.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
 import java.time.LocalDate;
 
-@Entity
+import jakarta.persistence.*;
+
+@Entity // Markiert diese Klasse als eine JPA-Entity, sodass Hibernate sie in eine Tabelle umwandelt.
+@Table(name = "bookings") // Optional: Gibt explizit den Tabellennamen an.
 public class Booking {
-    @Id
+
+    @Id // Definiert das Primärschlüsselfeld.
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    // Automatische ID-Generierung durch die Datenbank (H2 unterstützt Identity-Strategie).
     private Long id;
-    private Long memberId;
-    private Long courseId;
+
+    @ManyToOne // Viele Buchungen gehören zu einem Mitglied.
+    @JoinColumn(name = "member_id", nullable = false)
+    // Erstellt eine Fremdschlüsselspalte "member_id", die auf die Member-Tabelle verweist.
+    private Member member;
+
+    @ManyToOne // Viele Buchungen können sich auf einen Kurs beziehen.
+    @JoinColumn(name = "course_id", nullable = false)
+    // Erstellt eine Fremdschlüsselspalte "course_id", die auf die Class-Tabelle verweist.
+    private Course course;
+
+    @Column(name = "booking_date", nullable = false)
+    // Spaltenname wird "booking_date", darf nicht null sein.
     private LocalDate bookingDate;
 
     // Getter und Setter
@@ -22,19 +37,19 @@ public class Booking {
     }
 
     public Long getMemberId() {
-        return memberId;
+        return member.getId();
     }
 
     public void setMemberId(Long memberId) {
-        this.memberId = memberId;
+        this.setMemberId(memberId);
     }
 
     public Long getCourseId() {
-        return courseId;
+        return course.getId();
     }
 
     public void setCourseId(Long courseId) {
-        this.courseId = courseId;
+        this.course.setId(courseId);
     }
 
     public LocalDate getBookingDate() {
