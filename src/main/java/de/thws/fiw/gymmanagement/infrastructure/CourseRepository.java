@@ -1,15 +1,21 @@
 package de.thws.fiw.gymmanagement.infrastructure;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.concurrent.atomic.AtomicLong;
+
+import org.hibernate.SessionFactory;
+
 import de.thws.fiw.gymmanagement.domain.Course;
 import de.thws.fiw.gymmanagement.domain.Trainer;
-
-import java.util.*;
-import java.util.concurrent.atomic.AtomicLong;
-import java.util.function.Function;
 
 public class CourseRepository implements CourseRepositoryInterface {
     private final Map<Long, Course> courses = new HashMap<>();
     private final AtomicLong idCounter = new AtomicLong(1);
+    private final SessionFactory database;
 
     // Hinzufügen von trainerRepository
     private final TrainerRepositoryInterface trainerRepository;
@@ -17,6 +23,7 @@ public class CourseRepository implements CourseRepositoryInterface {
     // Konstruktor
     public CourseRepository(TrainerRepositoryInterface trainerRepository) {
         this.trainerRepository = trainerRepository;
+        this.database = HibernateUtil.getSessionFactory();
     }
 
     @Override
