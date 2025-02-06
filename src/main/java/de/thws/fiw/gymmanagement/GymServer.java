@@ -8,7 +8,7 @@ import io.grpc.ServerBuilder;
 public class GymServer {
     public static void main(String[] args) throws Exception {
         MemberRepository repository = new MemberRepository();
-        GymServiceImpl service = new GymServiceImpl(repository);
+        GymServiceImpl service = new GymServiceImpl();
 
         Server server = ServerBuilder.forPort(8080)
                 .addService(service)

@@ -2,8 +2,12 @@ package de.thws.fiw.gymmanagement.domain;
 
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 
+@Entity
 public class Trainer {
+    @Id
     private Long id;
     private String name;
     private String expertise;

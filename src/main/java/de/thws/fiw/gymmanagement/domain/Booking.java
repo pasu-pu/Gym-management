@@ -1,8 +1,12 @@
 package de.thws.fiw.gymmanagement.domain;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.time.LocalDate;
 
+@Entity
 public class Booking {
+    @Id
     private Long id;
     private Long memberId;
     private Long courseId;

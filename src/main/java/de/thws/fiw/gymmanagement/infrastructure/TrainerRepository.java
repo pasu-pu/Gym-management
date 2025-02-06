@@ -7,10 +7,16 @@ import java.util.*;
 import java.util.concurrent.atomic.AtomicLong;
 import java.util.function.Function;
 
+import org.hibernate.SessionFactory;
+
 public class TrainerRepository implements TrainerRepositoryInterface {
     private final Map<Long, Trainer> trainers = new HashMap<>();
     private final AtomicLong idCounter = new AtomicLong(1);
+    private final SessionFactory database;
 
+    public TrainerRepository() {
+        this.database = HibernateUtil.getSessionFactory();
+    }
     @Override
     public Trainer save(Trainer trainer) {
         if (trainer.getId() == null) {
