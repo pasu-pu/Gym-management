@@ -1,23 +1,30 @@
 package de.thws.fiw.gymmanagement.application;
 
+import java.util.List;
+
 import de.thws.fiw.gymmanagement.domain.Booking;
 import de.thws.fiw.gymmanagement.domain.Course;
 import de.thws.fiw.gymmanagement.domain.Member;
 import de.thws.fiw.gymmanagement.domain.Trainer;
-import de.thws.fiw.gymmanagement.infrastructure.*;
+import de.thws.fiw.gymmanagement.infrastructure.BookingRepository;
+import de.thws.fiw.gymmanagement.infrastructure.BookingRepositoryInterface;
+import de.thws.fiw.gymmanagement.infrastructure.CourseRepository;
+import de.thws.fiw.gymmanagement.infrastructure.CourseRepositoryInterface;
+import de.thws.fiw.gymmanagement.infrastructure.MemberRepository;
+import de.thws.fiw.gymmanagement.infrastructure.MemberRepositoryInterface;
+import de.thws.fiw.gymmanagement.infrastructure.TrainerRepository;
+import de.thws.fiw.gymmanagement.infrastructure.TrainerRepositoryInterface;
 import io.grpc.stub.StreamObserver;
 
-import java.util.List;
-
 public class GymServiceImpl extends GymServiceGrpc.GymServiceImplBase {
-    private final MemberRepositoryInterface repository;
+    private final MemberRepositoryInterface repository = new MemberRepository();
     private final TrainerRepositoryInterface trainerRepository = new TrainerRepository();
     private final CourseRepositoryInterface courseRepository = new CourseRepository(trainerRepository); // TrainerRepository übergeben
     private final BookingRepositoryInterface bookingRepository = new BookingRepository();
 
 
-    public GymServiceImpl(MemberRepositoryInterface repository) {
-        this.repository = repository;
+    public GymServiceImpl() {
+       
     }
 
     @Override
