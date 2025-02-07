@@ -1,0 +1,26 @@
+<hibernate-configuration>
+    <session-factory>
+        <!-- Datenbankverbindung -->
+        <property name="hibernate.connection.driver_class">org.h2.Driver</property>
+        <property name="hibernate.connection.url">jdbc:h2:file:./data;AUTO_SERVER=TRUE</property>
+        <property name="hibernate.connection.username">sa</property>
+        <property name="hibernate.connection.password"></property>
+
+        <!-- Dialekt für H2-Datenbank -->
+        <property name="hibernate.dialect">org.hibernate.dialect.H2Dialect</property>
+
+        <!-- Automatische Aktualisierung der Tabellen -->
+        <property name="hibernate.hbm2ddl.auto">update</property>
+
+        <!-- Hibernate Logs aktivieren -->
+        <property name="hibernate.show_sql">true</property>
+        <property name="hibernate.format_sql">true</property>
+
+        <!-- Hier alle Entity-Klassen registrieren -->
+        <mapping class="de.thws.fiw.gymmanagement.domain.Member"/>
+        <mapping class="de.thws.fiw.gymmanagement.domain.Trainer"/>
+        <mapping class="de.thws.fiw.gymmanagement.domain.Course"/>
+        <mapping class="de.thws.fiw.gymmanagement.domain.Booking"/>
+
+    </session-factory>
+</hibernate-configuration>1. 

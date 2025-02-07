@@ -63,7 +63,7 @@
       <groupId>jakarta.persistence</groupId>
       <artifactId>jakarta.persistence-api</artifactId>
       <version>3.1.0</version> <!-- Neueste stabile Version -->
-      <scope>provided</scope>
+      <!--<scope>provided</scope>-->
     </dependency>
 
     <!-- Hibernate Core (JPA Implementation) -->
@@ -84,6 +84,16 @@
   </dependencies>
 
   <build>
+    <resources>
+      <resource>
+        <directory>src/main/resources</directory>
+        <includes>
+          <include>**/*.xml</include> <!-- Alle XML-Dateien kopieren -->
+          <include>**/*.properties</include> <!-- Falls du application.properties hast -->
+          <include>**/*.yml</include> <!-- Falls du application.yml hast -->
+        </includes>
+      </resource>
+    </resources>
     <extensions>
       <extension>
         <groupId>kr.motd.maven</groupId>
