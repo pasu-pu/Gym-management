@@ -23,4 +23,4 @@
         <mapping class="de.thws.fiw.gymmanagement.domain.Booking"/>
 
     </session-factory>
-</hibernate-configuration>1. 
+</hibernate-configuration>

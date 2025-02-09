@@ -20,10 +20,11 @@ public class GymClient {
             long memberId = handleMemberCRUD(stub);
 
             // Trainer & Kurs testen
-            long trainerId = handleTrainerAndCourseCRUD(stub);
+            long trainerId = handleTrainerCRUD(stub);
+            long courseId = handleCourseCRUD(stub, trainerId);
 
             // Buchung testen
-            handleBookingCRUD(stub, memberId, trainerId);
+            handleBookingCRUD(stub, memberId, courseId);
 
         } catch (StatusRuntimeException e) {
             System.err.println("❌ Fehler bei der Kommunikation mit dem Server: " + e.getStatus().getDescription());
@@ -33,6 +34,7 @@ public class GymClient {
         }
     }
 
+    // --- Mitglieder CRUD ---
     private static long handleMemberCRUD(GymServiceGrpc.GymServiceBlockingStub stub) {
         System.out.println("--- Mitglieder ---");
 
@@ -50,26 +52,18 @@ public class GymClient {
                 GetMemberRequest.newBuilder().setMemberId(memberId).build());
         System.out.println("ℹ️ Mitglied Details: Name = " + getMemberResponse.getName() + ", Mitgliedschaft = " + getMemberResponse.getMembershipType());
 
-        // Mitglied aktualisieren
-        UpdateMemberResponse updateMemberResponse = stub.updateMember(
-                UpdateMemberRequest.newBuilder()
-                        .setMemberId(memberId)
-                        .setName("John Updated")
-                        .setMembershipType("Standard")
-                        .build());
-        System.out.println("🔄 Update erfolgreich: " + updateMemberResponse.getSuccess());
-
         // Alle Mitglieder abrufen
         System.out.println("📋 Alle Mitglieder:");
         GetAllMembersResponse allMembersResponse = stub.getAllMembers(Empty.newBuilder().build());
         for (GetMemberResponse member : allMembersResponse.getMembersList()) {
-            System.out.println("- ID: " + member.getMemberId() + ", Name: " + member.getName());
+            System.out.println("- 📌 Mitglied ID: " + member.getMemberId() + ", Name: " + member.getName());
         }
 
         return memberId;
     }
 
-    private static long handleTrainerAndCourseCRUD(GymServiceGrpc.GymServiceBlockingStub stub) {
+    // --- Trainer CRUD ---
+    private static long handleTrainerCRUD(GymServiceGrpc.GymServiceBlockingStub stub) {
         System.out.println("--- Trainer ---");
 
         // Trainer erstellen
@@ -81,6 +75,20 @@ public class GymClient {
         long trainerId = createTrainerResponse.getTrainerId();
         System.out.println("✅ Erstellter Trainer mit ID: " + trainerId);
 
+        // Alle Trainer abrufen
+        System.out.println("📋 Alle Trainer:");
+        GetAllTrainersResponse allTrainersResponse = stub.getAllTrainers(Empty.newBuilder().build());
+        for (GetTrainerResponse trainer : allTrainersResponse.getTrainersList()) {
+            System.out.println("- 📌 Trainer ID: " + trainer.getTrainerId() + ", Name: " + trainer.getName());
+        }
+
+        return trainerId;
+    }
+
+    // --- Kurse CRUD ---
+    private static long handleCourseCRUD(GymServiceGrpc.GymServiceBlockingStub stub, long trainerId) {
+        System.out.println("--- Kurse ---");
+
         // Kurs erstellen
         CreateCourseResponse createCourseResponse = stub.createCourse(
                 CreateCourseRequest.newBuilder()
@@ -88,12 +96,36 @@ public class GymClient {
                         .setCapacity(15)
                         .setTrainerId(trainerId)
                         .build());
-        System.out.println("✅ Erstellter Kurs mit ID: " + createCourseResponse.getCourseId());
+        long courseId = createCourseResponse.getCourseId();
+        System.out.println("✅ Erstellter Kurs mit ID: " + courseId);
 
-        return trainerId;
+        // Kurs abrufen
+        GetCourseResponse getCourseResponse = stub.getCourse(
+                GetCourseRequest.newBuilder().setCourseId(courseId).build());
+        System.out.println("ℹ️ Kurs Details: Name = " + getCourseResponse.getName() + ", Kapazität = " + getCourseResponse.getCapacity());
+
+        // Alle Kurse abrufen
+        System.out.println("📋 Alle Kurse:");
+        GetAllCoursesResponse allCoursesResponse = stub.getAllCourses(Empty.newBuilder().build());
+        for (GetCourseResponse course : allCoursesResponse.getCoursesList()) {
+            System.out.println("- 📌 Kurs ID: " + course.getCourseId() + ", Name: " + course.getName());
+        }
+
+        // Kurs aktualisieren
+        UpdateCourseResponse updateCourseResponse = stub.updateCourse(
+                UpdateCourseRequest.newBuilder()
+                        .setCourseId(courseId)
+                        .setName("Advanced Yoga")
+                        .setCapacity(20)
+                        .setTrainerId(trainerId)
+                        .build());
+        System.out.println("🔄 Kurs-Update erfolgreich: " + updateCourseResponse.getSuccess());
+
+        return courseId;
     }
 
-    private static void handleBookingCRUD(GymServiceGrpc.GymServiceBlockingStub stub, long memberId, long trainerId) {
+    // --- Buchungen CRUD ---
+    private static void handleBookingCRUD(GymServiceGrpc.GymServiceBlockingStub stub, long memberId, long courseId) {
         System.out.println("--- Buchungen ---");
 
         try {
@@ -101,9 +133,10 @@ public class GymClient {
             CreateBookingResponse createBookingResponse = stub.createBooking(
                     CreateBookingRequest.newBuilder()
                             .setMemberId(memberId)
-                            .setCourseId(trainerId)
+                            .setCourseId(courseId)
                             .build());
-            System.out.println("✅ Buchung erstellt mit ID: " + createBookingResponse.getBookingId());
+            long bookingId = createBookingResponse.getBookingId();
+            System.out.println("✅ Buchung erstellt mit ID: " + bookingId);
 
             // Buchungen eines Mitglieds abrufen
             GetBookingsByMemberResponse getBookingsByMemberResponse = stub.getBookingsByMember(
@@ -114,6 +147,23 @@ public class GymClient {
             for (BookingResponse booking : getBookingsByMemberResponse.getBookingsList()) {
                 System.out.println("- 📌 Buchung ID: " + booking.getBookingId() + ", Kurs ID: " + booking.getCourseId());
             }
+
+            // Buchungen eines Kurses abrufen
+            GetBookingsByCourseResponse getBookingsByCourseResponse = stub.getBookingsByCourse(
+                    GetBookingsByCourseRequest.newBuilder()
+                            .setCourseId(courseId)
+                            .build());
+            System.out.println("📋 Buchungen für Kurs ID " + courseId + ":");
+            for (BookingResponse booking : getBookingsByCourseResponse.getBookingsList()) {
+                System.out.println("- 📌 Buchung ID: " + booking.getBookingId() + ", Mitglied ID: " + booking.getMemberId());
+            }
+
+            // Buchung löschen
+            DeleteBookingResponse deleteBookingResponse = stub.deleteBooking(
+                    DeleteBookingRequest.newBuilder()
+                            .setBookingId(bookingId)
+                            .build());
+            System.out.println("🗑️ Buchung gelöscht: " + deleteBookingResponse.getSuccess());
 
         } catch (StatusRuntimeException e) {
             System.err.println("⚠️ Fehler bei der Buchung: " + e.getStatus().getDescription());
