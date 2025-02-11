@@ -128,7 +128,7 @@
                             <transformers>
                                 <transformer
                                         implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                                    <mainClass>de.thws.fiw.gymmanagement.App</mainClass>
+                                    <mainClass>de.thws.fiw.gymmanagement.GymServer</mainClass>
                                 </transformer>
                             </transformers>
                         </configuration>

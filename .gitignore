@@ -10,6 +10,14 @@
 # BlueJ files
 *.ctxt
 
+#IDE spezifische sachen
+Gym-management.iml
+
+#Database sachen
+data.mv.db
+data.trace.db
+data
+
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
 
