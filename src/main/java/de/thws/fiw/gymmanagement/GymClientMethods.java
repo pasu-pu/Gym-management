@@ -28,6 +28,29 @@ public class GymClientMethods {
         this.bookingStub = BookingServiceGrpc.newBlockingStub(channel);
     }
 
+    public static void main(String[] args) {
+        // Erstelle den ManagedChannel
+        ManagedChannel channel = ManagedChannelBuilder.forAddress("localhost", 8080)
+                .usePlaintext() // ohne TLS für Testzwecke
+                .build();
+
+        // Erstelle eine Instanz des GymClientMethods
+        GymClientMethods client = new GymClientMethods(channel);
+
+        // Beispiel: Erstelle einen neuen Member und gib seinen Namen aus
+        Member createdMember = client.createMember("Alice", "Premium");
+        if (createdMember != null) {
+            System.out.println("Erstelltes Member: " + createdMember.getName());
+        } else {
+            System.err.println("Member konnte nicht erstellt werden.");
+        }
+
+        // Hier können weitere Testaufrufe erfolgen, z.B. getAllMembers, updateMember, etc.
+
+        // Schließe den Channel, wenn alle Aufrufe erfolgt sind
+        channel.shutdown();
+    }
+
     // --------------------
     // Hilfsmethoden zum Mapping
     // --------------------

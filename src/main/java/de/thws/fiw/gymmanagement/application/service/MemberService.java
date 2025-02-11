@@ -14,7 +14,12 @@ public class MemberService implements MemberServiceAdapter {
     }
     @Override
     public Member createMember(String name, String membership) {
-        throw new UnsupportedOperationException("Not implemented yet");
+        System.out.println("hurrahhhhhhhhg");
+        Member temp = new Member();
+        temp.setId((long)1);
+        temp.setMembershipType("premium");
+        temp.setName("hans");
+        return temp;
     }
 
     @Override

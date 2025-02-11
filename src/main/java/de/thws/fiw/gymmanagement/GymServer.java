@@ -33,7 +33,7 @@ public class GymServer {
     /**
      * Erstellt den gRPC-Server mit allen Services (Member, Trainer, Course, Booking).
      */
-    private static Server createServer() {
+    private static Server createServer() throws IOException, InterruptedException {
         // Repositories initialisieren
         MemberRepositoryInterface memberRepository = new MemberRepository();
         TrainerRepositoryInterface trainerRepository = new TrainerRepository();
@@ -58,6 +58,7 @@ public class GymServer {
                 .addService(trainerServiceImpl)
                 .addService(courseServiceImpl)
                 .addService(bookingServiceImpl)
-                .build();
+                .build()
+                .start();
     }
 }
