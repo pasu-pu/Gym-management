@@ -6,65 +6,48 @@ import de.thws.fiw.gymmanagement.infrastructure.CourseRepositoryInterface;
 import de.thws.fiw.gymmanagement.infrastructure.TrainerRepositoryInterface;
 
 import java.util.List;
-import java.util.Optional;
 
-public class CourseService {
-    private final CourseRepositoryInterface courseRepository;
-    private final TrainerRepositoryInterface trainerRepository;
+public class CourseService implements CourseServiceAdapter {
 
-    public CourseService(CourseRepositoryInterface courseRepository, TrainerRepositoryInterface trainerRepository) {
-        this.courseRepository = courseRepository;
-        this.trainerRepository = trainerRepository;
+    CourseRepositoryInterface courseRepository;
+    TrainerRepositoryInterface trainerRepository;
+
+    public CourseService(CourseRepositoryInterface courseRepository, TrainerRepositoryInterface trainerRepository){
+        this.courseRepository=courseRepository;
+        this.trainerRepository=trainerRepository;
+    }
+    @Override
+    public Course createCourse(String name, int capacity, long trainer_Id) {
+        throw new UnsupportedOperationException("Not implemented yet");
     }
 
-    public Course createCourse(String name, int capacity, Long trainerId) {
-        Trainer trainer = trainerRepository.findById(trainerId)
-                .orElseThrow(() -> new RuntimeException("Trainer not found"));
-
-        Course course = new Course();
-        course.setName(name);
-        course.setCapacity(capacity);
-        course.setTrainer(trainer);
-
-        return courseRepository.save(course);
+    @Override
+    public Course updateCourse(long id, String name, int capacity, long trainer_Id) {
+        throw new UnsupportedOperationException("Not implemented yet");
     }
 
-    public Optional<Course> getCourse(Long courseId) {
-        return courseRepository.findById(courseId);
+    @Override
+    public Course getCourse(long id) {
+        throw new UnsupportedOperationException("Not implemented yet");
     }
 
-    public List<Course> getAllCourses() {
-        return courseRepository.findAll();
+    @Override
+    public List<Course> getAllCourses(int pageSize, int index) {
+        throw new UnsupportedOperationException("Not implemented yet");
     }
 
-    public boolean deleteCourse(Long courseId) {
-        return courseRepository.findById(courseId)
-                .map(course -> {
-                    courseRepository.deleteById(course.getId());
-                    return true;
-                })
-                .orElse(false);
+    @Override
+    public List<Course> getCourseByName(String name, int pageSize, int index) {
+        throw new UnsupportedOperationException("Not implemented yet");
     }
 
-    public boolean updateCourse(Long courseId, String name, int capacity, Long trainerId) {
-        Optional<Course> optionalCourse = courseRepository.findById(courseId);
-
-        if (optionalCourse.isPresent()) {
-            Course course = optionalCourse.get();
-            course.setName(name);
-            course.setCapacity(capacity);
-
-            // Trainer prüfen und setzen
-            Trainer trainer = trainerRepository.findById(trainerId)
-                    .orElseThrow(() -> new RuntimeException("Trainer not found"));
-            course.setTrainer(trainer);
-
-            courseRepository.save(course);
-            return true;
-        }
-        return false;
+    @Override
+    public List<Course> getCourseByTrainer(long trainerId, int pageSize, int index) {
+        throw new UnsupportedOperationException("Not implemented yet");
     }
 
-
-
+    @Override
+    public boolean deleteCourse(long id) {
+        throw new UnsupportedOperationException("Not implemented yet");
+    }
 }

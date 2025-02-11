@@ -28,14 +28,14 @@ public interface UpdateMemberRequestOrBuilder extends
       getNameBytes();
 
   /**
-   * <code>string membershipType = 3;</code>
-   * @return The membershipType.
+   * <code>string membership = 3;</code>
+   * @return The membership.
    */
-  java.lang.String getMembershipType();
+  java.lang.String getMembership();
   /**
-   * <code>string membershipType = 3;</code>
-   * @return The bytes for membershipType.
+   * <code>string membership = 3;</code>
+   * @return The bytes for membership.
    */
   com.google.protobuf.ByteString
-      getMembershipTypeBytes();
+      getMembershipBytes();
 }

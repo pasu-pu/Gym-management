@@ -5,37 +5,35 @@
 
 package de.thws.fiw.gymmanagement.application;
 
-public interface CreateBookingRequestOrBuilder extends
-    // @@protoc_insertion_point(interface_extends:CreateBookingRequest)
+public interface GetBookingResponseOrBuilder extends
+    // @@protoc_insertion_point(interface_extends:GetBookingResponse)
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>int64 memberId = 1;</code>
+   * <code>int64 bookingId = 1;</code>
+   * @return The bookingId.
+   */
+  long getBookingId();
+
+  /**
+   * <code>int64 memberId = 2;</code>
    * @return The memberId.
    */
   long getMemberId();
 
   /**
-   * <code>int64 courseId = 2;</code>
+   * <code>int64 courseId = 3;</code>
    * @return The courseId.
    */
   long getCourseId();
 
   /**
-   * <pre>
-   * ISO 8601 format
-   * </pre>
-   *
-   * <code>string bookingDate = 3;</code>
+   * <code>string bookingDate = 4;</code>
    * @return The bookingDate.
    */
   java.lang.String getBookingDate();
   /**
-   * <pre>
-   * ISO 8601 format
-   * </pre>
-   *
-   * <code>string bookingDate = 3;</code>
+   * <code>string bookingDate = 4;</code>
    * @return The bytes for bookingDate.
    */
   com.google.protobuf.ByteString

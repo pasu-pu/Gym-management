@@ -6,18 +6,12 @@
 package de.thws.fiw.gymmanagement.application;
 
 /**
- * <pre>
- * -------------------------
- * Nachrichten für Course
- * -------------------------
- * </pre>
- *
- * Protobuf type {@code CreateCourseRequest}
+ * Protobuf type {@code GetCourseByTrainerRequest}
  */
-public final class CreateCourseRequest extends
+public final class GetCourseByTrainerRequest extends
     com.google.protobuf.GeneratedMessage implements
-    // @@protoc_insertion_point(message_implements:CreateCourseRequest)
-    CreateCourseRequestOrBuilder {
+    // @@protoc_insertion_point(message_implements:GetCourseByTrainerRequest)
+    GetCourseByTrainerRequestOrBuilder {
 private static final long serialVersionUID = 0L;
   static {
     com.google.protobuf.RuntimeVersion.validateProtobufGencodeVersion(
@@ -26,77 +20,48 @@ private static final long serialVersionUID = 0L;
       /* minor= */ 27,
       /* patch= */ 4,
       /* suffix= */ "",
-      CreateCourseRequest.class.getName());
+      GetCourseByTrainerRequest.class.getName());
   }
-  // Use CreateCourseRequest.newBuilder() to construct.
-  private CreateCourseRequest(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+  // Use GetCourseByTrainerRequest.newBuilder() to construct.
+  private GetCourseByTrainerRequest(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
     super(builder);
   }
-  private CreateCourseRequest() {
-    name_ = "";
+  private GetCourseByTrainerRequest() {
   }
 
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return de.thws.fiw.gymmanagement.application.Gym.internal_static_CreateCourseRequest_descriptor;
+    return de.thws.fiw.gymmanagement.application.Gym.internal_static_GetCourseByTrainerRequest_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return de.thws.fiw.gymmanagement.application.Gym.internal_static_CreateCourseRequest_fieldAccessorTable
+    return de.thws.fiw.gymmanagement.application.Gym.internal_static_GetCourseByTrainerRequest_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            de.thws.fiw.gymmanagement.application.CreateCourseRequest.class, de.thws.fiw.gymmanagement.application.CreateCourseRequest.Builder.class);
+            de.thws.fiw.gymmanagement.application.GetCourseByTrainerRequest.class, de.thws.fiw.gymmanagement.application.GetCourseByTrainerRequest.Builder.class);
   }
 
-  public static final int NAME_FIELD_NUMBER = 1;
-  @SuppressWarnings("serial")
-  private volatile java.lang.Object name_ = "";
+  public static final int PAGESIZE_FIELD_NUMBER = 1;
+  private int pagesize_ = 0;
   /**
-   * <code>string name = 1;</code>
-   * @return The name.
+   * <code>int32 pagesize = 1;</code>
+   * @return The pagesize.
    */
   @java.lang.Override
-  public java.lang.String getName() {
-    java.lang.Object ref = name_;
-    if (ref instanceof java.lang.String) {
-      return (java.lang.String) ref;
-    } else {
-      com.google.protobuf.ByteString bs = 
-          (com.google.protobuf.ByteString) ref;
-      java.lang.String s = bs.toStringUtf8();
-      name_ = s;
-      return s;
-    }
-  }
-  /**
-   * <code>string name = 1;</code>
-   * @return The bytes for name.
-   */
-  @java.lang.Override
-  public com.google.protobuf.ByteString
-      getNameBytes() {
-    java.lang.Object ref = name_;
-    if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b = 
-          com.google.protobuf.ByteString.copyFromUtf8(
-              (java.lang.String) ref);
-      name_ = b;
-      return b;
-    } else {
-      return (com.google.protobuf.ByteString) ref;
-    }
+  public int getPagesize() {
+    return pagesize_;
   }
 
-  public static final int CAPACITY_FIELD_NUMBER = 2;
-  private int capacity_ = 0;
+  public static final int INDEX_FIELD_NUMBER = 2;
+  private int index_ = 0;
   /**
-   * <code>int32 capacity = 2;</code>
-   * @return The capacity.
+   * <code>int32 index = 2;</code>
+   * @return The index.
    */
   @java.lang.Override
-  public int getCapacity() {
-    return capacity_;
+  public int getIndex() {
+    return index_;
   }
 
   public static final int TRAINERID_FIELD_NUMBER = 3;
@@ -124,11 +89,11 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    if (!com.google.protobuf.GeneratedMessage.isStringEmpty(name_)) {
-      com.google.protobuf.GeneratedMessage.writeString(output, 1, name_);
+    if (pagesize_ != 0) {
+      output.writeInt32(1, pagesize_);
     }
-    if (capacity_ != 0) {
-      output.writeInt32(2, capacity_);
+    if (index_ != 0) {
+      output.writeInt32(2, index_);
     }
     if (trainerId_ != 0L) {
       output.writeInt64(3, trainerId_);
@@ -142,12 +107,13 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
-    if (!com.google.protobuf.GeneratedMessage.isStringEmpty(name_)) {
-      size += com.google.protobuf.GeneratedMessage.computeStringSize(1, name_);
-    }
-    if (capacity_ != 0) {
+    if (pagesize_ != 0) {
       size += com.google.protobuf.CodedOutputStream
-        .computeInt32Size(2, capacity_);
+        .computeInt32Size(1, pagesize_);
+    }
+    if (index_ != 0) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeInt32Size(2, index_);
     }
     if (trainerId_ != 0L) {
       size += com.google.protobuf.CodedOutputStream
@@ -163,15 +129,15 @@ private static final long serialVersionUID = 0L;
     if (obj == this) {
      return true;
     }
-    if (!(obj instanceof de.thws.fiw.gymmanagement.application.CreateCourseRequest)) {
+    if (!(obj instanceof de.thws.fiw.gymmanagement.application.GetCourseByTrainerRequest)) {
       return super.equals(obj);
     }
-    de.thws.fiw.gymmanagement.application.CreateCourseRequest other = (de.thws.fiw.gymmanagement.application.CreateCourseRequest) obj;
+    de.thws.fiw.gymmanagement.application.GetCourseByTrainerRequest other = (de.thws.fiw.gymmanagement.application.GetCourseByTrainerRequest) obj;
 
-    if (!getName()
-        .equals(other.getName())) return false;
-    if (getCapacity()
-        != other.getCapacity()) return false;
+    if (getPagesize()
+        != other.getPagesize()) return false;
+    if (getIndex()
+        != other.getIndex()) return false;
     if (getTrainerId()
         != other.getTrainerId()) return false;
     if (!getUnknownFields().equals(other.getUnknownFields())) return false;
@@ -185,10 +151,10 @@ private static final long serialVersionUID = 0L;
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
-    hash = (37 * hash) + NAME_FIELD_NUMBER;
-    hash = (53 * hash) + getName().hashCode();
-    hash = (37 * hash) + CAPACITY_FIELD_NUMBER;
-    hash = (53 * hash) + getCapacity();
+    hash = (37 * hash) + PAGESIZE_FIELD_NUMBER;
+    hash = (53 * hash) + getPagesize();
+    hash = (37 * hash) + INDEX_FIELD_NUMBER;
+    hash = (53 * hash) + getIndex();
     hash = (37 * hash) + TRAINERID_FIELD_NUMBER;
     hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
         getTrainerId());
@@ -197,44 +163,44 @@ private static final long serialVersionUID = 0L;
     return hash;
   }
 
-  public static de.thws.fiw.gymmanagement.application.CreateCourseRequest parseFrom(
+  public static de.thws.fiw.gymmanagement.application.GetCourseByTrainerRequest parseFrom(
       java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static de.thws.fiw.gymmanagement.application.CreateCourseRequest parseFrom(
+  public static de.thws.fiw.gymmanagement.application.GetCourseByTrainerRequest parseFrom(
       java.nio.ByteBuffer data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static de.thws.fiw.gymmanagement.application.CreateCourseRequest parseFrom(
+  public static de.thws.fiw.gymmanagement.application.GetCourseByTrainerRequest parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static de.thws.fiw.gymmanagement.application.CreateCourseRequest parseFrom(
+  public static de.thws.fiw.gymmanagement.application.GetCourseByTrainerRequest parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static de.thws.fiw.gymmanagement.application.CreateCourseRequest parseFrom(byte[] data)
+  public static de.thws.fiw.gymmanagement.application.GetCourseByTrainerRequest parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static de.thws.fiw.gymmanagement.application.CreateCourseRequest parseFrom(
+  public static de.thws.fiw.gymmanagement.application.GetCourseByTrainerRequest parseFrom(
       byte[] data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static de.thws.fiw.gymmanagement.application.CreateCourseRequest parseFrom(java.io.InputStream input)
+  public static de.thws.fiw.gymmanagement.application.GetCourseByTrainerRequest parseFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessage
         .parseWithIOException(PARSER, input);
   }
-  public static de.thws.fiw.gymmanagement.application.CreateCourseRequest parseFrom(
+  public static de.thws.fiw.gymmanagement.application.GetCourseByTrainerRequest parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -242,26 +208,26 @@ private static final long serialVersionUID = 0L;
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
 
-  public static de.thws.fiw.gymmanagement.application.CreateCourseRequest parseDelimitedFrom(java.io.InputStream input)
+  public static de.thws.fiw.gymmanagement.application.GetCourseByTrainerRequest parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessage
         .parseDelimitedWithIOException(PARSER, input);
   }
 
-  public static de.thws.fiw.gymmanagement.application.CreateCourseRequest parseDelimitedFrom(
+  public static de.thws.fiw.gymmanagement.application.GetCourseByTrainerRequest parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessage
         .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-  public static de.thws.fiw.gymmanagement.application.CreateCourseRequest parseFrom(
+  public static de.thws.fiw.gymmanagement.application.GetCourseByTrainerRequest parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessage
         .parseWithIOException(PARSER, input);
   }
-  public static de.thws.fiw.gymmanagement.application.CreateCourseRequest parseFrom(
+  public static de.thws.fiw.gymmanagement.application.GetCourseByTrainerRequest parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -274,7 +240,7 @@ private static final long serialVersionUID = 0L;
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-  public static Builder newBuilder(de.thws.fiw.gymmanagement.application.CreateCourseRequest prototype) {
+  public static Builder newBuilder(de.thws.fiw.gymmanagement.application.GetCourseByTrainerRequest prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
   @java.lang.Override
@@ -290,32 +256,26 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
-   * <pre>
-   * -------------------------
-   * Nachrichten für Course
-   * -------------------------
-   * </pre>
-   *
-   * Protobuf type {@code CreateCourseRequest}
+   * Protobuf type {@code GetCourseByTrainerRequest}
    */
   public static final class Builder extends
       com.google.protobuf.GeneratedMessage.Builder<Builder> implements
-      // @@protoc_insertion_point(builder_implements:CreateCourseRequest)
-      de.thws.fiw.gymmanagement.application.CreateCourseRequestOrBuilder {
+      // @@protoc_insertion_point(builder_implements:GetCourseByTrainerRequest)
+      de.thws.fiw.gymmanagement.application.GetCourseByTrainerRequestOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return de.thws.fiw.gymmanagement.application.Gym.internal_static_CreateCourseRequest_descriptor;
+      return de.thws.fiw.gymmanagement.application.Gym.internal_static_GetCourseByTrainerRequest_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return de.thws.fiw.gymmanagement.application.Gym.internal_static_CreateCourseRequest_fieldAccessorTable
+      return de.thws.fiw.gymmanagement.application.Gym.internal_static_GetCourseByTrainerRequest_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              de.thws.fiw.gymmanagement.application.CreateCourseRequest.class, de.thws.fiw.gymmanagement.application.CreateCourseRequest.Builder.class);
+              de.thws.fiw.gymmanagement.application.GetCourseByTrainerRequest.class, de.thws.fiw.gymmanagement.application.GetCourseByTrainerRequest.Builder.class);
     }
 
-    // Construct using de.thws.fiw.gymmanagement.application.CreateCourseRequest.newBuilder()
+    // Construct using de.thws.fiw.gymmanagement.application.GetCourseByTrainerRequest.newBuilder()
     private Builder() {
 
     }
@@ -329,8 +289,8 @@ private static final long serialVersionUID = 0L;
     public Builder clear() {
       super.clear();
       bitField0_ = 0;
-      name_ = "";
-      capacity_ = 0;
+      pagesize_ = 0;
+      index_ = 0;
       trainerId_ = 0L;
       return this;
     }
@@ -338,17 +298,17 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return de.thws.fiw.gymmanagement.application.Gym.internal_static_CreateCourseRequest_descriptor;
+      return de.thws.fiw.gymmanagement.application.Gym.internal_static_GetCourseByTrainerRequest_descriptor;
     }
 
     @java.lang.Override
-    public de.thws.fiw.gymmanagement.application.CreateCourseRequest getDefaultInstanceForType() {
-      return de.thws.fiw.gymmanagement.application.CreateCourseRequest.getDefaultInstance();
+    public de.thws.fiw.gymmanagement.application.GetCourseByTrainerRequest getDefaultInstanceForType() {
+      return de.thws.fiw.gymmanagement.application.GetCourseByTrainerRequest.getDefaultInstance();
     }
 
     @java.lang.Override
-    public de.thws.fiw.gymmanagement.application.CreateCourseRequest build() {
-      de.thws.fiw.gymmanagement.application.CreateCourseRequest result = buildPartial();
+    public de.thws.fiw.gymmanagement.application.GetCourseByTrainerRequest build() {
+      de.thws.fiw.gymmanagement.application.GetCourseByTrainerRequest result = buildPartial();
       if (!result.isInitialized()) {
         throw newUninitializedMessageException(result);
       }
@@ -356,20 +316,20 @@ private static final long serialVersionUID = 0L;
     }
 
     @java.lang.Override
-    public de.thws.fiw.gymmanagement.application.CreateCourseRequest buildPartial() {
-      de.thws.fiw.gymmanagement.application.CreateCourseRequest result = new de.thws.fiw.gymmanagement.application.CreateCourseRequest(this);
+    public de.thws.fiw.gymmanagement.application.GetCourseByTrainerRequest buildPartial() {
+      de.thws.fiw.gymmanagement.application.GetCourseByTrainerRequest result = new de.thws.fiw.gymmanagement.application.GetCourseByTrainerRequest(this);
       if (bitField0_ != 0) { buildPartial0(result); }
       onBuilt();
       return result;
     }
 
-    private void buildPartial0(de.thws.fiw.gymmanagement.application.CreateCourseRequest result) {
+    private void buildPartial0(de.thws.fiw.gymmanagement.application.GetCourseByTrainerRequest result) {
       int from_bitField0_ = bitField0_;
       if (((from_bitField0_ & 0x00000001) != 0)) {
-        result.name_ = name_;
+        result.pagesize_ = pagesize_;
       }
       if (((from_bitField0_ & 0x00000002) != 0)) {
-        result.capacity_ = capacity_;
+        result.index_ = index_;
       }
       if (((from_bitField0_ & 0x00000004) != 0)) {
         result.trainerId_ = trainerId_;
@@ -378,23 +338,21 @@ private static final long serialVersionUID = 0L;
 
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
-      if (other instanceof de.thws.fiw.gymmanagement.application.CreateCourseRequest) {
-        return mergeFrom((de.thws.fiw.gymmanagement.application.CreateCourseRequest)other);
+      if (other instanceof de.thws.fiw.gymmanagement.application.GetCourseByTrainerRequest) {
+        return mergeFrom((de.thws.fiw.gymmanagement.application.GetCourseByTrainerRequest)other);
       } else {
         super.mergeFrom(other);
         return this;
       }
     }
 
-    public Builder mergeFrom(de.thws.fiw.gymmanagement.application.CreateCourseRequest other) {
-      if (other == de.thws.fiw.gymmanagement.application.CreateCourseRequest.getDefaultInstance()) return this;
-      if (!other.getName().isEmpty()) {
-        name_ = other.name_;
-        bitField0_ |= 0x00000001;
-        onChanged();
+    public Builder mergeFrom(de.thws.fiw.gymmanagement.application.GetCourseByTrainerRequest other) {
+      if (other == de.thws.fiw.gymmanagement.application.GetCourseByTrainerRequest.getDefaultInstance()) return this;
+      if (other.getPagesize() != 0) {
+        setPagesize(other.getPagesize());
       }
-      if (other.getCapacity() != 0) {
-        setCapacity(other.getCapacity());
+      if (other.getIndex() != 0) {
+        setIndex(other.getIndex());
       }
       if (other.getTrainerId() != 0L) {
         setTrainerId(other.getTrainerId());
@@ -425,13 +383,13 @@ private static final long serialVersionUID = 0L;
             case 0:
               done = true;
               break;
-            case 10: {
-              name_ = input.readStringRequireUtf8();
+            case 8: {
+              pagesize_ = input.readInt32();
               bitField0_ |= 0x00000001;
               break;
-            } // case 10
+            } // case 8
             case 16: {
-              capacity_ = input.readInt32();
+              index_ = input.readInt32();
               bitField0_ |= 0x00000002;
               break;
             } // case 16
@@ -457,106 +415,66 @@ private static final long serialVersionUID = 0L;
     }
     private int bitField0_;
 
-    private java.lang.Object name_ = "";
+    private int pagesize_ ;
     /**
-     * <code>string name = 1;</code>
-     * @return The name.
-     */
-    public java.lang.String getName() {
-      java.lang.Object ref = name_;
-      if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs =
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        name_ = s;
-        return s;
-      } else {
-        return (java.lang.String) ref;
-      }
-    }
-    /**
-     * <code>string name = 1;</code>
-     * @return The bytes for name.
-     */
-    public com.google.protobuf.ByteString
-        getNameBytes() {
-      java.lang.Object ref = name_;
-      if (ref instanceof String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        name_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-    /**
-     * <code>string name = 1;</code>
-     * @param value The name to set.
-     * @return This builder for chaining.
-     */
-    public Builder setName(
-        java.lang.String value) {
-      if (value == null) { throw new NullPointerException(); }
-      name_ = value;
-      bitField0_ |= 0x00000001;
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>string name = 1;</code>
-     * @return This builder for chaining.
-     */
-    public Builder clearName() {
-      name_ = getDefaultInstance().getName();
-      bitField0_ = (bitField0_ & ~0x00000001);
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>string name = 1;</code>
-     * @param value The bytes for name to set.
-     * @return This builder for chaining.
-     */
-    public Builder setNameBytes(
-        com.google.protobuf.ByteString value) {
-      if (value == null) { throw new NullPointerException(); }
-      checkByteStringIsUtf8(value);
-      name_ = value;
-      bitField0_ |= 0x00000001;
-      onChanged();
-      return this;
-    }
-
-    private int capacity_ ;
-    /**
-     * <code>int32 capacity = 2;</code>
-     * @return The capacity.
+     * <code>int32 pagesize = 1;</code>
+     * @return The pagesize.
      */
     @java.lang.Override
-    public int getCapacity() {
-      return capacity_;
+    public int getPagesize() {
+      return pagesize_;
     }
     /**
-     * <code>int32 capacity = 2;</code>
-     * @param value The capacity to set.
+     * <code>int32 pagesize = 1;</code>
+     * @param value The pagesize to set.
      * @return This builder for chaining.
      */
-    public Builder setCapacity(int value) {
+    public Builder setPagesize(int value) {
 
-      capacity_ = value;
+      pagesize_ = value;
+      bitField0_ |= 0x00000001;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>int32 pagesize = 1;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearPagesize() {
+      bitField0_ = (bitField0_ & ~0x00000001);
+      pagesize_ = 0;
+      onChanged();
+      return this;
+    }
+
+    private int index_ ;
+    /**
+     * <code>int32 index = 2;</code>
+     * @return The index.
+     */
+    @java.lang.Override
+    public int getIndex() {
+      return index_;
+    }
+    /**
+     * <code>int32 index = 2;</code>
+     * @param value The index to set.
+     * @return This builder for chaining.
+     */
+    public Builder setIndex(int value) {
+
+      index_ = value;
       bitField0_ |= 0x00000002;
       onChanged();
       return this;
     }
     /**
-     * <code>int32 capacity = 2;</code>
+     * <code>int32 index = 2;</code>
      * @return This builder for chaining.
      */
-    public Builder clearCapacity() {
+    public Builder clearIndex() {
       bitField0_ = (bitField0_ & ~0x00000002);
-      capacity_ = 0;
+      index_ = 0;
       onChanged();
       return this;
     }
@@ -593,23 +511,23 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    // @@protoc_insertion_point(builder_scope:CreateCourseRequest)
+    // @@protoc_insertion_point(builder_scope:GetCourseByTrainerRequest)
   }
 
-  // @@protoc_insertion_point(class_scope:CreateCourseRequest)
-  private static final de.thws.fiw.gymmanagement.application.CreateCourseRequest DEFAULT_INSTANCE;
+  // @@protoc_insertion_point(class_scope:GetCourseByTrainerRequest)
+  private static final de.thws.fiw.gymmanagement.application.GetCourseByTrainerRequest DEFAULT_INSTANCE;
   static {
-    DEFAULT_INSTANCE = new de.thws.fiw.gymmanagement.application.CreateCourseRequest();
+    DEFAULT_INSTANCE = new de.thws.fiw.gymmanagement.application.GetCourseByTrainerRequest();
   }
 
-  public static de.thws.fiw.gymmanagement.application.CreateCourseRequest getDefaultInstance() {
+  public static de.thws.fiw.gymmanagement.application.GetCourseByTrainerRequest getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<CreateCourseRequest>
-      PARSER = new com.google.protobuf.AbstractParser<CreateCourseRequest>() {
+  private static final com.google.protobuf.Parser<GetCourseByTrainerRequest>
+      PARSER = new com.google.protobuf.AbstractParser<GetCourseByTrainerRequest>() {
     @java.lang.Override
-    public CreateCourseRequest parsePartialFrom(
+    public GetCourseByTrainerRequest parsePartialFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -628,17 +546,17 @@ private static final long serialVersionUID = 0L;
     }
   };
 
-  public static com.google.protobuf.Parser<CreateCourseRequest> parser() {
+  public static com.google.protobuf.Parser<GetCourseByTrainerRequest> parser() {
     return PARSER;
   }
 
   @java.lang.Override
-  public com.google.protobuf.Parser<CreateCourseRequest> getParserForType() {
+  public com.google.protobuf.Parser<GetCourseByTrainerRequest> getParserForType() {
     return PARSER;
   }
 
   @java.lang.Override
-  public de.thws.fiw.gymmanagement.application.CreateCourseRequest getDefaultInstanceForType() {
+  public de.thws.fiw.gymmanagement.application.GetCourseByTrainerRequest getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
 

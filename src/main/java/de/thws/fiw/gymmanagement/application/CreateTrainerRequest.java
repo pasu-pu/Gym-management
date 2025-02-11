@@ -6,6 +6,12 @@
 package de.thws.fiw.gymmanagement.application;
 
 /**
+ * <pre>
+ * -------------------------
+ * Nachrichten für Trainer
+ * -------------------------
+ * </pre>
+ *
  * Protobuf type {@code CreateTrainerRequest}
  */
 public final class CreateTrainerRequest extends
@@ -289,6 +295,12 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
+   * <pre>
+   * -------------------------
+   * Nachrichten für Trainer
+   * -------------------------
+   * </pre>
+   *
    * Protobuf type {@code CreateTrainerRequest}
    */
   public static final class Builder extends

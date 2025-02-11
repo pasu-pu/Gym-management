@@ -6,18 +6,12 @@
 package de.thws.fiw.gymmanagement.application;
 
 /**
- * <pre>
- * -------------------------
- * Nachrichten für Member
- * -------------------------
- * </pre>
- *
- * Protobuf type {@code CreateMemberRequest}
+ * Protobuf type {@code GetBookingByDateRequest}
  */
-public final class CreateMemberRequest extends
+public final class GetBookingByDateRequest extends
     com.google.protobuf.GeneratedMessage implements
-    // @@protoc_insertion_point(message_implements:CreateMemberRequest)
-    CreateMemberRequestOrBuilder {
+    // @@protoc_insertion_point(message_implements:GetBookingByDateRequest)
+    GetBookingByDateRequestOrBuilder {
 private static final long serialVersionUID = 0L;
   static {
     com.google.protobuf.RuntimeVersion.validateProtobufGencodeVersion(
@@ -26,106 +20,88 @@ private static final long serialVersionUID = 0L;
       /* minor= */ 27,
       /* patch= */ 4,
       /* suffix= */ "",
-      CreateMemberRequest.class.getName());
+      GetBookingByDateRequest.class.getName());
   }
-  // Use CreateMemberRequest.newBuilder() to construct.
-  private CreateMemberRequest(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+  // Use GetBookingByDateRequest.newBuilder() to construct.
+  private GetBookingByDateRequest(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
     super(builder);
   }
-  private CreateMemberRequest() {
-    name_ = "";
-    membership_ = "";
+  private GetBookingByDateRequest() {
+    bookingDate_ = "";
   }
 
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return de.thws.fiw.gymmanagement.application.Gym.internal_static_CreateMemberRequest_descriptor;
+    return de.thws.fiw.gymmanagement.application.Gym.internal_static_GetBookingByDateRequest_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return de.thws.fiw.gymmanagement.application.Gym.internal_static_CreateMemberRequest_fieldAccessorTable
+    return de.thws.fiw.gymmanagement.application.Gym.internal_static_GetBookingByDateRequest_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            de.thws.fiw.gymmanagement.application.CreateMemberRequest.class, de.thws.fiw.gymmanagement.application.CreateMemberRequest.Builder.class);
+            de.thws.fiw.gymmanagement.application.GetBookingByDateRequest.class, de.thws.fiw.gymmanagement.application.GetBookingByDateRequest.Builder.class);
   }
 
-  public static final int NAME_FIELD_NUMBER = 1;
+  public static final int BOOKINGDATE_FIELD_NUMBER = 1;
   @SuppressWarnings("serial")
-  private volatile java.lang.Object name_ = "";
+  private volatile java.lang.Object bookingDate_ = "";
   /**
-   * <code>string name = 1;</code>
-   * @return The name.
+   * <code>string bookingDate = 1;</code>
+   * @return The bookingDate.
    */
   @java.lang.Override
-  public java.lang.String getName() {
-    java.lang.Object ref = name_;
+  public java.lang.String getBookingDate() {
+    java.lang.Object ref = bookingDate_;
     if (ref instanceof java.lang.String) {
       return (java.lang.String) ref;
     } else {
       com.google.protobuf.ByteString bs = 
           (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
-      name_ = s;
+      bookingDate_ = s;
       return s;
     }
   }
   /**
-   * <code>string name = 1;</code>
-   * @return The bytes for name.
+   * <code>string bookingDate = 1;</code>
+   * @return The bytes for bookingDate.
    */
   @java.lang.Override
   public com.google.protobuf.ByteString
-      getNameBytes() {
-    java.lang.Object ref = name_;
+      getBookingDateBytes() {
+    java.lang.Object ref = bookingDate_;
     if (ref instanceof java.lang.String) {
       com.google.protobuf.ByteString b = 
           com.google.protobuf.ByteString.copyFromUtf8(
               (java.lang.String) ref);
-      name_ = b;
+      bookingDate_ = b;
       return b;
     } else {
       return (com.google.protobuf.ByteString) ref;
     }
   }
 
-  public static final int MEMBERSHIP_FIELD_NUMBER = 2;
-  @SuppressWarnings("serial")
-  private volatile java.lang.Object membership_ = "";
+  public static final int PAGESIZE_FIELD_NUMBER = 2;
+  private int pagesize_ = 0;
   /**
-   * <code>string membership = 2;</code>
-   * @return The membership.
+   * <code>int32 pagesize = 2;</code>
+   * @return The pagesize.
    */
   @java.lang.Override
-  public java.lang.String getMembership() {
-    java.lang.Object ref = membership_;
-    if (ref instanceof java.lang.String) {
-      return (java.lang.String) ref;
-    } else {
-      com.google.protobuf.ByteString bs = 
-          (com.google.protobuf.ByteString) ref;
-      java.lang.String s = bs.toStringUtf8();
-      membership_ = s;
-      return s;
-    }
+  public int getPagesize() {
+    return pagesize_;
   }
+
+  public static final int INDEX_FIELD_NUMBER = 3;
+  private int index_ = 0;
   /**
-   * <code>string membership = 2;</code>
-   * @return The bytes for membership.
+   * <code>int32 index = 3;</code>
+   * @return The index.
    */
   @java.lang.Override
-  public com.google.protobuf.ByteString
-      getMembershipBytes() {
-    java.lang.Object ref = membership_;
-    if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b = 
-          com.google.protobuf.ByteString.copyFromUtf8(
-              (java.lang.String) ref);
-      membership_ = b;
-      return b;
-    } else {
-      return (com.google.protobuf.ByteString) ref;
-    }
+  public int getIndex() {
+    return index_;
   }
 
   private byte memoizedIsInitialized = -1;
@@ -142,11 +118,14 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    if (!com.google.protobuf.GeneratedMessage.isStringEmpty(name_)) {
-      com.google.protobuf.GeneratedMessage.writeString(output, 1, name_);
+    if (!com.google.protobuf.GeneratedMessage.isStringEmpty(bookingDate_)) {
+      com.google.protobuf.GeneratedMessage.writeString(output, 1, bookingDate_);
     }
-    if (!com.google.protobuf.GeneratedMessage.isStringEmpty(membership_)) {
-      com.google.protobuf.GeneratedMessage.writeString(output, 2, membership_);
+    if (pagesize_ != 0) {
+      output.writeInt32(2, pagesize_);
+    }
+    if (index_ != 0) {
+      output.writeInt32(3, index_);
     }
     getUnknownFields().writeTo(output);
   }
@@ -157,11 +136,16 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
-    if (!com.google.protobuf.GeneratedMessage.isStringEmpty(name_)) {
-      size += com.google.protobuf.GeneratedMessage.computeStringSize(1, name_);
+    if (!com.google.protobuf.GeneratedMessage.isStringEmpty(bookingDate_)) {
+      size += com.google.protobuf.GeneratedMessage.computeStringSize(1, bookingDate_);
     }
-    if (!com.google.protobuf.GeneratedMessage.isStringEmpty(membership_)) {
-      size += com.google.protobuf.GeneratedMessage.computeStringSize(2, membership_);
+    if (pagesize_ != 0) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeInt32Size(2, pagesize_);
+    }
+    if (index_ != 0) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeInt32Size(3, index_);
     }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
@@ -173,15 +157,17 @@ private static final long serialVersionUID = 0L;
     if (obj == this) {
      return true;
     }
-    if (!(obj instanceof de.thws.fiw.gymmanagement.application.CreateMemberRequest)) {
+    if (!(obj instanceof de.thws.fiw.gymmanagement.application.GetBookingByDateRequest)) {
       return super.equals(obj);
     }
-    de.thws.fiw.gymmanagement.application.CreateMemberRequest other = (de.thws.fiw.gymmanagement.application.CreateMemberRequest) obj;
+    de.thws.fiw.gymmanagement.application.GetBookingByDateRequest other = (de.thws.fiw.gymmanagement.application.GetBookingByDateRequest) obj;
 
-    if (!getName()
-        .equals(other.getName())) return false;
-    if (!getMembership()
-        .equals(other.getMembership())) return false;
+    if (!getBookingDate()
+        .equals(other.getBookingDate())) return false;
+    if (getPagesize()
+        != other.getPagesize()) return false;
+    if (getIndex()
+        != other.getIndex()) return false;
     if (!getUnknownFields().equals(other.getUnknownFields())) return false;
     return true;
   }
@@ -193,53 +179,55 @@ private static final long serialVersionUID = 0L;
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
-    hash = (37 * hash) + NAME_FIELD_NUMBER;
-    hash = (53 * hash) + getName().hashCode();
-    hash = (37 * hash) + MEMBERSHIP_FIELD_NUMBER;
-    hash = (53 * hash) + getMembership().hashCode();
+    hash = (37 * hash) + BOOKINGDATE_FIELD_NUMBER;
+    hash = (53 * hash) + getBookingDate().hashCode();
+    hash = (37 * hash) + PAGESIZE_FIELD_NUMBER;
+    hash = (53 * hash) + getPagesize();
+    hash = (37 * hash) + INDEX_FIELD_NUMBER;
+    hash = (53 * hash) + getIndex();
     hash = (29 * hash) + getUnknownFields().hashCode();
     memoizedHashCode = hash;
     return hash;
   }
 
-  public static de.thws.fiw.gymmanagement.application.CreateMemberRequest parseFrom(
+  public static de.thws.fiw.gymmanagement.application.GetBookingByDateRequest parseFrom(
       java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static de.thws.fiw.gymmanagement.application.CreateMemberRequest parseFrom(
+  public static de.thws.fiw.gymmanagement.application.GetBookingByDateRequest parseFrom(
       java.nio.ByteBuffer data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static de.thws.fiw.gymmanagement.application.CreateMemberRequest parseFrom(
+  public static de.thws.fiw.gymmanagement.application.GetBookingByDateRequest parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static de.thws.fiw.gymmanagement.application.CreateMemberRequest parseFrom(
+  public static de.thws.fiw.gymmanagement.application.GetBookingByDateRequest parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static de.thws.fiw.gymmanagement.application.CreateMemberRequest parseFrom(byte[] data)
+  public static de.thws.fiw.gymmanagement.application.GetBookingByDateRequest parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static de.thws.fiw.gymmanagement.application.CreateMemberRequest parseFrom(
+  public static de.thws.fiw.gymmanagement.application.GetBookingByDateRequest parseFrom(
       byte[] data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static de.thws.fiw.gymmanagement.application.CreateMemberRequest parseFrom(java.io.InputStream input)
+  public static de.thws.fiw.gymmanagement.application.GetBookingByDateRequest parseFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessage
         .parseWithIOException(PARSER, input);
   }
-  public static de.thws.fiw.gymmanagement.application.CreateMemberRequest parseFrom(
+  public static de.thws.fiw.gymmanagement.application.GetBookingByDateRequest parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -247,26 +235,26 @@ private static final long serialVersionUID = 0L;
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
 
-  public static de.thws.fiw.gymmanagement.application.CreateMemberRequest parseDelimitedFrom(java.io.InputStream input)
+  public static de.thws.fiw.gymmanagement.application.GetBookingByDateRequest parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessage
         .parseDelimitedWithIOException(PARSER, input);
   }
 
-  public static de.thws.fiw.gymmanagement.application.CreateMemberRequest parseDelimitedFrom(
+  public static de.thws.fiw.gymmanagement.application.GetBookingByDateRequest parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessage
         .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-  public static de.thws.fiw.gymmanagement.application.CreateMemberRequest parseFrom(
+  public static de.thws.fiw.gymmanagement.application.GetBookingByDateRequest parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessage
         .parseWithIOException(PARSER, input);
   }
-  public static de.thws.fiw.gymmanagement.application.CreateMemberRequest parseFrom(
+  public static de.thws.fiw.gymmanagement.application.GetBookingByDateRequest parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -279,7 +267,7 @@ private static final long serialVersionUID = 0L;
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-  public static Builder newBuilder(de.thws.fiw.gymmanagement.application.CreateMemberRequest prototype) {
+  public static Builder newBuilder(de.thws.fiw.gymmanagement.application.GetBookingByDateRequest prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
   @java.lang.Override
@@ -295,32 +283,26 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
-   * <pre>
-   * -------------------------
-   * Nachrichten für Member
-   * -------------------------
-   * </pre>
-   *
-   * Protobuf type {@code CreateMemberRequest}
+   * Protobuf type {@code GetBookingByDateRequest}
    */
   public static final class Builder extends
       com.google.protobuf.GeneratedMessage.Builder<Builder> implements
-      // @@protoc_insertion_point(builder_implements:CreateMemberRequest)
-      de.thws.fiw.gymmanagement.application.CreateMemberRequestOrBuilder {
+      // @@protoc_insertion_point(builder_implements:GetBookingByDateRequest)
+      de.thws.fiw.gymmanagement.application.GetBookingByDateRequestOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return de.thws.fiw.gymmanagement.application.Gym.internal_static_CreateMemberRequest_descriptor;
+      return de.thws.fiw.gymmanagement.application.Gym.internal_static_GetBookingByDateRequest_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return de.thws.fiw.gymmanagement.application.Gym.internal_static_CreateMemberRequest_fieldAccessorTable
+      return de.thws.fiw.gymmanagement.application.Gym.internal_static_GetBookingByDateRequest_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              de.thws.fiw.gymmanagement.application.CreateMemberRequest.class, de.thws.fiw.gymmanagement.application.CreateMemberRequest.Builder.class);
+              de.thws.fiw.gymmanagement.application.GetBookingByDateRequest.class, de.thws.fiw.gymmanagement.application.GetBookingByDateRequest.Builder.class);
     }
 
-    // Construct using de.thws.fiw.gymmanagement.application.CreateMemberRequest.newBuilder()
+    // Construct using de.thws.fiw.gymmanagement.application.GetBookingByDateRequest.newBuilder()
     private Builder() {
 
     }
@@ -334,25 +316,26 @@ private static final long serialVersionUID = 0L;
     public Builder clear() {
       super.clear();
       bitField0_ = 0;
-      name_ = "";
-      membership_ = "";
+      bookingDate_ = "";
+      pagesize_ = 0;
+      index_ = 0;
       return this;
     }
 
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return de.thws.fiw.gymmanagement.application.Gym.internal_static_CreateMemberRequest_descriptor;
+      return de.thws.fiw.gymmanagement.application.Gym.internal_static_GetBookingByDateRequest_descriptor;
     }
 
     @java.lang.Override
-    public de.thws.fiw.gymmanagement.application.CreateMemberRequest getDefaultInstanceForType() {
-      return de.thws.fiw.gymmanagement.application.CreateMemberRequest.getDefaultInstance();
+    public de.thws.fiw.gymmanagement.application.GetBookingByDateRequest getDefaultInstanceForType() {
+      return de.thws.fiw.gymmanagement.application.GetBookingByDateRequest.getDefaultInstance();
     }
 
     @java.lang.Override
-    public de.thws.fiw.gymmanagement.application.CreateMemberRequest build() {
-      de.thws.fiw.gymmanagement.application.CreateMemberRequest result = buildPartial();
+    public de.thws.fiw.gymmanagement.application.GetBookingByDateRequest build() {
+      de.thws.fiw.gymmanagement.application.GetBookingByDateRequest result = buildPartial();
       if (!result.isInitialized()) {
         throw newUninitializedMessageException(result);
       }
@@ -360,44 +343,48 @@ private static final long serialVersionUID = 0L;
     }
 
     @java.lang.Override
-    public de.thws.fiw.gymmanagement.application.CreateMemberRequest buildPartial() {
-      de.thws.fiw.gymmanagement.application.CreateMemberRequest result = new de.thws.fiw.gymmanagement.application.CreateMemberRequest(this);
+    public de.thws.fiw.gymmanagement.application.GetBookingByDateRequest buildPartial() {
+      de.thws.fiw.gymmanagement.application.GetBookingByDateRequest result = new de.thws.fiw.gymmanagement.application.GetBookingByDateRequest(this);
       if (bitField0_ != 0) { buildPartial0(result); }
       onBuilt();
       return result;
     }
 
-    private void buildPartial0(de.thws.fiw.gymmanagement.application.CreateMemberRequest result) {
+    private void buildPartial0(de.thws.fiw.gymmanagement.application.GetBookingByDateRequest result) {
       int from_bitField0_ = bitField0_;
       if (((from_bitField0_ & 0x00000001) != 0)) {
-        result.name_ = name_;
+        result.bookingDate_ = bookingDate_;
       }
       if (((from_bitField0_ & 0x00000002) != 0)) {
-        result.membership_ = membership_;
+        result.pagesize_ = pagesize_;
+      }
+      if (((from_bitField0_ & 0x00000004) != 0)) {
+        result.index_ = index_;
       }
     }
 
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
-      if (other instanceof de.thws.fiw.gymmanagement.application.CreateMemberRequest) {
-        return mergeFrom((de.thws.fiw.gymmanagement.application.CreateMemberRequest)other);
+      if (other instanceof de.thws.fiw.gymmanagement.application.GetBookingByDateRequest) {
+        return mergeFrom((de.thws.fiw.gymmanagement.application.GetBookingByDateRequest)other);
       } else {
         super.mergeFrom(other);
         return this;
       }
     }
 
-    public Builder mergeFrom(de.thws.fiw.gymmanagement.application.CreateMemberRequest other) {
-      if (other == de.thws.fiw.gymmanagement.application.CreateMemberRequest.getDefaultInstance()) return this;
-      if (!other.getName().isEmpty()) {
-        name_ = other.name_;
+    public Builder mergeFrom(de.thws.fiw.gymmanagement.application.GetBookingByDateRequest other) {
+      if (other == de.thws.fiw.gymmanagement.application.GetBookingByDateRequest.getDefaultInstance()) return this;
+      if (!other.getBookingDate().isEmpty()) {
+        bookingDate_ = other.bookingDate_;
         bitField0_ |= 0x00000001;
         onChanged();
       }
-      if (!other.getMembership().isEmpty()) {
-        membership_ = other.membership_;
-        bitField0_ |= 0x00000002;
-        onChanged();
+      if (other.getPagesize() != 0) {
+        setPagesize(other.getPagesize());
+      }
+      if (other.getIndex() != 0) {
+        setIndex(other.getIndex());
       }
       this.mergeUnknownFields(other.getUnknownFields());
       onChanged();
@@ -426,15 +413,20 @@ private static final long serialVersionUID = 0L;
               done = true;
               break;
             case 10: {
-              name_ = input.readStringRequireUtf8();
+              bookingDate_ = input.readStringRequireUtf8();
               bitField0_ |= 0x00000001;
               break;
             } // case 10
-            case 18: {
-              membership_ = input.readStringRequireUtf8();
+            case 16: {
+              pagesize_ = input.readInt32();
               bitField0_ |= 0x00000002;
               break;
-            } // case 18
+            } // case 16
+            case 24: {
+              index_ = input.readInt32();
+              bitField0_ |= 0x00000004;
+              break;
+            } // case 24
             default: {
               if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                 done = true; // was an endgroup tag
@@ -452,167 +444,159 @@ private static final long serialVersionUID = 0L;
     }
     private int bitField0_;
 
-    private java.lang.Object name_ = "";
+    private java.lang.Object bookingDate_ = "";
     /**
-     * <code>string name = 1;</code>
-     * @return The name.
+     * <code>string bookingDate = 1;</code>
+     * @return The bookingDate.
      */
-    public java.lang.String getName() {
-      java.lang.Object ref = name_;
+    public java.lang.String getBookingDate() {
+      java.lang.Object ref = bookingDate_;
       if (!(ref instanceof java.lang.String)) {
         com.google.protobuf.ByteString bs =
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        name_ = s;
+        bookingDate_ = s;
         return s;
       } else {
         return (java.lang.String) ref;
       }
     }
     /**
-     * <code>string name = 1;</code>
-     * @return The bytes for name.
+     * <code>string bookingDate = 1;</code>
+     * @return The bytes for bookingDate.
      */
     public com.google.protobuf.ByteString
-        getNameBytes() {
-      java.lang.Object ref = name_;
+        getBookingDateBytes() {
+      java.lang.Object ref = bookingDate_;
       if (ref instanceof String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        name_ = b;
+        bookingDate_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
     }
     /**
-     * <code>string name = 1;</code>
-     * @param value The name to set.
+     * <code>string bookingDate = 1;</code>
+     * @param value The bookingDate to set.
      * @return This builder for chaining.
      */
-    public Builder setName(
+    public Builder setBookingDate(
         java.lang.String value) {
       if (value == null) { throw new NullPointerException(); }
-      name_ = value;
+      bookingDate_ = value;
       bitField0_ |= 0x00000001;
       onChanged();
       return this;
     }
     /**
-     * <code>string name = 1;</code>
+     * <code>string bookingDate = 1;</code>
      * @return This builder for chaining.
      */
-    public Builder clearName() {
-      name_ = getDefaultInstance().getName();
+    public Builder clearBookingDate() {
+      bookingDate_ = getDefaultInstance().getBookingDate();
       bitField0_ = (bitField0_ & ~0x00000001);
       onChanged();
       return this;
     }
     /**
-     * <code>string name = 1;</code>
-     * @param value The bytes for name to set.
+     * <code>string bookingDate = 1;</code>
+     * @param value The bytes for bookingDate to set.
      * @return This builder for chaining.
      */
-    public Builder setNameBytes(
+    public Builder setBookingDateBytes(
         com.google.protobuf.ByteString value) {
       if (value == null) { throw new NullPointerException(); }
       checkByteStringIsUtf8(value);
-      name_ = value;
+      bookingDate_ = value;
       bitField0_ |= 0x00000001;
       onChanged();
       return this;
     }
 
-    private java.lang.Object membership_ = "";
+    private int pagesize_ ;
     /**
-     * <code>string membership = 2;</code>
-     * @return The membership.
+     * <code>int32 pagesize = 2;</code>
+     * @return The pagesize.
      */
-    public java.lang.String getMembership() {
-      java.lang.Object ref = membership_;
-      if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs =
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        membership_ = s;
-        return s;
-      } else {
-        return (java.lang.String) ref;
-      }
+    @java.lang.Override
+    public int getPagesize() {
+      return pagesize_;
     }
     /**
-     * <code>string membership = 2;</code>
-     * @return The bytes for membership.
-     */
-    public com.google.protobuf.ByteString
-        getMembershipBytes() {
-      java.lang.Object ref = membership_;
-      if (ref instanceof String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        membership_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-    /**
-     * <code>string membership = 2;</code>
-     * @param value The membership to set.
+     * <code>int32 pagesize = 2;</code>
+     * @param value The pagesize to set.
      * @return This builder for chaining.
      */
-    public Builder setMembership(
-        java.lang.String value) {
-      if (value == null) { throw new NullPointerException(); }
-      membership_ = value;
+    public Builder setPagesize(int value) {
+
+      pagesize_ = value;
       bitField0_ |= 0x00000002;
       onChanged();
       return this;
     }
     /**
-     * <code>string membership = 2;</code>
+     * <code>int32 pagesize = 2;</code>
      * @return This builder for chaining.
      */
-    public Builder clearMembership() {
-      membership_ = getDefaultInstance().getMembership();
+    public Builder clearPagesize() {
       bitField0_ = (bitField0_ & ~0x00000002);
+      pagesize_ = 0;
+      onChanged();
+      return this;
+    }
+
+    private int index_ ;
+    /**
+     * <code>int32 index = 3;</code>
+     * @return The index.
+     */
+    @java.lang.Override
+    public int getIndex() {
+      return index_;
+    }
+    /**
+     * <code>int32 index = 3;</code>
+     * @param value The index to set.
+     * @return This builder for chaining.
+     */
+    public Builder setIndex(int value) {
+
+      index_ = value;
+      bitField0_ |= 0x00000004;
       onChanged();
       return this;
     }
     /**
-     * <code>string membership = 2;</code>
-     * @param value The bytes for membership to set.
+     * <code>int32 index = 3;</code>
      * @return This builder for chaining.
      */
-    public Builder setMembershipBytes(
-        com.google.protobuf.ByteString value) {
-      if (value == null) { throw new NullPointerException(); }
-      checkByteStringIsUtf8(value);
-      membership_ = value;
-      bitField0_ |= 0x00000002;
+    public Builder clearIndex() {
+      bitField0_ = (bitField0_ & ~0x00000004);
+      index_ = 0;
       onChanged();
       return this;
     }
 
-    // @@protoc_insertion_point(builder_scope:CreateMemberRequest)
+    // @@protoc_insertion_point(builder_scope:GetBookingByDateRequest)
   }
 
-  // @@protoc_insertion_point(class_scope:CreateMemberRequest)
-  private static final de.thws.fiw.gymmanagement.application.CreateMemberRequest DEFAULT_INSTANCE;
+  // @@protoc_insertion_point(class_scope:GetBookingByDateRequest)
+  private static final de.thws.fiw.gymmanagement.application.GetBookingByDateRequest DEFAULT_INSTANCE;
   static {
-    DEFAULT_INSTANCE = new de.thws.fiw.gymmanagement.application.CreateMemberRequest();
+    DEFAULT_INSTANCE = new de.thws.fiw.gymmanagement.application.GetBookingByDateRequest();
   }
 
-  public static de.thws.fiw.gymmanagement.application.CreateMemberRequest getDefaultInstance() {
+  public static de.thws.fiw.gymmanagement.application.GetBookingByDateRequest getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<CreateMemberRequest>
-      PARSER = new com.google.protobuf.AbstractParser<CreateMemberRequest>() {
+  private static final com.google.protobuf.Parser<GetBookingByDateRequest>
+      PARSER = new com.google.protobuf.AbstractParser<GetBookingByDateRequest>() {
     @java.lang.Override
-    public CreateMemberRequest parsePartialFrom(
+    public GetBookingByDateRequest parsePartialFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -631,17 +615,17 @@ private static final long serialVersionUID = 0L;
     }
   };
 
-  public static com.google.protobuf.Parser<CreateMemberRequest> parser() {
+  public static com.google.protobuf.Parser<GetBookingByDateRequest> parser() {
     return PARSER;
   }
 
   @java.lang.Override
-  public com.google.protobuf.Parser<CreateMemberRequest> getParserForType() {
+  public com.google.protobuf.Parser<GetBookingByDateRequest> getParserForType() {
     return PARSER;
   }
 
   @java.lang.Override
-  public de.thws.fiw.gymmanagement.application.CreateMemberRequest getDefaultInstanceForType() {
+  public de.thws.fiw.gymmanagement.application.GetBookingByDateRequest getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
 

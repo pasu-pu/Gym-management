@@ -32,7 +32,7 @@ public class Booking {
         return id;
     }
 
-    //public void setId(Long id) { this.id = id; } nicht benötigt weil sich hibernate darum kuemmert
+    public void setId(Long id) { this.id = id; }
 
     public Member getMember() {
         return member;

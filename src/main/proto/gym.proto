@@ -3,89 +3,100 @@ syntax = "proto3";
 option java_package = "de.thws.fiw.gymmanagement.application";
 option java_multiple_files = true;
 
-
-
-
-service GymService {
+// -------------------------
+// Member Service
+// -------------------------
+service MemberService {
+    rpc CreateMember(CreateMemberRequest) returns (GetMemberResponse);
+    rpc UpdateMember(UpdateMemberRequest) returns (GetMemberResponse);
     rpc GetMember(GetMemberRequest) returns (GetMemberResponse);
-    rpc CreateMember(CreateMemberRequest) returns (CreateMemberResponse);
-    rpc GetAllMembers(Empty) returns (GetAllMembersResponse);
-    rpc UpdateMember(UpdateMemberRequest) returns (UpdateMemberResponse);
+    rpc GetAllMembers(GetAllMembersRequest) returns (GetAllMembersResponse);
+    rpc GetMemberByName(GetMemberByNameRequest) returns (GetAllMembersResponse);
+    rpc GetMemberByMembership(GetMemberByMembershipRequest) returns (GetAllMembersResponse);
     rpc DeleteMember(DeleteMemberRequest) returns (DeleteMemberResponse);
-    rpc CreateTrainer(CreateTrainerRequest) returns (CreateTrainerResponse);
+}
+
+// -------------------------
+// Trainer Service
+// -------------------------
+service TrainerService {
+    rpc CreateTrainer(CreateTrainerRequest) returns (GetTrainerResponse);
+    rpc UpdateTrainer(UpdateTrainerRequest) returns (GetTrainerResponse);
     rpc GetTrainer(GetTrainerRequest) returns (GetTrainerResponse);
-    rpc GetAllTrainers(Empty) returns (GetAllTrainersResponse);
-    rpc UpdateTrainer(UpdateTrainerRequest) returns (UpdateTrainerResponse);
+    rpc GetAllTrainers(GetAllTrainersRequest) returns (GetAllTrainersResponse);
+    rpc GetTrainerByName(GetTrainerByNameRequest) returns (GetAllTrainersResponse);
+    rpc GetTrainerByExpertise(GetTrainerByExpertiseRequest) returns (GetAllTrainersResponse);
     rpc DeleteTrainer(DeleteTrainerRequest) returns (DeleteTrainerResponse);
-    rpc CreateCourse(CreateCourseRequest) returns (CreateCourseResponse);
+}
+
+// -------------------------
+// Course Service
+// -------------------------
+service CourseService {
+    rpc CreateCourse(CreateCourseRequest) returns (GetCourseResponse);
+    rpc UpdateCourse(UpdateCourseRequest) returns (GetCourseResponse);
     rpc GetCourse(GetCourseRequest) returns (GetCourseResponse);
-    rpc GetAllCourses(Empty) returns (GetAllCoursesResponse);
-    rpc UpdateCourse(UpdateCourseRequest) returns (UpdateCourseResponse);
+    rpc GetCourseByName(GetCourseByNameRequest) returns (GetAllCoursesResponse);
+    rpc GetCourseByTrainer(GetCourseByTrainerRequest) returns (GetAllCoursesResponse);
+    rpc GetAllCourses(GetAllCoursesRequest) returns (GetAllCoursesResponse);
     rpc DeleteCourse(DeleteCourseRequest) returns (DeleteCourseResponse);
-    rpc GetCoursesByTrainer(GetCoursesByTrainerRequest) returns (GetCoursesByTrainerResponse);
-    rpc CreateBooking(CreateBookingRequest) returns (CreateBookingResponse);
-    rpc GetBookingsByMember(GetBookingsByMemberRequest) returns (GetBookingsByMemberResponse);
-    rpc GetBookingsByCourse(GetBookingsByCourseRequest) returns (GetBookingsByCourseResponse);
+}
+
+// -------------------------
+// Booking Service
+// -------------------------
+service BookingService {
+    rpc CreateBooking(CreateBookingRequest) returns (GetBookingResponse);
+    rpc GetBooking(GetBookingRequest) returns (GetBookingResponse);
+    rpc GetBookingByMember(GetBookingByMemberRequest) returns (GetAllBookingsResponse);
+    rpc GetBookingByCourse(GetBookingByCourseRequest) returns (GetAllBookingsResponse);
+    rpc GetBookingByDate(GetBookingByDateRequest) returns (GetAllBookingsResponse);
     rpc DeleteBooking(DeleteBookingRequest) returns (DeleteBookingResponse);
-
 }
 
-message CreateBookingRequest {
-    int64 memberId = 1;
-    int64 courseId = 2;
-}
-
-message CreateBookingResponse {
-    int64 bookingId = 1;
-}
-
-message GetBookingsByMemberRequest {
-    int64 memberId = 1;
-}
-
-message GetBookingsByMemberResponse {
-    repeated BookingResponse bookings = 1;
-}
-
-message GetBookingsByCourseRequest {
-    int64 courseId = 1;
-}
-
-message GetBookingsByCourseResponse {
-    repeated BookingResponse bookings = 1;
-}
-
-message DeleteBookingRequest {
-    int64 bookingId = 1;
-}
-
-message DeleteBookingResponse {
-    bool success = 1;
-}
-
-message BookingResponse {
-    int64 bookingId = 1;
-    int64 memberId = 2;
-    int64 courseId = 3;
-    string bookingDate = 4; // ISO 8601 Datumsformat
-}
-
-message GetCoursesByTrainerRequest {
-    int64 trainerId = 1;
-}
-
-message GetCoursesByTrainerResponse {
-    repeated GetCourseResponse courses = 1;
+// -------------------------
+// Nachrichten für Member
+// -------------------------
+message CreateMemberRequest {
+    string name = 1;
+    string membership = 2;
 }
 
 message UpdateMemberRequest {
     int64 memberId = 1;
     string name = 2;
-    string membershipType = 3;
+    string membership = 3;
 }
 
-message UpdateMemberResponse {
-    bool success = 1;
+message GetMemberRequest {
+    int64 memberId = 1;
+}
+
+message GetMemberResponse {
+    int64 memberId = 1;
+    string name = 2;
+    string membership = 3;
+}
+
+message GetAllMembersRequest {
+    int32 pagesize = 1;
+    int32 index = 2;
+}
+
+message GetMemberByNameRequest {
+    int32 pagesize = 1;
+    int32 index = 2;
+    string name = 3;
+}
+
+message GetMemberByMembershipRequest {
+    int32 pagesize = 1;
+    int32 index = 2;
+    string membership = 3;
+}
+
+message GetAllMembersResponse {
+    repeated GetMemberResponse members = 1;
 }
 
 message DeleteMemberRequest {
@@ -96,50 +107,12 @@ message DeleteMemberResponse {
     bool success = 1;
 }
 
-message GetAllMembersResponse {
-    repeated GetMemberResponse members = 1;
-}
-
-message Empty {}
-
-
-message GetMemberRequest {
-    int64 memberId = 1;
-}
-
-message GetMemberResponse {
-    int64 memberId = 1;
-    string name = 2;
-    string membershipType = 3;
-}
-
-message CreateMemberRequest {
-    string name = 1;
-    string membershipType = 2;
-}
-
-message CreateMemberResponse {
-    int64 memberId = 1;
-}
-
-
+// -------------------------
+// Nachrichten für Trainer
+// -------------------------
 message CreateTrainerRequest {
     string name = 1;
     string expertise = 2;
-}
-message CreateTrainerResponse {
-    int64 trainerId = 1;
-}
-message GetTrainerRequest {
-    int64 trainerId = 1;
-}
-message GetTrainerResponse {
-    int64 trainerId = 1;
-    string name = 2;
-    string expertise = 3;
-}
-message GetAllTrainersResponse {
-    repeated GetTrainerResponse trainers = 1;
 }
 
 message UpdateTrainerRequest {
@@ -148,35 +121,52 @@ message UpdateTrainerRequest {
     string expertise = 3;
 }
 
-message UpdateTrainerResponse {
-    bool success = 1;
+message GetTrainerRequest {
+    int64 trainerId = 1;
 }
+
+message GetTrainerResponse {
+    int64 trainerId = 1;
+    string name = 2;
+    string expertise = 3;
+}
+
+message GetAllTrainersRequest {
+    int32 pagesize = 1;
+    int32 index = 2;
+}
+
+message GetTrainerByNameRequest {
+    int32 pagesize = 1;
+    int32 index = 2;
+    string name = 3;
+}
+
+message GetTrainerByExpertiseRequest {
+    int32 pagesize = 1;
+    int32 index = 2;
+    string expertise = 3;
+}
+
+message GetAllTrainersResponse {
+    repeated GetTrainerResponse trainers = 1;
+}
+
 message DeleteTrainerRequest {
     int64 trainerId = 1;
 }
+
 message DeleteTrainerResponse {
     bool success = 1;
 }
 
+// -------------------------
+// Nachrichten für Course
+// -------------------------
 message CreateCourseRequest {
     string name = 1;
     int32 capacity = 2;
     int64 trainerId = 3;
-}
-message CreateCourseResponse {
-    int64 courseId = 1;
-}
-message GetCourseRequest {
-    int64 courseId = 1;
-}
-message GetCourseResponse {
-    int64 courseId = 1;
-    string name = 2;
-    int32 capacity = 3;
-    int64 trainerId = 4;
-}
-message GetAllCoursesResponse {
-    repeated GetCourseResponse courses = 1;
 }
 
 message UpdateCourseRequest {
@@ -186,16 +176,92 @@ message UpdateCourseRequest {
     int64 trainerId = 4;
 }
 
-message UpdateCourseResponse {
-    bool success = 1;
+message GetCourseRequest {
+    int64 courseId = 1;
+}
+
+message GetCourseResponse {
+    int64 courseId = 1;
+    string name = 2;
+    int32 capacity = 3;
+    int64 trainerId = 4;
+}
+
+message GetAllCoursesRequest {
+    int32 pagesize = 1;
+    int32 index = 2;
+}
+
+message GetCourseByNameRequest {
+    int32 pagesize = 1;
+    int32 index = 2;
+    string name = 3;
+}
+
+message GetCourseByTrainerRequest {
+    int32 pagesize = 1;
+    int32 index = 2;
+    int64 trainerId = 3;
+}
+
+message GetAllCoursesResponse {
+    repeated GetCourseResponse courses = 1;
 }
 
 message DeleteCourseRequest {
     int64 courseId = 1;
 }
+
 message DeleteCourseResponse {
     bool success = 1;
 }
 
+// -------------------------
+// Nachrichten für Booking
+// -------------------------
+message CreateBookingRequest {
+    int64 memberId = 1;
+    int64 courseId = 2;
+    string bookingDate = 3; // ISO 8601 format
+}
 
+message GetBookingRequest {
+    int64 bookingId = 1;
+}
 
+message GetBookingResponse {
+    int64 bookingId = 1;
+    int64 memberId = 2;
+    int64 courseId = 3;
+    string bookingDate = 4;
+}
+
+message GetBookingByMemberRequest {
+    int64 memberId = 1;
+    int32 pagesize = 2;
+    int32 index = 3;
+}
+
+message GetBookingByCourseRequest {
+    int64 courseId = 1;
+    int32 pagesize = 2;
+    int32 index = 3;
+}
+
+message GetBookingByDateRequest {
+    string bookingDate = 1;
+    int32 pagesize = 2;
+    int32 index = 3;
+}
+
+message GetAllBookingsResponse {
+    repeated GetBookingResponse bookings = 1;
+}
+
+message DeleteBookingRequest {
+    int64 bookingId = 1;
+}
+
+message DeleteBookingResponse {
+    bool success = 1;
+}

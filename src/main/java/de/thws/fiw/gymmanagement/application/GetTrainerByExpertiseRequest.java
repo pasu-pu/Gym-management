@@ -6,12 +6,12 @@
 package de.thws.fiw.gymmanagement.application;
 
 /**
- * Protobuf type {@code UpdateMemberRequest}
+ * Protobuf type {@code GetTrainerByExpertiseRequest}
  */
-public final class UpdateMemberRequest extends
+public final class GetTrainerByExpertiseRequest extends
     com.google.protobuf.GeneratedMessage implements
-    // @@protoc_insertion_point(message_implements:UpdateMemberRequest)
-    UpdateMemberRequestOrBuilder {
+    // @@protoc_insertion_point(message_implements:GetTrainerByExpertiseRequest)
+    GetTrainerByExpertiseRequestOrBuilder {
 private static final long serialVersionUID = 0L;
   static {
     com.google.protobuf.RuntimeVersion.validateProtobufGencodeVersion(
@@ -20,113 +20,84 @@ private static final long serialVersionUID = 0L;
       /* minor= */ 27,
       /* patch= */ 4,
       /* suffix= */ "",
-      UpdateMemberRequest.class.getName());
+      GetTrainerByExpertiseRequest.class.getName());
   }
-  // Use UpdateMemberRequest.newBuilder() to construct.
-  private UpdateMemberRequest(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+  // Use GetTrainerByExpertiseRequest.newBuilder() to construct.
+  private GetTrainerByExpertiseRequest(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
     super(builder);
   }
-  private UpdateMemberRequest() {
-    name_ = "";
-    membership_ = "";
+  private GetTrainerByExpertiseRequest() {
+    expertise_ = "";
   }
 
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return de.thws.fiw.gymmanagement.application.Gym.internal_static_UpdateMemberRequest_descriptor;
+    return de.thws.fiw.gymmanagement.application.Gym.internal_static_GetTrainerByExpertiseRequest_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return de.thws.fiw.gymmanagement.application.Gym.internal_static_UpdateMemberRequest_fieldAccessorTable
+    return de.thws.fiw.gymmanagement.application.Gym.internal_static_GetTrainerByExpertiseRequest_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            de.thws.fiw.gymmanagement.application.UpdateMemberRequest.class, de.thws.fiw.gymmanagement.application.UpdateMemberRequest.Builder.class);
+            de.thws.fiw.gymmanagement.application.GetTrainerByExpertiseRequest.class, de.thws.fiw.gymmanagement.application.GetTrainerByExpertiseRequest.Builder.class);
   }
 
-  public static final int MEMBERID_FIELD_NUMBER = 1;
-  private long memberId_ = 0L;
+  public static final int PAGESIZE_FIELD_NUMBER = 1;
+  private int pagesize_ = 0;
   /**
-   * <code>int64 memberId = 1;</code>
-   * @return The memberId.
+   * <code>int32 pagesize = 1;</code>
+   * @return The pagesize.
    */
   @java.lang.Override
-  public long getMemberId() {
-    return memberId_;
+  public int getPagesize() {
+    return pagesize_;
   }
 
-  public static final int NAME_FIELD_NUMBER = 2;
+  public static final int INDEX_FIELD_NUMBER = 2;
+  private int index_ = 0;
+  /**
+   * <code>int32 index = 2;</code>
+   * @return The index.
+   */
+  @java.lang.Override
+  public int getIndex() {
+    return index_;
+  }
+
+  public static final int EXPERTISE_FIELD_NUMBER = 3;
   @SuppressWarnings("serial")
-  private volatile java.lang.Object name_ = "";
+  private volatile java.lang.Object expertise_ = "";
   /**
-   * <code>string name = 2;</code>
-   * @return The name.
+   * <code>string expertise = 3;</code>
+   * @return The expertise.
    */
   @java.lang.Override
-  public java.lang.String getName() {
-    java.lang.Object ref = name_;
+  public java.lang.String getExpertise() {
+    java.lang.Object ref = expertise_;
     if (ref instanceof java.lang.String) {
       return (java.lang.String) ref;
     } else {
       com.google.protobuf.ByteString bs = 
           (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
-      name_ = s;
+      expertise_ = s;
       return s;
     }
   }
   /**
-   * <code>string name = 2;</code>
-   * @return The bytes for name.
+   * <code>string expertise = 3;</code>
+   * @return The bytes for expertise.
    */
   @java.lang.Override
   public com.google.protobuf.ByteString
-      getNameBytes() {
-    java.lang.Object ref = name_;
+      getExpertiseBytes() {
+    java.lang.Object ref = expertise_;
     if (ref instanceof java.lang.String) {
       com.google.protobuf.ByteString b = 
           com.google.protobuf.ByteString.copyFromUtf8(
               (java.lang.String) ref);
-      name_ = b;
-      return b;
-    } else {
-      return (com.google.protobuf.ByteString) ref;
-    }
-  }
-
-  public static final int MEMBERSHIP_FIELD_NUMBER = 3;
-  @SuppressWarnings("serial")
-  private volatile java.lang.Object membership_ = "";
-  /**
-   * <code>string membership = 3;</code>
-   * @return The membership.
-   */
-  @java.lang.Override
-  public java.lang.String getMembership() {
-    java.lang.Object ref = membership_;
-    if (ref instanceof java.lang.String) {
-      return (java.lang.String) ref;
-    } else {
-      com.google.protobuf.ByteString bs = 
-          (com.google.protobuf.ByteString) ref;
-      java.lang.String s = bs.toStringUtf8();
-      membership_ = s;
-      return s;
-    }
-  }
-  /**
-   * <code>string membership = 3;</code>
-   * @return The bytes for membership.
-   */
-  @java.lang.Override
-  public com.google.protobuf.ByteString
-      getMembershipBytes() {
-    java.lang.Object ref = membership_;
-    if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b = 
-          com.google.protobuf.ByteString.copyFromUtf8(
-              (java.lang.String) ref);
-      membership_ = b;
+      expertise_ = b;
       return b;
     } else {
       return (com.google.protobuf.ByteString) ref;
@@ -147,14 +118,14 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    if (memberId_ != 0L) {
-      output.writeInt64(1, memberId_);
+    if (pagesize_ != 0) {
+      output.writeInt32(1, pagesize_);
     }
-    if (!com.google.protobuf.GeneratedMessage.isStringEmpty(name_)) {
-      com.google.protobuf.GeneratedMessage.writeString(output, 2, name_);
+    if (index_ != 0) {
+      output.writeInt32(2, index_);
     }
-    if (!com.google.protobuf.GeneratedMessage.isStringEmpty(membership_)) {
-      com.google.protobuf.GeneratedMessage.writeString(output, 3, membership_);
+    if (!com.google.protobuf.GeneratedMessage.isStringEmpty(expertise_)) {
+      com.google.protobuf.GeneratedMessage.writeString(output, 3, expertise_);
     }
     getUnknownFields().writeTo(output);
   }
@@ -165,15 +136,16 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
-    if (memberId_ != 0L) {
+    if (pagesize_ != 0) {
       size += com.google.protobuf.CodedOutputStream
-        .computeInt64Size(1, memberId_);
+        .computeInt32Size(1, pagesize_);
     }
-    if (!com.google.protobuf.GeneratedMessage.isStringEmpty(name_)) {
-      size += com.google.protobuf.GeneratedMessage.computeStringSize(2, name_);
+    if (index_ != 0) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeInt32Size(2, index_);
     }
-    if (!com.google.protobuf.GeneratedMessage.isStringEmpty(membership_)) {
-      size += com.google.protobuf.GeneratedMessage.computeStringSize(3, membership_);
+    if (!com.google.protobuf.GeneratedMessage.isStringEmpty(expertise_)) {
+      size += com.google.protobuf.GeneratedMessage.computeStringSize(3, expertise_);
     }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
@@ -185,17 +157,17 @@ private static final long serialVersionUID = 0L;
     if (obj == this) {
      return true;
     }
-    if (!(obj instanceof de.thws.fiw.gymmanagement.application.UpdateMemberRequest)) {
+    if (!(obj instanceof de.thws.fiw.gymmanagement.application.GetTrainerByExpertiseRequest)) {
       return super.equals(obj);
     }
-    de.thws.fiw.gymmanagement.application.UpdateMemberRequest other = (de.thws.fiw.gymmanagement.application.UpdateMemberRequest) obj;
+    de.thws.fiw.gymmanagement.application.GetTrainerByExpertiseRequest other = (de.thws.fiw.gymmanagement.application.GetTrainerByExpertiseRequest) obj;
 
-    if (getMemberId()
-        != other.getMemberId()) return false;
-    if (!getName()
-        .equals(other.getName())) return false;
-    if (!getMembership()
-        .equals(other.getMembership())) return false;
+    if (getPagesize()
+        != other.getPagesize()) return false;
+    if (getIndex()
+        != other.getIndex()) return false;
+    if (!getExpertise()
+        .equals(other.getExpertise())) return false;
     if (!getUnknownFields().equals(other.getUnknownFields())) return false;
     return true;
   }
@@ -207,56 +179,55 @@ private static final long serialVersionUID = 0L;
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
-    hash = (37 * hash) + MEMBERID_FIELD_NUMBER;
-    hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-        getMemberId());
-    hash = (37 * hash) + NAME_FIELD_NUMBER;
-    hash = (53 * hash) + getName().hashCode();
-    hash = (37 * hash) + MEMBERSHIP_FIELD_NUMBER;
-    hash = (53 * hash) + getMembership().hashCode();
+    hash = (37 * hash) + PAGESIZE_FIELD_NUMBER;
+    hash = (53 * hash) + getPagesize();
+    hash = (37 * hash) + INDEX_FIELD_NUMBER;
+    hash = (53 * hash) + getIndex();
+    hash = (37 * hash) + EXPERTISE_FIELD_NUMBER;
+    hash = (53 * hash) + getExpertise().hashCode();
     hash = (29 * hash) + getUnknownFields().hashCode();
     memoizedHashCode = hash;
     return hash;
   }
 
-  public static de.thws.fiw.gymmanagement.application.UpdateMemberRequest parseFrom(
+  public static de.thws.fiw.gymmanagement.application.GetTrainerByExpertiseRequest parseFrom(
       java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static de.thws.fiw.gymmanagement.application.UpdateMemberRequest parseFrom(
+  public static de.thws.fiw.gymmanagement.application.GetTrainerByExpertiseRequest parseFrom(
       java.nio.ByteBuffer data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static de.thws.fiw.gymmanagement.application.UpdateMemberRequest parseFrom(
+  public static de.thws.fiw.gymmanagement.application.GetTrainerByExpertiseRequest parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static de.thws.fiw.gymmanagement.application.UpdateMemberRequest parseFrom(
+  public static de.thws.fiw.gymmanagement.application.GetTrainerByExpertiseRequest parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static de.thws.fiw.gymmanagement.application.UpdateMemberRequest parseFrom(byte[] data)
+  public static de.thws.fiw.gymmanagement.application.GetTrainerByExpertiseRequest parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static de.thws.fiw.gymmanagement.application.UpdateMemberRequest parseFrom(
+  public static de.thws.fiw.gymmanagement.application.GetTrainerByExpertiseRequest parseFrom(
       byte[] data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static de.thws.fiw.gymmanagement.application.UpdateMemberRequest parseFrom(java.io.InputStream input)
+  public static de.thws.fiw.gymmanagement.application.GetTrainerByExpertiseRequest parseFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessage
         .parseWithIOException(PARSER, input);
   }
-  public static de.thws.fiw.gymmanagement.application.UpdateMemberRequest parseFrom(
+  public static de.thws.fiw.gymmanagement.application.GetTrainerByExpertiseRequest parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -264,26 +235,26 @@ private static final long serialVersionUID = 0L;
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
 
-  public static de.thws.fiw.gymmanagement.application.UpdateMemberRequest parseDelimitedFrom(java.io.InputStream input)
+  public static de.thws.fiw.gymmanagement.application.GetTrainerByExpertiseRequest parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessage
         .parseDelimitedWithIOException(PARSER, input);
   }
 
-  public static de.thws.fiw.gymmanagement.application.UpdateMemberRequest parseDelimitedFrom(
+  public static de.thws.fiw.gymmanagement.application.GetTrainerByExpertiseRequest parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessage
         .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-  public static de.thws.fiw.gymmanagement.application.UpdateMemberRequest parseFrom(
+  public static de.thws.fiw.gymmanagement.application.GetTrainerByExpertiseRequest parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessage
         .parseWithIOException(PARSER, input);
   }
-  public static de.thws.fiw.gymmanagement.application.UpdateMemberRequest parseFrom(
+  public static de.thws.fiw.gymmanagement.application.GetTrainerByExpertiseRequest parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -296,7 +267,7 @@ private static final long serialVersionUID = 0L;
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-  public static Builder newBuilder(de.thws.fiw.gymmanagement.application.UpdateMemberRequest prototype) {
+  public static Builder newBuilder(de.thws.fiw.gymmanagement.application.GetTrainerByExpertiseRequest prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
   @java.lang.Override
@@ -312,26 +283,26 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
-   * Protobuf type {@code UpdateMemberRequest}
+   * Protobuf type {@code GetTrainerByExpertiseRequest}
    */
   public static final class Builder extends
       com.google.protobuf.GeneratedMessage.Builder<Builder> implements
-      // @@protoc_insertion_point(builder_implements:UpdateMemberRequest)
-      de.thws.fiw.gymmanagement.application.UpdateMemberRequestOrBuilder {
+      // @@protoc_insertion_point(builder_implements:GetTrainerByExpertiseRequest)
+      de.thws.fiw.gymmanagement.application.GetTrainerByExpertiseRequestOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return de.thws.fiw.gymmanagement.application.Gym.internal_static_UpdateMemberRequest_descriptor;
+      return de.thws.fiw.gymmanagement.application.Gym.internal_static_GetTrainerByExpertiseRequest_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return de.thws.fiw.gymmanagement.application.Gym.internal_static_UpdateMemberRequest_fieldAccessorTable
+      return de.thws.fiw.gymmanagement.application.Gym.internal_static_GetTrainerByExpertiseRequest_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              de.thws.fiw.gymmanagement.application.UpdateMemberRequest.class, de.thws.fiw.gymmanagement.application.UpdateMemberRequest.Builder.class);
+              de.thws.fiw.gymmanagement.application.GetTrainerByExpertiseRequest.class, de.thws.fiw.gymmanagement.application.GetTrainerByExpertiseRequest.Builder.class);
     }
 
-    // Construct using de.thws.fiw.gymmanagement.application.UpdateMemberRequest.newBuilder()
+    // Construct using de.thws.fiw.gymmanagement.application.GetTrainerByExpertiseRequest.newBuilder()
     private Builder() {
 
     }
@@ -345,26 +316,26 @@ private static final long serialVersionUID = 0L;
     public Builder clear() {
       super.clear();
       bitField0_ = 0;
-      memberId_ = 0L;
-      name_ = "";
-      membership_ = "";
+      pagesize_ = 0;
+      index_ = 0;
+      expertise_ = "";
       return this;
     }
 
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return de.thws.fiw.gymmanagement.application.Gym.internal_static_UpdateMemberRequest_descriptor;
+      return de.thws.fiw.gymmanagement.application.Gym.internal_static_GetTrainerByExpertiseRequest_descriptor;
     }
 
     @java.lang.Override
-    public de.thws.fiw.gymmanagement.application.UpdateMemberRequest getDefaultInstanceForType() {
-      return de.thws.fiw.gymmanagement.application.UpdateMemberRequest.getDefaultInstance();
+    public de.thws.fiw.gymmanagement.application.GetTrainerByExpertiseRequest getDefaultInstanceForType() {
+      return de.thws.fiw.gymmanagement.application.GetTrainerByExpertiseRequest.getDefaultInstance();
     }
 
     @java.lang.Override
-    public de.thws.fiw.gymmanagement.application.UpdateMemberRequest build() {
-      de.thws.fiw.gymmanagement.application.UpdateMemberRequest result = buildPartial();
+    public de.thws.fiw.gymmanagement.application.GetTrainerByExpertiseRequest build() {
+      de.thws.fiw.gymmanagement.application.GetTrainerByExpertiseRequest result = buildPartial();
       if (!result.isInitialized()) {
         throw newUninitializedMessageException(result);
       }
@@ -372,48 +343,46 @@ private static final long serialVersionUID = 0L;
     }
 
     @java.lang.Override
-    public de.thws.fiw.gymmanagement.application.UpdateMemberRequest buildPartial() {
-      de.thws.fiw.gymmanagement.application.UpdateMemberRequest result = new de.thws.fiw.gymmanagement.application.UpdateMemberRequest(this);
+    public de.thws.fiw.gymmanagement.application.GetTrainerByExpertiseRequest buildPartial() {
+      de.thws.fiw.gymmanagement.application.GetTrainerByExpertiseRequest result = new de.thws.fiw.gymmanagement.application.GetTrainerByExpertiseRequest(this);
       if (bitField0_ != 0) { buildPartial0(result); }
       onBuilt();
       return result;
     }
 
-    private void buildPartial0(de.thws.fiw.gymmanagement.application.UpdateMemberRequest result) {
+    private void buildPartial0(de.thws.fiw.gymmanagement.application.GetTrainerByExpertiseRequest result) {
       int from_bitField0_ = bitField0_;
       if (((from_bitField0_ & 0x00000001) != 0)) {
-        result.memberId_ = memberId_;
+        result.pagesize_ = pagesize_;
       }
       if (((from_bitField0_ & 0x00000002) != 0)) {
-        result.name_ = name_;
+        result.index_ = index_;
       }
       if (((from_bitField0_ & 0x00000004) != 0)) {
-        result.membership_ = membership_;
+        result.expertise_ = expertise_;
       }
     }
 
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
-      if (other instanceof de.thws.fiw.gymmanagement.application.UpdateMemberRequest) {
-        return mergeFrom((de.thws.fiw.gymmanagement.application.UpdateMemberRequest)other);
+      if (other instanceof de.thws.fiw.gymmanagement.application.GetTrainerByExpertiseRequest) {
+        return mergeFrom((de.thws.fiw.gymmanagement.application.GetTrainerByExpertiseRequest)other);
       } else {
         super.mergeFrom(other);
         return this;
       }
     }
 
-    public Builder mergeFrom(de.thws.fiw.gymmanagement.application.UpdateMemberRequest other) {
-      if (other == de.thws.fiw.gymmanagement.application.UpdateMemberRequest.getDefaultInstance()) return this;
-      if (other.getMemberId() != 0L) {
-        setMemberId(other.getMemberId());
+    public Builder mergeFrom(de.thws.fiw.gymmanagement.application.GetTrainerByExpertiseRequest other) {
+      if (other == de.thws.fiw.gymmanagement.application.GetTrainerByExpertiseRequest.getDefaultInstance()) return this;
+      if (other.getPagesize() != 0) {
+        setPagesize(other.getPagesize());
       }
-      if (!other.getName().isEmpty()) {
-        name_ = other.name_;
-        bitField0_ |= 0x00000002;
-        onChanged();
+      if (other.getIndex() != 0) {
+        setIndex(other.getIndex());
       }
-      if (!other.getMembership().isEmpty()) {
-        membership_ = other.membership_;
+      if (!other.getExpertise().isEmpty()) {
+        expertise_ = other.expertise_;
         bitField0_ |= 0x00000004;
         onChanged();
       }
@@ -444,17 +413,17 @@ private static final long serialVersionUID = 0L;
               done = true;
               break;
             case 8: {
-              memberId_ = input.readInt64();
+              pagesize_ = input.readInt32();
               bitField0_ |= 0x00000001;
               break;
             } // case 8
-            case 18: {
-              name_ = input.readStringRequireUtf8();
+            case 16: {
+              index_ = input.readInt32();
               bitField0_ |= 0x00000002;
               break;
-            } // case 18
+            } // case 16
             case 26: {
-              membership_ = input.readStringRequireUtf8();
+              expertise_ = input.readStringRequireUtf8();
               bitField0_ |= 0x00000004;
               break;
             } // case 26
@@ -475,199 +444,159 @@ private static final long serialVersionUID = 0L;
     }
     private int bitField0_;
 
-    private long memberId_ ;
+    private int pagesize_ ;
     /**
-     * <code>int64 memberId = 1;</code>
-     * @return The memberId.
+     * <code>int32 pagesize = 1;</code>
+     * @return The pagesize.
      */
     @java.lang.Override
-    public long getMemberId() {
-      return memberId_;
+    public int getPagesize() {
+      return pagesize_;
     }
     /**
-     * <code>int64 memberId = 1;</code>
-     * @param value The memberId to set.
+     * <code>int32 pagesize = 1;</code>
+     * @param value The pagesize to set.
      * @return This builder for chaining.
      */
-    public Builder setMemberId(long value) {
+    public Builder setPagesize(int value) {
 
-      memberId_ = value;
+      pagesize_ = value;
       bitField0_ |= 0x00000001;
       onChanged();
       return this;
     }
     /**
-     * <code>int64 memberId = 1;</code>
+     * <code>int32 pagesize = 1;</code>
      * @return This builder for chaining.
      */
-    public Builder clearMemberId() {
+    public Builder clearPagesize() {
       bitField0_ = (bitField0_ & ~0x00000001);
-      memberId_ = 0L;
+      pagesize_ = 0;
       onChanged();
       return this;
     }
 
-    private java.lang.Object name_ = "";
+    private int index_ ;
     /**
-     * <code>string name = 2;</code>
-     * @return The name.
+     * <code>int32 index = 2;</code>
+     * @return The index.
      */
-    public java.lang.String getName() {
-      java.lang.Object ref = name_;
-      if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs =
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        name_ = s;
-        return s;
-      } else {
-        return (java.lang.String) ref;
-      }
+    @java.lang.Override
+    public int getIndex() {
+      return index_;
     }
     /**
-     * <code>string name = 2;</code>
-     * @return The bytes for name.
-     */
-    public com.google.protobuf.ByteString
-        getNameBytes() {
-      java.lang.Object ref = name_;
-      if (ref instanceof String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        name_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-    /**
-     * <code>string name = 2;</code>
-     * @param value The name to set.
+     * <code>int32 index = 2;</code>
+     * @param value The index to set.
      * @return This builder for chaining.
      */
-    public Builder setName(
-        java.lang.String value) {
-      if (value == null) { throw new NullPointerException(); }
-      name_ = value;
+    public Builder setIndex(int value) {
+
+      index_ = value;
       bitField0_ |= 0x00000002;
       onChanged();
       return this;
     }
     /**
-     * <code>string name = 2;</code>
+     * <code>int32 index = 2;</code>
      * @return This builder for chaining.
      */
-    public Builder clearName() {
-      name_ = getDefaultInstance().getName();
+    public Builder clearIndex() {
       bitField0_ = (bitField0_ & ~0x00000002);
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>string name = 2;</code>
-     * @param value The bytes for name to set.
-     * @return This builder for chaining.
-     */
-    public Builder setNameBytes(
-        com.google.protobuf.ByteString value) {
-      if (value == null) { throw new NullPointerException(); }
-      checkByteStringIsUtf8(value);
-      name_ = value;
-      bitField0_ |= 0x00000002;
+      index_ = 0;
       onChanged();
       return this;
     }
 
-    private java.lang.Object membership_ = "";
+    private java.lang.Object expertise_ = "";
     /**
-     * <code>string membership = 3;</code>
-     * @return The membership.
+     * <code>string expertise = 3;</code>
+     * @return The expertise.
      */
-    public java.lang.String getMembership() {
-      java.lang.Object ref = membership_;
+    public java.lang.String getExpertise() {
+      java.lang.Object ref = expertise_;
       if (!(ref instanceof java.lang.String)) {
         com.google.protobuf.ByteString bs =
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        membership_ = s;
+        expertise_ = s;
         return s;
       } else {
         return (java.lang.String) ref;
       }
     }
     /**
-     * <code>string membership = 3;</code>
-     * @return The bytes for membership.
+     * <code>string expertise = 3;</code>
+     * @return The bytes for expertise.
      */
     public com.google.protobuf.ByteString
-        getMembershipBytes() {
-      java.lang.Object ref = membership_;
+        getExpertiseBytes() {
+      java.lang.Object ref = expertise_;
       if (ref instanceof String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        membership_ = b;
+        expertise_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
     }
     /**
-     * <code>string membership = 3;</code>
-     * @param value The membership to set.
+     * <code>string expertise = 3;</code>
+     * @param value The expertise to set.
      * @return This builder for chaining.
      */
-    public Builder setMembership(
+    public Builder setExpertise(
         java.lang.String value) {
       if (value == null) { throw new NullPointerException(); }
-      membership_ = value;
+      expertise_ = value;
       bitField0_ |= 0x00000004;
       onChanged();
       return this;
     }
     /**
-     * <code>string membership = 3;</code>
+     * <code>string expertise = 3;</code>
      * @return This builder for chaining.
      */
-    public Builder clearMembership() {
-      membership_ = getDefaultInstance().getMembership();
+    public Builder clearExpertise() {
+      expertise_ = getDefaultInstance().getExpertise();
       bitField0_ = (bitField0_ & ~0x00000004);
       onChanged();
       return this;
     }
     /**
-     * <code>string membership = 3;</code>
-     * @param value The bytes for membership to set.
+     * <code>string expertise = 3;</code>
+     * @param value The bytes for expertise to set.
      * @return This builder for chaining.
      */
-    public Builder setMembershipBytes(
+    public Builder setExpertiseBytes(
         com.google.protobuf.ByteString value) {
       if (value == null) { throw new NullPointerException(); }
       checkByteStringIsUtf8(value);
-      membership_ = value;
+      expertise_ = value;
       bitField0_ |= 0x00000004;
       onChanged();
       return this;
     }
 
-    // @@protoc_insertion_point(builder_scope:UpdateMemberRequest)
+    // @@protoc_insertion_point(builder_scope:GetTrainerByExpertiseRequest)
   }
 
-  // @@protoc_insertion_point(class_scope:UpdateMemberRequest)
-  private static final de.thws.fiw.gymmanagement.application.UpdateMemberRequest DEFAULT_INSTANCE;
+  // @@protoc_insertion_point(class_scope:GetTrainerByExpertiseRequest)
+  private static final de.thws.fiw.gymmanagement.application.GetTrainerByExpertiseRequest DEFAULT_INSTANCE;
   static {
-    DEFAULT_INSTANCE = new de.thws.fiw.gymmanagement.application.UpdateMemberRequest();
+    DEFAULT_INSTANCE = new de.thws.fiw.gymmanagement.application.GetTrainerByExpertiseRequest();
   }
 
-  public static de.thws.fiw.gymmanagement.application.UpdateMemberRequest getDefaultInstance() {
+  public static de.thws.fiw.gymmanagement.application.GetTrainerByExpertiseRequest getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<UpdateMemberRequest>
-      PARSER = new com.google.protobuf.AbstractParser<UpdateMemberRequest>() {
+  private static final com.google.protobuf.Parser<GetTrainerByExpertiseRequest>
+      PARSER = new com.google.protobuf.AbstractParser<GetTrainerByExpertiseRequest>() {
     @java.lang.Override
-    public UpdateMemberRequest parsePartialFrom(
+    public GetTrainerByExpertiseRequest parsePartialFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -686,17 +615,17 @@ private static final long serialVersionUID = 0L;
     }
   };
 
-  public static com.google.protobuf.Parser<UpdateMemberRequest> parser() {
+  public static com.google.protobuf.Parser<GetTrainerByExpertiseRequest> parser() {
     return PARSER;
   }
 
   @java.lang.Override
-  public com.google.protobuf.Parser<UpdateMemberRequest> getParserForType() {
+  public com.google.protobuf.Parser<GetTrainerByExpertiseRequest> getParserForType() {
     return PARSER;
   }
 
   @java.lang.Override
-  public de.thws.fiw.gymmanagement.application.UpdateMemberRequest getDefaultInstanceForType() {
+  public de.thws.fiw.gymmanagement.application.GetTrainerByExpertiseRequest getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
 

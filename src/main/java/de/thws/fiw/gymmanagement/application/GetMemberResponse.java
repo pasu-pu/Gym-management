@@ -28,7 +28,7 @@ private static final long serialVersionUID = 0L;
   }
   private GetMemberResponse() {
     name_ = "";
-    membershipType_ = "";
+    membership_ = "";
   }
 
   public static final com.google.protobuf.Descriptors.Descriptor
@@ -94,39 +94,39 @@ private static final long serialVersionUID = 0L;
     }
   }
 
-  public static final int MEMBERSHIPTYPE_FIELD_NUMBER = 3;
+  public static final int MEMBERSHIP_FIELD_NUMBER = 3;
   @SuppressWarnings("serial")
-  private volatile java.lang.Object membershipType_ = "";
+  private volatile java.lang.Object membership_ = "";
   /**
-   * <code>string membershipType = 3;</code>
-   * @return The membershipType.
+   * <code>string membership = 3;</code>
+   * @return The membership.
    */
   @java.lang.Override
-  public java.lang.String getMembershipType() {
-    java.lang.Object ref = membershipType_;
+  public java.lang.String getMembership() {
+    java.lang.Object ref = membership_;
     if (ref instanceof java.lang.String) {
       return (java.lang.String) ref;
     } else {
       com.google.protobuf.ByteString bs = 
           (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
-      membershipType_ = s;
+      membership_ = s;
       return s;
     }
   }
   /**
-   * <code>string membershipType = 3;</code>
-   * @return The bytes for membershipType.
+   * <code>string membership = 3;</code>
+   * @return The bytes for membership.
    */
   @java.lang.Override
   public com.google.protobuf.ByteString
-      getMembershipTypeBytes() {
-    java.lang.Object ref = membershipType_;
+      getMembershipBytes() {
+    java.lang.Object ref = membership_;
     if (ref instanceof java.lang.String) {
       com.google.protobuf.ByteString b = 
           com.google.protobuf.ByteString.copyFromUtf8(
               (java.lang.String) ref);
-      membershipType_ = b;
+      membership_ = b;
       return b;
     } else {
       return (com.google.protobuf.ByteString) ref;
@@ -153,8 +153,8 @@ private static final long serialVersionUID = 0L;
     if (!com.google.protobuf.GeneratedMessage.isStringEmpty(name_)) {
       com.google.protobuf.GeneratedMessage.writeString(output, 2, name_);
     }
-    if (!com.google.protobuf.GeneratedMessage.isStringEmpty(membershipType_)) {
-      com.google.protobuf.GeneratedMessage.writeString(output, 3, membershipType_);
+    if (!com.google.protobuf.GeneratedMessage.isStringEmpty(membership_)) {
+      com.google.protobuf.GeneratedMessage.writeString(output, 3, membership_);
     }
     getUnknownFields().writeTo(output);
   }
@@ -172,8 +172,8 @@ private static final long serialVersionUID = 0L;
     if (!com.google.protobuf.GeneratedMessage.isStringEmpty(name_)) {
       size += com.google.protobuf.GeneratedMessage.computeStringSize(2, name_);
     }
-    if (!com.google.protobuf.GeneratedMessage.isStringEmpty(membershipType_)) {
-      size += com.google.protobuf.GeneratedMessage.computeStringSize(3, membershipType_);
+    if (!com.google.protobuf.GeneratedMessage.isStringEmpty(membership_)) {
+      size += com.google.protobuf.GeneratedMessage.computeStringSize(3, membership_);
     }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
@@ -194,8 +194,8 @@ private static final long serialVersionUID = 0L;
         != other.getMemberId()) return false;
     if (!getName()
         .equals(other.getName())) return false;
-    if (!getMembershipType()
-        .equals(other.getMembershipType())) return false;
+    if (!getMembership()
+        .equals(other.getMembership())) return false;
     if (!getUnknownFields().equals(other.getUnknownFields())) return false;
     return true;
   }
@@ -212,8 +212,8 @@ private static final long serialVersionUID = 0L;
         getMemberId());
     hash = (37 * hash) + NAME_FIELD_NUMBER;
     hash = (53 * hash) + getName().hashCode();
-    hash = (37 * hash) + MEMBERSHIPTYPE_FIELD_NUMBER;
-    hash = (53 * hash) + getMembershipType().hashCode();
+    hash = (37 * hash) + MEMBERSHIP_FIELD_NUMBER;
+    hash = (53 * hash) + getMembership().hashCode();
     hash = (29 * hash) + getUnknownFields().hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -347,7 +347,7 @@ private static final long serialVersionUID = 0L;
       bitField0_ = 0;
       memberId_ = 0L;
       name_ = "";
-      membershipType_ = "";
+      membership_ = "";
       return this;
     }
 
@@ -388,7 +388,7 @@ private static final long serialVersionUID = 0L;
         result.name_ = name_;
       }
       if (((from_bitField0_ & 0x00000004) != 0)) {
-        result.membershipType_ = membershipType_;
+        result.membership_ = membership_;
       }
     }
 
@@ -412,8 +412,8 @@ private static final long serialVersionUID = 0L;
         bitField0_ |= 0x00000002;
         onChanged();
       }
-      if (!other.getMembershipType().isEmpty()) {
-        membershipType_ = other.membershipType_;
+      if (!other.getMembership().isEmpty()) {
+        membership_ = other.membership_;
         bitField0_ |= 0x00000004;
         onChanged();
       }
@@ -454,7 +454,7 @@ private static final long serialVersionUID = 0L;
               break;
             } // case 18
             case 26: {
-              membershipType_ = input.readStringRequireUtf8();
+              membership_ = input.readStringRequireUtf8();
               bitField0_ |= 0x00000004;
               break;
             } // case 26
@@ -579,73 +579,73 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private java.lang.Object membershipType_ = "";
+    private java.lang.Object membership_ = "";
     /**
-     * <code>string membershipType = 3;</code>
-     * @return The membershipType.
+     * <code>string membership = 3;</code>
+     * @return The membership.
      */
-    public java.lang.String getMembershipType() {
-      java.lang.Object ref = membershipType_;
+    public java.lang.String getMembership() {
+      java.lang.Object ref = membership_;
       if (!(ref instanceof java.lang.String)) {
         com.google.protobuf.ByteString bs =
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        membershipType_ = s;
+        membership_ = s;
         return s;
       } else {
         return (java.lang.String) ref;
       }
     }
     /**
-     * <code>string membershipType = 3;</code>
-     * @return The bytes for membershipType.
+     * <code>string membership = 3;</code>
+     * @return The bytes for membership.
      */
     public com.google.protobuf.ByteString
-        getMembershipTypeBytes() {
-      java.lang.Object ref = membershipType_;
+        getMembershipBytes() {
+      java.lang.Object ref = membership_;
       if (ref instanceof String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        membershipType_ = b;
+        membership_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
     }
     /**
-     * <code>string membershipType = 3;</code>
-     * @param value The membershipType to set.
+     * <code>string membership = 3;</code>
+     * @param value The membership to set.
      * @return This builder for chaining.
      */
-    public Builder setMembershipType(
+    public Builder setMembership(
         java.lang.String value) {
       if (value == null) { throw new NullPointerException(); }
-      membershipType_ = value;
+      membership_ = value;
       bitField0_ |= 0x00000004;
       onChanged();
       return this;
     }
     /**
-     * <code>string membershipType = 3;</code>
+     * <code>string membership = 3;</code>
      * @return This builder for chaining.
      */
-    public Builder clearMembershipType() {
-      membershipType_ = getDefaultInstance().getMembershipType();
+    public Builder clearMembership() {
+      membership_ = getDefaultInstance().getMembership();
       bitField0_ = (bitField0_ & ~0x00000004);
       onChanged();
       return this;
     }
     /**
-     * <code>string membershipType = 3;</code>
-     * @param value The bytes for membershipType to set.
+     * <code>string membership = 3;</code>
+     * @param value The bytes for membership to set.
      * @return This builder for chaining.
      */
-    public Builder setMembershipTypeBytes(
+    public Builder setMembershipBytes(
         com.google.protobuf.ByteString value) {
       if (value == null) { throw new NullPointerException(); }
       checkByteStringIsUtf8(value);
-      membershipType_ = value;
+      membership_ = value;
       bitField0_ |= 0x00000004;
       onChanged();
       return this;

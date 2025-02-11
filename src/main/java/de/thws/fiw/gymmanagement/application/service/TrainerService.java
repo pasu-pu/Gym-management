@@ -4,40 +4,46 @@ import de.thws.fiw.gymmanagement.domain.Trainer;
 import de.thws.fiw.gymmanagement.infrastructure.TrainerRepositoryInterface;
 
 import java.util.List;
-import java.util.Optional;
 
-public class TrainerService {
-    private final TrainerRepositoryInterface trainerRepository;
+public class TrainerService implements TrainerServiceAdapter {
 
-    public TrainerService(TrainerRepositoryInterface trainerRepository) {
-        this.trainerRepository = trainerRepository;
+    TrainerRepositoryInterface trainerRepository;
+
+    public TrainerService(TrainerRepositoryInterface trainerRepository){
+        this.trainerRepository=trainerRepository;
     }
-
+    @Override
     public Trainer createTrainer(String name, String expertise) {
-        Trainer trainer = new Trainer();
-        trainer.setName(name);
-        trainer.setExpertise(expertise);
-        return trainerRepository.save(trainer);
+        throw new UnsupportedOperationException("Not implemented yet");
     }
 
-    public Optional<Trainer> getTrainer(Long trainerId) {
-        return trainerRepository.findById(trainerId);
+    @Override
+    public Trainer updateTrainer(long id, String name, String expertise) {
+        throw new UnsupportedOperationException("Not implemented yet");
     }
 
-    public List<Trainer> getAllTrainers() {
-        return trainerRepository.findAll();
+    @Override
+    public Trainer getTrainer(long id) {
+        throw new UnsupportedOperationException("Not implemented yet");
     }
 
-    public boolean updateTrainer(Long trainerId, String name, String expertise) {
-        return trainerRepository.update(trainerId, name, expertise) != null;
+    @Override
+    public List<Trainer> getAllTrainers(int pageSize, int index) {
+        throw new UnsupportedOperationException("Not implemented yet");
     }
 
-    public boolean deleteTrainer(Long trainerId) {
-        return trainerRepository.findById(trainerId)
-                .map(trainer -> {
-                    trainerRepository.deleteById(trainer.getId());
-                    return true;
-                })
-                .orElse(false);
+    @Override
+    public List<Trainer> getTrainerByName(int pageSize, int index, String name) {
+        throw new UnsupportedOperationException("Not implemented yet");
+    }
+
+    @Override
+    public List<Trainer> getTrainerByExpertise(int pageSize, int index, String expertise) {
+        throw new UnsupportedOperationException("Not implemented yet");
+    }
+
+    @Override
+    public boolean deleteTrainer(long id) {
+        throw new UnsupportedOperationException("Not implemented yet");
     }
 }

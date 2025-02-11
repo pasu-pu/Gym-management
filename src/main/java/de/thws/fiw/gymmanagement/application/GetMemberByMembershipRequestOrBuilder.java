@@ -5,29 +5,29 @@
 
 package de.thws.fiw.gymmanagement.application;
 
-public interface CreateMemberRequestOrBuilder extends
-    // @@protoc_insertion_point(interface_extends:CreateMemberRequest)
+public interface GetMemberByMembershipRequestOrBuilder extends
+    // @@protoc_insertion_point(interface_extends:GetMemberByMembershipRequest)
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>string name = 1;</code>
-   * @return The name.
+   * <code>int32 pagesize = 1;</code>
+   * @return The pagesize.
    */
-  java.lang.String getName();
-  /**
-   * <code>string name = 1;</code>
-   * @return The bytes for name.
-   */
-  com.google.protobuf.ByteString
-      getNameBytes();
+  int getPagesize();
 
   /**
-   * <code>string membership = 2;</code>
+   * <code>int32 index = 2;</code>
+   * @return The index.
+   */
+  int getIndex();
+
+  /**
+   * <code>string membership = 3;</code>
    * @return The membership.
    */
   java.lang.String getMembership();
   /**
-   * <code>string membership = 2;</code>
+   * <code>string membership = 3;</code>
    * @return The bytes for membership.
    */
   com.google.protobuf.ByteString

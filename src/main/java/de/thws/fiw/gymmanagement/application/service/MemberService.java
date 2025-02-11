@@ -4,40 +4,46 @@ import de.thws.fiw.gymmanagement.domain.Member;
 import de.thws.fiw.gymmanagement.infrastructure.MemberRepositoryInterface;
 
 import java.util.List;
-import java.util.Optional;
 
-public class MemberService {
-    private final MemberRepositoryInterface memberRepository;
+public class MemberService implements MemberServiceAdapter {
 
-    public MemberService(MemberRepositoryInterface memberRepository) {
-        this.memberRepository = memberRepository;
+    MemberRepositoryInterface memberRepository;
+
+    public MemberService(MemberRepositoryInterface memberRepository){
+        this.memberRepository=memberRepository;
+    }
+    @Override
+    public Member createMember(String name, String membership) {
+        throw new UnsupportedOperationException("Not implemented yet");
     }
 
-    public Member createMember(String name, String membershipType) {
-        Member member = new Member();
-        member.setName(name);
-        member.setMembershipType(membershipType);
-        return memberRepository.save(member);
+    @Override
+    public Member updateMember(long id, String name, String membership) {
+        throw new UnsupportedOperationException("Not implemented yet");
     }
 
-    public Optional<Member> getMember(Long memberId) {
-        return memberRepository.findById(memberId);
+    @Override
+    public Member getMember(long id) {
+        throw new UnsupportedOperationException("Not implemented yet");
     }
 
-    public List<Member> getAllMembers() {
-        return memberRepository.findAll();
+    @Override
+    public List<Member> getAllMembers(int pageSize, int index) {
+        throw new UnsupportedOperationException("Not implemented yet");
     }
 
-    public boolean updateMember(Long memberId, String name, String membershipType) {
-        return memberRepository.update(memberId, name, membershipType) != null;
+    @Override
+    public List<Member> getMemberByName(int pageSize, int index, String name) {
+        throw new UnsupportedOperationException("Not implemented yet");
     }
 
-    public boolean deleteMember(Long memberId) {
-        return memberRepository.findById(memberId)
-                .map(member -> {
-                    memberRepository.deleteById(member.getId());
-                    return true;
-                })
-                .orElse(false);
+    @Override
+    public List<Member> getMemberByMembership(int pageSize, int index, String membership) {
+        throw new UnsupportedOperationException("Not implemented yet");
+    }
+
+    @Override
+    public boolean deleteMember(long id) {
+        throw new UnsupportedOperationException("Not implemented yet");
     }
 }
