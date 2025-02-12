@@ -43,7 +43,7 @@ public class TrainerService implements TrainerServiceAdapter {
     }
 
     @Override
-    public boolean deleteTrainer(long id) {
+    public void deleteTrainer(long id) {
         throw new UnsupportedOperationException("Not implemented yet");
     }
 }

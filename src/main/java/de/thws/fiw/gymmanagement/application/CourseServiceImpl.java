@@ -133,14 +133,14 @@ public class CourseServiceImpl extends CourseServiceGrpc.CourseServiceImplBase {
     }
 
     @Override
-    public void deleteCourse(DeleteCourseRequest request, StreamObserver<DeleteCourseResponse> responseObserver) {
+    public void deleteCourse(DeleteCourseRequest request, StreamObserver<com.google.protobuf.Empty> responseObserver) {
         try {
-            boolean success = courseService.deleteCourse(request.getCourseId());
-            DeleteCourseResponse response = DeleteCourseResponse.newBuilder().setSuccess(success).build();
-            responseObserver.onNext(response);
+            courseService.deleteCourse(request.getCourseId());
+            responseObserver.onNext(com.google.protobuf.Empty.getDefaultInstance());
             responseObserver.onCompleted();
         } catch(Exception e) {
             responseObserver.onError(Status.INTERNAL.withDescription(e.getMessage()).asRuntimeException());
         }
     }
+
 }

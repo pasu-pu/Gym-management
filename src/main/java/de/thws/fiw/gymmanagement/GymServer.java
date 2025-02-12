@@ -1,9 +1,5 @@
 package de.thws.fiw.gymmanagement;
 
-import de.thws.fiw.gymmanagement.application.BookingServiceGrpc;
-import de.thws.fiw.gymmanagement.application.CourseServiceGrpc;
-import de.thws.fiw.gymmanagement.application.MemberServiceGrpc;
-import de.thws.fiw.gymmanagement.application.TrainerServiceGrpc;
 import de.thws.fiw.gymmanagement.application.BookingServiceImpl;
 import de.thws.fiw.gymmanagement.application.CourseServiceImpl;
 import de.thws.fiw.gymmanagement.application.MemberServiceImpl;

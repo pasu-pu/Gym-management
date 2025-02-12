@@ -47,7 +47,7 @@ public class CourseService implements CourseServiceAdapter {
     }
 
     @Override
-    public boolean deleteCourse(long id) {
+    public void deleteCourse(long id) {
         throw new UnsupportedOperationException("Not implemented yet");
     }
 }

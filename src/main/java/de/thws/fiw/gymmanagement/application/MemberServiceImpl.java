@@ -126,14 +126,14 @@ public class MemberServiceImpl extends MemberServiceGrpc.MemberServiceImplBase {
     }
 
     @Override
-    public void deleteMember(DeleteMemberRequest request, StreamObserver<DeleteMemberResponse> responseObserver) {
+    public void deleteMember(DeleteMemberRequest request, StreamObserver<com.google.protobuf.Empty> responseObserver) {
         try {
-            boolean success = memberService.deleteMember(request.getMemberId());
-            DeleteMemberResponse response = DeleteMemberResponse.newBuilder().setSuccess(success).build();
-            responseObserver.onNext(response);
+            memberService.deleteMember(request.getMemberId());
+            responseObserver.onNext(com.google.protobuf.Empty.getDefaultInstance());
             responseObserver.onCompleted();
-        } catch (Exception e) {
+        } catch(Exception e) {
             responseObserver.onError(Status.INTERNAL.withDescription(e.getMessage()).asRuntimeException());
         }
     }
+
 }

@@ -207,28 +207,28 @@ public final class CourseServiceGrpc {
   }
 
   private static volatile io.grpc.MethodDescriptor<de.thws.fiw.gymmanagement.application.DeleteCourseRequest,
-      de.thws.fiw.gymmanagement.application.DeleteCourseResponse> getDeleteCourseMethod;
+      com.google.protobuf.Empty> getDeleteCourseMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "DeleteCourse",
       requestType = de.thws.fiw.gymmanagement.application.DeleteCourseRequest.class,
-      responseType = de.thws.fiw.gymmanagement.application.DeleteCourseResponse.class,
+      responseType = com.google.protobuf.Empty.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
   public static io.grpc.MethodDescriptor<de.thws.fiw.gymmanagement.application.DeleteCourseRequest,
-      de.thws.fiw.gymmanagement.application.DeleteCourseResponse> getDeleteCourseMethod() {
-    io.grpc.MethodDescriptor<de.thws.fiw.gymmanagement.application.DeleteCourseRequest, de.thws.fiw.gymmanagement.application.DeleteCourseResponse> getDeleteCourseMethod;
+      com.google.protobuf.Empty> getDeleteCourseMethod() {
+    io.grpc.MethodDescriptor<de.thws.fiw.gymmanagement.application.DeleteCourseRequest, com.google.protobuf.Empty> getDeleteCourseMethod;
     if ((getDeleteCourseMethod = CourseServiceGrpc.getDeleteCourseMethod) == null) {
       synchronized (CourseServiceGrpc.class) {
         if ((getDeleteCourseMethod = CourseServiceGrpc.getDeleteCourseMethod) == null) {
           CourseServiceGrpc.getDeleteCourseMethod = getDeleteCourseMethod =
-              io.grpc.MethodDescriptor.<de.thws.fiw.gymmanagement.application.DeleteCourseRequest, de.thws.fiw.gymmanagement.application.DeleteCourseResponse>newBuilder()
+              io.grpc.MethodDescriptor.<de.thws.fiw.gymmanagement.application.DeleteCourseRequest, com.google.protobuf.Empty>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "DeleteCourse"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   de.thws.fiw.gymmanagement.application.DeleteCourseRequest.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  de.thws.fiw.gymmanagement.application.DeleteCourseResponse.getDefaultInstance()))
+                  com.google.protobuf.Empty.getDefaultInstance()))
               .setSchemaDescriptor(new CourseServiceMethodDescriptorSupplier("DeleteCourse"))
               .build();
         }
@@ -335,7 +335,7 @@ public final class CourseServiceGrpc {
     /**
      */
     default void deleteCourse(de.thws.fiw.gymmanagement.application.DeleteCourseRequest request,
-        io.grpc.stub.StreamObserver<de.thws.fiw.gymmanagement.application.DeleteCourseResponse> responseObserver) {
+        io.grpc.stub.StreamObserver<com.google.protobuf.Empty> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getDeleteCourseMethod(), responseObserver);
     }
   }
@@ -428,7 +428,7 @@ public final class CourseServiceGrpc {
     /**
      */
     public void deleteCourse(de.thws.fiw.gymmanagement.application.DeleteCourseRequest request,
-        io.grpc.stub.StreamObserver<de.thws.fiw.gymmanagement.application.DeleteCourseResponse> responseObserver) {
+        io.grpc.stub.StreamObserver<com.google.protobuf.Empty> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getDeleteCourseMethod(), getCallOptions()), request, responseObserver);
     }
@@ -499,7 +499,7 @@ public final class CourseServiceGrpc {
 
     /**
      */
-    public de.thws.fiw.gymmanagement.application.DeleteCourseResponse deleteCourse(de.thws.fiw.gymmanagement.application.DeleteCourseRequest request) {
+    public com.google.protobuf.Empty deleteCourse(de.thws.fiw.gymmanagement.application.DeleteCourseRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getDeleteCourseMethod(), getCallOptions(), request);
     }
@@ -576,7 +576,7 @@ public final class CourseServiceGrpc {
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<de.thws.fiw.gymmanagement.application.DeleteCourseResponse> deleteCourse(
+    public com.google.common.util.concurrent.ListenableFuture<com.google.protobuf.Empty> deleteCourse(
         de.thws.fiw.gymmanagement.application.DeleteCourseRequest request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getDeleteCourseMethod(), getCallOptions()), request);
@@ -634,7 +634,7 @@ public final class CourseServiceGrpc {
           break;
         case METHODID_DELETE_COURSE:
           serviceImpl.deleteCourse((de.thws.fiw.gymmanagement.application.DeleteCourseRequest) request,
-              (io.grpc.stub.StreamObserver<de.thws.fiw.gymmanagement.application.DeleteCourseResponse>) responseObserver);
+              (io.grpc.stub.StreamObserver<com.google.protobuf.Empty>) responseObserver);
           break;
         default:
           throw new AssertionError();
@@ -701,7 +701,7 @@ public final class CourseServiceGrpc {
           io.grpc.stub.ServerCalls.asyncUnaryCall(
             new MethodHandlers<
               de.thws.fiw.gymmanagement.application.DeleteCourseRequest,
-              de.thws.fiw.gymmanagement.application.DeleteCourseResponse>(
+              com.google.protobuf.Empty>(
                 service, METHODID_DELETE_COURSE)))
         .build();
   }

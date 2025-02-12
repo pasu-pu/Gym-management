@@ -71,11 +71,6 @@ public final class Gym {
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_DeleteMemberRequest_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_DeleteMemberResponse_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_DeleteMemberResponse_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
     internal_static_CreateTrainerRequest_descriptor;
   static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
@@ -120,11 +115,6 @@ public final class Gym {
   static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_DeleteTrainerRequest_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_DeleteTrainerResponse_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_DeleteTrainerResponse_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
     internal_static_CreateCourseRequest_descriptor;
   static final 
@@ -171,11 +161,6 @@ public final class Gym {
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_DeleteCourseRequest_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_DeleteCourseResponse_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_DeleteCourseResponse_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
     internal_static_CreateBookingRequest_descriptor;
   static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
@@ -215,11 +200,6 @@ public final class Gym {
   static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_DeleteBookingRequest_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_DeleteBookingResponse_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_DeleteBookingResponse_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -229,119 +209,117 @@ public final class Gym {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\tgym.proto\"7\n\023CreateMemberRequest\022\014\n\004na" +
-      "me\030\001 \001(\t\022\022\n\nmembership\030\002 \001(\t\"I\n\023UpdateMe" +
-      "mberRequest\022\020\n\010memberId\030\001 \001(\003\022\014\n\004name\030\002 " +
-      "\001(\t\022\022\n\nmembership\030\003 \001(\t\"$\n\020GetMemberRequ" +
-      "est\022\020\n\010memberId\030\001 \001(\003\"G\n\021GetMemberRespon" +
-      "se\022\020\n\010memberId\030\001 \001(\003\022\014\n\004name\030\002 \001(\t\022\022\n\nme" +
-      "mbership\030\003 \001(\t\"7\n\024GetAllMembersRequest\022\020" +
-      "\n\010pagesize\030\001 \001(\005\022\r\n\005index\030\002 \001(\005\"G\n\026GetMe" +
-      "mberByNameRequest\022\020\n\010pagesize\030\001 \001(\005\022\r\n\005i" +
-      "ndex\030\002 \001(\005\022\014\n\004name\030\003 \001(\t\"S\n\034GetMemberByM" +
-      "embershipRequest\022\020\n\010pagesize\030\001 \001(\005\022\r\n\005in" +
-      "dex\030\002 \001(\005\022\022\n\nmembership\030\003 \001(\t\"<\n\025GetAllM" +
-      "embersResponse\022#\n\007members\030\001 \003(\0132\022.GetMem" +
-      "berResponse\"\'\n\023DeleteMemberRequest\022\020\n\010me" +
-      "mberId\030\001 \001(\003\"\'\n\024DeleteMemberResponse\022\017\n\007" +
-      "success\030\001 \001(\010\"7\n\024CreateTrainerRequest\022\014\n" +
-      "\004name\030\001 \001(\t\022\021\n\texpertise\030\002 \001(\t\"J\n\024Update" +
-      "TrainerRequest\022\021\n\ttrainerId\030\001 \001(\003\022\014\n\004nam" +
-      "e\030\002 \001(\t\022\021\n\texpertise\030\003 \001(\t\"&\n\021GetTrainer" +
-      "Request\022\021\n\ttrainerId\030\001 \001(\003\"H\n\022GetTrainer" +
-      "Response\022\021\n\ttrainerId\030\001 \001(\003\022\014\n\004name\030\002 \001(" +
-      "\t\022\021\n\texpertise\030\003 \001(\t\"8\n\025GetAllTrainersRe" +
-      "quest\022\020\n\010pagesize\030\001 \001(\005\022\r\n\005index\030\002 \001(\005\"H" +
-      "\n\027GetTrainerByNameRequest\022\020\n\010pagesize\030\001 " +
-      "\001(\005\022\r\n\005index\030\002 \001(\005\022\014\n\004name\030\003 \001(\t\"R\n\034GetT" +
-      "rainerByExpertiseRequest\022\020\n\010pagesize\030\001 \001" +
-      "(\005\022\r\n\005index\030\002 \001(\005\022\021\n\texpertise\030\003 \001(\t\"?\n\026" +
-      "GetAllTrainersResponse\022%\n\010trainers\030\001 \003(\013" +
-      "2\023.GetTrainerResponse\")\n\024DeleteTrainerRe" +
-      "quest\022\021\n\ttrainerId\030\001 \001(\003\"(\n\025DeleteTraine" +
-      "rResponse\022\017\n\007success\030\001 \001(\010\"H\n\023CreateCour" +
-      "seRequest\022\014\n\004name\030\001 \001(\t\022\020\n\010capacity\030\002 \001(" +
-      "\005\022\021\n\ttrainerId\030\003 \001(\003\"Z\n\023UpdateCourseRequ" +
-      "est\022\020\n\010courseId\030\001 \001(\003\022\014\n\004name\030\002 \001(\t\022\020\n\010c" +
-      "apacity\030\003 \001(\005\022\021\n\ttrainerId\030\004 \001(\003\"$\n\020GetC" +
-      "ourseRequest\022\020\n\010courseId\030\001 \001(\003\"X\n\021GetCou" +
-      "rseResponse\022\020\n\010courseId\030\001 \001(\003\022\014\n\004name\030\002 " +
-      "\001(\t\022\020\n\010capacity\030\003 \001(\005\022\021\n\ttrainerId\030\004 \001(\003" +
-      "\"7\n\024GetAllCoursesRequest\022\020\n\010pagesize\030\001 \001" +
-      "(\005\022\r\n\005index\030\002 \001(\005\"G\n\026GetCourseByNameRequ" +
-      "est\022\020\n\010pagesize\030\001 \001(\005\022\r\n\005index\030\002 \001(\005\022\014\n\004" +
-      "name\030\003 \001(\t\"O\n\031GetCourseByTrainerRequest\022" +
-      "\020\n\010pagesize\030\001 \001(\005\022\r\n\005index\030\002 \001(\005\022\021\n\ttrai" +
-      "nerId\030\003 \001(\003\"<\n\025GetAllCoursesResponse\022#\n\007" +
-      "courses\030\001 \003(\0132\022.GetCourseResponse\"\'\n\023Del" +
-      "eteCourseRequest\022\020\n\010courseId\030\001 \001(\003\"\'\n\024De" +
-      "leteCourseResponse\022\017\n\007success\030\001 \001(\010\"O\n\024C" +
-      "reateBookingRequest\022\020\n\010memberId\030\001 \001(\003\022\020\n" +
-      "\010courseId\030\002 \001(\003\022\023\n\013bookingDate\030\003 \001(\t\"&\n\021" +
-      "GetBookingRequest\022\021\n\tbookingId\030\001 \001(\003\"`\n\022" +
-      "GetBookingResponse\022\021\n\tbookingId\030\001 \001(\003\022\020\n" +
-      "\010memberId\030\002 \001(\003\022\020\n\010courseId\030\003 \001(\003\022\023\n\013boo" +
-      "kingDate\030\004 \001(\t\"N\n\031GetBookingByMemberRequ" +
-      "est\022\020\n\010memberId\030\001 \001(\003\022\020\n\010pagesize\030\002 \001(\005\022" +
-      "\r\n\005index\030\003 \001(\005\"N\n\031GetBookingByCourseRequ" +
-      "est\022\020\n\010courseId\030\001 \001(\003\022\020\n\010pagesize\030\002 \001(\005\022" +
-      "\r\n\005index\030\003 \001(\005\"O\n\027GetBookingByDateReques" +
-      "t\022\023\n\013bookingDate\030\001 \001(\t\022\020\n\010pagesize\030\002 \001(\005" +
-      "\022\r\n\005index\030\003 \001(\005\"?\n\026GetAllBookingsRespons" +
-      "e\022%\n\010bookings\030\001 \003(\0132\023.GetBookingResponse" +
-      "\")\n\024DeleteBookingRequest\022\021\n\tbookingId\030\001 " +
-      "\001(\003\"(\n\025DeleteBookingResponse\022\017\n\007success\030" +
-      "\001 \001(\0102\310\003\n\rMemberService\0228\n\014CreateMember\022" +
-      "\024.CreateMemberRequest\032\022.GetMemberRespons" +
-      "e\0228\n\014UpdateMember\022\024.UpdateMemberRequest\032" +
-      "\022.GetMemberResponse\0222\n\tGetMember\022\021.GetMe" +
-      "mberRequest\032\022.GetMemberResponse\022>\n\rGetAl" +
-      "lMembers\022\025.GetAllMembersRequest\032\026.GetAll" +
-      "MembersResponse\022B\n\017GetMemberByName\022\027.Get" +
-      "MemberByNameRequest\032\026.GetAllMembersRespo" +
-      "nse\022N\n\025GetMemberByMembership\022\035.GetMember" +
-      "ByMembershipRequest\032\026.GetAllMembersRespo" +
-      "nse\022;\n\014DeleteMember\022\024.DeleteMemberReques" +
-      "t\032\025.DeleteMemberResponse2\334\003\n\016TrainerServ" +
-      "ice\022;\n\rCreateTrainer\022\025.CreateTrainerRequ" +
-      "est\032\023.GetTrainerResponse\022;\n\rUpdateTraine" +
-      "r\022\025.UpdateTrainerRequest\032\023.GetTrainerRes" +
-      "ponse\0225\n\nGetTrainer\022\022.GetTrainerRequest\032" +
-      "\023.GetTrainerResponse\022A\n\016GetAllTrainers\022\026" +
-      ".GetAllTrainersRequest\032\027.GetAllTrainersR" +
-      "esponse\022E\n\020GetTrainerByName\022\030.GetTrainer" +
-      "ByNameRequest\032\027.GetAllTrainersResponse\022O" +
-      "\n\025GetTrainerByExpertise\022\035.GetTrainerByEx" +
-      "pertiseRequest\032\027.GetAllTrainersResponse\022" +
-      ">\n\rDeleteTrainer\022\025.DeleteTrainerRequest\032" +
-      "\026.DeleteTrainerResponse2\302\003\n\rCourseServic" +
-      "e\0228\n\014CreateCourse\022\024.CreateCourseRequest\032" +
-      "\022.GetCourseResponse\0228\n\014UpdateCourse\022\024.Up" +
-      "dateCourseRequest\032\022.GetCourseResponse\0222\n" +
-      "\tGetCourse\022\021.GetCourseRequest\032\022.GetCours" +
-      "eResponse\022B\n\017GetCourseByName\022\027.GetCourse" +
-      "ByNameRequest\032\026.GetAllCoursesResponse\022H\n" +
-      "\022GetCourseByTrainer\022\032.GetCourseByTrainer" +
-      "Request\032\026.GetAllCoursesResponse\022>\n\rGetAl" +
-      "lCourses\022\025.GetAllCoursesRequest\032\026.GetAll" +
-      "CoursesResponse\022;\n\014DeleteCourse\022\024.Delete" +
-      "CourseRequest\032\025.DeleteCourseResponse2\241\003\n" +
-      "\016BookingService\022;\n\rCreateBooking\022\025.Creat" +
-      "eBookingRequest\032\023.GetBookingResponse\0225\n\n" +
-      "GetBooking\022\022.GetBookingRequest\032\023.GetBook" +
-      "ingResponse\022I\n\022GetBookingByMember\022\032.GetB" +
-      "ookingByMemberRequest\032\027.GetAllBookingsRe" +
-      "sponse\022I\n\022GetBookingByCourse\022\032.GetBookin" +
-      "gByCourseRequest\032\027.GetAllBookingsRespons" +
-      "e\022E\n\020GetBookingByDate\022\030.GetBookingByDate" +
-      "Request\032\027.GetAllBookingsResponse\022>\n\rDele" +
-      "teBooking\022\025.DeleteBookingRequest\032\026.Delet" +
-      "eBookingResponseB)\n%de.thws.fiw.gymmanag" +
-      "ement.applicationP\001b\006proto3"
+      "\n\tgym.proto\032\033google/protobuf/empty.proto" +
+      "\"7\n\023CreateMemberRequest\022\014\n\004name\030\001 \001(\t\022\022\n" +
+      "\nmembership\030\002 \001(\t\"I\n\023UpdateMemberRequest" +
+      "\022\020\n\010memberId\030\001 \001(\003\022\014\n\004name\030\002 \001(\t\022\022\n\nmemb" +
+      "ership\030\003 \001(\t\"$\n\020GetMemberRequest\022\020\n\010memb" +
+      "erId\030\001 \001(\003\"G\n\021GetMemberResponse\022\020\n\010membe" +
+      "rId\030\001 \001(\003\022\014\n\004name\030\002 \001(\t\022\022\n\nmembership\030\003 " +
+      "\001(\t\"7\n\024GetAllMembersRequest\022\020\n\010pagesize\030" +
+      "\001 \001(\005\022\r\n\005index\030\002 \001(\005\"G\n\026GetMemberByNameR" +
+      "equest\022\020\n\010pagesize\030\001 \001(\005\022\r\n\005index\030\002 \001(\005\022" +
+      "\014\n\004name\030\003 \001(\t\"S\n\034GetMemberByMembershipRe" +
+      "quest\022\020\n\010pagesize\030\001 \001(\005\022\r\n\005index\030\002 \001(\005\022\022" +
+      "\n\nmembership\030\003 \001(\t\"<\n\025GetAllMembersRespo" +
+      "nse\022#\n\007members\030\001 \003(\0132\022.GetMemberResponse" +
+      "\"\'\n\023DeleteMemberRequest\022\020\n\010memberId\030\001 \001(" +
+      "\003\"7\n\024CreateTrainerRequest\022\014\n\004name\030\001 \001(\t\022" +
+      "\021\n\texpertise\030\002 \001(\t\"J\n\024UpdateTrainerReque" +
+      "st\022\021\n\ttrainerId\030\001 \001(\003\022\014\n\004name\030\002 \001(\t\022\021\n\te" +
+      "xpertise\030\003 \001(\t\"&\n\021GetTrainerRequest\022\021\n\tt" +
+      "rainerId\030\001 \001(\003\"H\n\022GetTrainerResponse\022\021\n\t" +
+      "trainerId\030\001 \001(\003\022\014\n\004name\030\002 \001(\t\022\021\n\texperti" +
+      "se\030\003 \001(\t\"8\n\025GetAllTrainersRequest\022\020\n\010pag" +
+      "esize\030\001 \001(\005\022\r\n\005index\030\002 \001(\005\"H\n\027GetTrainer" +
+      "ByNameRequest\022\020\n\010pagesize\030\001 \001(\005\022\r\n\005index" +
+      "\030\002 \001(\005\022\014\n\004name\030\003 \001(\t\"R\n\034GetTrainerByExpe" +
+      "rtiseRequest\022\020\n\010pagesize\030\001 \001(\005\022\r\n\005index\030" +
+      "\002 \001(\005\022\021\n\texpertise\030\003 \001(\t\"?\n\026GetAllTraine" +
+      "rsResponse\022%\n\010trainers\030\001 \003(\0132\023.GetTraine" +
+      "rResponse\")\n\024DeleteTrainerRequest\022\021\n\ttra" +
+      "inerId\030\001 \001(\003\"H\n\023CreateCourseRequest\022\014\n\004n" +
+      "ame\030\001 \001(\t\022\020\n\010capacity\030\002 \001(\005\022\021\n\ttrainerId" +
+      "\030\003 \001(\003\"Z\n\023UpdateCourseRequest\022\020\n\010courseI" +
+      "d\030\001 \001(\003\022\014\n\004name\030\002 \001(\t\022\020\n\010capacity\030\003 \001(\005\022" +
+      "\021\n\ttrainerId\030\004 \001(\003\"$\n\020GetCourseRequest\022\020" +
+      "\n\010courseId\030\001 \001(\003\"X\n\021GetCourseResponse\022\020\n" +
+      "\010courseId\030\001 \001(\003\022\014\n\004name\030\002 \001(\t\022\020\n\010capacit" +
+      "y\030\003 \001(\005\022\021\n\ttrainerId\030\004 \001(\003\"7\n\024GetAllCour" +
+      "sesRequest\022\020\n\010pagesize\030\001 \001(\005\022\r\n\005index\030\002 " +
+      "\001(\005\"G\n\026GetCourseByNameRequest\022\020\n\010pagesiz" +
+      "e\030\001 \001(\005\022\r\n\005index\030\002 \001(\005\022\014\n\004name\030\003 \001(\t\"O\n\031" +
+      "GetCourseByTrainerRequest\022\020\n\010pagesize\030\001 " +
+      "\001(\005\022\r\n\005index\030\002 \001(\005\022\021\n\ttrainerId\030\003 \001(\003\"<\n" +
+      "\025GetAllCoursesResponse\022#\n\007courses\030\001 \003(\0132" +
+      "\022.GetCourseResponse\"\'\n\023DeleteCourseReque" +
+      "st\022\020\n\010courseId\030\001 \001(\003\"O\n\024CreateBookingReq" +
+      "uest\022\020\n\010memberId\030\001 \001(\003\022\020\n\010courseId\030\002 \001(\003" +
+      "\022\023\n\013bookingDate\030\003 \001(\t\"&\n\021GetBookingReque" +
+      "st\022\021\n\tbookingId\030\001 \001(\003\"`\n\022GetBookingRespo" +
+      "nse\022\021\n\tbookingId\030\001 \001(\003\022\020\n\010memberId\030\002 \001(\003" +
+      "\022\020\n\010courseId\030\003 \001(\003\022\023\n\013bookingDate\030\004 \001(\t\"" +
+      "N\n\031GetBookingByMemberRequest\022\020\n\010memberId" +
+      "\030\001 \001(\003\022\020\n\010pagesize\030\002 \001(\005\022\r\n\005index\030\003 \001(\005\"" +
+      "N\n\031GetBookingByCourseRequest\022\020\n\010courseId" +
+      "\030\001 \001(\003\022\020\n\010pagesize\030\002 \001(\005\022\r\n\005index\030\003 \001(\005\"" +
+      "O\n\027GetBookingByDateRequest\022\023\n\013bookingDat" +
+      "e\030\001 \001(\t\022\020\n\010pagesize\030\002 \001(\005\022\r\n\005index\030\003 \001(\005" +
+      "\"?\n\026GetAllBookingsResponse\022%\n\010bookings\030\001" +
+      " \003(\0132\023.GetBookingResponse\")\n\024DeleteBooki" +
+      "ngRequest\022\021\n\tbookingId\030\001 \001(\0032\311\003\n\rMemberS" +
+      "ervice\0228\n\014CreateMember\022\024.CreateMemberReq" +
+      "uest\032\022.GetMemberResponse\0228\n\014UpdateMember" +
+      "\022\024.UpdateMemberRequest\032\022.GetMemberRespon" +
+      "se\0222\n\tGetMember\022\021.GetMemberRequest\032\022.Get" +
+      "MemberResponse\022>\n\rGetAllMembers\022\025.GetAll" +
+      "MembersRequest\032\026.GetAllMembersResponse\022B" +
+      "\n\017GetMemberByName\022\027.GetMemberByNameReque" +
+      "st\032\026.GetAllMembersResponse\022N\n\025GetMemberB" +
+      "yMembership\022\035.GetMemberByMembershipReque" +
+      "st\032\026.GetAllMembersResponse\022<\n\014DeleteMemb" +
+      "er\022\024.DeleteMemberRequest\032\026.google.protob" +
+      "uf.Empty2\334\003\n\016TrainerService\022;\n\rCreateTra" +
+      "iner\022\025.CreateTrainerRequest\032\023.GetTrainer" +
+      "Response\022;\n\rUpdateTrainer\022\025.UpdateTraine" +
+      "rRequest\032\023.GetTrainerResponse\0225\n\nGetTrai" +
+      "ner\022\022.GetTrainerRequest\032\023.GetTrainerResp" +
+      "onse\022A\n\016GetAllTrainers\022\026.GetAllTrainersR" +
+      "equest\032\027.GetAllTrainersResponse\022E\n\020GetTr" +
+      "ainerByName\022\030.GetTrainerByNameRequest\032\027." +
+      "GetAllTrainersResponse\022O\n\025GetTrainerByEx" +
+      "pertise\022\035.GetTrainerByExpertiseRequest\032\027" +
+      ".GetAllTrainersResponse\022>\n\rDeleteTrainer" +
+      "\022\025.DeleteTrainerRequest\032\026.google.protobu" +
+      "f.Empty2\303\003\n\rCourseService\0228\n\014CreateCours" +
+      "e\022\024.CreateCourseRequest\032\022.GetCourseRespo" +
+      "nse\0228\n\014UpdateCourse\022\024.UpdateCourseReques" +
+      "t\032\022.GetCourseResponse\0222\n\tGetCourse\022\021.Get" +
+      "CourseRequest\032\022.GetCourseResponse\022B\n\017Get" +
+      "CourseByName\022\027.GetCourseByNameRequest\032\026." +
+      "GetAllCoursesResponse\022H\n\022GetCourseByTrai" +
+      "ner\022\032.GetCourseByTrainerRequest\032\026.GetAll" +
+      "CoursesResponse\022>\n\rGetAllCourses\022\025.GetAl" +
+      "lCoursesRequest\032\026.GetAllCoursesResponse\022" +
+      "<\n\014DeleteCourse\022\024.DeleteCourseRequest\032\026." +
+      "google.protobuf.Empty2\241\003\n\016BookingService" +
+      "\022;\n\rCreateBooking\022\025.CreateBookingRequest" +
+      "\032\023.GetBookingResponse\0225\n\nGetBooking\022\022.Ge" +
+      "tBookingRequest\032\023.GetBookingResponse\022I\n\022" +
+      "GetBookingByMember\022\032.GetBookingByMemberR" +
+      "equest\032\027.GetAllBookingsResponse\022I\n\022GetBo" +
+      "okingByCourse\022\032.GetBookingByCourseReques" +
+      "t\032\027.GetAllBookingsResponse\022E\n\020GetBooking" +
+      "ByDate\022\030.GetBookingByDateRequest\032\027.GetAl" +
+      "lBookingsResponse\022>\n\rDeleteBooking\022\025.Del" +
+      "eteBookingRequest\032\026.google.protobuf.Empt" +
+      "yB)\n%de.thws.fiw.gymmanagement.applicati" +
+      "onP\001b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
+          com.google.protobuf.EmptyProto.getDescriptor(),
         });
     internal_static_CreateMemberRequest_descriptor =
       getDescriptor().getMessageTypes().get(0);
@@ -397,187 +375,164 @@ public final class Gym {
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_DeleteMemberRequest_descriptor,
         new java.lang.String[] { "MemberId", });
-    internal_static_DeleteMemberResponse_descriptor =
-      getDescriptor().getMessageTypes().get(9);
-    internal_static_DeleteMemberResponse_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-        internal_static_DeleteMemberResponse_descriptor,
-        new java.lang.String[] { "Success", });
     internal_static_CreateTrainerRequest_descriptor =
-      getDescriptor().getMessageTypes().get(10);
+      getDescriptor().getMessageTypes().get(9);
     internal_static_CreateTrainerRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_CreateTrainerRequest_descriptor,
         new java.lang.String[] { "Name", "Expertise", });
     internal_static_UpdateTrainerRequest_descriptor =
-      getDescriptor().getMessageTypes().get(11);
+      getDescriptor().getMessageTypes().get(10);
     internal_static_UpdateTrainerRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_UpdateTrainerRequest_descriptor,
         new java.lang.String[] { "TrainerId", "Name", "Expertise", });
     internal_static_GetTrainerRequest_descriptor =
-      getDescriptor().getMessageTypes().get(12);
+      getDescriptor().getMessageTypes().get(11);
     internal_static_GetTrainerRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_GetTrainerRequest_descriptor,
         new java.lang.String[] { "TrainerId", });
     internal_static_GetTrainerResponse_descriptor =
-      getDescriptor().getMessageTypes().get(13);
+      getDescriptor().getMessageTypes().get(12);
     internal_static_GetTrainerResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_GetTrainerResponse_descriptor,
         new java.lang.String[] { "TrainerId", "Name", "Expertise", });
     internal_static_GetAllTrainersRequest_descriptor =
-      getDescriptor().getMessageTypes().get(14);
+      getDescriptor().getMessageTypes().get(13);
     internal_static_GetAllTrainersRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_GetAllTrainersRequest_descriptor,
         new java.lang.String[] { "Pagesize", "Index", });
     internal_static_GetTrainerByNameRequest_descriptor =
-      getDescriptor().getMessageTypes().get(15);
+      getDescriptor().getMessageTypes().get(14);
     internal_static_GetTrainerByNameRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_GetTrainerByNameRequest_descriptor,
         new java.lang.String[] { "Pagesize", "Index", "Name", });
     internal_static_GetTrainerByExpertiseRequest_descriptor =
-      getDescriptor().getMessageTypes().get(16);
+      getDescriptor().getMessageTypes().get(15);
     internal_static_GetTrainerByExpertiseRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_GetTrainerByExpertiseRequest_descriptor,
         new java.lang.String[] { "Pagesize", "Index", "Expertise", });
     internal_static_GetAllTrainersResponse_descriptor =
-      getDescriptor().getMessageTypes().get(17);
+      getDescriptor().getMessageTypes().get(16);
     internal_static_GetAllTrainersResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_GetAllTrainersResponse_descriptor,
         new java.lang.String[] { "Trainers", });
     internal_static_DeleteTrainerRequest_descriptor =
-      getDescriptor().getMessageTypes().get(18);
+      getDescriptor().getMessageTypes().get(17);
     internal_static_DeleteTrainerRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_DeleteTrainerRequest_descriptor,
         new java.lang.String[] { "TrainerId", });
-    internal_static_DeleteTrainerResponse_descriptor =
-      getDescriptor().getMessageTypes().get(19);
-    internal_static_DeleteTrainerResponse_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-        internal_static_DeleteTrainerResponse_descriptor,
-        new java.lang.String[] { "Success", });
     internal_static_CreateCourseRequest_descriptor =
-      getDescriptor().getMessageTypes().get(20);
+      getDescriptor().getMessageTypes().get(18);
     internal_static_CreateCourseRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_CreateCourseRequest_descriptor,
         new java.lang.String[] { "Name", "Capacity", "TrainerId", });
     internal_static_UpdateCourseRequest_descriptor =
-      getDescriptor().getMessageTypes().get(21);
+      getDescriptor().getMessageTypes().get(19);
     internal_static_UpdateCourseRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_UpdateCourseRequest_descriptor,
         new java.lang.String[] { "CourseId", "Name", "Capacity", "TrainerId", });
     internal_static_GetCourseRequest_descriptor =
-      getDescriptor().getMessageTypes().get(22);
+      getDescriptor().getMessageTypes().get(20);
     internal_static_GetCourseRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_GetCourseRequest_descriptor,
         new java.lang.String[] { "CourseId", });
     internal_static_GetCourseResponse_descriptor =
-      getDescriptor().getMessageTypes().get(23);
+      getDescriptor().getMessageTypes().get(21);
     internal_static_GetCourseResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_GetCourseResponse_descriptor,
         new java.lang.String[] { "CourseId", "Name", "Capacity", "TrainerId", });
     internal_static_GetAllCoursesRequest_descriptor =
-      getDescriptor().getMessageTypes().get(24);
+      getDescriptor().getMessageTypes().get(22);
     internal_static_GetAllCoursesRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_GetAllCoursesRequest_descriptor,
         new java.lang.String[] { "Pagesize", "Index", });
     internal_static_GetCourseByNameRequest_descriptor =
-      getDescriptor().getMessageTypes().get(25);
+      getDescriptor().getMessageTypes().get(23);
     internal_static_GetCourseByNameRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_GetCourseByNameRequest_descriptor,
         new java.lang.String[] { "Pagesize", "Index", "Name", });
     internal_static_GetCourseByTrainerRequest_descriptor =
-      getDescriptor().getMessageTypes().get(26);
+      getDescriptor().getMessageTypes().get(24);
     internal_static_GetCourseByTrainerRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_GetCourseByTrainerRequest_descriptor,
         new java.lang.String[] { "Pagesize", "Index", "TrainerId", });
     internal_static_GetAllCoursesResponse_descriptor =
-      getDescriptor().getMessageTypes().get(27);
+      getDescriptor().getMessageTypes().get(25);
     internal_static_GetAllCoursesResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_GetAllCoursesResponse_descriptor,
         new java.lang.String[] { "Courses", });
     internal_static_DeleteCourseRequest_descriptor =
-      getDescriptor().getMessageTypes().get(28);
+      getDescriptor().getMessageTypes().get(26);
     internal_static_DeleteCourseRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_DeleteCourseRequest_descriptor,
         new java.lang.String[] { "CourseId", });
-    internal_static_DeleteCourseResponse_descriptor =
-      getDescriptor().getMessageTypes().get(29);
-    internal_static_DeleteCourseResponse_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-        internal_static_DeleteCourseResponse_descriptor,
-        new java.lang.String[] { "Success", });
     internal_static_CreateBookingRequest_descriptor =
-      getDescriptor().getMessageTypes().get(30);
+      getDescriptor().getMessageTypes().get(27);
     internal_static_CreateBookingRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_CreateBookingRequest_descriptor,
         new java.lang.String[] { "MemberId", "CourseId", "BookingDate", });
     internal_static_GetBookingRequest_descriptor =
-      getDescriptor().getMessageTypes().get(31);
+      getDescriptor().getMessageTypes().get(28);
     internal_static_GetBookingRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_GetBookingRequest_descriptor,
         new java.lang.String[] { "BookingId", });
     internal_static_GetBookingResponse_descriptor =
-      getDescriptor().getMessageTypes().get(32);
+      getDescriptor().getMessageTypes().get(29);
     internal_static_GetBookingResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_GetBookingResponse_descriptor,
         new java.lang.String[] { "BookingId", "MemberId", "CourseId", "BookingDate", });
     internal_static_GetBookingByMemberRequest_descriptor =
-      getDescriptor().getMessageTypes().get(33);
+      getDescriptor().getMessageTypes().get(30);
     internal_static_GetBookingByMemberRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_GetBookingByMemberRequest_descriptor,
         new java.lang.String[] { "MemberId", "Pagesize", "Index", });
     internal_static_GetBookingByCourseRequest_descriptor =
-      getDescriptor().getMessageTypes().get(34);
+      getDescriptor().getMessageTypes().get(31);
     internal_static_GetBookingByCourseRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_GetBookingByCourseRequest_descriptor,
         new java.lang.String[] { "CourseId", "Pagesize", "Index", });
     internal_static_GetBookingByDateRequest_descriptor =
-      getDescriptor().getMessageTypes().get(35);
+      getDescriptor().getMessageTypes().get(32);
     internal_static_GetBookingByDateRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_GetBookingByDateRequest_descriptor,
         new java.lang.String[] { "BookingDate", "Pagesize", "Index", });
     internal_static_GetAllBookingsResponse_descriptor =
-      getDescriptor().getMessageTypes().get(36);
+      getDescriptor().getMessageTypes().get(33);
     internal_static_GetAllBookingsResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_GetAllBookingsResponse_descriptor,
         new java.lang.String[] { "Bookings", });
     internal_static_DeleteBookingRequest_descriptor =
-      getDescriptor().getMessageTypes().get(37);
+      getDescriptor().getMessageTypes().get(34);
     internal_static_DeleteBookingRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_DeleteBookingRequest_descriptor,
         new java.lang.String[] { "BookingId", });
-    internal_static_DeleteBookingResponse_descriptor =
-      getDescriptor().getMessageTypes().get(38);
-    internal_static_DeleteBookingResponse_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-        internal_static_DeleteBookingResponse_descriptor,
-        new java.lang.String[] { "Success", });
     descriptor.resolveAllFeaturesImmutable();
+    com.google.protobuf.EmptyProto.getDescriptor();
   }
 
   // @@protoc_insertion_point(outer_class_scope)

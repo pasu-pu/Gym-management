@@ -126,14 +126,14 @@ public class TrainerServiceImpl extends TrainerServiceGrpc.TrainerServiceImplBas
     }
 
     @Override
-    public void deleteTrainer(DeleteTrainerRequest request, StreamObserver<DeleteTrainerResponse> responseObserver) {
+    public void deleteTrainer(DeleteTrainerRequest request, StreamObserver<com.google.protobuf.Empty> responseObserver) {
         try {
-            boolean success = trainerService.deleteTrainer(request.getTrainerId());
-            DeleteTrainerResponse response = DeleteTrainerResponse.newBuilder().setSuccess(success).build();
-            responseObserver.onNext(response);
+            trainerService.deleteTrainer(request.getTrainerId());
+            responseObserver.onNext(com.google.protobuf.Empty.getDefaultInstance());
             responseObserver.onCompleted();
         } catch(Exception e) {
             responseObserver.onError(Status.INTERNAL.withDescription(e.getMessage()).asRuntimeException());
         }
     }
+
 }

@@ -48,7 +48,7 @@ public class MemberService implements MemberServiceAdapter {
     }
 
     @Override
-    public boolean deleteMember(long id) {
+    public void deleteMember(long id) {
         throw new UnsupportedOperationException("Not implemented yet");
     }
 }

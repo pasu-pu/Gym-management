@@ -176,28 +176,28 @@ public final class BookingServiceGrpc {
   }
 
   private static volatile io.grpc.MethodDescriptor<de.thws.fiw.gymmanagement.application.DeleteBookingRequest,
-      de.thws.fiw.gymmanagement.application.DeleteBookingResponse> getDeleteBookingMethod;
+      com.google.protobuf.Empty> getDeleteBookingMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "DeleteBooking",
       requestType = de.thws.fiw.gymmanagement.application.DeleteBookingRequest.class,
-      responseType = de.thws.fiw.gymmanagement.application.DeleteBookingResponse.class,
+      responseType = com.google.protobuf.Empty.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
   public static io.grpc.MethodDescriptor<de.thws.fiw.gymmanagement.application.DeleteBookingRequest,
-      de.thws.fiw.gymmanagement.application.DeleteBookingResponse> getDeleteBookingMethod() {
-    io.grpc.MethodDescriptor<de.thws.fiw.gymmanagement.application.DeleteBookingRequest, de.thws.fiw.gymmanagement.application.DeleteBookingResponse> getDeleteBookingMethod;
+      com.google.protobuf.Empty> getDeleteBookingMethod() {
+    io.grpc.MethodDescriptor<de.thws.fiw.gymmanagement.application.DeleteBookingRequest, com.google.protobuf.Empty> getDeleteBookingMethod;
     if ((getDeleteBookingMethod = BookingServiceGrpc.getDeleteBookingMethod) == null) {
       synchronized (BookingServiceGrpc.class) {
         if ((getDeleteBookingMethod = BookingServiceGrpc.getDeleteBookingMethod) == null) {
           BookingServiceGrpc.getDeleteBookingMethod = getDeleteBookingMethod =
-              io.grpc.MethodDescriptor.<de.thws.fiw.gymmanagement.application.DeleteBookingRequest, de.thws.fiw.gymmanagement.application.DeleteBookingResponse>newBuilder()
+              io.grpc.MethodDescriptor.<de.thws.fiw.gymmanagement.application.DeleteBookingRequest, com.google.protobuf.Empty>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "DeleteBooking"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   de.thws.fiw.gymmanagement.application.DeleteBookingRequest.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  de.thws.fiw.gymmanagement.application.DeleteBookingResponse.getDefaultInstance()))
+                  com.google.protobuf.Empty.getDefaultInstance()))
               .setSchemaDescriptor(new BookingServiceMethodDescriptorSupplier("DeleteBooking"))
               .build();
         }
@@ -297,7 +297,7 @@ public final class BookingServiceGrpc {
     /**
      */
     default void deleteBooking(de.thws.fiw.gymmanagement.application.DeleteBookingRequest request,
-        io.grpc.stub.StreamObserver<de.thws.fiw.gymmanagement.application.DeleteBookingResponse> responseObserver) {
+        io.grpc.stub.StreamObserver<com.google.protobuf.Empty> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getDeleteBookingMethod(), responseObserver);
     }
   }
@@ -382,7 +382,7 @@ public final class BookingServiceGrpc {
     /**
      */
     public void deleteBooking(de.thws.fiw.gymmanagement.application.DeleteBookingRequest request,
-        io.grpc.stub.StreamObserver<de.thws.fiw.gymmanagement.application.DeleteBookingResponse> responseObserver) {
+        io.grpc.stub.StreamObserver<com.google.protobuf.Empty> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getDeleteBookingMethod(), getCallOptions()), request, responseObserver);
     }
@@ -446,7 +446,7 @@ public final class BookingServiceGrpc {
 
     /**
      */
-    public de.thws.fiw.gymmanagement.application.DeleteBookingResponse deleteBooking(de.thws.fiw.gymmanagement.application.DeleteBookingRequest request) {
+    public com.google.protobuf.Empty deleteBooking(de.thws.fiw.gymmanagement.application.DeleteBookingRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getDeleteBookingMethod(), getCallOptions(), request);
     }
@@ -515,7 +515,7 @@ public final class BookingServiceGrpc {
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<de.thws.fiw.gymmanagement.application.DeleteBookingResponse> deleteBooking(
+    public com.google.common.util.concurrent.ListenableFuture<com.google.protobuf.Empty> deleteBooking(
         de.thws.fiw.gymmanagement.application.DeleteBookingRequest request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getDeleteBookingMethod(), getCallOptions()), request);
@@ -568,7 +568,7 @@ public final class BookingServiceGrpc {
           break;
         case METHODID_DELETE_BOOKING:
           serviceImpl.deleteBooking((de.thws.fiw.gymmanagement.application.DeleteBookingRequest) request,
-              (io.grpc.stub.StreamObserver<de.thws.fiw.gymmanagement.application.DeleteBookingResponse>) responseObserver);
+              (io.grpc.stub.StreamObserver<com.google.protobuf.Empty>) responseObserver);
           break;
         default:
           throw new AssertionError();
@@ -628,7 +628,7 @@ public final class BookingServiceGrpc {
           io.grpc.stub.ServerCalls.asyncUnaryCall(
             new MethodHandlers<
               de.thws.fiw.gymmanagement.application.DeleteBookingRequest,
-              de.thws.fiw.gymmanagement.application.DeleteBookingResponse>(
+              com.google.protobuf.Empty>(
                 service, METHODID_DELETE_BOOKING)))
         .build();
   }

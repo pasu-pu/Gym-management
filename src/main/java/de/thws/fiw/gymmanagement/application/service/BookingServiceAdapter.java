@@ -11,6 +11,6 @@ public interface BookingServiceAdapter {
     Booking getBooking(long id);
     List<Booking> getBookingByMember(long memberId, int pageSize, int index);
     List<Booking> getBookingByCourse(long courseId, int pageSize, int index);
-    List<Booking> getBookingByDate(String bookingDate, int pageSize, int index);
-    boolean deleteBooking(long id);
+    List<Booking> getBookingByDate(String date, int pageSize, int index);
+    void deleteBooking(long id);
 }

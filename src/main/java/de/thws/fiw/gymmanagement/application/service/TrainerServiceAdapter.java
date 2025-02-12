@@ -10,5 +10,5 @@ public interface TrainerServiceAdapter {
     List<Trainer> getAllTrainers(int pageSize, int index);
     List<Trainer> getTrainerByName(int pageSize, int index, String name);
     List<Trainer> getTrainerByExpertise(int pageSize, int index, String expertise);
-    boolean deleteTrainer(long id);
+    void deleteTrainer(long id);
 }

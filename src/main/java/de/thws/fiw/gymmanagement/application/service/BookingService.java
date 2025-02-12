@@ -43,12 +43,12 @@ public class BookingService implements BookingServiceAdapter {
     }
 
     @Override
-    public List<Booking> getBookingByDate(String bookingDate, int pageSize, int index) {
+    public List<Booking> getBookingByDate(String date, int pageSize, int index) {
         throw new UnsupportedOperationException("Not implemented yet");
     }
 
     @Override
-    public boolean deleteBooking(long id) {
+    public void deleteBooking(long id) {
         throw new UnsupportedOperationException("Not implemented yet");
     }
 }

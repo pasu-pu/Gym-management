@@ -11,5 +11,5 @@ public interface CourseServiceAdapter {
     List<Course> getAllCourses(int pageSize, int index);
     List<Course> getCourseByName(String name, int pageSize, int index);
     List<Course> getCourseByTrainer(long trainerId, int pageSize, int index);
-    boolean deleteCourse(long id);
+    void deleteCourse(long id);
 }

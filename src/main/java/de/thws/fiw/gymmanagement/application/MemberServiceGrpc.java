@@ -207,28 +207,28 @@ public final class MemberServiceGrpc {
   }
 
   private static volatile io.grpc.MethodDescriptor<de.thws.fiw.gymmanagement.application.DeleteMemberRequest,
-      de.thws.fiw.gymmanagement.application.DeleteMemberResponse> getDeleteMemberMethod;
+      com.google.protobuf.Empty> getDeleteMemberMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "DeleteMember",
       requestType = de.thws.fiw.gymmanagement.application.DeleteMemberRequest.class,
-      responseType = de.thws.fiw.gymmanagement.application.DeleteMemberResponse.class,
+      responseType = com.google.protobuf.Empty.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
   public static io.grpc.MethodDescriptor<de.thws.fiw.gymmanagement.application.DeleteMemberRequest,
-      de.thws.fiw.gymmanagement.application.DeleteMemberResponse> getDeleteMemberMethod() {
-    io.grpc.MethodDescriptor<de.thws.fiw.gymmanagement.application.DeleteMemberRequest, de.thws.fiw.gymmanagement.application.DeleteMemberResponse> getDeleteMemberMethod;
+      com.google.protobuf.Empty> getDeleteMemberMethod() {
+    io.grpc.MethodDescriptor<de.thws.fiw.gymmanagement.application.DeleteMemberRequest, com.google.protobuf.Empty> getDeleteMemberMethod;
     if ((getDeleteMemberMethod = MemberServiceGrpc.getDeleteMemberMethod) == null) {
       synchronized (MemberServiceGrpc.class) {
         if ((getDeleteMemberMethod = MemberServiceGrpc.getDeleteMemberMethod) == null) {
           MemberServiceGrpc.getDeleteMemberMethod = getDeleteMemberMethod =
-              io.grpc.MethodDescriptor.<de.thws.fiw.gymmanagement.application.DeleteMemberRequest, de.thws.fiw.gymmanagement.application.DeleteMemberResponse>newBuilder()
+              io.grpc.MethodDescriptor.<de.thws.fiw.gymmanagement.application.DeleteMemberRequest, com.google.protobuf.Empty>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "DeleteMember"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   de.thws.fiw.gymmanagement.application.DeleteMemberRequest.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  de.thws.fiw.gymmanagement.application.DeleteMemberResponse.getDefaultInstance()))
+                  com.google.protobuf.Empty.getDefaultInstance()))
               .setSchemaDescriptor(new MemberServiceMethodDescriptorSupplier("DeleteMember"))
               .build();
         }
@@ -335,7 +335,7 @@ public final class MemberServiceGrpc {
     /**
      */
     default void deleteMember(de.thws.fiw.gymmanagement.application.DeleteMemberRequest request,
-        io.grpc.stub.StreamObserver<de.thws.fiw.gymmanagement.application.DeleteMemberResponse> responseObserver) {
+        io.grpc.stub.StreamObserver<com.google.protobuf.Empty> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getDeleteMemberMethod(), responseObserver);
     }
   }
@@ -428,7 +428,7 @@ public final class MemberServiceGrpc {
     /**
      */
     public void deleteMember(de.thws.fiw.gymmanagement.application.DeleteMemberRequest request,
-        io.grpc.stub.StreamObserver<de.thws.fiw.gymmanagement.application.DeleteMemberResponse> responseObserver) {
+        io.grpc.stub.StreamObserver<com.google.protobuf.Empty> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getDeleteMemberMethod(), getCallOptions()), request, responseObserver);
     }
@@ -499,7 +499,7 @@ public final class MemberServiceGrpc {
 
     /**
      */
-    public de.thws.fiw.gymmanagement.application.DeleteMemberResponse deleteMember(de.thws.fiw.gymmanagement.application.DeleteMemberRequest request) {
+    public com.google.protobuf.Empty deleteMember(de.thws.fiw.gymmanagement.application.DeleteMemberRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getDeleteMemberMethod(), getCallOptions(), request);
     }
@@ -576,7 +576,7 @@ public final class MemberServiceGrpc {
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<de.thws.fiw.gymmanagement.application.DeleteMemberResponse> deleteMember(
+    public com.google.common.util.concurrent.ListenableFuture<com.google.protobuf.Empty> deleteMember(
         de.thws.fiw.gymmanagement.application.DeleteMemberRequest request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getDeleteMemberMethod(), getCallOptions()), request);
@@ -634,7 +634,7 @@ public final class MemberServiceGrpc {
           break;
         case METHODID_DELETE_MEMBER:
           serviceImpl.deleteMember((de.thws.fiw.gymmanagement.application.DeleteMemberRequest) request,
-              (io.grpc.stub.StreamObserver<de.thws.fiw.gymmanagement.application.DeleteMemberResponse>) responseObserver);
+              (io.grpc.stub.StreamObserver<com.google.protobuf.Empty>) responseObserver);
           break;
         default:
           throw new AssertionError();
@@ -701,7 +701,7 @@ public final class MemberServiceGrpc {
           io.grpc.stub.ServerCalls.asyncUnaryCall(
             new MethodHandlers<
               de.thws.fiw.gymmanagement.application.DeleteMemberRequest,
-              de.thws.fiw.gymmanagement.application.DeleteMemberResponse>(
+              com.google.protobuf.Empty>(
                 service, METHODID_DELETE_MEMBER)))
         .build();
   }

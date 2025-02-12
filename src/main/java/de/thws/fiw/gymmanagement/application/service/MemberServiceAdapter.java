@@ -10,5 +10,5 @@ public interface MemberServiceAdapter {
     List<Member> getAllMembers(int pageSize, int index);
     List<Member> getMemberByName(int pageSize, int index, String name);
     List<Member> getMemberByMembership(int pageSize, int index, String membership);
-    boolean deleteMember(long id);
+    void deleteMember(long id);
 }

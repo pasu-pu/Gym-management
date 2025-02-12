@@ -195,13 +195,11 @@ public class GymClientMethods {
 
     public void deleteMember(long id) {
         try {
-            DeleteMemberResponse resp = memberStub.deleteMember(
+            com.google.protobuf.Empty resp = memberStub.deleteMember(
                     DeleteMemberRequest.newBuilder()
                             .setMemberId(id)
                             .build());
-            if (!resp.getSuccess()) {
-                System.err.println("Löschen des Members mit ID " + id + " fehlgeschlagen.");
-            }
+            // Erfolgreich gelöscht – nichts weiter zu tun.
         } catch (StatusRuntimeException e) {
             System.err.println("Fehler beim Löschen des Members: " + e.getStatus().getDescription());
         }
@@ -308,29 +306,28 @@ public class GymClientMethods {
 
     public void deleteTrainer(long id) {
         try {
-            DeleteTrainerResponse resp = trainerStub.deleteTrainer(
+            com.google.protobuf.Empty resp = trainerStub.deleteTrainer(
                     DeleteTrainerRequest.newBuilder()
                             .setTrainerId(id)
                             .build());
-            if (!resp.getSuccess()) {
-                System.err.println("Löschen des Trainers mit ID " + id + " fehlgeschlagen.");
-            }
+            // Erfolgreich gelöscht – nichts weiter zu tun.
         } catch (StatusRuntimeException e) {
             System.err.println("Fehler beim Löschen des Trainers: " + e.getStatus().getDescription());
         }
     }
 
+
     // ======================
     // Course-Methoden (über CourseService)
     // ======================
 
-    public Course createCourse(String name, int capacity, Trainer trainer) {
+    public Course createCourse(String name, int capacity, long trainer_Id) {
         try {
             GetCourseResponse resp = courseStub.createCourse(
                     CreateCourseRequest.newBuilder()
                             .setName(name)
                             .setCapacity(capacity)
-                            .setTrainerId(trainer.getId())
+                            .setTrainerId(trainer_Id)
                             .build());
             return getCourse(resp.getCourseId());
         } catch (StatusRuntimeException e) {
@@ -339,14 +336,14 @@ public class GymClientMethods {
         }
     }
 
-    public Course updateCourse(long id, String name, int capacity, Trainer trainer) {
+    public Course updateCourse(long id, String name, int capacity, long trainer_Id) {
         try {
             GetCourseResponse resp = courseStub.updateCourse(
                     UpdateCourseRequest.newBuilder()
                             .setCourseId(id)
                             .setName(name)
                             .setCapacity(capacity)
-                            .setTrainerId(trainer.getId())
+                            .setTrainerId(trainer_Id)
                             .build());
             return getCourse(resp.getCourseId());
         } catch (StatusRuntimeException e) {
@@ -386,12 +383,12 @@ public class GymClientMethods {
         return list;
     }
 
-    public List<Course> getCourseByTrainer(Trainer trainer, int pageSize, int index) {
+    public List<Course> getCourseByTrainer(long trainer_Id, int pageSize, int index) {
         List<Course> list = new ArrayList<>();
         try {
             GetAllCoursesResponse resp = courseStub.getCourseByTrainer(
                     GetCourseByTrainerRequest.newBuilder()
-                            .setTrainerId(trainer.getId())
+                            .setTrainerId(trainer_Id)
                             .setPagesize(pageSize)
                             .setIndex(index)
                             .build());
@@ -406,28 +403,27 @@ public class GymClientMethods {
 
     public void deleteCourse(long id) {
         try {
-            DeleteCourseResponse resp = courseStub.deleteCourse(
+            com.google.protobuf.Empty resp = courseStub.deleteCourse(
                     DeleteCourseRequest.newBuilder()
                             .setCourseId(id)
                             .build());
-            if (!resp.getSuccess()) {
-                System.err.println("Löschen des Kurses mit ID " + id + " fehlgeschlagen.");
-            }
+            // Erfolgreich gelöscht – nichts weiter zu tun.
         } catch (StatusRuntimeException e) {
             System.err.println("Fehler beim Löschen des Kurses: " + e.getStatus().getDescription());
         }
     }
 
+
     // ======================
     // Booking-Methoden (über BookingService)
     // ======================
 
-    public Booking createBooking(Member member, Course course, LocalDate bookingDate) {
+    public Booking createBooking(long member_Id, long course_Id, LocalDate bookingDate) {
         try {
             GetBookingResponse resp = bookingStub.createBooking(
                     CreateBookingRequest.newBuilder()
-                            .setMemberId(member.getId())
-                            .setCourseId(course.getId())
+                            .setMemberId(member_Id)
+                            .setCourseId(course_Id)
                             .setBookingDate(bookingDate.toString())
                             .build());
             return getBooking(resp.getBookingId());
@@ -450,12 +446,12 @@ public class GymClientMethods {
         }
     }
 
-    public List<Booking> getBookingByMember(Member member, int pageSize, int index) {
+    public List<Booking> getBookingByMember(long member_Id, int pageSize, int index) {
         List<Booking> list = new ArrayList<>();
         try {
             GetAllBookingsResponse resp = bookingStub.getBookingByMember(
                     GetBookingByMemberRequest.newBuilder()
-                            .setMemberId(member.getId())
+                            .setMemberId(member_Id)
                             .setPagesize(pageSize)
                             .setIndex(index)
                             .build());
@@ -468,12 +464,12 @@ public class GymClientMethods {
         return list;
     }
 
-    public List<Booking> getBookingByCourse(Course course, int pageSize, int index) {
+    public List<Booking> getBookingByCourse(long course_Id, int pageSize, int index) {
         List<Booking> list = new ArrayList<>();
         try {
             GetAllBookingsResponse resp = bookingStub.getBookingByCourse(
                     GetBookingByCourseRequest.newBuilder()
-                            .setCourseId(course.getId())
+                            .setCourseId(course_Id)
                             .setPagesize(pageSize)
                             .setIndex(index)
                             .build());
@@ -506,15 +502,13 @@ public class GymClientMethods {
 
     public void deleteBooking(long id) {
         try {
-            DeleteBookingResponse resp = bookingStub.deleteBooking(
+            com.google.protobuf.Empty resp = bookingStub.deleteBooking(
                     DeleteBookingRequest.newBuilder()
                             .setBookingId(id)
                             .build());
-            if (!resp.getSuccess()) {
-                System.err.println("Löschen der Buchung mit ID " + id + " fehlgeschlagen.");
-            }
+            // Erfolgreich gelöscht – nichts weiter zu tun.
         } catch (StatusRuntimeException e) {
             System.err.println("Fehler beim Löschen der Buchung: " + e.getStatus().getDescription());
         }
-    }
-}
+    }}
+

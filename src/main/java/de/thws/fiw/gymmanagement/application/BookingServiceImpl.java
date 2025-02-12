@@ -118,14 +118,14 @@ public class BookingServiceImpl extends BookingServiceGrpc.BookingServiceImplBas
     }
 
     @Override
-    public void deleteBooking(DeleteBookingRequest request, StreamObserver<DeleteBookingResponse> responseObserver) {
+    public void deleteBooking(DeleteBookingRequest request, StreamObserver<com.google.protobuf.Empty> responseObserver) {
         try {
-            boolean success = bookingService.deleteBooking(request.getBookingId());
-            DeleteBookingResponse response = DeleteBookingResponse.newBuilder().setSuccess(success).build();
-            responseObserver.onNext(response);
+            bookingService.deleteBooking(request.getBookingId());
+            responseObserver.onNext(com.google.protobuf.Empty.getDefaultInstance());
             responseObserver.onCompleted();
         } catch(Exception e) {
             responseObserver.onError(Status.INTERNAL.withDescription(e.getMessage()).asRuntimeException());
         }
     }
+
 }
