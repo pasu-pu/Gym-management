@@ -107,7 +107,7 @@ public class GymClientMethods {
             System.out.println("[GymClient] Retrieved created member: " + member.getName());
             return member;
         } catch (StatusRuntimeException e) {
-            System.err.println("[GymClient] Error in createMember: " + e.getStatus().getDescription());
+            System.err.println("[GymClient] Server Error in createMember: " + e.getStatus().getDescription());
             return null;
         } catch (RuntimeException e) {
             System.err.println("[GymClient] Error in createMember: " + e.getMessage());
@@ -134,7 +134,7 @@ public class GymClientMethods {
             System.out.println("[GymClient] Retrieved updated member: " + member.getName());
             return member;
         } catch (StatusRuntimeException e) {
-            System.err.println("[GymClient] Error in updateMember: " + e.getStatus().getDescription());
+            System.err.println("[GymClient] Server Error in updateMember: " + e.getStatus().getDescription());
             return null;
         } catch (RuntimeException e) {
             System.err.println("[GymClient] Error in createMember: " + e.getMessage());
@@ -152,7 +152,7 @@ public class GymClientMethods {
             System.out.println("[GymClient] getMember RPC succeeded for memberId: " + resp.getMemberId());
             return mapMember(resp);
         } catch (StatusRuntimeException e) {
-            System.err.println("[GymClient] Error in getMember: " + e.getStatus().getDescription());
+            System.err.println("[GymClient] Server Error in getMember: " + e.getStatus().getDescription());
             return null;
         }
     }
@@ -173,7 +173,7 @@ public class GymClientMethods {
             System.out.println("[GymClient] getAllMembers succeeded: returned " + list.size() + " members");
             return list;
         } catch (StatusRuntimeException e) {
-            System.err.println("[GymClient] Error in getAllMembers: " + e.getStatus().getDescription());
+            System.err.println("[GymClient] Server Error in getAllMembers: " + e.getStatus().getDescription());
             return null;
         }
     }
@@ -195,7 +195,7 @@ public class GymClientMethods {
             System.out.println("[GymClient] getMemberByName succeeded: returned " + list.size() + " members");
             return list;
         } catch (StatusRuntimeException e) {
-            System.err.println("[GymClient] Error in getMemberByName: " + e.getStatus().getDescription());
+            System.err.println("[GymClient] Server Error in getMemberByName: " + e.getStatus().getDescription());
             return null;
         }
     }
@@ -217,7 +217,7 @@ public class GymClientMethods {
             System.out.println("[GymClient] getMemberByMembership succeeded: returned " + list.size() + " members");
             return list;
         } catch (StatusRuntimeException e) {
-            System.err.println("[GymClient] Error in getMemberByMembership: " + e.getStatus().getDescription());
+            System.err.println("[GymClient] Server Error in getMemberByMembership: " + e.getStatus().getDescription());
             return null;
         }
     }
@@ -232,7 +232,7 @@ public class GymClientMethods {
                             .build());
             System.out.println("[GymClient] deleteMember succeeded for memberId: " + id);
         } catch (StatusRuntimeException e) {
-            System.err.println("[GymClient] Error in deleteMember: " + e.getStatus().getDescription());
+            System.err.println("[GymClient] Server Error in deleteMember: " + e.getStatus().getDescription());
         }
     }
 
@@ -257,7 +257,7 @@ public class GymClientMethods {
             System.out.println("[GymClient] Retrieved created trainer: " + trainer.getName());
             return trainer;
         } catch (StatusRuntimeException e) {
-            System.err.println("[GymClient] Error in createTrainer: " + e.getStatus().getDescription());
+            System.err.println("[GymClient] Server Error in createTrainer: " + e.getStatus().getDescription());
             return null;
         } catch (RuntimeException e) {
             System.err.println("[GymClient] Error in createTrainer: " + e.getMessage());
@@ -283,7 +283,7 @@ public class GymClientMethods {
             System.out.println("[GymClient] Retrieved updated trainer: " + trainer.getName());
             return trainer;
         } catch (StatusRuntimeException e) {
-            System.err.println("[GymClient] Error in updateTrainer: " + e.getStatus().getDescription());
+            System.err.println("[GymClient] Server Error in updateTrainer: " + e.getStatus().getDescription());
             return null;
         } catch (RuntimeException e) {
             System.err.println("[GymClient] Error in createTrainer: " + e.getMessage());
@@ -301,7 +301,7 @@ public class GymClientMethods {
             System.out.println("[GymClient] getTrainer RPC succeeded for trainerId: " + resp.getTrainerId());
             return mapTrainer(resp);
         } catch (StatusRuntimeException e) {
-            System.err.println("[GymClient] Error in getTrainer: " + e.getStatus().getDescription());
+            System.err.println("[GymClient] Server Error in getTrainer: " + e.getStatus().getDescription());
             return null;
         }
     }
@@ -322,7 +322,7 @@ public class GymClientMethods {
             System.out.println("[GymClient] getAllTrainers succeeded: returned " + list.size() + " trainers");
             return list;
         } catch (StatusRuntimeException e) {
-            System.err.println("[GymClient] Error in getAllTrainers: " + e.getStatus().getDescription());
+            System.err.println("[GymClient] Server Error in getAllTrainers: " + e.getStatus().getDescription());
             return null;
         }
     }
@@ -344,7 +344,7 @@ public class GymClientMethods {
             System.out.println("[GymClient] getTrainerByName succeeded: returned " + list.size() + " trainers");
             return list;
         } catch (StatusRuntimeException e) {
-            System.err.println("[GymClient] Error in getTrainerByName: " + e.getStatus().getDescription());
+            System.err.println("[GymClient] Server Error in getTrainerByName: " + e.getStatus().getDescription());
             return null;
         }
     }
@@ -366,7 +366,7 @@ public class GymClientMethods {
             System.out.println("[GymClient] getTrainerByExpertise succeeded: returned " + list.size() + " trainers");
             return list;
         } catch (StatusRuntimeException e) {
-            System.err.println("[GymClient] Error in getTrainerByExpertise: " + e.getStatus().getDescription());
+            System.err.println("[GymClient] Server Error in getTrainerByExpertise: " + e.getStatus().getDescription());
             return null;
         }
     }
@@ -381,7 +381,7 @@ public class GymClientMethods {
                             .build());
             System.out.println("[GymClient] deleteTrainer succeeded for trainerId: " + id);
         } catch (StatusRuntimeException e) {
-            System.err.println("[GymClient] Error in deleteTrainer: " + e.getStatus().getDescription());
+            System.err.println("[GymClient] Server Error in deleteTrainer: " + e.getStatus().getDescription());
         }
     }
 
@@ -408,7 +408,7 @@ public class GymClientMethods {
             System.out.println("[GymClient] Retrieved created course: " + course.getName());
             return course;
         } catch (StatusRuntimeException e) {
-            System.err.println("[GymClient] Error in createCourse: " + e.getStatus().getDescription());
+            System.err.println("[GymClient] Server Error in createCourse: " + e.getStatus().getDescription());
             return null;
         } catch (RuntimeException e) {
             System.err.println("[GymClient] Error in createCourse: " + e.getMessage());
@@ -436,7 +436,7 @@ public class GymClientMethods {
             System.out.println("[GymClient] Retrieved updated course: " + course.getName());
             return course;
         } catch (StatusRuntimeException e) {
-            System.err.println("[GymClient] Error in updateCourse: " + e.getStatus().getDescription());
+            System.err.println("[GymClient] Server Error in updateCourse: " + e.getStatus().getDescription());
             return null;
         } catch (RuntimeException e) {
             System.err.println("[GymClient] Error in createCourse: " + e.getMessage());
@@ -454,7 +454,7 @@ public class GymClientMethods {
             System.out.println("[GymClient] getCourse RPC succeeded for courseId: " + resp.getCourseId());
             return mapCourse(resp);
         } catch (StatusRuntimeException e) {
-            System.err.println("[GymClient] Error in getCourse: " + e.getStatus().getDescription());
+            System.err.println("[GymClient] Server Error in getCourse: " + e.getStatus().getDescription());
             return null;
         } catch (RuntimeException e) {
             System.err.println("[GymClient] Error in getCourse: " + e.getMessage());
@@ -480,7 +480,7 @@ public class GymClientMethods {
             System.out.println("[GymClient] getCourseByName succeeded: returned " + list.size() + " courses");
             return list;
         } catch (StatusRuntimeException e) {
-            System.err.println("[GymClient] Error in getCourseByName: " + e.getStatus().getDescription());
+            System.err.println("[GymClient] Server Error in getCourseByName: " + e.getStatus().getDescription());
             return null;
         } catch (RuntimeException e) {
             System.err.println("[GymClient] Error in getCourseByName: " + e.getMessage());
@@ -507,7 +507,7 @@ public class GymClientMethods {
             System.out.println("[GymClient] getCourseByTrainer succeeded: returned " + list.size() + " courses");
             return list;
         } catch (StatusRuntimeException e) {
-            System.err.println("[GymClient] Error in getCourseByTrainer: " + e.getStatus().getDescription());
+            System.err.println("[GymClient] Server Error in getCourseByTrainer: " + e.getStatus().getDescription());
             return null;
         } catch (RuntimeException e) {
             System.err.println("[GymClient] Error in getCourseByTrainer: " + e.getMessage());
@@ -525,7 +525,7 @@ public class GymClientMethods {
                             .build());
             System.out.println("[GymClient] deleteCourse succeeded for courseId: " + id);
         } catch (StatusRuntimeException e) {
-            System.err.println("[GymClient] Error in deleteCourse: " + e.getStatus().getDescription());
+            System.err.println("[GymClient] Server Error in deleteCourse: " + e.getStatus().getDescription());
         }
     }
 
@@ -552,7 +552,7 @@ public class GymClientMethods {
             System.out.println("[GymClient] Retrieved created booking with id: " + booking.getId());
             return booking;
         } catch (StatusRuntimeException e) {
-            System.err.println("[GymClient] Error in createBooking: " + e.getStatus().getDescription());
+            System.err.println("[GymClient] Server Error in createBooking: " + e.getStatus().getDescription());
             return null;
         } catch (RuntimeException e) {
             System.err.println("[GymClient] Error in createBooking: " + e.getMessage());
@@ -570,7 +570,7 @@ public class GymClientMethods {
             System.out.println("[GymClient] getBooking RPC succeeded for bookingId: " + resp.getBookingId());
             return mapBooking(resp);
         } catch (StatusRuntimeException e) {
-            System.err.println("[GymClient] Error in getBooking: " + e.getStatus().getDescription());
+            System.err.println("[GymClient] Server Error in getBooking: " + e.getStatus().getDescription());
             return null;
         } catch (RuntimeException e) {
             System.err.println("[GymClient] Error in getBooking: " + e.getMessage());
@@ -596,7 +596,7 @@ public class GymClientMethods {
             System.out.println("[GymClient] getBookingByMember succeeded: returned " + list.size() + " bookings");
             return list;
         } catch (StatusRuntimeException e) {
-            System.err.println("[GymClient] Error in getBookingByMember: " + e.getStatus().getDescription());
+            System.err.println("[GymClient] Server Error in getBookingByMember: " + e.getStatus().getDescription());
             return null;
         } catch (RuntimeException e) {
             System.err.println("[GymClient] Error in getBookingByMember: " + e.getMessage());
@@ -622,7 +622,7 @@ public class GymClientMethods {
             System.out.println("[GymClient] getBookingByCourse succeeded: returned " + list.size() + " bookings");
             return list;
         } catch (StatusRuntimeException e) {
-            System.err.println("[GymClient] Error in getBookingByCourse: " + e.getStatus().getDescription());
+            System.err.println("[GymClient] Server Error in getBookingByCourse: " + e.getStatus().getDescription());
             return null;
         } catch (RuntimeException e) {
             System.err.println("[GymClient] Error in getBookingByMember: " + e.getMessage());
@@ -648,7 +648,7 @@ public class GymClientMethods {
             System.out.println("[GymClient] getBookingByDate succeeded: returned " + list.size() + " bookings");
             return list;
         } catch (StatusRuntimeException e) {
-            System.err.println("[GymClient] Error in getBookingByDate: " + e.getStatus().getDescription());
+            System.err.println("[GymClient] Server Error in getBookingByDate: " + e.getStatus().getDescription());
             return null;
         } catch (RuntimeException e) {
             System.err.println("[GymClient] Error in getBookingByDate: " + e.getMessage());
@@ -666,7 +666,7 @@ public class GymClientMethods {
                             .build());
             System.out.println("[GymClient] deleteBooking succeeded for bookingId: " + id);
         } catch (StatusRuntimeException e) {
-            System.err.println("[GymClient] Error in deleteBooking: " + e.getStatus().getDescription());
+            System.err.println("[GymClient] Server Error in deleteBooking: " + e.getStatus().getDescription());
         }
     }
 }
