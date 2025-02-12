@@ -2,10 +2,20 @@ package de.thws.fiw.gymmanagement.domain;
 
 import jakarta.persistence.*;
 
+import java.time.LocalDate;
+
 @Entity // Markiert diese Klasse als eine JPA-Entity, sodass Hibernate sie in eine Tabelle umwandelt.
 @Table(name = "courses") // Optional: Gibt explizit den Tabellennamen an.
 public class Course {
 
+    public Course(){}
+    public Course(long Id, String name, int capacity, Trainer trainer) {
+        this();
+        this.name = name;
+        this.capacity = capacity;
+        this.id = Id;
+        this.trainer = trainer;
+    }
     @Id // Definiert das Primärschlüsselfeld.
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     // Automatische ID-Generierung durch die Datenbank.

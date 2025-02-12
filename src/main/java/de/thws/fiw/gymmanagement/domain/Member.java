@@ -4,9 +4,19 @@ import jakarta.persistence.*;
 
 import jakarta.persistence.*;
 
+import java.time.LocalDate;
+
 @Entity // Markiert diese Klasse als eine JPA-Entity.
 @Table(name = "members") // Optional: Gibt den Tabellennamen an.
 public class Member {
+
+    public Member(){}
+    public Member(long Id, String name, String membershipType) {
+        this();
+        this.name = name;
+        this.membershipType = membershipType;
+        this.id = Id;
+    }
 
     @Id // Definiert das Primärschlüsselfeld.
     @GeneratedValue(strategy = GenerationType.IDENTITY)

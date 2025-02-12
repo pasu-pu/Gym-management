@@ -8,18 +8,26 @@ import jakarta.persistence.*;
 @Table(name = "bookings") // Optional: Gibt explizit den Tabellennamen an.
 public class Booking {
 
+    public Booking(){}
+    public Booking(long Id, Member member, Course course, LocalDate bookingDate) {
+        this();
+        this.course = course;
+        this.member = member;
+        this.id = Id;
+        this.bookingDate = bookingDate;
+    }
     @Id // Definiert das Primärschlüsselfeld.
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     // Automatische ID-Generierung durch die Datenbank (H2 unterstützt Identity-Strategie).
     private Long id;
 
     @ManyToOne // Viele Buchungen gehören zu einem Mitglied.
-    @JoinColumn(name = "member_id", nullable = false)
+    @JoinColumn(name = "member", nullable = false)
     // Erstellt eine Fremdschlüsselspalte "member_id", die auf die Member-Tabelle verweist.
     private Member member;
 
     @ManyToOne // Viele Buchungen können sich auf einen Kurs beziehen.
-    @JoinColumn(name = "course_id", nullable = false)
+    @JoinColumn(name = "course", nullable = false)
     // Erstellt eine Fremdschlüsselspalte "course_id", die auf die Class-Tabelle verweist.
     private Course course;
 
