@@ -1,6 +1,6 @@
 package de.thws.fiw.gymmanagement.application;
 
-import de.thws.fiw.gymmanagement.application.service.TrainerServiceAdapter;
+import de.thws.fiw.gymmanagement.domain.TrainerLogicAdapter;
 import de.thws.fiw.gymmanagement.domain.Trainer;
 import io.grpc.Status;
 import io.grpc.stub.StreamObserver;
@@ -8,9 +8,9 @@ import java.util.List;
 
 public class TrainerServiceImpl extends TrainerServiceGrpc.TrainerServiceImplBase {
 
-    private final TrainerServiceAdapter trainerService;
+    private final TrainerLogicAdapter trainerService;
 
-    public TrainerServiceImpl(TrainerServiceAdapter trainerService) {
+    public TrainerServiceImpl(TrainerLogicAdapter trainerService) {
         this.trainerService = trainerService;
     }
 

@@ -4,7 +4,7 @@ import de.thws.fiw.gymmanagement.application.BookingServiceImpl;
 import de.thws.fiw.gymmanagement.application.CourseServiceImpl;
 import de.thws.fiw.gymmanagement.application.MemberServiceImpl;
 import de.thws.fiw.gymmanagement.application.TrainerServiceImpl;
-import de.thws.fiw.gymmanagement.application.service.*;
+import de.thws.fiw.gymmanagement.domain.*;
 import de.thws.fiw.gymmanagement.infrastructure.BookingRepository;
 import de.thws.fiw.gymmanagement.infrastructure.CourseRepository;
 import de.thws.fiw.gymmanagement.infrastructure.MemberRepository;
@@ -37,10 +37,10 @@ public class GymServer {
         BookingRepositoryInterface bookingRepository = new BookingRepository();
 
         // Geschäftslogik (Services) initialisieren
-        MemberServiceAdapter memberService = new MemberService(memberRepository);
-        TrainerServiceAdapter trainerService = new TrainerService(trainerRepository);
-        CourseServiceAdapter courseService = new CourseService(courseRepository, trainerRepository);
-        BookingServiceAdapter bookingService = new BookingService(bookingRepository, memberRepository, courseRepository);
+        MemberLogicAdapter memberService = new MemberLogic(memberRepository);
+        TrainerLogicAdapter trainerService = new TrainerLogic(trainerRepository);
+        CourseLogicAdapter courseService = new CourseLogic(courseRepository, trainerRepository);
+        BookingLogicAdapter bookingService = new BookingLogic(bookingRepository, memberRepository, courseRepository);
 
         // gRPC-Serviceimplementierungen (Adapter) erstellen
         MemberServiceImpl memberServiceImpl = new MemberServiceImpl(memberService);

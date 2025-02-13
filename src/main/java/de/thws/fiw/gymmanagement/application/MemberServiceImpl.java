@@ -1,6 +1,6 @@
 package de.thws.fiw.gymmanagement.application;
 
-import de.thws.fiw.gymmanagement.application.service.MemberServiceAdapter;
+import de.thws.fiw.gymmanagement.domain.MemberLogicAdapter;
 import de.thws.fiw.gymmanagement.domain.Member;
 import io.grpc.Status;
 import io.grpc.stub.StreamObserver;
@@ -8,9 +8,9 @@ import java.util.List;
 
 public class MemberServiceImpl extends MemberServiceGrpc.MemberServiceImplBase {
 
-    private final MemberServiceAdapter memberService;
+    private final MemberLogicAdapter memberService;
 
-    public MemberServiceImpl(MemberServiceAdapter memberService) {
+    public MemberServiceImpl(MemberLogicAdapter memberService) {
         this.memberService = memberService;
     }
 

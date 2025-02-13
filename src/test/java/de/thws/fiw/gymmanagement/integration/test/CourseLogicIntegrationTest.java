@@ -4,7 +4,7 @@ import de.thws.fiw.gymmanagement.application.CreateCourseRequest;
 import de.thws.fiw.gymmanagement.application.GetCourseRequest;
 import de.thws.fiw.gymmanagement.application.CourseServiceGrpc;
 import de.thws.fiw.gymmanagement.application.CourseServiceImpl;
-import de.thws.fiw.gymmanagement.application.service.CourseService;
+import de.thws.fiw.gymmanagement.domain.CourseLogic;
 import de.thws.fiw.gymmanagement.infrastructure.CourseRepository;
 import de.thws.fiw.gymmanagement.infrastructure.TrainerRepository;
 import de.thws.fiw.gymmanagement.domain.Trainer;
@@ -18,7 +18,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class CourseServiceIntegrationTest {
+public class CourseLogicIntegrationTest {
 
     private static Server server;
     private static ManagedChannel channel;
@@ -30,13 +30,15 @@ public class CourseServiceIntegrationTest {
         // Create repositories and service
         var courseRepository = new CourseRepository();
         trainerRepository = new TrainerRepository();
-        // Create a Trainer first
-        Trainer trainer = new Trainer();
-        trainer.setName("IntegrationTrainer");
-        trainer.setExpertise("Yoga");
+        // Create a Trainer using the Builder pattern
+        Trainer trainer = new Trainer.Builder()
+                .withName("IntegrationTrainer")
+                .withExpertise("Yoga")
+                .build();
         trainer = trainerRepository.save(trainer);
-        CourseService courseService = new CourseService(courseRepository, trainerRepository);
-        var serviceImpl = new CourseServiceImpl(courseService);
+
+        CourseLogic courseLogic = new CourseLogic(courseRepository, trainerRepository);
+        var serviceImpl = new CourseServiceImpl(courseLogic);
 
         server = ServerBuilder.forPort(8081)
                 .addService(serviceImpl)

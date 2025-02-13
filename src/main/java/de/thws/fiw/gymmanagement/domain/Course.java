@@ -2,48 +2,88 @@ package de.thws.fiw.gymmanagement.domain;
 
 import jakarta.persistence.*;
 
-import java.time.LocalDate;
-
-@Entity // Markiert diese Klasse als eine JPA-Entity, sodass Hibernate sie in eine Tabelle umwandelt.
-@Table(name = "courses") // Optional: Gibt explizit den Tabellennamen an.
+@Entity
+@Table(name = "courses")
 public class Course {
 
-    public Course(){}
-    public Course(long Id, String name, int capacity, Trainer trainer) {
-        this();
-        this.name = name;
-        this.capacity = capacity;
-        this.id = Id;
-        this.trainer = trainer;
-    }
-    @Id // Definiert das Primärschlüsselfeld.
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    // Automatische ID-Generierung durch die Datenbank.
     private Long id;
 
     @Column(nullable = false)
-    // Setzt die Spalte "name" als nicht-null, also obligatorisch.
     private String name;
 
     @Column(nullable = false)
-    // Setzt die Spalte "capacity" als nicht-null.
     private int capacity;
 
-    @ManyToOne // Viele Kurse gehören zu einem Trainer.
-    @JoinColumn(name = "trainer_id", nullable = false)
-    // Erstellt eine Fremdschlüsselspalte "trainer_id", die auf die Trainer-Tabelle verweist.
+    @ManyToOne
+    @JoinColumn(name = "trainer", nullable = false)
     private Trainer trainer;
 
-    // Getter und Setter
-    public Long getId() { return id; }
-    //public void setId(Long id) { this.id = id; }
+    public Long getId() {
+        return id;
+    }
 
-    public String getName() { return name; }
-    public void setName(String name) { this.name = name; }
+    public String getName() {
+        return name;
+    }
 
-    public int getCapacity() { return capacity; }
-    public void setCapacity(int capacity) { this.capacity = capacity; }
+    public int getCapacity() {
+        return capacity;
+    }
 
-    public Trainer getTrainer() { return trainer; }
-    public void setTrainer(Trainer trainer) { this.trainer = trainer; }
+    public Trainer getTrainer() {
+        return trainer;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setCapacity(int capacity) {
+        this.capacity = capacity;
+    }
+
+    public void setTrainer(Trainer trainer) {
+        this.trainer = trainer;
+    }
+
+    // Builder Pattern for Course
+    public static class Builder {
+        private Long id; // Optional; typically not set for new courses
+        private String name;
+        private int capacity;
+        private Trainer trainer;
+
+        public Builder() {}
+
+        public Builder withId(Long id) {
+            this.id = id;
+            return this;
+        }
+
+        public Builder withName(String name) {
+            this.name = name;
+            return this;
+        }
+
+        public Builder withCapacity(int capacity) {
+            this.capacity = capacity;
+            return this;
+        }
+
+        public Builder withTrainer(Trainer trainer) {
+            this.trainer = trainer;
+            return this;
+        }
+
+        public Course build() {
+            Course course = new Course();
+            course.id = this.id;  // This is usually null for new courses
+            course.name = this.name;
+            course.capacity = this.capacity;
+            course.trainer = this.trainer;
+            return course;
+        }
+    }
 }

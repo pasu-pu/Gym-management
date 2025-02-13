@@ -16,15 +16,16 @@ public class TrainerRepositoryTest {
 
     @BeforeEach
     public void setUp() {
-        // Use your actual TrainerRepository which uses Hibernate
+        // Use your actual TrainerRepository (or fake repository) here
         trainerRepository = new TrainerRepository();
     }
 
     @Test
     public void testSaveAndFindById() {
-        Trainer trainer = new Trainer();
-        trainer.setName("Bob");
-        trainer.setExpertise("Strength");
+        Trainer trainer = new Trainer.Builder()
+                .withName("Bob")
+                .withExpertise("Strength")
+                .build();
         Trainer savedTrainer = trainerRepository.save(trainer);
         assertNotNull(savedTrainer);
         assertNotNull(savedTrainer.getId());
@@ -36,9 +37,10 @@ public class TrainerRepositoryTest {
 
     @Test
     public void testUpdateTrainer() {
-        Trainer trainer = new Trainer();
-        trainer.setName("Bob");
-        trainer.setExpertise("Strength");
+        Trainer trainer = new Trainer.Builder()
+                .withName("Bob")
+                .withExpertise("Strength")
+                .build();
         Trainer savedTrainer = trainerRepository.save(trainer);
 
         Trainer updatedTrainer = trainerRepository.update(savedTrainer.getId(), "Bob Updated", "Cardio");
@@ -49,10 +51,10 @@ public class TrainerRepositoryTest {
 
     @Test
     public void testFindAll() {
-        // Add some trainers
-        trainerRepository.save(new Trainer(null, "Alice", "Cardio"));
-        trainerRepository.save(new Trainer(null, "Bob", "Strength"));
-        trainerRepository.save(new Trainer(null, "Carol", "Yoga"));
+        // Add some trainers using the builder
+        trainerRepository.save(new Trainer.Builder().withName("Alice").withExpertise("Cardio").build());
+        trainerRepository.save(new Trainer.Builder().withName("Bob").withExpertise("Strength").build());
+        trainerRepository.save(new Trainer.Builder().withName("Carol").withExpertise("Yoga").build());
 
         List<Trainer> trainers = trainerRepository.findAll();
         assertTrue(trainers.size() >= 3);
@@ -60,9 +62,10 @@ public class TrainerRepositoryTest {
 
     @Test
     public void testFindByName() {
-        Trainer trainer = new Trainer();
-        trainer.setName("UniqueName");
-        trainer.setExpertise("Strength");
+        Trainer trainer = new Trainer.Builder()
+                .withName("UniqueName")
+                .withExpertise("Strength")
+                .build();
         trainerRepository.save(trainer);
 
         List<Trainer> found = trainerRepository.findByName("UniqueName");
@@ -74,9 +77,10 @@ public class TrainerRepositoryTest {
 
     @Test
     public void testFindByExpertise() {
-        Trainer trainer = new Trainer();
-        trainer.setName("TestTrainer");
-        trainer.setExpertise("UniqueExpertise");
+        Trainer trainer = new Trainer.Builder()
+                .withName("TestTrainer")
+                .withExpertise("UniqueExpertise")
+                .build();
         trainerRepository.save(trainer);
 
         List<Trainer> found = trainerRepository.findByExpertise("UniqueExpertise");
@@ -88,9 +92,10 @@ public class TrainerRepositoryTest {
 
     @Test
     public void testDeleteTrainer() {
-        Trainer trainer = new Trainer();
-        trainer.setName("ToDelete");
-        trainer.setExpertise("Test");
+        Trainer trainer = new Trainer.Builder()
+                .withName("ToDelete")
+                .withExpertise("Test")
+                .build();
         Trainer savedTrainer = trainerRepository.save(trainer);
         trainerRepository.deleteById(savedTrainer.getId());
         Optional<Trainer> found = trainerRepository.findById(savedTrainer.getId());

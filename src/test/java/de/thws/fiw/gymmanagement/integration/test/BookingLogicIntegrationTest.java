@@ -4,7 +4,7 @@ import de.thws.fiw.gymmanagement.application.CreateBookingRequest;
 import de.thws.fiw.gymmanagement.application.GetBookingRequest;
 import de.thws.fiw.gymmanagement.application.BookingServiceGrpc;
 import de.thws.fiw.gymmanagement.application.BookingServiceImpl;
-import de.thws.fiw.gymmanagement.application.service.BookingService;
+import de.thws.fiw.gymmanagement.domain.BookingLogic;
 import de.thws.fiw.gymmanagement.infrastructure.BookingRepository;
 import de.thws.fiw.gymmanagement.infrastructure.CourseRepository;
 import de.thws.fiw.gymmanagement.infrastructure.MemberRepository;
@@ -19,17 +19,18 @@ import io.grpc.ServerBuilder;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+
 import java.time.LocalDate;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class BookingServiceIntegrationTest {
+public class BookingLogicIntegrationTest {
 
     private static Server server;
     private static ManagedChannel channel;
     private static BookingServiceGrpc.BookingServiceBlockingStub bookingStub;
 
-    // We'll use the actual repository implementations (assumed to be configured for an in-memory DB)
+    // Use actual repository implementations (configured for an in-memory DB)
     private static MemberRepository memberRepository;
     private static CourseRepository courseRepository;
     private static BookingRepository bookingRepository;
@@ -43,27 +44,31 @@ public class BookingServiceIntegrationTest {
         bookingRepository = new BookingRepository();
         trainerRepository = new TrainerRepository();
 
-        // Create necessary entities
-        Member member = new Member();
-        member.setName("IntegrationMember");
-        member.setMembershipType("Silver");
+        // Create necessary entities using builders
+        Member member = new Member.Builder()
+                .withName("IntegrationMember")
+                .withMembershipType("Silver")
+                .build();
         member = memberRepository.save(member);
 
-        Trainer trainer = new Trainer();
-        trainer.setName("IntegrationTrainer");
-        trainer.setExpertise("Pilates");
+        Trainer trainer = new Trainer.Builder()
+                .withName("IntegrationTrainer")
+                .withExpertise("Pilates")
+                .build();
         trainer = trainerRepository.save(trainer);
 
-        Course course = new Course();
-        course.setName("IntegrationCourse");
-        course.setCapacity(20);
-        course.setTrainer(trainer);
+        Course course = new Course.Builder()
+                .withName("IntegrationCourse")
+                .withCapacity(20)
+                .withTrainer(trainer)
+                .build();
         course = courseRepository.save(course);
 
-        // Create Booking service
-        BookingService bookingService = new BookingService(bookingRepository, memberRepository, courseRepository);
-        var serviceImpl = new BookingServiceImpl(bookingService);
+        // Create Booking service using actual repositories wrapped by BookingLogic
+        BookingLogic bookingLogic = new BookingLogic(bookingRepository, memberRepository, courseRepository);
+        var serviceImpl = new BookingServiceImpl(bookingLogic);
 
+        // Start an embedded gRPC server on port 8081
         server = ServerBuilder.forPort(8081)
                 .addService(serviceImpl)
                 .build()

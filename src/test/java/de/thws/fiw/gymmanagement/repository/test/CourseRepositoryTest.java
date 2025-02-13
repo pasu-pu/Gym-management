@@ -26,15 +26,19 @@ public class CourseRepositoryTest {
 
     @Test
     public void testSaveAndFindById() {
-        Trainer trainer = new Trainer();
-        trainer.setName("Trainer1");
-        trainer.setExpertise("Expertise");
+        // Create a Trainer using the builder so that the ID is generated automatically
+        Trainer trainer = new Trainer.Builder()
+                .withName("Trainer1")
+                .withExpertise("Expertise")
+                .build();
         trainer = trainerRepository.save(trainer);
 
-        Course course = new Course();
-        course.setName("Course1");
-        course.setCapacity(30);
-        course.setTrainer(trainer);
+        // Create a Course using the builder
+        Course course = new Course.Builder()
+                .withName("Course1")
+                .withCapacity(30)
+                .withTrainer(trainer)
+                .build();
         Course savedCourse = courseRepository.save(course);
         assertNotNull(savedCourse);
         assertNotNull(savedCourse.getId());
@@ -46,15 +50,17 @@ public class CourseRepositoryTest {
 
     @Test
     public void testUpdateCourse() {
-        Trainer trainer = new Trainer();
-        trainer.setName("Trainer1");
-        trainer.setExpertise("Expertise");
+        Trainer trainer = new Trainer.Builder()
+                .withName("Trainer1")
+                .withExpertise("Expertise")
+                .build();
         trainer = trainerRepository.save(trainer);
 
-        Course course = new Course();
-        course.setName("Course1");
-        course.setCapacity(30);
-        course.setTrainer(trainer);
+        Course course = new Course.Builder()
+                .withName("Course1")
+                .withCapacity(30)
+                .withTrainer(trainer)
+                .build();
         Course savedCourse = courseRepository.save(course);
 
         Course updatedCourse = courseRepository.update(savedCourse.getId(), "Course Updated", 40, trainer.getId());
@@ -65,14 +71,16 @@ public class CourseRepositoryTest {
 
     @Test
     public void testFindAll() {
-        Trainer trainer = new Trainer();
-        trainer.setName("Trainer1");
-        trainer.setExpertise("Expertise");
+        Trainer trainer = new Trainer.Builder()
+                .withName("Trainer1")
+                .withExpertise("Expertise")
+                .build();
         trainer = trainerRepository.save(trainer);
 
-        courseRepository.save(new Course(null, "Course1", 30, trainer));
-        courseRepository.save(new Course(null, "Course2", 25, trainer));
-        courseRepository.save(new Course(null, "Course3", 20, trainer));
+        // Create three courses using the builder; note that passing null for id allows repository to generate one.
+        courseRepository.save(new Course.Builder().withName("Course1").withCapacity(30).withTrainer(trainer).build());
+        courseRepository.save(new Course.Builder().withName("Course2").withCapacity(25).withTrainer(trainer).build());
+        courseRepository.save(new Course.Builder().withName("Course3").withCapacity(20).withTrainer(trainer).build());
 
         List<Course> courses = courseRepository.findAll();
         assertTrue(courses.size() >= 3);
@@ -80,15 +88,17 @@ public class CourseRepositoryTest {
 
     @Test
     public void testFindByName() {
-        Trainer trainer = new Trainer();
-        trainer.setName("Trainer1");
-        trainer.setExpertise("Expertise");
+        Trainer trainer = new Trainer.Builder()
+                .withName("Trainer1")
+                .withExpertise("Expertise")
+                .build();
         trainer = trainerRepository.save(trainer);
 
-        Course course = new Course();
-        course.setName("UniqueCourse");
-        course.setCapacity(30);
-        course.setTrainer(trainer);
+        Course course = new Course.Builder()
+                .withName("UniqueCourse")
+                .withCapacity(30)
+                .withTrainer(trainer)
+                .build();
         courseRepository.save(course);
 
         List<Course> found = courseRepository.findByName("UniqueCourse");
@@ -100,21 +110,24 @@ public class CourseRepositoryTest {
 
     @Test
     public void testFindByTrainerId() {
-        Trainer trainer = new Trainer();
-        trainer.setName("TrainerForCourse");
-        trainer.setExpertise("Expertise");
+        Trainer trainer = new Trainer.Builder()
+                .withName("TrainerForCourse")
+                .withExpertise("Expertise")
+                .build();
         trainer = trainerRepository.save(trainer);
 
-        Course course1 = new Course();
-        course1.setName("Course1");
-        course1.setCapacity(30);
-        course1.setTrainer(trainer);
+        Course course1 = new Course.Builder()
+                .withName("Course1")
+                .withCapacity(30)
+                .withTrainer(trainer)
+                .build();
         courseRepository.save(course1);
 
-        Course course2 = new Course();
-        course2.setName("Course2");
-        course2.setCapacity(25);
-        course2.setTrainer(trainer);
+        Course course2 = new Course.Builder()
+                .withName("Course2")
+                .withCapacity(25)
+                .withTrainer(trainer)
+                .build();
         courseRepository.save(course2);
 
         List<Course> found = courseRepository.findByTrainerId(trainer.getId());
@@ -123,15 +136,17 @@ public class CourseRepositoryTest {
 
     @Test
     public void testDeleteCourse() {
-        Trainer trainer = new Trainer();
-        trainer.setName("Trainer1");
-        trainer.setExpertise("Expertise");
+        Trainer trainer = new Trainer.Builder()
+                .withName("Trainer1")
+                .withExpertise("Expertise")
+                .build();
         trainer = trainerRepository.save(trainer);
 
-        Course course = new Course();
-        course.setName("CourseToDelete");
-        course.setCapacity(30);
-        course.setTrainer(trainer);
+        Course course = new Course.Builder()
+                .withName("CourseToDelete")
+                .withCapacity(30)
+                .withTrainer(trainer)
+                .build();
         Course savedCourse = courseRepository.save(course);
 
         courseRepository.deleteById(savedCourse.getId());

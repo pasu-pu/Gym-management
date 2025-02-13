@@ -1,84 +1,81 @@
-package de.thws.fiw.gymmanagement.application.service;
+package de.thws.fiw.gymmanagement.domain;
 
-import de.thws.fiw.gymmanagement.domain.Course;
-import de.thws.fiw.gymmanagement.domain.Trainer;
 import de.thws.fiw.gymmanagement.infrastructure.CourseRepositoryInterface;
 import de.thws.fiw.gymmanagement.infrastructure.TrainerRepositoryInterface;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
-public class CourseService implements CourseServiceAdapter {
+public class CourseLogic implements CourseLogicAdapter {
 
     private final CourseRepositoryInterface courseRepository;
     private final TrainerRepositoryInterface trainerRepository;
 
-    public CourseService(CourseRepositoryInterface courseRepository, TrainerRepositoryInterface trainerRepository) {
+    public CourseLogic(CourseRepositoryInterface courseRepository, TrainerRepositoryInterface trainerRepository) {
         this.courseRepository = courseRepository;
         this.trainerRepository = trainerRepository;
     }
 
     @Override
     public Course createCourse(String name, int capacity, long trainer_Id) {
-        System.out.println("[CourseService] createCourse called with name: " + name
+        System.out.println("[CourseLogic] createCourse called with name: " + name
                 + ", capacity: " + capacity + ", trainerId: " + trainer_Id);
         try {
-            System.out.println("[CourseService] Fetching Trainer with id: " + trainer_Id);
+            System.out.println("[CourseLogic] Fetching Trainer with id: " + trainer_Id);
             Trainer trainer = trainerRepository.findById(trainer_Id)
                     .orElseThrow(() -> new RuntimeException("Trainer not found"));
-            System.out.println("[CourseService] Creating new Course");
-            Course course = new Course();
-            course.setName(name);
-            course.setCapacity(capacity);
-            course.setTrainer(trainer);
+            System.out.println("[CourseLogic] Creating new Course using Builder");
+            Course course = new Course.Builder()
+                    .withName(name)
+                    .withCapacity(capacity)
+                    .withTrainer(trainer)
+                    .build();
             Course savedCourse = courseRepository.save(course);
-            System.out.println("[CourseService] createCourse succeeded: created course with id " + savedCourse.getId());
+            System.out.println("[CourseLogic] createCourse succeeded: created course with id " + savedCourse.getId());
             return savedCourse;
         } catch (Exception e) {
-            System.err.println("[CourseService] Error in createCourse: " + e.getMessage());
+            System.err.println("[CourseLogic] Error in createCourse: " + e.getMessage());
             throw new RuntimeException(e);
         }
     }
 
     @Override
     public Course updateCourse(long id, String name, int capacity, long trainer_Id) {
-        System.out.println("[CourseService] updateCourse called for courseId: " + id
+        System.out.println("[CourseLogic] updateCourse called for courseId: " + id
                 + " with new name: " + name + ", capacity: " + capacity + ", trainerId: " + trainer_Id);
         try {
-            System.out.println("[CourseService] Fetching Trainer with id: " + trainer_Id);
+            System.out.println("[CourseLogic] Fetching Trainer with id: " + trainer_Id);
             Trainer trainer = trainerRepository.findById(trainer_Id)
                     .orElseThrow(() -> new RuntimeException("Trainer not found"));
-            System.out.println("[CourseService] Invoking repository update for courseId: " + id);
+            System.out.println("[CourseLogic] Invoking repository update for courseId: " + id);
             Course updatedCourse = courseRepository.update(id, name, capacity, trainer_Id);
-            System.out.println("[CourseService] updateCourse succeeded for courseId: " + updatedCourse.getId());
+            System.out.println("[CourseLogic] updateCourse succeeded for courseId: " + updatedCourse.getId());
             return updatedCourse;
         } catch (Exception e) {
-            System.err.println("[CourseService] Error in updateCourse: " + e.getMessage());
+            System.err.println("[CourseLogic] Error in updateCourse: " + e.getMessage());
             throw new RuntimeException(e);
         }
     }
 
     @Override
     public Course getCourse(long id) {
-        System.out.println("[CourseService] getCourse called for courseId: " + id);
+        System.out.println("[CourseLogic] getCourse called for courseId: " + id);
         try {
             Course course = courseRepository.findById(id).orElse(null);
             if (course == null) {
-                System.err.println("[CourseService] getCourse: Course with id " + id + " not found");
-                throw new RuntimeException("Course not found");
+                System.err.println("[CourseLogic] getCourse: Course with id " + id + " not found");
             } else {
-                System.out.println("[CourseService] getCourse succeeded for courseId: " + course.getId());
+                System.out.println("[CourseLogic] getCourse succeeded for courseId: " + course.getId());
             }
             return course;
         } catch (Exception e) {
-            System.err.println("[CourseService] Error in getCourse: " + e.getMessage());
+            System.err.println("[CourseLogic] Error in getCourse: " + e.getMessage());
             throw new RuntimeException(e);
         }
     }
 
     @Override
     public List<Course> getAllCourses(int pageSize, int index) {
-        System.out.println("[CourseService] getAllCourses called with pagesize: " + pageSize
+        System.out.println("[CourseLogic] getAllCourses called with pagesize: " + pageSize
                 + ", index: " + index);
         try {
             List<Course> allCourses = courseRepository.findAll();
@@ -90,20 +87,19 @@ public class CourseService implements CourseServiceAdapter {
             } else {
                 result = allCourses.subList(start, end);
             }
-            System.out.println("[CourseService] getAllCourses succeeded: returned " + result.size() + " courses");
+            System.out.println("[CourseLogic] getAllCourses succeeded: returned " + result.size() + " courses");
             return result;
         } catch (Exception e) {
-            System.err.println("[CourseService] Error in getAllCourses: " + e.getMessage());
+            System.err.println("[CourseLogic] Error in getAllCourses: " + e.getMessage());
             throw new RuntimeException(e);
         }
     }
 
     @Override
     public List<Course> getCourseByName(String name, int pageSize, int index) {
-        System.out.println("[CourseService] getCourseByName called with name: " + name
+        System.out.println("[CourseLogic] getCourseByName called with name: " + name
                 + ", pagesize: " + pageSize + ", index: " + index);
         try {
-            // Annahme: Repository bietet eine direkte Methode zum Filtern
             List<Course> filtered = courseRepository.findByName(name);
             int start = index * pageSize;
             int end = Math.min(start + pageSize, filtered.size());
@@ -113,20 +109,19 @@ public class CourseService implements CourseServiceAdapter {
             } else {
                 result = filtered.subList(start, end);
             }
-            System.out.println("[CourseService] getCourseByName succeeded: returned " + result.size() + " courses");
+            System.out.println("[CourseLogic] getCourseByName succeeded: returned " + result.size() + " courses");
             return result;
         } catch (Exception e) {
-            System.err.println("[CourseService] Error in getCourseByName: " + e.getMessage());
+            System.err.println("[CourseLogic] Error in getCourseByName: " + e.getMessage());
             throw new RuntimeException(e);
         }
     }
 
     @Override
     public List<Course> getCourseByTrainer(long trainerId, int pageSize, int index) {
-        System.out.println("[CourseService] getCourseByTrainer called for trainerId: " + trainerId
+        System.out.println("[CourseLogic] getCourseByTrainer called for trainerId: " + trainerId
                 + ", pagesize: " + pageSize + ", index: " + index);
         try {
-            // Annahme: Repository bietet eine Methode findByTrainerId
             List<Course> filtered = courseRepository.findByTrainerId(trainerId);
             int start = index * pageSize;
             int end = Math.min(start + pageSize, filtered.size());
@@ -136,22 +131,22 @@ public class CourseService implements CourseServiceAdapter {
             } else {
                 result = filtered.subList(start, end);
             }
-            System.out.println("[CourseService] getCourseByTrainer succeeded: returned " + result.size() + " courses");
+            System.out.println("[CourseLogic] getCourseByTrainer succeeded: returned " + result.size() + " courses");
             return result;
         } catch (Exception e) {
-            System.err.println("[CourseService] Error in getCourseByTrainer: " + e.getMessage());
+            System.err.println("[CourseLogic] Error in getCourseByTrainer: " + e.getMessage());
             throw new RuntimeException(e);
         }
     }
 
     @Override
     public void deleteCourse(long id) {
-        System.out.println("[CourseService] deleteCourse called for courseId: " + id);
+        System.out.println("[CourseLogic] deleteCourse called for courseId: " + id);
         try {
             courseRepository.deleteById(id);
-            System.out.println("[CourseService] deleteCourse succeeded for courseId: " + id);
+            System.out.println("[CourseLogic] deleteCourse succeeded for courseId: " + id);
         } catch (Exception e) {
-            System.err.println("[CourseService] Error in deleteCourse: " + e.getMessage());
+            System.err.println("[CourseLogic] Error in deleteCourse: " + e.getMessage());
             throw new RuntimeException(e);
         }
     }

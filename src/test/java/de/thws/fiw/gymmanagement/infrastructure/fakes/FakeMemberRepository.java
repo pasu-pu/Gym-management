@@ -1,8 +1,7 @@
-package de.thws.fiw.gymmanagement.infrastructure.fakes  ;
+package de.thws.fiw.gymmanagement.infrastructure.fakes;
 
 import de.thws.fiw.gymmanagement.domain.Member;
 import de.thws.fiw.gymmanagement.infrastructure.MemberRepositoryInterface;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -15,15 +14,26 @@ public class FakeMemberRepository implements MemberRepositoryInterface {
     @Override
     public Member save(Member member) {
         if (member.getId() == null || member.getId() == 0) {
-            member.setId(idGenerator.getAndIncrement());
+            long newId = idGenerator.getAndIncrement();
+            // Create a new Member instance using the Builder
+            Member newMember = new Member.Builder()
+                    .withId(newId)
+                    .withName(member.getName())
+                    .withMembershipType(member.getMembershipType())
+                    .build();
+            members.add(newMember);
+            return newMember;
+        } else {
+            members.add(member);
+            return member;
         }
-        members.add(member);
-        return member;
     }
 
     @Override
     public Optional<Member> findById(Long id) {
-        return members.stream().filter(m -> m.getId().equals(id)).findFirst();
+        return members.stream()
+                .filter(m -> m.getId().equals(id))
+                .findFirst();
     }
 
     @Override
@@ -32,13 +42,18 @@ public class FakeMemberRepository implements MemberRepositoryInterface {
     }
 
     @Override
-    public Member update(long id, String name, String membershipType) {
+    public Member update(Long id, String name, String membershipType) {
         Optional<Member> opt = findById(id);
         if (opt.isPresent()) {
-            Member member = opt.get();
-            member.setName(name);
-            member.setMembershipType(membershipType);
-            return member;
+            // Create an updated Member using the Builder
+            Member updated = new Member.Builder()
+                    .withId(id)
+                    .withName(name)
+                    .withMembershipType(membershipType)
+                    .build();
+            members.removeIf(m -> m.getId().equals(id));
+            members.add(updated);
+            return updated;
         }
         return null;
     }

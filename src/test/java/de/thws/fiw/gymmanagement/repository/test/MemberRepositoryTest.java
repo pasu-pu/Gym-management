@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import de.thws.fiw.gymmanagement.domain.Member;
 import de.thws.fiw.gymmanagement.infrastructure.MemberRepository;
+import de.thws.fiw.gymmanagement.infrastructure.MemberRepositoryInterface;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
@@ -12,19 +13,21 @@ import java.util.Optional;
 
 public class MemberRepositoryTest {
 
-    private static MemberRepository memberRepository;
+    private static MemberRepositoryInterface memberRepository;
 
     @BeforeAll
     public static void setUp() {
-        // Make sure HibernateUtil is configured to use an in-memory database like H2
+        // Assuming HibernateUtil is configured to use an in-memory DB (e.g., H2)
         memberRepository = new MemberRepository();
     }
 
     @Test
     public void testSaveAndFindById() {
-        Member member = new Member();
-        member.setName("TestUser");
-        member.setMembershipType("Gold");
+        // Create a member using the builder
+        Member member = new Member.Builder()
+                .withName("TestUser")
+                .withMembershipType("Gold")
+                .build();
 
         Member savedMember = memberRepository.save(member);
         assertNotNull(savedMember);
@@ -37,9 +40,10 @@ public class MemberRepositoryTest {
 
     @Test
     public void testUpdateMember() {
-        Member member = new Member();
-        member.setName("UserToUpdate");
-        member.setMembershipType("Silver");
+        Member member = new Member.Builder()
+                .withName("UserToUpdate")
+                .withMembershipType("Silver")
+                .build();
         Member savedMember = memberRepository.save(member);
 
         Member updated = memberRepository.update(savedMember.getId(), "UpdatedUser", "Platinum");
@@ -50,18 +54,17 @@ public class MemberRepositoryTest {
 
     @Test
     public void testFindAllAndPagination() {
-        // Clear existing data or use a fresh in-memory DB for each test ideally.
-        memberRepository.deleteById(1L);
-        // Save multiple members
-        memberRepository.save(new Member(null, "Alice", "Gold"));
-        memberRepository.save(new Member(null, "Bob", "Silver"));
-        memberRepository.save(new Member(null, "Carol", "Gold"));
+        // Clean up: In a real test you might want to clear the repository first.
+        // For demonstration, we assume a fresh in-memory DB.
+
+        // Save multiple members using the builder
+        memberRepository.save(new Member.Builder().withName("Alice").withMembershipType("Gold").build());
+        memberRepository.save(new Member.Builder().withName("Bob").withMembershipType("Silver").build());
+        memberRepository.save(new Member.Builder().withName("Carol").withMembershipType("Gold").build());
 
         List<Member> allMembers = memberRepository.findAll();
         assertTrue(allMembers.size() >= 3);
 
-        // For pagination tests, you might simulate it in your service, but here you can check that allMembers returns the full list.
-        // For example:
         int pageSize = 2;
         int index = 0;
         List<Member> page = allMembers.subList(index * pageSize, Math.min((index + 1) * pageSize, allMembers.size()));
@@ -70,9 +73,10 @@ public class MemberRepositoryTest {
 
     @Test
     public void testFindByName() {
-        Member member = new Member();
-        member.setName("UniqueName");
-        member.setMembershipType("Standard");
+        Member member = new Member.Builder()
+                .withName("UniqueName")
+                .withMembershipType("Standard")
+                .build();
         memberRepository.save(member);
 
         List<Member> found = memberRepository.findByName("UniqueName");
@@ -84,9 +88,10 @@ public class MemberRepositoryTest {
 
     @Test
     public void testDeleteMember() {
-        Member member = new Member();
-        member.setName("UserToDelete");
-        member.setMembershipType("Bronze");
+        Member member = new Member.Builder()
+                .withName("UserToDelete")
+                .withMembershipType("Bronze")
+                .build();
         Member savedMember = memberRepository.save(member);
 
         memberRepository.deleteById(savedMember.getId());

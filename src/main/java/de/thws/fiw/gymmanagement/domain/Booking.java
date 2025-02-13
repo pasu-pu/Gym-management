@@ -1,68 +1,92 @@
 package de.thws.fiw.gymmanagement.domain;
 
 import java.time.LocalDate;
-
 import jakarta.persistence.*;
 
-@Entity // Markiert diese Klasse als eine JPA-Entity, sodass Hibernate sie in eine Tabelle umwandelt.
-@Table(name = "bookings") // Optional: Gibt explizit den Tabellennamen an.
+@Entity
+@Table(name = "bookings")
 public class Booking {
 
-    public Booking(){}
-    public Booking(long Id, Member member, Course course, LocalDate bookingDate) {
-        this();
-        this.course = course;
-        this.member = member;
-        this.id = Id;
-        this.bookingDate = bookingDate;
-    }
-    @Id // Definiert das Primärschlüsselfeld.
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    // Automatische ID-Generierung durch die Datenbank (H2 unterstützt Identity-Strategie).
     private Long id;
 
-    @ManyToOne // Viele Buchungen gehören zu einem Mitglied.
+    @ManyToOne
     @JoinColumn(name = "member", nullable = false)
-    // Erstellt eine Fremdschlüsselspalte "member_id", die auf die Member-Tabelle verweist.
     private Member member;
-
-    @ManyToOne // Viele Buchungen können sich auf einen Kurs beziehen.
-    @JoinColumn(name = "course", nullable = false)
-    // Erstellt eine Fremdschlüsselspalte "course_id", die auf die Class-Tabelle verweist.
-    private Course course;
-
-    @Column(name = "booking_date", nullable = false)
-    // Spaltenname wird "booking_date", darf nicht null sein.
-    private LocalDate bookingDate;
-
-    // Getter und Setter
-    public Long getId() {
-        return id;
-    }
-
-    //public void setId(Long id) { this.id = id; }
-
-    public Member getMember() {
-        return member;
-    }
 
     public void setMember(Member member) {
         this.member = member;
-    }
-
-    public Course getCourse() {
-        return course;
     }
 
     public void setCourse(Course course) {
         this.course = course;
     }
 
+    public void setBookingDate(LocalDate bookingDate) {
+        this.bookingDate = bookingDate;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "course", nullable = false)
+    private Course course;
+
+    @Column(name = "booking_date", nullable = false)
+    private LocalDate bookingDate;
+
+    // Getters (setters omitted if not needed)
+    public Long getId() {
+        return id;
+    }
+
+    public Member getMember() {
+        return member;
+    }
+
+    public Course getCourse() {
+        return course;
+    }
+
     public LocalDate getBookingDate() {
         return bookingDate;
     }
 
-    public void setBookingDate(LocalDate bookingDate) {
-        this.bookingDate = bookingDate;
+    // Builder Pattern
+    public static class Builder {
+        private Long id; // Optional: typically, the DB will generate the id.
+        private Member member;
+        private Course course;
+        private LocalDate bookingDate;
+
+        public Builder() {}
+
+        public Builder withId(Long id) {
+            this.id = id;
+            return this;
+        }
+
+        public Builder withMember(Member member) {
+            this.member = member;
+            return this;
+        }
+
+        public Builder withCourse(Course course) {
+            this.course = course;
+            return this;
+        }
+
+        public Builder withBookingDate(LocalDate bookingDate) {
+            this.bookingDate = bookingDate;
+            return this;
+        }
+
+        public Booking build() {
+            Booking booking = new Booking();
+            booking.id = this.id;  // Usually left null for new bookings (auto-generated)
+            booking.member = this.member;
+            booking.course = this.course;
+            booking.bookingDate = this.bookingDate;
+            return booking;
+        }
     }
 }

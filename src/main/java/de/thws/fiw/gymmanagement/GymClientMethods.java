@@ -38,9 +38,10 @@ public class GymClientMethods {
         GymClientMethods client = new GymClientMethods(channel);
 
         // Beispiel: Erstelle einen neuen Member und gib seinen Namen aus
-        Member createdMember = client.createMember("Alice", "Premium");
+        Member createdMember = client.createMember("Moritz", "Premium");
+        Member createdMember2 = client.getMember(createdMember.getId());
         if (createdMember != null) {
-            System.out.println("Erstelltes Member: " + createdMember.getName());
+            System.out.println("Erstelltes Member: " + createdMember2.getName());
         } else {
             System.err.println("Member konnte nicht erstellt werden.");
         }
@@ -55,25 +56,35 @@ public class GymClientMethods {
     // Hilfsmethoden zum Mapping
     // --------------------
     private Member mapMember(GetMemberResponse resp) {
-        Member member = new Member(resp.getMemberId(), resp.getName(), resp.getMembership());
-        return member;
+        return new Member.Builder()
+                .withId(resp.getMemberId())
+                .withName(resp.getName())
+                .withMembershipType(resp.getMembership())
+                .build();
     }
 
     private Trainer mapTrainer(GetTrainerResponse resp) {
-        Trainer trainer = new Trainer(resp.getTrainerId(), resp.getName(), resp.getExpertise());
-        return trainer;
+        return new Trainer.Builder()
+                .withId(resp.getTrainerId())
+                .withName(resp.getName())
+                .withExpertise(resp.getExpertise())
+                .build();
     }
 
-    private Course mapCourse(GetCourseResponse resp) throws RuntimeException{
+    private Course mapCourse(GetCourseResponse resp) throws RuntimeException {
         Trainer trainer = getTrainer(resp.getTrainerId());
         if (trainer == null) {
             throw new RuntimeException("Failed to retrieve created trainer with id: " + resp.getTrainerId());
         }
-        Course course = new Course(resp.getCourseId(), resp.getName(), resp.getCapacity(), trainer);
-        return course;
+        return new Course.Builder()
+                .withId(resp.getCourseId())
+                .withName(resp.getName())
+                .withCapacity(resp.getCapacity())
+                .withTrainer(trainer)
+                .build();
     }
 
-    private Booking mapBooking(GetBookingResponse resp) throws RuntimeException{
+    private Booking mapBooking(GetBookingResponse resp) throws RuntimeException {
         Member member = getMember(resp.getMemberId());
         if (member == null) {
             throw new RuntimeException("Failed to retrieve created member with id: " + resp.getMemberId());
@@ -82,9 +93,14 @@ public class GymClientMethods {
         if (course == null) {
             throw new RuntimeException("Failed to retrieve created course with id: " + resp.getCourseId());
         }
-        Booking booking = new Booking(resp.getBookingId(), member, course,LocalDate.parse(resp.getBookingDate()));
-        return booking;
+        return new Booking.Builder()
+                .withId(resp.getBookingId())
+                .withMember(member)
+                .withCourse(course)
+                .withBookingDate(LocalDate.parse(resp.getBookingDate()))
+                .build();
     }
+
 
     // ======================
     // Member-Methoden (über MemberService)
@@ -100,7 +116,7 @@ public class GymClientMethods {
                             .setMembership(membership)
                             .build());
             System.out.println("[GymClient] createMember RPC succeeded, received memberId: " + resp.getMemberId());
-            Member member = getMember(resp.getMemberId());
+            Member member = mapMember(resp);
             if (member == null) {
                 throw new RuntimeException("Failed to retrieve created member with id: " + resp.getMemberId());
             }
@@ -127,7 +143,7 @@ public class GymClientMethods {
                             .setMembership(membership)
                             .build());
             System.out.println("[GymClient] updateMember RPC succeeded, updated memberId: " + resp.getMemberId());
-            Member member = getMember(resp.getMemberId());
+            Member member = mapMember(resp);
             if (member == null) {
                 throw new RuntimeException("Failed to retrieve created member with id: " + resp.getMemberId());
             }
@@ -250,7 +266,7 @@ public class GymClientMethods {
                             .setExpertise(expertise)
                             .build());
             System.out.println("[GymClient] createTrainer RPC succeeded, received trainerId: " + resp.getTrainerId());
-            Trainer trainer = getTrainer(resp.getTrainerId());
+            Trainer trainer = mapTrainer(resp);
             if (trainer == null) {
                 throw new RuntimeException("Failed to retrieve created trainer with id: " + resp.getTrainerId());
             }
@@ -276,7 +292,7 @@ public class GymClientMethods {
                             .setExpertise(expertise)
                             .build());
             System.out.println("[GymClient] updateTrainer RPC succeeded, updated trainerId: " + resp.getTrainerId());
-            Trainer trainer = getTrainer(resp.getTrainerId());
+            Trainer trainer = mapTrainer(resp);
             if (trainer == null) {
                 throw new RuntimeException("Failed to retrieve created trainer with id: " + resp.getTrainerId());
             }
@@ -401,7 +417,7 @@ public class GymClientMethods {
                             .setTrainerId(trainerId)
                             .build());
             System.out.println("[GymClient] createCourse RPC succeeded, received courseId: " + resp.getCourseId());
-            Course course = getCourse(resp.getCourseId());
+            Course course = mapCourse(resp);
             if (course == null) {
                 throw new RuntimeException("Failed to retrieve created course with id: " + resp.getCourseId());
             }
@@ -429,7 +445,7 @@ public class GymClientMethods {
                             .setTrainerId(trainerId)
                             .build());
             System.out.println("[GymClient] updateCourse RPC succeeded, updated courseId: " + resp.getCourseId());
-            Course course = getCourse(resp.getCourseId());
+            Course course = mapCourse(resp);
             if (course == null) {
                 throw new RuntimeException("Failed to retrieve created course with id: " + resp.getCourseId());
             }
@@ -545,7 +561,7 @@ public class GymClientMethods {
                             .setBookingDate(bookingDate.toString())
                             .build());
             System.out.println("[GymClient] createBooking RPC succeeded, received bookingId: " + resp.getBookingId());
-            Booking booking = getBooking(resp.getBookingId());
+            Booking booking = mapBooking(resp);
             if (booking == null) {
                 throw new RuntimeException("Failed to retrieve created booking with id: " + resp.getBookingId());
             }

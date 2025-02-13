@@ -1,4 +1,4 @@
-package de.thws.fiw.gymmanagement.infrastructure.fakes.;
+package de.thws.fiw.gymmanagement.infrastructure.fakes;
 
 import de.thws.fiw.gymmanagement.domain.Course;
 import de.thws.fiw.gymmanagement.domain.Trainer;
@@ -16,10 +16,19 @@ public class FakeCourseRepository implements CourseRepositoryInterface {
     @Override
     public Course save(Course course) {
         if (course.getId() == null || course.getId() == 0) {
-            course.setId(idGenerator.getAndIncrement());
+            long newId = idGenerator.getAndIncrement();
+            Course newCourse = new Course.Builder()
+                    .withId(newId)
+                    .withName(course.getName())
+                    .withCapacity(course.getCapacity())
+                    .withTrainer(course.getTrainer())
+                    .build();
+            courses.add(newCourse);
+            return newCourse;
+        } else {
+            courses.add(course);
+            return course;
         }
-        courses.add(course);
-        return course;
     }
 
     @Override
@@ -33,14 +42,20 @@ public class FakeCourseRepository implements CourseRepositoryInterface {
     }
 
     @Override
-    public Course update(long id, String name, int capacity, long trainerId) {
+    public Course update(Long id, String name, int capacity, Long trainerId) {
         Optional<Course> opt = findById(id);
         if (opt.isPresent()) {
-            Course course = opt.get();
-            course.setName(name);
-            course.setCapacity(capacity);
-            // In a fake repository, we assume the Trainer reference remains unchanged.
-            return course;
+            Course oldCourse = opt.get();
+            // We assume that the trainer reference remains unchanged.
+            Course updatedCourse = new Course.Builder()
+                    .withId(id)
+                    .withName(name)
+                    .withCapacity(capacity)
+                    .withTrainer(oldCourse.getTrainer())
+                    .build();
+            courses.removeIf(c -> c.getId().equals(id));
+            courses.add(updatedCourse);
+            return updatedCourse;
         }
         return null;
     }
@@ -62,10 +77,10 @@ public class FakeCourseRepository implements CourseRepositoryInterface {
     }
 
     @Override
-    public List<Course> findByTrainerId(long trainerId) {
+    public List<Course> findByTrainerId(Long trainerId) {
         List<Course> result = new ArrayList<>();
         for (Course c : courses) {
-            if (c.getTrainer() != null && c.getTrainer().getId() != null && c.getTrainer().getId() == trainerId) {
+            if (c.getTrainer() != null && c.getTrainer().getId() != null && c.getTrainer().getId().equals(trainerId)) {
                 result.add(c);
             }
         }

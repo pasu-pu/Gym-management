@@ -1,18 +1,17 @@
 package de.thws.fiw.gymmanagement.application;
 
-import de.thws.fiw.gymmanagement.application.service.CourseServiceAdapter;
+import de.thws.fiw.gymmanagement.domain.CourseLogicAdapter;
 import de.thws.fiw.gymmanagement.domain.Course;
-import de.thws.fiw.gymmanagement.domain.Trainer;
 import io.grpc.Status;
 import io.grpc.stub.StreamObserver;
 import java.util.List;
 
 public class CourseServiceImpl extends CourseServiceGrpc.CourseServiceImplBase {
 
-    private final CourseServiceAdapter courseService;
+    private final CourseLogicAdapter courseLogic;
 
-    public CourseServiceImpl(CourseServiceAdapter courseService) {
-        this.courseService = courseService;
+    public CourseServiceImpl(CourseLogicAdapter courseLogic) {
+        this.courseLogic = courseLogic;
     }
 
     @Override
@@ -22,7 +21,7 @@ public class CourseServiceImpl extends CourseServiceGrpc.CourseServiceImplBase {
         try {
             System.out.println("[CourseServiceImpl] Invoking business logic for createCourse");
             // Hier wird angenommen, dass courseService.createCourse einen Trainer anhand der trainerId intern ermittelt
-            Course course = courseService.createCourse(request.getName(), request.getCapacity(), request.getTrainerId());
+            Course course = courseLogic.createCourse(request.getName(), request.getCapacity(), request.getTrainerId());
             GetCourseResponse response = GetCourseResponse.newBuilder()
                     .setCourseId(course.getId())
                     .setName(course.getName())
@@ -45,7 +44,7 @@ public class CourseServiceImpl extends CourseServiceGrpc.CourseServiceImplBase {
                 ", trainerId: " + request.getTrainerId());
         try {
             System.out.println("[CourseServiceImpl] Invoking business logic for updateCourse");
-            Course course = courseService.updateCourse(request.getCourseId(), request.getName(), request.getCapacity(), request.getTrainerId());
+            Course course = courseLogic.updateCourse(request.getCourseId(), request.getName(), request.getCapacity(), request.getTrainerId());
             GetCourseResponse response = GetCourseResponse.newBuilder()
                     .setCourseId(course.getId())
                     .setName(course.getName())
@@ -65,7 +64,7 @@ public class CourseServiceImpl extends CourseServiceGrpc.CourseServiceImplBase {
     public void getCourse(GetCourseRequest request, StreamObserver<GetCourseResponse> responseObserver) {
         System.out.println("[CourseServiceImpl] getCourse called for courseId: " + request.getCourseId());
         try {
-            Course course = courseService.getCourse(request.getCourseId());
+            Course course = courseLogic.getCourse(request.getCourseId());
             if (course == null) {
                 System.err.println("[CourseServiceImpl] getCourse: Course with id " + request.getCourseId() + " not found");
                 responseObserver.onError(Status.NOT_FOUND.withDescription("Course not found").asRuntimeException());
@@ -92,7 +91,7 @@ public class CourseServiceImpl extends CourseServiceGrpc.CourseServiceImplBase {
                 ", pagesize: " + request.getPagesize() + ", index: " + request.getIndex());
         try {
             System.out.println("[CourseServiceImpl] Invoking business logic for getCourseByName");
-            List<Course> courses = courseService.getCourseByName(request.getName(), request.getPagesize(), request.getIndex());
+            List<Course> courses = courseLogic.getCourseByName(request.getName(), request.getPagesize(), request.getIndex());
             GetAllCoursesResponse.Builder builder = GetAllCoursesResponse.newBuilder();
             for (Course course : courses) {
                 builder.addCourses(GetCourseResponse.newBuilder()
@@ -117,7 +116,7 @@ public class CourseServiceImpl extends CourseServiceGrpc.CourseServiceImplBase {
                 ", pagesize: " + request.getPagesize() + ", index: " + request.getIndex());
         try {
             System.out.println("[CourseServiceImpl] Invoking business logic for getCourseByTrainer");
-            List<Course> courses = courseService.getCourseByTrainer(request.getTrainerId(), request.getPagesize(), request.getIndex());
+            List<Course> courses = courseLogic.getCourseByTrainer(request.getTrainerId(), request.getPagesize(), request.getIndex());
             GetAllCoursesResponse.Builder builder = GetAllCoursesResponse.newBuilder();
             for (Course course : courses) {
                 builder.addCourses(GetCourseResponse.newBuilder()
@@ -142,7 +141,7 @@ public class CourseServiceImpl extends CourseServiceGrpc.CourseServiceImplBase {
                 ", index: " + request.getIndex());
         try {
             System.out.println("[CourseServiceImpl] Invoking business logic for getAllCourses");
-            List<Course> courses = courseService.getAllCourses(request.getPagesize(), request.getIndex());
+            List<Course> courses = courseLogic.getAllCourses(request.getPagesize(), request.getIndex());
             GetAllCoursesResponse.Builder builder = GetAllCoursesResponse.newBuilder();
             for (Course course : courses) {
                 builder.addCourses(GetCourseResponse.newBuilder()
@@ -166,7 +165,7 @@ public class CourseServiceImpl extends CourseServiceGrpc.CourseServiceImplBase {
         System.out.println("[CourseServiceImpl] deleteCourse called for courseId: " + request.getCourseId());
         try {
             System.out.println("[CourseServiceImpl] Invoking business logic for deleteCourse");
-            courseService.deleteCourse(request.getCourseId());
+            courseLogic.deleteCourse(request.getCourseId());
             responseObserver.onNext(com.google.protobuf.Empty.getDefaultInstance());
             responseObserver.onCompleted();
             System.out.println("[CourseServiceImpl] deleteCourse succeeded for courseId: " + request.getCourseId());

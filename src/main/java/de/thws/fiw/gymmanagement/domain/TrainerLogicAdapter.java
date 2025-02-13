@@ -1,9 +1,9 @@
-package de.thws.fiw.gymmanagement.application.service;
+package de.thws.fiw.gymmanagement.domain;
 
 import de.thws.fiw.gymmanagement.domain.Trainer;
 import java.util.List;
 
-public interface TrainerServiceAdapter {
+public interface TrainerLogicAdapter {
     Trainer createTrainer(String name, String expertise);
     Trainer updateTrainer(long id, String name, String expertise);
     Trainer getTrainer(long id);

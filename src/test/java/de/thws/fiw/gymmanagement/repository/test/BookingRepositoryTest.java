@@ -7,6 +7,9 @@ import de.thws.fiw.gymmanagement.domain.Trainer;
 import de.thws.fiw.gymmanagement.infrastructure.BookingRepositoryInterface;
 import de.thws.fiw.gymmanagement.infrastructure.CourseRepositoryInterface;
 import de.thws.fiw.gymmanagement.infrastructure.MemberRepositoryInterface;
+import de.thws.fiw.gymmanagement.infrastructure.fakes.FakeBookingRepository;
+import de.thws.fiw.gymmanagement.infrastructure.fakes.FakeCourseRepository;
+import de.thws.fiw.gymmanagement.infrastructure.fakes.FakeMemberRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
@@ -23,35 +26,40 @@ public class BookingRepositoryTest {
 
     @BeforeEach
     public void setUp() {
-        bookingRepository = new de.thws.fiw.gymmanagement.infrastructure.FakeBookingRepository();
-        memberRepository = new de.thws.fiw.gymmanagement.infrastructure.FakeMemberRepository();
-        courseRepository = new de.thws.fiw.gymmanagement.infrastructure.FakeCourseRepository();
+        bookingRepository = new FakeBookingRepository();
+        memberRepository = new FakeMemberRepository();
+        courseRepository = new FakeCourseRepository();
     }
 
     @Test
     public void testSaveAndFindById() {
-        // Create a member
-        Member member = new Member();
-        member.setName("TestMember");
-        member.setMembershipType("Gold");
+        // Create a member using the builder
+        Member member = new Member.Builder()
+                .withName("TestMember")
+                .withMembershipType("Gold")
+                .build();
         member = memberRepository.save(member);
 
-        // Create a trainer and course
-        Trainer trainer = new Trainer();
-        trainer.setName("TestTrainer");
-        trainer.setExpertise("Expertise");
-        trainer.setId(1L); // For fake repository, set manually if needed
-        Course course = new Course();
-        course.setName("TestCourse");
-        course.setCapacity(30);
-        course.setTrainer(trainer);
+        // Create a trainer using the builder
+        Trainer trainer = new Trainer.Builder()
+                .withName("TestTrainer")
+                .withExpertise("Expertise")
+                .build();
+
+        // Create a course using the builder and persist it
+        Course course = new Course.Builder()
+                .withName("TestCourse")
+                .withCapacity(30)
+                .withTrainer(trainer)
+                .build();
         course = courseRepository.save(course);
 
-        // Create booking
-        Booking booking = new Booking();
-        booking.setMember(member);
-        booking.setCourse(course);
-        booking.setBookingDate(LocalDate.now());
+        // Create a booking using the builder
+        Booking booking = new Booking.Builder()
+                .withMember(member)
+                .withCourse(course)
+                .withBookingDate(LocalDate.now())
+                .build();
         Booking savedBooking = bookingRepository.save(booking, member.getId(), course.getId());
         assertNotNull(savedBooking);
         assertNotNull(savedBooking.getId());
@@ -62,32 +70,36 @@ public class BookingRepositoryTest {
 
     @Test
     public void testFindByMemberId() {
-        Member member = new Member();
-        member.setName("TestMember");
-        member.setMembershipType("Gold");
+        Member member = new Member.Builder()
+                .withName("TestMember")
+                .withMembershipType("Gold")
+                .build();
         member = memberRepository.save(member);
 
-        Trainer trainer = new Trainer();
-        trainer.setName("TestTrainer");
-        trainer.setExpertise("Expertise");
-        trainer.setId(1L);
+        Trainer trainer = new Trainer.Builder()
+                .withName("TestTrainer")
+                .withExpertise("Expertise")
+                .build();
 
-        Course course = new Course();
-        course.setName("TestCourse");
-        course.setCapacity(30);
-        course.setTrainer(trainer);
+        Course course = new Course.Builder()
+                .withName("TestCourse")
+                .withCapacity(30)
+                .withTrainer(trainer)
+                .build();
         course = courseRepository.save(course);
 
-        Booking booking1 = new Booking();
-        booking1.setMember(member);
-        booking1.setCourse(course);
-        booking1.setBookingDate(LocalDate.now());
+        Booking booking1 = new Booking.Builder()
+                .withMember(member)
+                .withCourse(course)
+                .withBookingDate(LocalDate.now())
+                .build();
         bookingRepository.save(booking1, member.getId(), course.getId());
 
-        Booking booking2 = new Booking();
-        booking2.setMember(member);
-        booking2.setCourse(course);
-        booking2.setBookingDate(LocalDate.now());
+        Booking booking2 = new Booking.Builder()
+                .withMember(member)
+                .withCourse(course)
+                .withBookingDate(LocalDate.now())
+                .build();
         bookingRepository.save(booking2, member.getId(), course.getId());
 
         List<Booking> bookings = bookingRepository.findByMemberId(member.getId());
@@ -96,32 +108,36 @@ public class BookingRepositoryTest {
 
     @Test
     public void testFindByCourseId() {
-        Member member = new Member();
-        member.setName("TestMember");
-        member.setMembershipType("Gold");
+        Member member = new Member.Builder()
+                .withName("TestMember")
+                .withMembershipType("Gold")
+                .build();
         member = memberRepository.save(member);
 
-        Trainer trainer = new Trainer();
-        trainer.setName("TestTrainer");
-        trainer.setExpertise("Expertise");
-        trainer.setId(1L);
+        Trainer trainer = new Trainer.Builder()
+                .withName("TestTrainer")
+                .withExpertise("Expertise")
+                .build();
 
-        Course course = new Course();
-        course.setName("TestCourse");
-        course.setCapacity(30);
-        course.setTrainer(trainer);
+        Course course = new Course.Builder()
+                .withName("TestCourse")
+                .withCapacity(30)
+                .withTrainer(trainer)
+                .build();
         course = courseRepository.save(course);
 
-        Booking booking1 = new Booking();
-        booking1.setMember(member);
-        booking1.setCourse(course);
-        booking1.setBookingDate(LocalDate.now());
+        Booking booking1 = new Booking.Builder()
+                .withMember(member)
+                .withCourse(course)
+                .withBookingDate(LocalDate.now())
+                .build();
         bookingRepository.save(booking1, member.getId(), course.getId());
 
-        Booking booking2 = new Booking();
-        booking2.setMember(member);
-        booking2.setCourse(course);
-        booking2.setBookingDate(LocalDate.now());
+        Booking booking2 = new Booking.Builder()
+                .withMember(member)
+                .withCourse(course)
+                .withBookingDate(LocalDate.now())
+                .build();
         bookingRepository.save(booking2, member.getId(), course.getId());
 
         List<Booking> bookings = bookingRepository.findByCourseId(course.getId());
@@ -130,34 +146,38 @@ public class BookingRepositoryTest {
 
     @Test
     public void testFindByDate() {
-        Member member = new Member();
-        member.setName("TestMember");
-        member.setMembershipType("Gold");
+        Member member = new Member.Builder()
+                .withName("TestMember")
+                .withMembershipType("Gold")
+                .build();
         member = memberRepository.save(member);
 
-        Trainer trainer = new Trainer();
-        trainer.setName("TestTrainer");
-        trainer.setExpertise("Expertise");
-        trainer.setId(1L);
+        Trainer trainer = new Trainer.Builder()
+                .withName("TestTrainer")
+                .withExpertise("Expertise")
+                .build();
 
-        Course course = new Course();
-        course.setName("TestCourse");
-        course.setCapacity(30);
-        course.setTrainer(trainer);
+        Course course = new Course.Builder()
+                .withName("TestCourse")
+                .withCapacity(30)
+                .withTrainer(trainer)
+                .build();
         course = courseRepository.save(course);
 
         LocalDate today = LocalDate.now();
 
-        Booking booking1 = new Booking();
-        booking1.setMember(member);
-        booking1.setCourse(course);
-        booking1.setBookingDate(today);
+        Booking booking1 = new Booking.Builder()
+                .withMember(member)
+                .withCourse(course)
+                .withBookingDate(today)
+                .build();
         bookingRepository.save(booking1, member.getId(), course.getId());
 
-        Booking booking2 = new Booking();
-        booking2.setMember(member);
-        booking2.setCourse(course);
-        booking2.setBookingDate(today);
+        Booking booking2 = new Booking.Builder()
+                .withMember(member)
+                .withCourse(course)
+                .withBookingDate(today)
+                .build();
         bookingRepository.save(booking2, member.getId(), course.getId());
 
         List<Booking> bookings = bookingRepository.findByDate(today);
@@ -166,26 +186,29 @@ public class BookingRepositoryTest {
 
     @Test
     public void testDeleteBooking() {
-        Member member = new Member();
-        member.setName("TestMember");
-        member.setMembershipType("Gold");
+        Member member = new Member.Builder()
+                .withName("TestMember")
+                .withMembershipType("Gold")
+                .build();
         member = memberRepository.save(member);
 
-        Trainer trainer = new Trainer();
-        trainer.setName("TestTrainer");
-        trainer.setExpertise("Expertise");
-        trainer.setId(1L);
+        Trainer trainer = new Trainer.Builder()
+                .withName("TestTrainer")
+                .withExpertise("Expertise")
+                .build();
 
-        Course course = new Course();
-        course.setName("TestCourse");
-        course.setCapacity(30);
-        course.setTrainer(trainer);
+        Course course = new Course.Builder()
+                .withName("TestCourse")
+                .withCapacity(30)
+                .withTrainer(trainer)
+                .build();
         course = courseRepository.save(course);
 
-        Booking booking = new Booking();
-        booking.setMember(member);
-        booking.setCourse(course);
-        booking.setBookingDate(LocalDate.now());
+        Booking booking = new Booking.Builder()
+                .withMember(member)
+                .withCourse(course)
+                .withBookingDate(LocalDate.now())
+                .build();
         Booking savedBooking = bookingRepository.save(booking, member.getId(), course.getId());
         bookingRepository.deleteById(savedBooking.getId());
         Optional<Booking> found = bookingRepository.findById(savedBooking.getId());

@@ -1,6 +1,6 @@
 package de.thws.fiw.gymmanagement.application;
 
-import de.thws.fiw.gymmanagement.application.service.BookingServiceAdapter;
+import de.thws.fiw.gymmanagement.domain.BookingLogicAdapter;
 import de.thws.fiw.gymmanagement.domain.Booking;
 import io.grpc.Status;
 import io.grpc.stub.StreamObserver;
@@ -9,10 +9,10 @@ import java.util.List;
 
 public class BookingServiceImpl extends BookingServiceGrpc.BookingServiceImplBase {
 
-    private final BookingServiceAdapter bookingService;
+    private final BookingLogicAdapter bookingLogic;
 
-    public BookingServiceImpl(BookingServiceAdapter bookingService) {
-        this.bookingService = bookingService;
+    public BookingServiceImpl(BookingLogicAdapter bookingLogic) {
+        this.bookingLogic = bookingLogic;
     }
 
     @Override
@@ -21,7 +21,7 @@ public class BookingServiceImpl extends BookingServiceGrpc.BookingServiceImplBas
                 + ", courseId: " + request.getCourseId() + ", bookingDate: " + request.getBookingDate());
         try {
             System.out.println("[BookingServiceImpl] Invoking business logic for createBooking");
-            Booking booking = bookingService.createBooking(
+            Booking booking = bookingLogic.createBooking(
                     request.getMemberId(),
                     request.getCourseId(),
                     LocalDate.parse(request.getBookingDate()));
@@ -44,7 +44,7 @@ public class BookingServiceImpl extends BookingServiceGrpc.BookingServiceImplBas
     public void getBooking(GetBookingRequest request, StreamObserver<GetBookingResponse> responseObserver) {
         System.out.println("[BookingServiceImpl] getBooking called for bookingId: " + request.getBookingId());
         try {
-            Booking booking = bookingService.getBooking(request.getBookingId());
+            Booking booking = bookingLogic.getBooking(request.getBookingId());
             if (booking == null) {
                 System.err.println("[BookingServiceImpl] getBooking: Booking with id " + request.getBookingId() + " not found");
                 responseObserver.onError(Status.NOT_FOUND.withDescription("Booking not found").asRuntimeException());
@@ -71,7 +71,7 @@ public class BookingServiceImpl extends BookingServiceGrpc.BookingServiceImplBas
                 + ", pagesize: " + request.getPagesize() + ", index: " + request.getIndex());
         try {
             System.out.println("[BookingServiceImpl] Invoking business logic for getBookingByMember");
-            List<Booking> bookings = bookingService.getBookingByMember(request.getMemberId(), request.getPagesize(), request.getIndex());
+            List<Booking> bookings = bookingLogic.getBookingByMember(request.getMemberId(), request.getPagesize(), request.getIndex());
             GetAllBookingsResponse.Builder builder = GetAllBookingsResponse.newBuilder();
             for (Booking booking : bookings) {
                 builder.addBookings(GetBookingResponse.newBuilder()
@@ -96,7 +96,7 @@ public class BookingServiceImpl extends BookingServiceGrpc.BookingServiceImplBas
                 + ", pagesize: " + request.getPagesize() + ", index: " + request.getIndex());
         try {
             System.out.println("[BookingServiceImpl] Invoking business logic for getBookingByCourse");
-            List<Booking> bookings = bookingService.getBookingByCourse(request.getCourseId(), request.getPagesize(), request.getIndex());
+            List<Booking> bookings = bookingLogic.getBookingByCourse(request.getCourseId(), request.getPagesize(), request.getIndex());
             GetAllBookingsResponse.Builder builder = GetAllBookingsResponse.newBuilder();
             for (Booking booking : bookings) {
                 builder.addBookings(GetBookingResponse.newBuilder()
@@ -121,7 +121,7 @@ public class BookingServiceImpl extends BookingServiceGrpc.BookingServiceImplBas
                 + ", pagesize: " + request.getPagesize() + ", index: " + request.getIndex());
         try {
             System.out.println("[BookingServiceImpl] Invoking business logic for getBookingByDate");
-            List<Booking> bookings = bookingService.getBookingByDate(request.getBookingDate(), request.getPagesize(), request.getIndex());
+            List<Booking> bookings = bookingLogic.getBookingByDate(request.getBookingDate(), request.getPagesize(), request.getIndex());
             GetAllBookingsResponse.Builder builder = GetAllBookingsResponse.newBuilder();
             for (Booking booking : bookings) {
                 builder.addBookings(GetBookingResponse.newBuilder()
@@ -145,7 +145,7 @@ public class BookingServiceImpl extends BookingServiceGrpc.BookingServiceImplBas
         System.out.println("[BookingServiceImpl] deleteBooking called for bookingId: " + request.getBookingId());
         try {
             System.out.println("[BookingServiceImpl] Invoking business logic for deleteBooking");
-            bookingService.deleteBooking(request.getBookingId());
+            bookingLogic.deleteBooking(request.getBookingId());
             responseObserver.onNext(com.google.protobuf.Empty.getDefaultInstance());
             responseObserver.onCompleted();
             System.out.println("[BookingServiceImpl] deleteBooking succeeded for bookingId: " + request.getBookingId());

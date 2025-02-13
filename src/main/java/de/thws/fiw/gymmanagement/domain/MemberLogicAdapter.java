@@ -1,9 +1,9 @@
-package de.thws.fiw.gymmanagement.application.service;
+package de.thws.fiw.gymmanagement.domain;
 
 import de.thws.fiw.gymmanagement.domain.Member;
 import java.util.List;
 
-public interface MemberServiceAdapter {
+public interface MemberLogicAdapter {
     Member createMember(String name, String membership);
     Member updateMember(long id, String name, String membership);
     Member getMember(long id);

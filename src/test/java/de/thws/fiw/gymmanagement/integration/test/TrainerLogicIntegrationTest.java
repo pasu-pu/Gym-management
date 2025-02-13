@@ -4,7 +4,7 @@ import de.thws.fiw.gymmanagement.application.CreateTrainerRequest;
 import de.thws.fiw.gymmanagement.application.GetTrainerRequest;
 import de.thws.fiw.gymmanagement.application.TrainerServiceGrpc;
 import de.thws.fiw.gymmanagement.application.TrainerServiceImpl;
-import de.thws.fiw.gymmanagement.application.service.TrainerService;
+import de.thws.fiw.gymmanagement.domain.TrainerLogic;
 import de.thws.fiw.gymmanagement.infrastructure.TrainerRepository;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
@@ -16,7 +16,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class TrainerServiceIntegrationTest {
+public class TrainerLogicIntegrationTest {
 
     private static Server server;
     private static ManagedChannel channel;
@@ -26,8 +26,8 @@ public class TrainerServiceIntegrationTest {
     public static void startServer() throws Exception {
         // Create the repository and service
         TrainerRepository trainerRepository = new TrainerRepository();
-        TrainerService trainerService = new TrainerService(trainerRepository);
-        var serviceImpl = new TrainerServiceImpl(trainerService);
+        TrainerLogic trainerLogic = new TrainerLogic(trainerRepository);
+        var serviceImpl = new TrainerServiceImpl(trainerLogic);
 
         // Start the server on port 8081 (or different port if needed)
         server = ServerBuilder.forPort(8081)

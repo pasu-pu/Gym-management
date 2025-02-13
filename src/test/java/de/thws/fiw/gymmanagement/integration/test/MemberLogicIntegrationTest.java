@@ -4,7 +4,7 @@ import de.thws.fiw.gymmanagement.application.CreateMemberRequest;
 import de.thws.fiw.gymmanagement.application.GetMemberRequest;
 import de.thws.fiw.gymmanagement.application.MemberServiceGrpc;
 import de.thws.fiw.gymmanagement.application.MemberServiceImpl;
-import de.thws.fiw.gymmanagement.application.service.MemberService;
+import de.thws.fiw.gymmanagement.domain.MemberLogic;
 import de.thws.fiw.gymmanagement.infrastructure.MemberRepository;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
@@ -16,7 +16,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class MemberServiceIntegrationTest {
+public class MemberLogicIntegrationTest {
 
     private static Server server;
     private static ManagedChannel channel;
@@ -26,9 +26,9 @@ public class MemberServiceIntegrationTest {
     public static void startServer() throws Exception {
         // Create the actual repository and service
         MemberRepository memberRepository = new MemberRepository();
-        MemberService memberService = new MemberService(memberRepository);
+        MemberLogic memberLogic = new MemberLogic(memberRepository);
         // Create the gRPC service implementation
-        MemberServiceImpl serviceImpl = new MemberServiceImpl(memberService);
+        MemberServiceImpl serviceImpl = new MemberServiceImpl(memberLogic);
 
         // Start the server on a test port (e.g., 8081)
         server = ServerBuilder.forPort(8081)

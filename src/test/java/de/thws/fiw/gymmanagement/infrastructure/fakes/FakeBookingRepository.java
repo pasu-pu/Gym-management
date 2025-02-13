@@ -1,8 +1,7 @@
-package de.thws.fiw.gymmanagement.infrastructure.fakes.;
+package de.thws.fiw.gymmanagement.infrastructure.fakes;
 
 import de.thws.fiw.gymmanagement.domain.Booking;
 import de.thws.fiw.gymmanagement.infrastructure.BookingRepositoryInterface;
-
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -16,15 +15,26 @@ public class FakeBookingRepository implements BookingRepositoryInterface {
     @Override
     public Booking save(Booking booking, Long memberId, Long courseId) {
         if (booking.getId() == null || booking.getId() == 0) {
-            booking.setId(idGenerator.getAndIncrement());
+            long newId = idGenerator.getAndIncrement();
+            Booking newBooking = new Booking.Builder()
+                    .withId(newId)
+                    .withMember(booking.getMember())
+                    .withCourse(booking.getCourse())
+                    .withBookingDate(booking.getBookingDate())
+                    .build();
+            bookings.add(newBooking);
+            return newBooking;
+        } else {
+            bookings.add(booking);
+            return booking;
         }
-        bookings.add(booking);
-        return booking;
     }
 
     @Override
     public Optional<Booking> findById(Long id) {
-        return bookings.stream().filter(b -> b.getId().equals(id)).findFirst();
+        return bookings.stream()
+                .filter(b -> b.getId().equals(id))
+                .findFirst();
     }
 
     @Override
