@@ -17,6 +17,7 @@ Gym-management.iml
 data.mv.db
 data.trace.db
 data
+/data
 
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
