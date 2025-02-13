@@ -38,6 +38,7 @@ public class BookingServiceImpl extends BookingServiceGrpc.BookingServiceImplBas
             System.err.println("[BookingServiceImpl] Error in createBooking: " + e.getMessage());
             responseObserver.onError(Status.INTERNAL.withDescription(e.getMessage()).asRuntimeException());
         }
+        System.out.println("-------------------------------------------------");
     }
 
     @Override
@@ -63,6 +64,7 @@ public class BookingServiceImpl extends BookingServiceGrpc.BookingServiceImplBas
             System.err.println("[BookingServiceImpl] Error in getBooking: " + e.getMessage());
             responseObserver.onError(Status.INTERNAL.withDescription(e.getMessage()).asRuntimeException());
         }
+        System.out.println("-------------------------------------------------");
     }
 
     @Override
@@ -88,6 +90,7 @@ public class BookingServiceImpl extends BookingServiceGrpc.BookingServiceImplBas
             System.err.println("[BookingServiceImpl] Error in getBookingByMember: " + e.getMessage());
             responseObserver.onError(Status.INTERNAL.withDescription(e.getMessage()).asRuntimeException());
         }
+        System.out.println("-------------------------------------------------");
     }
 
     @Override
@@ -113,6 +116,7 @@ public class BookingServiceImpl extends BookingServiceGrpc.BookingServiceImplBas
             System.err.println("[BookingServiceImpl] Error in getBookingByCourse: " + e.getMessage());
             responseObserver.onError(Status.INTERNAL.withDescription(e.getMessage()).asRuntimeException());
         }
+        System.out.println("-------------------------------------------------");
     }
 
     @Override
@@ -138,6 +142,7 @@ public class BookingServiceImpl extends BookingServiceGrpc.BookingServiceImplBas
             System.err.println("[BookingServiceImpl] Error in getBookingByDate: " + e.getMessage());
             responseObserver.onError(Status.INTERNAL.withDescription(e.getMessage()).asRuntimeException());
         }
+        System.out.println("-------------------------------------------------");
     }
 
     @Override
@@ -153,5 +158,6 @@ public class BookingServiceImpl extends BookingServiceGrpc.BookingServiceImplBas
             System.err.println("[BookingServiceImpl] Error in deleteBooking: " + e.getMessage());
             responseObserver.onError(Status.INTERNAL.withDescription(e.getMessage()).asRuntimeException());
         }
+        System.out.println("-------------------------------------------------");
     }
 }

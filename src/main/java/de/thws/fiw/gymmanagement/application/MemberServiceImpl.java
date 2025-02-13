@@ -33,6 +33,7 @@ public class MemberServiceImpl extends MemberServiceGrpc.MemberServiceImplBase {
             System.err.println("[MemberServiceImpl] Error in createMember: " + e.getMessage());
             responseObserver.onError(Status.INTERNAL.withDescription(e.getMessage()).asRuntimeException());
         }
+        System.out.println("-------------------------------------------------");
     }
 
     @Override
@@ -54,6 +55,7 @@ public class MemberServiceImpl extends MemberServiceGrpc.MemberServiceImplBase {
             System.err.println("[MemberServiceImpl] Error in updateMember: " + e.getMessage());
             responseObserver.onError(Status.INTERNAL.withDescription(e.getMessage()).asRuntimeException());
         }
+        System.out.println("-------------------------------------------------");
     }
 
     @Override
@@ -78,6 +80,7 @@ public class MemberServiceImpl extends MemberServiceGrpc.MemberServiceImplBase {
             System.err.println("[MemberServiceImpl] Error in getMember: " + e.getMessage());
             responseObserver.onError(Status.INTERNAL.withDescription(e.getMessage()).asRuntimeException());
         }
+        System.out.println("-------------------------------------------------");
     }
 
     @Override
@@ -102,6 +105,7 @@ public class MemberServiceImpl extends MemberServiceGrpc.MemberServiceImplBase {
             System.err.println("[MemberServiceImpl] Error in getAllMembers: " + e.getMessage());
             responseObserver.onError(Status.INTERNAL.withDescription(e.getMessage()).asRuntimeException());
         }
+        System.out.println("-------------------------------------------------");
     }
 
     @Override
@@ -126,6 +130,7 @@ public class MemberServiceImpl extends MemberServiceGrpc.MemberServiceImplBase {
             System.err.println("[MemberServiceImpl] Error in getMemberByName: " + e.getMessage());
             responseObserver.onError(Status.INTERNAL.withDescription(e.getMessage()).asRuntimeException());
         }
+        System.out.println("-------------------------------------------------");
     }
 
     @Override
@@ -150,6 +155,7 @@ public class MemberServiceImpl extends MemberServiceGrpc.MemberServiceImplBase {
             System.err.println("[MemberServiceImpl] Error in getMemberByMembership: " + e.getMessage());
             responseObserver.onError(Status.INTERNAL.withDescription(e.getMessage()).asRuntimeException());
         }
+        System.out.println("-------------------------------------------------");
     }
 
     @Override
@@ -165,5 +171,6 @@ public class MemberServiceImpl extends MemberServiceGrpc.MemberServiceImplBase {
             System.err.println("[MemberServiceImpl] Error in deleteMember: " + e.getMessage());
             responseObserver.onError(Status.INTERNAL.withDescription(e.getMessage()).asRuntimeException());
         }
+        System.out.println("-------------------------------------------------");
     }
 }

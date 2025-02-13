@@ -13,8 +13,11 @@
         <property name="hibernate.hbm2ddl.auto">update</property>
 
         <!-- Hibernate Logs aktivieren -->
-        <property name="hibernate.show_sql">true</property>
-        <property name="hibernate.format_sql">true</property>
+        <property name="hibernate.show_sql">false</property>
+        <property name="hibernate.format_sql">false</property>
+
+
+
 
         <!-- Hier alle Entity-Klassen registrieren -->
         <mapping class="de.thws.fiw.gymmanagement.domain.Member"/>

@@ -33,6 +33,7 @@ public class TrainerServiceImpl extends TrainerServiceGrpc.TrainerServiceImplBas
             System.err.println("[TrainerServiceImpl] Error in createTrainer: " + e.getMessage());
             responseObserver.onError(Status.INTERNAL.withDescription(e.getMessage()).asRuntimeException());
         }
+        System.out.println("-------------------------------------------------");
     }
 
     @Override
@@ -54,6 +55,7 @@ public class TrainerServiceImpl extends TrainerServiceGrpc.TrainerServiceImplBas
             System.err.println("[TrainerServiceImpl] Error in updateTrainer: " + e.getMessage());
             responseObserver.onError(Status.INTERNAL.withDescription(e.getMessage()).asRuntimeException());
         }
+        System.out.println("-------------------------------------------------");
     }
 
     @Override
@@ -78,6 +80,7 @@ public class TrainerServiceImpl extends TrainerServiceGrpc.TrainerServiceImplBas
             System.err.println("[TrainerServiceImpl] Error in getTrainer: " + e.getMessage());
             responseObserver.onError(Status.INTERNAL.withDescription(e.getMessage()).asRuntimeException());
         }
+        System.out.println("-------------------------------------------------");
     }
 
     @Override
@@ -102,6 +105,7 @@ public class TrainerServiceImpl extends TrainerServiceGrpc.TrainerServiceImplBas
             System.err.println("[TrainerServiceImpl] Error in getAllTrainers: " + e.getMessage());
             responseObserver.onError(Status.INTERNAL.withDescription(e.getMessage()).asRuntimeException());
         }
+        System.out.println("-------------------------------------------------");
     }
 
     @Override
@@ -126,6 +130,7 @@ public class TrainerServiceImpl extends TrainerServiceGrpc.TrainerServiceImplBas
             System.err.println("[TrainerServiceImpl] Error in getTrainerByName: " + e.getMessage());
             responseObserver.onError(Status.INTERNAL.withDescription(e.getMessage()).asRuntimeException());
         }
+        System.out.println("-------------------------------------------------");
     }
 
     @Override
@@ -150,6 +155,7 @@ public class TrainerServiceImpl extends TrainerServiceGrpc.TrainerServiceImplBas
             System.err.println("[TrainerServiceImpl] Error in getTrainerByExpertise: " + e.getMessage());
             responseObserver.onError(Status.INTERNAL.withDescription(e.getMessage()).asRuntimeException());
         }
+        System.out.println("-------------------------------------------------");
     }
 
     @Override
@@ -165,5 +171,6 @@ public class TrainerServiceImpl extends TrainerServiceGrpc.TrainerServiceImplBas
             System.err.println("[TrainerServiceImpl] Error in deleteTrainer: " + e.getMessage());
             responseObserver.onError(Status.INTERNAL.withDescription(e.getMessage()).asRuntimeException());
         }
+        System.out.println("-------------------------------------------------");
     }
 }

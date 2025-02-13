@@ -35,6 +35,7 @@ public class CourseServiceImpl extends CourseServiceGrpc.CourseServiceImplBase {
             System.err.println("[CourseServiceImpl] Error in createCourse: " + e.getMessage());
             responseObserver.onError(Status.INTERNAL.withDescription(e.getMessage()).asRuntimeException());
         }
+        System.out.println("-------------------------------------------------");
     }
 
     @Override
@@ -58,6 +59,7 @@ public class CourseServiceImpl extends CourseServiceGrpc.CourseServiceImplBase {
             System.err.println("[CourseServiceImpl] Error in updateCourse: " + e.getMessage());
             responseObserver.onError(Status.INTERNAL.withDescription(e.getMessage()).asRuntimeException());
         }
+        System.out.println("-------------------------------------------------");
     }
 
     @Override
@@ -83,6 +85,7 @@ public class CourseServiceImpl extends CourseServiceGrpc.CourseServiceImplBase {
             System.err.println("[CourseServiceImpl] Error in getCourse: " + e.getMessage());
             responseObserver.onError(Status.INTERNAL.withDescription(e.getMessage()).asRuntimeException());
         }
+        System.out.println("-------------------------------------------------");
     }
 
     @Override
@@ -108,6 +111,7 @@ public class CourseServiceImpl extends CourseServiceGrpc.CourseServiceImplBase {
             System.err.println("[CourseServiceImpl] Error in getCourseByName: " + e.getMessage());
             responseObserver.onError(Status.INTERNAL.withDescription(e.getMessage()).asRuntimeException());
         }
+        System.out.println("-------------------------------------------------");
     }
 
     @Override
@@ -133,6 +137,7 @@ public class CourseServiceImpl extends CourseServiceGrpc.CourseServiceImplBase {
             System.err.println("[CourseServiceImpl] Error in getCourseByTrainer: " + e.getMessage());
             responseObserver.onError(Status.INTERNAL.withDescription(e.getMessage()).asRuntimeException());
         }
+        System.out.println("-------------------------------------------------");
     }
 
     @Override
@@ -158,6 +163,7 @@ public class CourseServiceImpl extends CourseServiceGrpc.CourseServiceImplBase {
             System.err.println("[CourseServiceImpl] Error in getAllCourses: " + e.getMessage());
             responseObserver.onError(Status.INTERNAL.withDescription(e.getMessage()).asRuntimeException());
         }
+        System.out.println("-------------------------------------------------");
     }
 
     @Override
@@ -173,5 +179,6 @@ public class CourseServiceImpl extends CourseServiceGrpc.CourseServiceImplBase {
             System.err.println("[CourseServiceImpl] Error in deleteCourse: " + e.getMessage());
             responseObserver.onError(Status.INTERNAL.withDescription(e.getMessage()).asRuntimeException());
         }
+        System.out.println("-------------------------------------------------");
     }
 }
