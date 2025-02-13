@@ -153,16 +153,16 @@
         <version>3.3.2</version>
         <configuration>
           <from>
-            <image>openjdk:17-jdk-alpine</image>
+            <image>eclipse-temurin:21-jre</image>
           </from>
           <to>
-            <image>your-dockerhub-user/your-app</image>
+            <image>your-dockerhub-user/gymmanagement-tests</image>
             <tags>
               <tag>latest</tag>
             </tags>
           </to>
           <container>
-            <mainClass>de.thws.fiw.gymmanagement.App</mainClass>
+            <mainClass>de.thws.fiw.gymmanagement.TestRunner</mainClass>
             <ports>
               <port>8080</port>
             </ports>
