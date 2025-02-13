@@ -1,25 +1,18 @@
 package de.thws.fiw.gymmanagement.infrastructure;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.concurrent.atomic.AtomicLong;
-
+import de.thws.fiw.gymmanagement.domain.Course;
+import de.thws.fiw.gymmanagement.domain.Trainer;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-
-import de.thws.fiw.gymmanagement.domain.Course;
-import de.thws.fiw.gymmanagement.domain.Trainer;
+import org.hibernate.query.Query;
+import java.util.List;
+import java.util.Optional;
 
 public class CourseRepository implements CourseRepositoryInterface {
-    private final Map<Long, Course> courses = new HashMap<>();
-    private final AtomicLong idCounter = new AtomicLong(1);
+
     private final SessionFactory sessionFactory;
 
-    // Konstruktor
     public CourseRepository() {
         this.sessionFactory = HibernateUtil.getSessionFactory();
     }
@@ -27,12 +20,9 @@ public class CourseRepository implements CourseRepositoryInterface {
     @Override
     public Course save(Course course) {
         try (Session session = sessionFactory.openSession()) {
-            Transaction transaction = session.beginTransaction();
-
-            // Speichert oder aktualisiert den Kurs
+            Transaction tx = session.beginTransaction();
             session.saveOrUpdate(course);
-
-            transaction.commit();
+            tx.commit();
             return course;
         }
     }
@@ -40,18 +30,7 @@ public class CourseRepository implements CourseRepositoryInterface {
     @Override
     public Optional<Course> findById(Long id) {
         try (Session session = sessionFactory.openSession()) {
-            Course course = session.get(Course.class, id); // Holt den Kurs anhand der ID
-            return Optional.ofNullable(course);
-        }
-    }
-
-    @Override
-    public Optional<Course> findByName(String name) {
-        try (Session session = sessionFactory.openSession()) {
-            String hql = "FROM Course c WHERE c.name = :name";
-            Course course = session.createQuery(hql, Course.class)
-                    .setParameter("name", name)
-                    .uniqueResult(); // Gibt das einzelne Ergebnis zurück
+            Course course = session.get(Course.class, id);
             return Optional.ofNullable(course);
         }
     }
@@ -59,49 +38,59 @@ public class CourseRepository implements CourseRepositoryInterface {
     @Override
     public List<Course> findAll() {
         try (Session session = sessionFactory.openSession()) {
-            String hql = "FROM Course"; // HQL-Abfrage
-            return session.createQuery(hql, Course.class).getResultList(); // Gibt alle Kurse zurück
-        }
-    }
-
-    @Override
-    public void deleteById(Long id) {
-        try (Session session = sessionFactory.openSession()) {
-            Transaction transaction = session.beginTransaction();
-
-            Course course = session.get(Course.class, id); // Holt den Kurs
-            if (course != null) {
-                session.delete(course); // Löscht den Kurs
-            }
-
-            transaction.commit();
+            return session.createQuery("FROM Course", Course.class).list();
         }
     }
 
     @Override
     public Course update(Long id, String name, int capacity, Long trainerId) {
         try (Session session = sessionFactory.openSession()) {
-            Transaction transaction = session.beginTransaction();
-
-            Course course = session.get(Course.class, id); // Holt den Kurs
-            Trainer trainer = session.get(Trainer.class, trainerId);
+            Transaction tx = session.beginTransaction();
+            Course course = session.get(Course.class, id);
             if (course != null) {
                 course.setName(name);
                 course.setCapacity(capacity);
-
-                // Trainer als Fremdschlüssel setzen
-                if (trainer != null) {
-                    course.setTrainer(trainer); // Setzt den Trainer
-                } else {
+                Trainer trainer = session.get(Trainer.class, trainerId);
+                if (trainer == null) {
                     throw new RuntimeException("Trainer not found");
                 }
-
-                session.saveOrUpdate(course); // Speichert den Kurs nach der Aktualisierung
+                course.setTrainer(trainer);
+                session.update(course);
             }
-
-            transaction.commit();
+            tx.commit();
             return course;
         }
     }
 
+    @Override
+    public void deleteById(Long id) {
+        try (Session session = sessionFactory.openSession()) {
+            Transaction tx = session.beginTransaction();
+            Course course = session.get(Course.class, id);
+            if (course != null) {
+                session.delete(course);
+            }
+            tx.commit();
+        }
+    }
+
+    @Override
+    public List<Course> findByName(String name) {
+        try (Session session = sessionFactory.openSession()) {
+            String hql = "FROM Course c WHERE lower(c.name) = :name";
+            Query<Course> query = session.createQuery(hql, Course.class);
+            query.setParameter("name", name.toLowerCase());
+            return query.list();
+        }
+    }
+
+    @Override
+    public List<Course> findByTrainerId(Long trainerId) {
+        try (Session session = sessionFactory.openSession()) {
+            String hql = "FROM Course c WHERE c.trainer.id = :trainerId";
+            Query<Course> query = session.createQuery(hql, Course.class);
+            query.setParameter("trainerId", trainerId);
+            return query.list();
+        }
+    }
 }

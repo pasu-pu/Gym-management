@@ -207,28 +207,28 @@ public final class TrainerServiceGrpc {
   }
 
   private static volatile io.grpc.MethodDescriptor<de.thws.fiw.gymmanagement.application.DeleteTrainerRequest,
-      de.thws.fiw.gymmanagement.application.DeleteTrainerResponse> getDeleteTrainerMethod;
+      com.google.protobuf.Empty> getDeleteTrainerMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "DeleteTrainer",
       requestType = de.thws.fiw.gymmanagement.application.DeleteTrainerRequest.class,
-      responseType = de.thws.fiw.gymmanagement.application.DeleteTrainerResponse.class,
+      responseType = com.google.protobuf.Empty.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
   public static io.grpc.MethodDescriptor<de.thws.fiw.gymmanagement.application.DeleteTrainerRequest,
-      de.thws.fiw.gymmanagement.application.DeleteTrainerResponse> getDeleteTrainerMethod() {
-    io.grpc.MethodDescriptor<de.thws.fiw.gymmanagement.application.DeleteTrainerRequest, de.thws.fiw.gymmanagement.application.DeleteTrainerResponse> getDeleteTrainerMethod;
+      com.google.protobuf.Empty> getDeleteTrainerMethod() {
+    io.grpc.MethodDescriptor<de.thws.fiw.gymmanagement.application.DeleteTrainerRequest, com.google.protobuf.Empty> getDeleteTrainerMethod;
     if ((getDeleteTrainerMethod = TrainerServiceGrpc.getDeleteTrainerMethod) == null) {
       synchronized (TrainerServiceGrpc.class) {
         if ((getDeleteTrainerMethod = TrainerServiceGrpc.getDeleteTrainerMethod) == null) {
           TrainerServiceGrpc.getDeleteTrainerMethod = getDeleteTrainerMethod =
-              io.grpc.MethodDescriptor.<de.thws.fiw.gymmanagement.application.DeleteTrainerRequest, de.thws.fiw.gymmanagement.application.DeleteTrainerResponse>newBuilder()
+              io.grpc.MethodDescriptor.<de.thws.fiw.gymmanagement.application.DeleteTrainerRequest, com.google.protobuf.Empty>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "DeleteTrainer"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   de.thws.fiw.gymmanagement.application.DeleteTrainerRequest.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  de.thws.fiw.gymmanagement.application.DeleteTrainerResponse.getDefaultInstance()))
+                  com.google.protobuf.Empty.getDefaultInstance()))
               .setSchemaDescriptor(new TrainerServiceMethodDescriptorSupplier("DeleteTrainer"))
               .build();
         }
@@ -335,7 +335,7 @@ public final class TrainerServiceGrpc {
     /**
      */
     default void deleteTrainer(de.thws.fiw.gymmanagement.application.DeleteTrainerRequest request,
-        io.grpc.stub.StreamObserver<de.thws.fiw.gymmanagement.application.DeleteTrainerResponse> responseObserver) {
+        io.grpc.stub.StreamObserver<com.google.protobuf.Empty> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getDeleteTrainerMethod(), responseObserver);
     }
   }
@@ -428,7 +428,7 @@ public final class TrainerServiceGrpc {
     /**
      */
     public void deleteTrainer(de.thws.fiw.gymmanagement.application.DeleteTrainerRequest request,
-        io.grpc.stub.StreamObserver<de.thws.fiw.gymmanagement.application.DeleteTrainerResponse> responseObserver) {
+        io.grpc.stub.StreamObserver<com.google.protobuf.Empty> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getDeleteTrainerMethod(), getCallOptions()), request, responseObserver);
     }
@@ -499,7 +499,7 @@ public final class TrainerServiceGrpc {
 
     /**
      */
-    public de.thws.fiw.gymmanagement.application.DeleteTrainerResponse deleteTrainer(de.thws.fiw.gymmanagement.application.DeleteTrainerRequest request) {
+    public com.google.protobuf.Empty deleteTrainer(de.thws.fiw.gymmanagement.application.DeleteTrainerRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getDeleteTrainerMethod(), getCallOptions(), request);
     }
@@ -576,7 +576,7 @@ public final class TrainerServiceGrpc {
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<de.thws.fiw.gymmanagement.application.DeleteTrainerResponse> deleteTrainer(
+    public com.google.common.util.concurrent.ListenableFuture<com.google.protobuf.Empty> deleteTrainer(
         de.thws.fiw.gymmanagement.application.DeleteTrainerRequest request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getDeleteTrainerMethod(), getCallOptions()), request);
@@ -634,7 +634,7 @@ public final class TrainerServiceGrpc {
           break;
         case METHODID_DELETE_TRAINER:
           serviceImpl.deleteTrainer((de.thws.fiw.gymmanagement.application.DeleteTrainerRequest) request,
-              (io.grpc.stub.StreamObserver<de.thws.fiw.gymmanagement.application.DeleteTrainerResponse>) responseObserver);
+              (io.grpc.stub.StreamObserver<com.google.protobuf.Empty>) responseObserver);
           break;
         default:
           throw new AssertionError();
@@ -701,7 +701,7 @@ public final class TrainerServiceGrpc {
           io.grpc.stub.ServerCalls.asyncUnaryCall(
             new MethodHandlers<
               de.thws.fiw.gymmanagement.application.DeleteTrainerRequest,
-              de.thws.fiw.gymmanagement.application.DeleteTrainerResponse>(
+              com.google.protobuf.Empty>(
                 service, METHODID_DELETE_TRAINER)))
         .build();
   }

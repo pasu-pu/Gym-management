@@ -1,21 +1,15 @@
 package de.thws.fiw.gymmanagement.infrastructure;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.concurrent.atomic.AtomicLong;
-
+import de.thws.fiw.gymmanagement.domain.Member;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-
-import de.thws.fiw.gymmanagement.domain.Member;
+import org.hibernate.query.Query;
+import java.util.List;
+import java.util.Optional;
 
 public class MemberRepository implements MemberRepositoryInterface {
-    private final Map<Long, Member> members = new HashMap<>();
-    private final AtomicLong idCounter = new AtomicLong(1);
+
     private final SessionFactory sessionFactory;
 
     public MemberRepository() {
@@ -25,12 +19,9 @@ public class MemberRepository implements MemberRepositoryInterface {
     @Override
     public Member save(Member member) {
         try (Session session = sessionFactory.openSession()) {
-            Transaction transaction = session.beginTransaction();
-
-            // Speichert oder aktualisiert das Member-Objekt
+            Transaction tx = session.beginTransaction();
             session.saveOrUpdate(member);
-
-            transaction.commit();
+            tx.commit();
             return member;
         }
     }
@@ -38,7 +29,7 @@ public class MemberRepository implements MemberRepositoryInterface {
     @Override
     public Optional<Member> findById(Long id) {
         try (Session session = sessionFactory.openSession()) {
-            Member member = session.get(Member.class, id); // Holt das Member anhand der ID
+            Member member = session.get(Member.class, id);
             return Optional.ofNullable(member);
         }
     }
@@ -46,39 +37,54 @@ public class MemberRepository implements MemberRepositoryInterface {
     @Override
     public List<Member> findAll() {
         try (Session session = sessionFactory.openSession()) {
-            String hql = "FROM Member"; // HQL-Abfrage
-            return session.createQuery(hql, Member.class).getResultList(); // Gibt alle Mitglieder zurück
-        }
-    }
-
-    @Override
-    public void deleteById(Long id) {
-        try (Session session = sessionFactory.openSession()) {
-            Transaction transaction = session.beginTransaction();
-
-            Member member = session.get(Member.class, id); // Holt das Member
-            if (member != null) {
-                session.delete(member); // Löscht das Member
-            }
-
-            transaction.commit();
+            return session.createQuery("FROM Member", Member.class).list();
         }
     }
 
     @Override
     public Member update(Long id, String name, String membershipType) {
         try (Session session = sessionFactory.openSession()) {
-            Transaction transaction = session.beginTransaction();
-
-            Member member = session.get(Member.class, id); // Holt das Member anhand der ID
+            Transaction tx = session.beginTransaction();
+            Member member = session.get(Member.class, id);
             if (member != null) {
-                member.setName(name); // Aktualisiert den Namen
-                member.setMembershipType(membershipType); // Aktualisiert den Membership-Typ
-                session.saveOrUpdate(member); // Speichert das Member nach der Aktualisierung
+                member.setName(name);
+                member.setMembershipType(membershipType);
+                session.update(member);
             }
-
-            transaction.commit();
+            tx.commit();
             return member;
+        }
+    }
+
+    @Override
+    public void deleteById(Long id) {
+        try (Session session = sessionFactory.openSession()) {
+            Transaction tx = session.beginTransaction();
+            Member member = session.get(Member.class, id);
+            if (member != null) {
+                session.delete(member);
+            }
+            tx.commit();
+        }
+    }
+
+    @Override
+    public List<Member> findByName(String name) {
+        try (Session session = sessionFactory.openSession()) {
+            String hql = "FROM Member m WHERE lower(m.name) = :name";
+            Query<Member> query = session.createQuery(hql, Member.class);
+            query.setParameter("name", name.toLowerCase());
+            return query.list();
+        }
+    }
+
+    @Override
+    public List<Member> findByMembership(String membership) {
+        try (Session session = sessionFactory.openSession()) {
+            String hql = "FROM Member m WHERE lower(m.membershipType) = :membership";
+            Query<Member> query = session.createQuery(hql, Member.class);
+            query.setParameter("membership", membership.toLowerCase());
+            return query.list();
         }
     }
 }
