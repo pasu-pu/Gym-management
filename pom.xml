@@ -17,12 +17,14 @@
   </properties>
 
   <dependencies>
+    <!-- Test dependencies -->
     <dependency>
       <groupId>org.junit.jupiter</groupId>
       <artifactId>junit-jupiter-api</artifactId>
       <version>5.11.0</version>
       <scope>test</scope>
     </dependency>
+    <!-- Protobuf & gRPC dependencies -->
     <dependency>
       <groupId>com.google.protobuf</groupId>
       <artifactId>protobuf-java</artifactId>
@@ -58,29 +60,24 @@
       <artifactId>javax.annotation-api</artifactId>
       <version>1.3.2</version>
     </dependency>
-
+    <!-- JPA & Hibernate -->
     <dependency>
       <groupId>jakarta.persistence</groupId>
       <artifactId>jakarta.persistence-api</artifactId>
-      <version>3.1.0</version> <!-- Neueste stabile Version -->
-      <!--<scope>provided</scope>-->
+      <version>3.1.0</version>
     </dependency>
-
-    <!-- Hibernate Core (JPA Implementation) -->
     <dependency>
       <groupId>org.hibernate</groupId>
       <artifactId>hibernate-core</artifactId>
       <version>6.3.1.Final</version>
     </dependency>
-
-    <!-- H2 Database -->
+    <!-- H2 Database for runtime testing -->
     <dependency>
       <groupId>com.h2database</groupId>
       <artifactId>h2</artifactId>
       <version>2.1.214</version>
       <scope>runtime</scope>
     </dependency>
-
   </dependencies>
 
   <build>
@@ -88,9 +85,9 @@
       <resource>
         <directory>src/main/resources</directory>
         <includes>
-          <include>**/*.xml</include> <!-- Alle XML-Dateien kopieren -->
-          <include>**/*.properties</include> <!-- Falls du application.properties hast -->
-          <include>**/*.yml</include> <!-- Falls du application.yml hast -->
+          <include>**/*.xml</include>
+          <include>**/*.properties</include>
+          <include>**/*.yml</include>
         </includes>
       </resource>
     </resources>
@@ -102,10 +99,12 @@
       </extension>
     </extensions>
     <plugins>
+      <!-- Maven Compiler Plugin -->
       <plugin>
         <artifactId>maven-compiler-plugin</artifactId>
         <version>3.8.0</version>
       </plugin>
+      <!-- Exec Maven Plugin (if needed) -->
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>exec-maven-plugin</artifactId>
@@ -118,16 +117,14 @@
           </execution>
         </executions>
       </plugin>
-
+      <!-- Protobuf Maven Plugin -->
       <plugin>
         <groupId>org.xolstice.maven.plugins</groupId>
         <artifactId>protobuf-maven-plugin</artifactId>
         <version>0.6.1</version>
         <configuration>
-          <!--suppress UnresolvedMavenProperty -->
           <protocArtifact>com.google.protobuf:protoc:${protobuf.version}:exe:${os.detected.classifier}</protocArtifact>
           <pluginId>grpc-java</pluginId>
-          <!--suppress UnresolvedMavenProperty -->
           <pluginArtifact>io.grpc:protoc-gen-grpc-java:${grpc.version}:exe:${os.detected.classifier}</pluginArtifact>
           <outputDirectory>${basedir}/src/main/java</outputDirectory>
           <clearOutputDirectory>false</clearOutputDirectory>
@@ -142,6 +139,29 @@
             <phase>generate-sources</phase>
           </execution>
         </executions>
+      </plugin>
+      <!-- Jib Maven Plugin for Docker integration -->
+      <plugin>
+        <groupId>com.google.cloud.tools</groupId>
+        <artifactId>jib-maven-plugin</artifactId>
+        <version>3.3.2</version>
+        <configuration>
+          <from>
+            <image>openjdk:17-jdk-alpine</image>
+          </from>
+          <to>
+            <image>your-dockerhub-user/your-app</image>
+            <tags>
+              <tag>latest</tag>
+            </tags>
+          </to>
+          <container>
+            <mainClass>de.thws.fiw.gymmanagement.App</mainClass>
+            <ports>
+              <port>8080</port>
+            </ports>
+          </container>
+        </configuration>
       </plugin>
     </plugins>
   </build>
