@@ -1,4 +1,4 @@
-package de.thws.fiw.gymmanagement.service.test;
+package de.thws.fiw.gymmanagement.logic.test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
