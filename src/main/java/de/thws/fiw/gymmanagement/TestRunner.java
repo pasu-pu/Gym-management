@@ -15,7 +15,7 @@ public class TestRunner {
 
         Invoker invoker = new DefaultInvoker();
         invoker.setMavenHome(new File("/usr/share/maven")); // Adjust the path based on your image
-        //invoker.setMavenHome(new File(System.getenv("MAVEN_HOME"))); // Adjust the path based on your image
+        // invoker.setMavenHome(new File(System.getenv("MAVEN_HOME"))); // Alternatively, use environment variable
 
         try {
             int exitCode = invoker.execute(request).getExitCode();
