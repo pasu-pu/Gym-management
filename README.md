@@ -1,7 +1,3 @@
-Hier ist ein Beispiel für ein README, das den Anforderungen entspricht:
-
----
-
 # Gym Management System
 
 This repository contains the backend solution for the Gym Management System project. It demonstrates a distributed system developed using Java and gRPC with a Hexagonal Architecture. The system includes an API, business logic, and persistence components based on Hibernate (JPA) and supports CRUD operations with filtering, paging, and a 1-to-many relationship between entities.
