@@ -10,12 +10,12 @@ public class TestRunner {
         System.out.println("Starting integration tests...");
 
         InvocationRequest request = new DefaultInvocationRequest();
-        request.setPomFile(new File("pom.xml")); // Ensure this is the correct path to your POM
-        request.setGoals(Arrays.asList("clean", "test")); // Runs the tests
+        request.setPomFile(new File("/pom-docker.xml"));
+        request.setGoals(Arrays.asList("", "test")); // Runs the tests
 
         Invoker invoker = new DefaultInvoker();
         invoker.setMavenHome(new File("/usr/share/maven")); // Adjust the path based on your image
-        // invoker.setMavenHome(new File(System.getenv("MAVEN_HOME"))); // Alternatively, use environment variable
+        //invoker.setMavenHome(new File("/usr/share/maven")); // Adjust the path based on your image
 
         try {
             int exitCode = invoker.execute(request).getExitCode();
