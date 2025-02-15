@@ -1,95 +1,134 @@
+
 # Gym Management System
 
-This repository contains the backend solution for the Gym Management System project. It demonstrates a distributed system developed using Java and gRPC with a Hexagonal Architecture. The system includes an API, business logic, and persistence components based on Hibernate (JPA) and supports CRUD operations with filtering, paging, and a 1-to-many relationship between entities.
+Dieses Repository enthält die Backend-Lösung für das Gym Management System-Projekt.  
+Es demonstriert ein verteiltes System, das mit **Java** und **gRPC** unter Verwendung einer **hexagonalen Architektur** entwickelt wurde.  
+Das System umfasst eine **API**, die **Geschäftslogik** sowie eine **Persistenzkomponente** (basierend auf Hibernate und JPA) und unterstützt **CRUD-Operationen** mit Filterung, Paging und einer 1:n-Beziehung zwischen den Entitäten.
 
 ---
 
-## Overview
+## Überblick
 
-The system is structured into the following layers:
-- **Domain Layer:** Contains the core entities: Member, Trainer, Course, and Booking. Each entity uses the Builder Pattern and is annotated with JPA annotations.
-- **Business Logic Layer:** Implements domain rules via classes such as MemberLogic, TrainerLogic, CourseLogic, and BookingLogic.
-- **Infrastructure Layer:** Contains repository interfaces and their implementations (e.g., MemberRepository, TrainerRepository) that handle CRUD operations via Hibernate. It also includes configuration files (e.g., Hibernate configuration).
-- **API Layer (gRPC):** Provides the external interface defined by Protocol Buffers. Adapter classes (e.g., MemberServiceImpl, TrainerServiceImpl) map gRPC messages to domain objects and vice versa.
+Das System ist in folgende Schichten unterteilt:
+
+- **Domain Layer:**  
+  Enthält die Kerndomänen wie `Member`, `Trainer`, `Course` und `Booking`.  
+  Jede Entität verwendet das **Builder Pattern** und ist mit den entsprechenden JPA-Annotationen versehen.
+  Implementiert ausserdem die Geschäftsregeln mittels Klassen wie `MemberLogic`, `TrainerLogic`, `CourseLogic` und `BookingLogic`.
+
+- **Infrastructure Layer:**  
+  Beinhaltet Repository-Schnittstellen (z. B. `MemberRepository`, `TrainerRepository`) und deren Implementierungen, die CRUD-Operationen über Hibernate realisieren.  
+  Ebenfalls enthalten sind Konfigurationsdateien (z. B. für Hibernate).
+
+- **application Layer (gRPC):**  
+  Stellt über **Protocol Buffers** die externe Schnittstelle bereit.  
+  Adapter-Klassen (z. B. `MemberServiceImpl`, `TrainerServiceImpl`) transformieren gRPC-Nachrichten in Domänenobjekte und umgekehrt.
 
 ---
 
-## Prerequisites
+## Voraussetzungen
 
-- Java (JDK 17/21)
-- Maven
-- Docker (recommended)
+- **Java JDK 21**  
+- **Maven**  
+- **Docker** (für das Container-Deployment)
 
 ---
 
-## How to Run the System
+## Systemstart mit Docker
 
-### Option 1: Integrated Docker via Maven
+Das Projekt nutzt **Jib**, um das Docker-Image direkt über Maven zu erstellen – ein manuelles Dockerfile ist nicht notwendig.
 
-The preferred solution integrates Docker into the Maven build process. To build, test, and run the system, simply execute:
+### 1. Docker-Image mit Jib bauen
+
+Führe folgenden Befehl im Projektverzeichnis aus, um das Docker-Image zu bauen und in die lokale Docker-Registry zu laden:
 
 ```bash
-mvn verify
+mvn clean compile jib:dockerBuild
 ```
 
-This command will:
-- Compile the source code.
-- Run all unit tests.
-- Build and start a Docker container with the application.
-- Execute integration tests against the running system.
+Dieser Befehl:
+- Kompiliert den Code,
+- Erzeugt das Docker-Image und
+- Lädt das Image in deine lokale Docker-Registry.
 
-### Option 2: Manual Docker Startup
+### 2. Docker-Container starten
 
-If Docker is not integrated into your Maven build, follow these steps:
+Sobald das Image gebaut wurde, starte den Container mit:
 
-1. **Build the project:**
+```bash
+docker run -p 8080:8080 gym-management-tests
+```
 
-   ```bash
-   mvn clean package
-   ```
-
-2. **Build the Docker image:**
-
-   ```bash
-   docker build -t gym-management .
-   ```
-
-3. **Run the Docker container:**
-
-   ```bash
-   docker run -p 8080:8080 gym-management
-   ```
 
 ---
 
-## How to Execute Tests
+## Tests ausführen
 
-### Unit Tests
+### Unit-Tests
 
-Unit tests are executed as part of the Maven build lifecycle. To run them separately, use:
+
+Um Unit-Tests zu starten, verwende:
 
 ```bash
 mvn test
 ```
 
-### Integration Tests
+### Integrationstests
 
-Integration tests are also executed during the Maven build when running:
+Integrationstests werden mit diesem Befehl ausgeführt:
 
 ```bash
 mvn verify
 ```
 
-This command starts the application (via Docker if configured) and runs all integration tests.
+---
+
+## Docker-Integration im Detail
+
+Das Projekt verwendet **Jib**, um das Docker-Image zu erstellen, ohne dass ein manuelles Dockerfile benötigt wird.
+
+- **Image bauen und lokal speichern:**
+  ```bash
+  mvn clean compile jib:dockerBuild
+  ```
+
+- **Container starten:**
+  ```bash
+  docker run -p 8080:8080 gym-management-tests
+  ```
+
+Mit dieser Integration wird sichergestellt, dass alle notwendigen Abhängigkeiten und der Anwendungscode im Container vorhanden sind, sodass das System reproduzierbar und selbstständig lauffähig ist.
 
 ---
 
-## Additional Information
+## Weitere Informationen
 
-- **Hexagonal Architecture:** The system is designed with a clear separation between domain logic and external interfaces (ports and adapters).
-- **API Technology:** gRPC is used for high-performance communication and a contract-first API design with Protocol Buffers.
-- **Persistence:** Hibernate manages the ORM with an H2 database for ease of development and testing.
-- **Docker Integration:** A Dockerfile and docker-compose.yml are included to streamline deployment.
+- **Hexagonale Architektur:**  
+  Das System folgt dem Ports-and-Adapters-Prinzip, wodurch die Domänenlogik von externen Schnittstellen getrennt wird.
+
+- **API-Technologie:**  
+  Es kommt **gRPC** mit einem contract-first Ansatz (über Protocol Buffers) zum Einsatz.
+
+- **Persistenz:**  
+  Hibernate ORM verwaltet die Datenbankinteraktionen, wobei als Testdatenbank **H2** verwendet wird.
+
+- **Automatisierter Build & Deployment:**  
+  Durch die Integration von **Jib** in den Maven-Build-Prozess wird das Erstellen des Docker-Containers vollständig automatisiert.
+
+---
+
+## Teammitglieder
+
+- [Pascal Putz 5123135]
+- [Manuel Stöth 5123045]
+- [Marvin Kraus 5123143]
+
+
+---
+
+## Lizenz
+
+Dieses Projekt steht unter der **MIT License**. Siehe die Datei [LICENSE](LICENSE).
 
 ---
 
