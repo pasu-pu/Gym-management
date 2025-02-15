@@ -66,7 +66,6 @@ docker run -p 8080:8080 gym-management-tests
 
 ### Unit-Tests
 
-
 Um Unit-Tests zu starten, verwende:
 
 ```bash
