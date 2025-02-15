@@ -11,7 +11,7 @@ public class TestRunner {
 
         InvocationRequest request = new DefaultInvocationRequest();
         request.setPomFile(new File("/pom-docker.xml"));
-        request.setGoals(Arrays.asList("", "test")); // Runs the tests
+        request.setGoals(Arrays.asList("", "verify")); // Runs the tests
 
         Invoker invoker = new DefaultInvoker();
         invoker.setMavenHome(new File("/usr/share/maven")); // Adjust the path based on your image
