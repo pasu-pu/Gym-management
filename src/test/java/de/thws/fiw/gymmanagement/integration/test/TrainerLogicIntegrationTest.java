@@ -1,8 +1,5 @@
 package de.thws.fiw.gymmanagement.integration.test;
 
-import de.thws.fiw.gymmanagement.application.CreateTrainerRequest;
-import de.thws.fiw.gymmanagement.application.GetTrainerRequest;
-import de.thws.fiw.gymmanagement.application.TrainerServiceGrpc;
 import de.thws.fiw.gymmanagement.application.TrainerServiceImpl;
 import de.thws.fiw.gymmanagement.domain.TrainerLogic;
 import de.thws.fiw.gymmanagement.infrastructure.TrainerRepository;

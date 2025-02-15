@@ -1,8 +1,5 @@
 package de.thws.fiw.gymmanagement.integration.test;
 
-import de.thws.fiw.gymmanagement.application.CreateBookingRequest;
-import de.thws.fiw.gymmanagement.application.GetBookingRequest;
-import de.thws.fiw.gymmanagement.application.BookingServiceGrpc;
 import de.thws.fiw.gymmanagement.application.BookingServiceImpl;
 import de.thws.fiw.gymmanagement.domain.BookingLogic;
 import de.thws.fiw.gymmanagement.infrastructure.BookingRepository;

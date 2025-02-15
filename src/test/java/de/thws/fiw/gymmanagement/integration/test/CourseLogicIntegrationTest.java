@@ -1,8 +1,5 @@
 package de.thws.fiw.gymmanagement.integration.test;
 
-import de.thws.fiw.gymmanagement.application.CreateCourseRequest;
-import de.thws.fiw.gymmanagement.application.GetCourseRequest;
-import de.thws.fiw.gymmanagement.application.CourseServiceGrpc;
 import de.thws.fiw.gymmanagement.application.CourseServiceImpl;
 import de.thws.fiw.gymmanagement.domain.CourseLogic;
 import de.thws.fiw.gymmanagement.infrastructure.CourseRepository;

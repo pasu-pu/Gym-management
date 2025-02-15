@@ -1,8 +1,5 @@
 package de.thws.fiw.gymmanagement.integration.test;
 
-import de.thws.fiw.gymmanagement.application.CreateMemberRequest;
-import de.thws.fiw.gymmanagement.application.GetMemberRequest;
-import de.thws.fiw.gymmanagement.application.MemberServiceGrpc;
 import de.thws.fiw.gymmanagement.application.MemberServiceImpl;
 import de.thws.fiw.gymmanagement.domain.MemberLogic;
 import de.thws.fiw.gymmanagement.infrastructure.MemberRepository;
