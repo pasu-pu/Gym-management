@@ -1,10 +1,12 @@
 package de.thws.fiw.gymmanagement.integration.test;
 
-import de.thws.fiw.gymmanagement.application.CourseServiceImpl;
+import de.thws.fiw.gymmanagement.application.*;
 import de.thws.fiw.gymmanagement.domain.CourseLogic;
 import de.thws.fiw.gymmanagement.infrastructure.CourseRepository;
+import de.thws.fiw.gymmanagement.infrastructure.CourseRepositoryInterface;
 import de.thws.fiw.gymmanagement.infrastructure.TrainerRepository;
 import de.thws.fiw.gymmanagement.domain.Trainer;
+import de.thws.fiw.gymmanagement.infrastructure.TrainerRepositoryInterface;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
 import io.grpc.Server;
@@ -20,12 +22,13 @@ public class CourseLogicIntegrationTest {
     private static Server server;
     private static ManagedChannel channel;
     private static CourseServiceGrpc.CourseServiceBlockingStub courseStub;
-    private static TrainerRepository trainerRepository;
+    private static TrainerRepositoryInterface trainerRepository;
+    private static CourseRepositoryInterface courseRepository;
 
     @BeforeAll
     public static void startServer() throws Exception {
         // Create repositories and service
-        var courseRepository = new CourseRepository();
+        courseRepository = new CourseRepository();
         trainerRepository = new TrainerRepository();
         // Create a Trainer using the Builder pattern
         Trainer trainer = new Trainer.Builder()
@@ -37,12 +40,12 @@ public class CourseLogicIntegrationTest {
         CourseLogic courseLogic = new CourseLogic(courseRepository, trainerRepository);
         var serviceImpl = new CourseServiceImpl(courseLogic);
 
-        server = ServerBuilder.forPort(8081)
+        server = ServerBuilder.forPort(8080)
                 .addService(serviceImpl)
                 .build()
                 .start();
 
-        channel = ManagedChannelBuilder.forAddress("localhost", 8081)
+        channel = ManagedChannelBuilder.forAddress("localhost", 8080)
                 .usePlaintext()
                 .build();
         courseStub = CourseServiceGrpc.newBlockingStub(channel);
@@ -50,6 +53,11 @@ public class CourseLogicIntegrationTest {
 
     @AfterAll
     public static void stopServer() throws Exception {
+        // Löscht alle Kurse
+        courseRepository.deleteAll();
+
+        // Löscht alle Trainer
+        trainerRepository.deleteAll();
         channel.shutdownNow();
         server.shutdownNow();
     }

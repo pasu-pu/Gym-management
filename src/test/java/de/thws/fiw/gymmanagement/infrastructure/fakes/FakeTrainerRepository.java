@@ -85,4 +85,9 @@ public class FakeTrainerRepository implements TrainerRepositoryInterface {
         }
         return result;
     }
+
+    @Override
+    public void deleteAll() {
+
+    }
 }

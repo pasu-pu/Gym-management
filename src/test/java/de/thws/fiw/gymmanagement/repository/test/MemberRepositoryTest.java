@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import de.thws.fiw.gymmanagement.domain.Member;
 import de.thws.fiw.gymmanagement.infrastructure.MemberRepository;
 import de.thws.fiw.gymmanagement.infrastructure.MemberRepositoryInterface;
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
@@ -21,6 +22,11 @@ public class MemberRepositoryTest {
         memberRepository = new MemberRepository();
     }
 
+    @AfterAll
+    public static void remove() {
+        // Löscht alle Mitglieder
+        memberRepository.deleteAll();
+    }
     @Test
     public void testSaveAndFindById() {
         // Create a member using the builder

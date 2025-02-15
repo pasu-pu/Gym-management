@@ -84,4 +84,9 @@ public class FakeMemberRepository implements MemberRepositoryInterface {
         }
         return result;
     }
+
+    @Override
+    public void deleteAll() {
+
+    }
 }

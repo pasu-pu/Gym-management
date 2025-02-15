@@ -1,8 +1,9 @@
 package de.thws.fiw.gymmanagement.integration.test;
 
-import de.thws.fiw.gymmanagement.application.MemberServiceImpl;
+import de.thws.fiw.gymmanagement.application.*;
 import de.thws.fiw.gymmanagement.domain.MemberLogic;
 import de.thws.fiw.gymmanagement.infrastructure.MemberRepository;
+import de.thws.fiw.gymmanagement.infrastructure.MemberRepositoryInterface;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
 import io.grpc.Server;
@@ -18,22 +19,23 @@ public class MemberLogicIntegrationTest {
     private static Server server;
     private static ManagedChannel channel;
     private static MemberServiceGrpc.MemberServiceBlockingStub memberStub;
+    private static MemberRepositoryInterface memberRepository;
 
     @BeforeAll
     public static void startServer() throws Exception {
         // Create the actual repository and service
-        MemberRepository memberRepository = new MemberRepository();
+        memberRepository = new MemberRepository();
         MemberLogic memberLogic = new MemberLogic(memberRepository);
         // Create the gRPC service implementation
         MemberServiceImpl serviceImpl = new MemberServiceImpl(memberLogic);
 
         // Start the server on a test port (e.g., 8081)
-        server = ServerBuilder.forPort(8081)
+        server = ServerBuilder.forPort(8080)
                 .addService(serviceImpl)
                 .build()
                 .start();
 
-        channel = ManagedChannelBuilder.forAddress("localhost", 8081)
+        channel = ManagedChannelBuilder.forAddress("localhost", 8080)
                 .usePlaintext()
                 .build();
         memberStub = MemberServiceGrpc.newBlockingStub(channel);
@@ -41,6 +43,8 @@ public class MemberLogicIntegrationTest {
 
     @AfterAll
     public static void stopServer() throws Exception {
+        // Löscht alle Mitglieder
+        memberRepository.deleteAll();
         channel.shutdownNow();
         server.shutdownNow();
     }

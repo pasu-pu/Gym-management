@@ -14,4 +14,6 @@ public interface MemberRepositoryInterface {
     // Spezifische Filterabfragen
     List<Member> findByName(String name);
     List<Member> findByMembership(String membership);
+
+    void deleteAll();
 }

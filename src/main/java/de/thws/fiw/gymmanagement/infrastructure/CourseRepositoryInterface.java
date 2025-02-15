@@ -14,4 +14,6 @@ public interface CourseRepositoryInterface {
     // Filterabfragen
     List<Course> findByName(String name);
     List<Course> findByTrainerId(Long trainerId);
+
+    void deleteAll();
 }

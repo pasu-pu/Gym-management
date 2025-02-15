@@ -15,4 +15,6 @@ public interface BookingRepositoryInterface {
     List<Booking> findByDate(LocalDate date);
 
     void deleteById(Long id);
+
+    void deleteAll();
 }

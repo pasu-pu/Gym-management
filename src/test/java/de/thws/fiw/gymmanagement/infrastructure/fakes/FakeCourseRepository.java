@@ -86,4 +86,9 @@ public class FakeCourseRepository implements CourseRepositoryInterface {
         }
         return result;
     }
+
+    @Override
+    public void deleteAll() {
+
+    }
 }

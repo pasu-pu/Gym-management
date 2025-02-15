@@ -87,4 +87,19 @@ public class TrainerRepository implements TrainerRepositoryInterface {
             return query.list();
         }
     }
+
+    @Override
+    public void deleteAll() {
+        Transaction transaction = null;
+        try (Session session = sessionFactory.openSession()) {
+            transaction = session.beginTransaction();
+            session.createQuery("DELETE FROM Trainer").executeUpdate();
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        }
+    }
 }

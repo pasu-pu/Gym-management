@@ -16,7 +16,7 @@ public class Course {
     @Column(nullable = false)
     private int capacity;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.REMOVE)
     @JoinColumn(name = "trainer", nullable = false)
     private Trainer trainer;
 

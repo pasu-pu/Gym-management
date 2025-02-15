@@ -6,6 +6,7 @@ import de.thws.fiw.gymmanagement.infrastructure.CourseRepository;
 import de.thws.fiw.gymmanagement.infrastructure.CourseRepositoryInterface;
 import de.thws.fiw.gymmanagement.infrastructure.TrainerRepository;
 import de.thws.fiw.gymmanagement.infrastructure.TrainerRepositoryInterface;
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
@@ -15,13 +16,22 @@ import java.util.Optional;
 
 public class CourseRepositoryTest {
 
-    private CourseRepositoryInterface courseRepository;
-    private TrainerRepositoryInterface trainerRepository;
+    private static CourseRepositoryInterface courseRepository;
+    private static TrainerRepositoryInterface trainerRepository;
 
     @BeforeEach
     public void setUp() {
         courseRepository = new CourseRepository();
         trainerRepository = new TrainerRepository();
+    }
+
+    @AfterAll
+    public static void remove() {
+        // Löscht alle Kurse
+        courseRepository.deleteAll();
+
+        // Löscht alle Trainer
+        trainerRepository.deleteAll();
     }
 
     @Test

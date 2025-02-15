@@ -74,4 +74,9 @@ public class FakeBookingRepository implements BookingRepositoryInterface {
     public void deleteById(Long id) {
         bookings.removeIf(b -> b.getId().equals(id));
     }
+
+    @Override
+    public void deleteAll() {
+
+    }
 }

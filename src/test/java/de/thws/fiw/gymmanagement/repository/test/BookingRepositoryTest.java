@@ -4,12 +4,11 @@ import de.thws.fiw.gymmanagement.domain.Booking;
 import de.thws.fiw.gymmanagement.domain.Course;
 import de.thws.fiw.gymmanagement.domain.Member;
 import de.thws.fiw.gymmanagement.domain.Trainer;
-import de.thws.fiw.gymmanagement.infrastructure.BookingRepositoryInterface;
-import de.thws.fiw.gymmanagement.infrastructure.CourseRepositoryInterface;
-import de.thws.fiw.gymmanagement.infrastructure.MemberRepositoryInterface;
+import de.thws.fiw.gymmanagement.infrastructure.*;
 import de.thws.fiw.gymmanagement.infrastructure.fakes.FakeBookingRepository;
 import de.thws.fiw.gymmanagement.infrastructure.fakes.FakeCourseRepository;
 import de.thws.fiw.gymmanagement.infrastructure.fakes.FakeMemberRepository;
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
@@ -20,15 +19,33 @@ import java.util.Optional;
 
 public class BookingRepositoryTest {
 
-    private BookingRepositoryInterface bookingRepository;
-    private MemberRepositoryInterface memberRepository;
-    private CourseRepositoryInterface courseRepository;
+    private static BookingRepositoryInterface bookingRepository;
+    private static MemberRepositoryInterface memberRepository;
+    private static CourseRepositoryInterface courseRepository;
+    private static TrainerRepositoryInterface trainerRepository;
+
 
     @BeforeEach
     public void setUp() {
-        bookingRepository = new FakeBookingRepository();
-        memberRepository = new FakeMemberRepository();
-        courseRepository = new FakeCourseRepository();
+        bookingRepository = new BookingRepository();
+        memberRepository = new MemberRepository();
+        courseRepository = new CourseRepository();
+        trainerRepository = new TrainerRepository();
+    }
+
+    @AfterAll
+    public static void remove() {
+        // Löscht alle Buchungen
+        bookingRepository.deleteAll();
+
+        // Löscht alle Mitglieder
+        memberRepository.deleteAll();
+
+        // Löscht alle Kurse
+        courseRepository.deleteAll();
+
+        // Löscht alle Trainer
+        trainerRepository.deleteAll();
     }
 
     @Test
@@ -45,6 +62,7 @@ public class BookingRepositoryTest {
                 .withName("TestTrainer")
                 .withExpertise("Expertise")
                 .build();
+        trainer = trainerRepository.save(trainer);
 
         // Create a course using the builder and persist it
         Course course = new Course.Builder()
@@ -80,6 +98,7 @@ public class BookingRepositoryTest {
                 .withName("TestTrainer")
                 .withExpertise("Expertise")
                 .build();
+        trainer = trainerRepository.save(trainer);
 
         Course course = new Course.Builder()
                 .withName("TestCourse")
@@ -118,6 +137,7 @@ public class BookingRepositoryTest {
                 .withName("TestTrainer")
                 .withExpertise("Expertise")
                 .build();
+        trainer = trainerRepository.save(trainer);
 
         Course course = new Course.Builder()
                 .withName("TestCourse")
@@ -156,6 +176,7 @@ public class BookingRepositoryTest {
                 .withName("TestTrainer")
                 .withExpertise("Expertise")
                 .build();
+        trainer = trainerRepository.save(trainer);
 
         Course course = new Course.Builder()
                 .withName("TestCourse")
@@ -196,6 +217,7 @@ public class BookingRepositoryTest {
                 .withName("TestTrainer")
                 .withExpertise("Expertise")
                 .build();
+        trainer = trainerRepository.save(trainer);
 
         Course course = new Course.Builder()
                 .withName("TestCourse")

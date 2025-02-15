@@ -7,6 +7,7 @@ import de.thws.fiw.gymmanagement.domain.Booking;
 import de.thws.fiw.gymmanagement.domain.Course;
 import de.thws.fiw.gymmanagement.domain.Member;
 import de.thws.fiw.gymmanagement.domain.Trainer;
+import de.thws.fiw.gymmanagement.infrastructure.TrainerRepositoryInterface;
 import de.thws.fiw.gymmanagement.infrastructure.fakes.FakeBookingRepository;
 import de.thws.fiw.gymmanagement.infrastructure.fakes.FakeCourseRepository;
 import de.thws.fiw.gymmanagement.infrastructure.fakes.FakeMemberRepository;
@@ -15,6 +16,9 @@ import de.thws.fiw.gymmanagement.infrastructure.CourseRepositoryInterface;
 import de.thws.fiw.gymmanagement.infrastructure.MemberRepositoryInterface;
 import java.time.LocalDate;
 import java.util.List;
+
+import de.thws.fiw.gymmanagement.infrastructure.fakes.FakeTrainerRepository;
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -23,6 +27,7 @@ public class BookingLogicTest {
     private BookingRepositoryInterface bookingRepository;
     private MemberRepositoryInterface memberRepository;
     private CourseRepositoryInterface courseRepository;
+    private TrainerRepositoryInterface trainerRepository;
     private BookingLogic bookingLogicTest;
 
     @BeforeEach
@@ -30,8 +35,11 @@ public class BookingLogicTest {
         bookingRepository = new FakeBookingRepository();
         memberRepository = new FakeMemberRepository();
         courseRepository = new FakeCourseRepository();
+        trainerRepository = new FakeTrainerRepository();
         bookingLogicTest = new BookingLogic(bookingRepository, memberRepository, courseRepository);
     }
+
+
 
     @Test
     void testCreateBooking() {
@@ -47,6 +55,7 @@ public class BookingLogicTest {
                 .withName("Eve")
                 .withExpertise("Pilates")
                 .build();
+        trainer = trainerRepository.save(trainer);
 
         // Create course using builder
         Course course = new Course.Builder()
@@ -66,6 +75,83 @@ public class BookingLogicTest {
     }
 
     @Test
+    void testCreateBookingFailsWhenAlreadyBooked() {
+        Member member = new Member.Builder()
+                .withName("John")
+                .withMembershipType("Basic")
+                .build();
+        member = memberRepository.save(member);
+
+        Trainer trainer = new Trainer.Builder()
+                .withName("Jane")
+                .withExpertise("Yoga")
+                .build();
+        trainer = trainerRepository.save(trainer);
+
+        Course course = new Course.Builder()
+                .withName("Yoga Class")
+                .withCapacity(10)
+                .withTrainer(trainer)
+                .build();
+        course = courseRepository.save(course);
+
+        LocalDate today = LocalDate.now();
+        // Erstes Booking erfolgreich
+        bookingLogicTest.createBooking(member.getId(), course.getId(), today);
+
+        // Zweites Booking sollte fehlschlagen, da Mitglied bereits für diesen Kurs gebucht ist
+        Member finalMember = member;
+        Course finalCourse = course;
+        Exception exception = assertThrows(RuntimeException.class, () -> {
+            bookingLogicTest.createBooking(finalMember.getId(), finalCourse.getId(), today);
+        });
+
+        assertEquals("Member already has a booking for this course", exception.getMessage());
+    }
+
+    @Test
+    void testCreateBookingFailsWhenCourseCapacityExceeded() {
+        Trainer trainer = new Trainer.Builder()
+                .withName("Jane")
+                .withExpertise("Yoga")
+                .build();
+        trainer = trainerRepository.save(trainer);
+
+        Course course = new Course.Builder()
+                .withName("Yoga Class")
+                .withCapacity(1)
+                .withTrainer(trainer)
+                .build();
+        course = courseRepository.save(course);
+
+        Member firstMember = new Member.Builder()
+                .withName("John")
+                .withMembershipType("Basic")
+                .build();
+        firstMember = memberRepository.save(firstMember);
+
+        Member secondMember = new Member.Builder()
+                .withName("Sarah")
+                .withMembershipType("Premium")
+                .build();
+        secondMember = memberRepository.save(secondMember);
+
+        LocalDate today = LocalDate.now();
+
+        // First booking successful
+        bookingLogicTest.createBooking(firstMember.getId(), course.getId(), today);
+
+        // Second booking should fail due to capacity limit
+        Member finalSecondMember = secondMember;
+        Course finalCourse = course;
+        Exception exception = assertThrows(RuntimeException.class, () -> {
+            bookingLogicTest.createBooking(finalSecondMember.getId(), finalCourse.getId(), today);
+        });
+
+        assertEquals("Course capacity reached: Unable to book", exception.getMessage());
+    }
+
+    @Test
     void testGetBooking() {
         Member member = new Member.Builder()
                 .withName("Dave")
@@ -77,6 +163,7 @@ public class BookingLogicTest {
                 .withName("Eve")
                 .withExpertise("Pilates")
                 .build();
+        trainer = trainerRepository.save(trainer);
 
         Course course = new Course.Builder()
                 .withName("Pilates Class")
@@ -104,6 +191,7 @@ public class BookingLogicTest {
                 .withName("Eve")
                 .withExpertise("Pilates")
                 .build();
+        trainer = trainerRepository.save(trainer);
 
         Course course = new Course.Builder()
                 .withName("Pilates Class")
@@ -114,10 +202,9 @@ public class BookingLogicTest {
 
         LocalDate today = LocalDate.now();
         bookingLogicTest.createBooking(member.getId(), course.getId(), today);
-        bookingLogicTest.createBooking(member.getId(), course.getId(), today);
 
         List<Booking> bookings = bookingLogicTest.getBookingByMember(member.getId(), 10, 0);
-        assertEquals(2, bookings.size());
+        assertEquals(1, bookings.size());
     }
 
     @Test
@@ -132,6 +219,7 @@ public class BookingLogicTest {
                 .withName("Eve")
                 .withExpertise("Pilates")
                 .build();
+        trainer = trainerRepository.save(trainer);
 
         Course course = new Course.Builder()
                 .withName("Pilates Class")
@@ -142,10 +230,9 @@ public class BookingLogicTest {
 
         LocalDate today = LocalDate.now();
         bookingLogicTest.createBooking(member.getId(), course.getId(), today);
-        bookingLogicTest.createBooking(member.getId(), course.getId(), today);
 
         List<Booking> bookings = bookingLogicTest.getBookingByCourse(course.getId(), 10, 0);
-        assertEquals(2, bookings.size());
+        assertEquals(1, bookings.size());
     }
 
     @Test
@@ -160,6 +247,7 @@ public class BookingLogicTest {
                 .withName("Eve")
                 .withExpertise("Pilates")
                 .build();
+        trainer = trainerRepository.save(trainer);
 
         Course course = new Course.Builder()
                 .withName("Pilates Class")
@@ -170,10 +258,9 @@ public class BookingLogicTest {
 
         LocalDate today = LocalDate.now();
         bookingLogicTest.createBooking(member.getId(), course.getId(), today);
-        bookingLogicTest.createBooking(member.getId(), course.getId(), today);
 
         List<Booking> bookings = bookingLogicTest.getBookingByDate(today.toString(), 10, 0);
-        assertEquals(2, bookings.size());
+        assertEquals(1, bookings.size());
     }
 
     @Test
@@ -188,6 +275,7 @@ public class BookingLogicTest {
                 .withName("Eve")
                 .withExpertise("Pilates")
                 .build();
+        trainer = trainerRepository.save(trainer);
 
         Course course = new Course.Builder()
                 .withName("Pilates Class")

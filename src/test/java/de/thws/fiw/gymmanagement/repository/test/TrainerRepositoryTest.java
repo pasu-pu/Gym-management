@@ -3,6 +3,7 @@ package de.thws.fiw.gymmanagement.repository.test;
 import de.thws.fiw.gymmanagement.domain.Trainer;
 import de.thws.fiw.gymmanagement.infrastructure.TrainerRepository;
 import de.thws.fiw.gymmanagement.infrastructure.TrainerRepositoryInterface;
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
@@ -12,12 +13,18 @@ import java.util.Optional;
 
 public class TrainerRepositoryTest {
 
-    private TrainerRepositoryInterface trainerRepository;
+    private static TrainerRepositoryInterface trainerRepository;
 
     @BeforeEach
     public void setUp() {
         // Use your actual TrainerRepository (or fake repository) here
         trainerRepository = new TrainerRepository();
+    }
+
+    @AfterAll
+    public static void remove() {
+        // Löscht alle Trainer
+        trainerRepository.deleteAll();
     }
 
     @Test

@@ -14,4 +14,6 @@ public interface TrainerRepositoryInterface {
     // Filterabfragen
     List<Trainer> findByName(String name);
     List<Trainer> findByExpertise(String expertise);
+
+    void deleteAll();
 }

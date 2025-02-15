@@ -29,9 +29,27 @@ public class BookingLogic implements BookingLogicAdapter {
             System.out.println("[BookingLogic] Fetching Member with id: " + member_Id);
             Member member = memberRepository.findById(member_Id)
                     .orElseThrow(() -> new RuntimeException("Member not found"));
+
             System.out.println("[BookingLogic] Fetching Course with id: " + course_Id);
             Course course = courseRepository.findById(course_Id)
                     .orElseThrow(() -> new RuntimeException("Course not found"));
+
+            // Prüfe die Anzahl der aktuellen Buchungen für den Kurs
+            List<Booking> existingBookings = bookingRepository.findByCourseId(course_Id);
+            if (existingBookings.size() >= course.getCapacity()) {
+                System.err.println("[BookingLogic] Booking failed: Course capacity reached");
+                throw new RuntimeException("Course capacity reached: Unable to book");
+            }
+
+            // Überprüfen, ob der Member bereits eine Buchung für diesen Kurs hat
+            boolean hasExistingBooking = existingBookings.stream()
+                    .anyMatch(booking -> booking.getMember().getId().equals(member_Id));
+
+            if (hasExistingBooking) {
+                System.err.println("[BookingLogic] Booking failed: Member already booked for this course");
+                throw new RuntimeException("Member already has a booking for this course");
+            }
+
             System.out.println("[BookingLogic] Creating new Booking with fetched Member and Course");
 
             Booking booking = new Booking.Builder()
@@ -44,7 +62,7 @@ public class BookingLogic implements BookingLogicAdapter {
             return savedBooking;
         } catch (Exception e) {
             System.err.println("[BookingLogic] Error in createBooking: " + e.getMessage());
-            throw new RuntimeException(e);
+            throw new RuntimeException(e.getMessage());
         }
     }
 
@@ -61,7 +79,7 @@ public class BookingLogic implements BookingLogicAdapter {
             return booking;
         } catch (Exception e) {
             System.err.println("[BookingLogic] Error in getBooking: " + e.getMessage());
-            throw new RuntimeException(e);
+            throw new RuntimeException(e.getMessage());
         }
     }
 
@@ -83,7 +101,7 @@ public class BookingLogic implements BookingLogicAdapter {
             return result;
         } catch (Exception e) {
             System.err.println("[BookingLogic] Error in getBookingByMember: " + e.getMessage());
-            throw new RuntimeException(e);
+            throw new RuntimeException(e.getMessage());
         }
     }
 
@@ -105,7 +123,7 @@ public class BookingLogic implements BookingLogicAdapter {
             return result;
         } catch (Exception e) {
             System.err.println("[BookingLogic] Error in getBookingByCourse: " + e.getMessage());
-            throw new RuntimeException(e);
+            throw new RuntimeException(e.getMessage());
         }
     }
 
@@ -128,7 +146,7 @@ public class BookingLogic implements BookingLogicAdapter {
             return result;
         } catch (Exception e) {
             System.err.println("[BookingLogic] Error in getBookingByDate: " + e.getMessage());
-            throw new RuntimeException(e);
+            throw new RuntimeException(e.getMessage());
         }
     }
 
@@ -141,7 +159,7 @@ public class BookingLogic implements BookingLogicAdapter {
             System.out.println("[BookingLogic] deleteBooking succeeded for bookingId: " + id);
         } catch (Exception e) {
             System.err.println("[BookingLogic] Error in deleteBooking: " + e.getMessage());
-            throw new RuntimeException(e);
+            throw new RuntimeException(e.getMessage());
         }
     }
 }
